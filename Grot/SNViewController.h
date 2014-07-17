@@ -9,12 +9,17 @@
 #import <UIKit/UIKit.h>
 
 typedef NS_ENUM(NSInteger, SNFieldDirection) {
-    SNFieldDirectionUp     = 0,
-    SNFieldDirectionLeft   = 90,
-    SNFieldDirectionDown   = 180,
-    SNFieldDirectionRight  = 270,
+    SNFieldDirectionUp     = 90,
+    SNFieldDirectionLeft   = 180,
+    SNFieldDirectionDown   = 270,
+    SNFieldDirectionRight  = 0,
     SNFieldDirectionsCount = 4
 };
+
+
+
+
+
 
 @interface SNMutableGrid : NSObject
 
@@ -29,6 +34,11 @@ typedef NS_ENUM(NSInteger, SNFieldDirection) {
 
 @end
 
+
+
+
+
+
 typedef NSString* SNFieldColor;
 
 const static SNFieldColor kColorGray  = @"gray";
@@ -39,6 +49,7 @@ const static SNFieldColor kColorRed   = @"red";
 @interface SNGrotFieldModel : NSObject
 
 @property (nonatomic) CGPoint position;
+@property (nonatomic) BOOL available;
 @property (nonatomic, readonly) SNFieldColor colorType;
 @property (nonatomic, readonly) SNFieldDirection direction;
 
@@ -48,7 +59,14 @@ const static SNFieldColor kColorRed   = @"red";
 - (UIColor*)color;
 - (float)angle;
 
+
+
 @end
+
+
+
+
+
 
 @interface SNGrotFieldView : UICollectionViewCell
 
@@ -56,9 +74,16 @@ const static SNFieldColor kColorRed   = @"red";
 
 @end
 
+
+
+
+
+
 @interface SNGrotBoard : UICollectionViewController
 {
     BOOL _isAnimatingTurn;
+    NSMutableArray *animationsViews;
+    int size;
 }
 
 @property (nonatomic, strong, readonly) SNMutableGrid* fieldsGrid;

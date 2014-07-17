@@ -22,6 +22,7 @@
 		0C20F53F1976745F00831879 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C20F51E1976745F00831879 /* UIKit.framework */; };
 		0C20F5471976745F00831879 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0C20F5451976745F00831879 /* InfoPlist.strings */; };
 		0C20F5491976745F00831879 /* GrotTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C20F5481976745F00831879 /* GrotTests.m */; };
+		66FD01691977C9B70084746F /* NSObject+DelayedBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 66FD01681977C9B70084746F /* NSObject+DelayedBlocks.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,8 @@
 		0C20F5441976745F00831879 /* GrotTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GrotTests-Info.plist"; sourceTree = "<group>"; };
 		0C20F5461976745F00831879 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0C20F5481976745F00831879 /* GrotTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GrotTests.m; sourceTree = "<group>"; };
+		66FD01671977C9B70084746F /* NSObject+DelayedBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+DelayedBlocks.h"; sourceTree = "<group>"; };
+		66FD01681977C9B70084746F /* NSObject+DelayedBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DelayedBlocks.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,9 +87,9 @@
 		0C20F50E1976745F00831879 = {
 			isa = PBXGroup;
 			children = (
+				0C20F5191976745F00831879 /* Frameworks */,
 				0C20F5201976745F00831879 /* Grot */,
 				0C20F5421976745F00831879 /* GrotTests */,
-				0C20F5191976745F00831879 /* Frameworks */,
 				0C20F5181976745F00831879 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -115,12 +118,13 @@
 			isa = PBXGroup;
 			children = (
 				0C20F5291976745F00831879 /* SNAppDelegate.h */,
-				0C20F52A1976745F00831879 /* SNAppDelegate.m */,
-				0C20F52C1976745F00831879 /* Main_iPhone.storyboard */,
-				0C20F52F1976745F00831879 /* Main_iPad.storyboard */,
 				0C20F5321976745F00831879 /* SNViewController.h */,
+				0C20F52A1976745F00831879 /* SNAppDelegate.m */,
 				0C20F5331976745F00831879 /* SNViewController.m */,
 				0C20F5351976745F00831879 /* Images.xcassets */,
+				66FD01661977C9AA0084746F /* Helpers */,
+				0C20F52F1976745F00831879 /* Main_iPad.storyboard */,
+				0C20F52C1976745F00831879 /* Main_iPhone.storyboard */,
 				0C20F5211976745F00831879 /* Supporting Files */,
 			);
 			path = Grot;
@@ -153,6 +157,15 @@
 				0C20F5451976745F00831879 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		66FD01661977C9AA0084746F /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				66FD01671977C9B70084746F /* NSObject+DelayedBlocks.h */,
+				66FD01681977C9B70084746F /* NSObject+DelayedBlocks.m */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,6 +267,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66FD01691977C9B70084746F /* NSObject+DelayedBlocks.m in Sources */,
 				0C20F5271976745F00831879 /* main.m in Sources */,
 				0C20F5341976745F00831879 /* SNViewController.m in Sources */,
 				0C20F52B1976745F00831879 /* SNAppDelegate.m in Sources */,
@@ -471,6 +485,7 @@
 				0C20F54E1976745F00831879 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0C20F54F1976745F00831879 /* Build configuration list for PBXNativeTarget "GrotTests" */ = {
 			isa = XCConfigurationList;
@@ -479,6 +494,7 @@
 				0C20F5511976745F00831879 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

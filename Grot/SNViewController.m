@@ -12,16 +12,21 @@
 #pragma mark - Macros
 
 #define colorFromHex(hex) ([UIColor colorWithRed:((hex >> 16) & 0xFF) / 255.0 \
-                                           green:((hex >> 8)  & 0xFF) / 255.0 \
-                                            blue:((hex >> 0)  & 0xFF) / 255.0 \
-                                           alpha:1.0])
+green:((hex >> 8)  & 0xFF) / 255.0 \
+blue:((hex >> 0)  & 0xFF) / 255.0 \
+alpha:1.0])
 
 #define randomElement(array) array[arc4random_uniform(array.count)]
 
 #define deg2rad(degrees) ((degrees) / 180.0 * M_PI)
 
-#pragma mark -
 
+
+
+
+
+
+#pragma mark -
 @implementation SNMutableGrid
 
 + (instancetype)gridWithSize:(CGSize)size;
@@ -72,9 +77,15 @@
 
 @end
 
+
+
+
+
+
+#pragma mark -
 @implementation SNGrotFieldModel
 
-#pragma mark - Constructor
+#pragma mark Constructor
 
 + (instancetype)randomModel
 {
@@ -88,6 +99,7 @@
     if (self)
     {
         [self randomizeValues];
+        _available = YES;
     }
     
     return self;
@@ -105,6 +117,12 @@
     NSArray* directionDistribution = @[ @( SNFieldDirectionUp ), @( SNFieldDirectionLeft ), @( SNFieldDirectionDown ), @( SNFieldDirectionRight ) ];
     
     _direction = [randomElement(directionDistribution) integerValue];
+}
+
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"Position: %@    Color: %@    Direction: %i", NSStringFromCGPoint(self.position), self
+            .colorType, self.direction];
 }
 
 #pragma mark - Methods
@@ -144,8 +162,12 @@
 
 @end
 
-#pragma mark -
 
+
+
+
+
+#pragma mark -
 @implementation SNGrotFieldView
 
 - (void)setFrame:(CGRect)frame
@@ -221,20 +243,54 @@
 
 @end
 
+
+
+
+
+
+#pragma mark -
 @implementation SNGrotBoard
 
+#define MARGIN 10
+#define SPACE 5
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    _isAnimatingTurn = NO;
     
+    _isAnimatingTurn = NO;
+    size = 4;
     [self randomizeFieldModels];
+
+//    
+//    UIView *v = [[UIView alloc] initWithFrame:self.view.bounds];
+//    v.backgroundColor = [UIColor redColor];
+//    [self.view addSubview:v];
+//    
+//    CGSize screenSize = self.view.frame.size;
+//    
+//    CGFloat cellSize = (screenSize.width - 2*MARGIN - (size-1)*SPACE) / size;
+//    CGFloat startY = screenSize.height - size * cellSize - MARGIN;
+//    for (NSUInteger y = 0; y < size; y++)
+//    {
+//        for (NSUInteger x = 0; x < size; x++)
+//        {
+//            SNGrotFieldView* cell = [SNGrotFieldView new];
+//            cell.model = [_fieldsGrid objectAtIndex:x + y * size];
+//            CGRect cellFrame;
+//
+//            cellFrame.size.width = cellFrame.size.height = cellSize;
+//            cell.frame = cellFrame;
+//            cell.center = CGPointMake(MARGIN/2 + cellSize/2 + x*(cellSize + SPACE), startY + cellSize/2 + y*(cellSize + SPACE));
+//
+//            [v addSubview:cell];
+//        }
+//    }
+//
 }
 
 - (void)randomizeFieldModels
 {
-    SNMutableGrid* grid = [SNMutableGrid gridWithSize:CGSizeMake(4, 4)];
+    SNMutableGrid* grid = [SNMutableGrid gridWithSize:CGSizeMake(size, size)];
     
     for (NSIndexPath* indexPath in grid.indexPaths)
     {
@@ -274,13 +330,94 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    [UIView animateWithDuration:0.5 animations:^{
-        _isAnimatingTurn = YES;
+    _isAnimatingTurn = YES;
+    
+    SNGrotFieldView *field = (SNGrotFieldView *)[collectionView cellForItemAtIndexPath:indexPath];
+
+    if (field.model.available) {
+        float delay = 0;
         
-        [collectionView cellForItemAtIndexPath:indexPath].alpha = 0.0;
-    } completion:^(BOOL finished) {
-        _isAnimatingTurn = NO;
-    }];
+        for (SNGrotFieldView *field in animationsViews) {
+                field.alpha = 0;
+        }
+        
+        animationsViews = [NSMutableArray new];
+        [self nextField:field level:1];
+        delay = 0;
+        
+        for (SNGrotFieldView *field in animationsViews) {
+            [UIView animateWithDuration:1 delay:delay options:UIViewAnimationOptionCurveLinear animations:^{
+                field.alpha = 0.05;
+            } completion:^(BOOL finished) {
+            }];
+            delay += 0.1;
+        }
+        
+    }
+    
+    _isAnimatingTurn = NO;
+}
+
+
+- (SNGrotFieldView *)nextField:(SNGrotFieldView *)currentField level:(int)level
+{
+    if (currentField) {
+        [animationsViews addObject:currentField];
+    }
+    
+    currentField.model.available = NO;
+
+    CGPoint newPosition = currentField.model.position;
+
+    switch (currentField.model.direction) {
+        case SNFieldDirectionUp:
+            if (newPosition.y > level -1)
+                newPosition.y -= level;
+            else
+                return nil;
+            break;
+            
+        case SNFieldDirectionLeft:
+            if (newPosition.x > level - 1)
+                newPosition.x -= level;
+            else
+                return nil;
+            break;
+            
+        case SNFieldDirectionDown:
+            if (newPosition.y < size - level)
+                newPosition.y += level;
+            else
+                return nil;
+            break;
+            
+        case SNFieldDirectionRight:
+            if (newPosition.x < size - level)
+                newPosition.x += level;
+            else
+                return nil;
+            break;
+    }
+    
+    SNGrotFieldView *tempView = (SNGrotFieldView *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:newPosition.x + newPosition.y * size inSection:0]];
+    
+    if (!tempView.model.available) {
+        SNGrotFieldView *resultView = [self nextField:currentField level:++level];
+        
+        return resultView;
+    }
+    else
+    {
+        SNGrotFieldView *resultView = [self nextField:tempView level:1];
+
+        return resultView;
+    }
+    
+    return nil;
+}
+
+- (BOOL)prefersStatusBarHidden {
+    return YES;
 }
 
 @end
