@@ -15,7 +15,7 @@
 {
     BOOL isAnimatingTurn;
     NSMutableArray *animationsViews;
-    int grotsCount;
+    int boardSize;
     CGFloat cellSize;
  }
 

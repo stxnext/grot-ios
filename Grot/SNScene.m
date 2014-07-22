@@ -12,7 +12,7 @@
 //#import "SNMutableGrid.h"
 
 #define BOARD_MARGIN 10
-#define GROT_SPACE 2.5
+#define GROT_SPACE 5
 
 @interface SNScene ()
 
@@ -61,10 +61,12 @@
         self.movesBonus.fontSize = 18;
 
         self.scoreTitle.text = @"Score";
-        self.scoreBonus.text = @"+3";
+        self.scoreBonus.text = @"1";
+        self.scoreBonus.text = @"";
         
         self.movesTitle.text = @"Moves";
-        self.movesBonus.text = @"+5";
+        self.movesBonus.text = @"1";
+        self.movesBonus.text = @"";
         
         self.scoreTitle.position = CGPointMake(CGRectGetMinX(self.frame) + CGRectGetWidth(self.scoreTitle.frame)/2 + 50, CGRectGetMaxY(self.frame)-50);
         self.movesTitle.position = CGPointMake(CGRectGetMaxX(self.frame) - CGRectGetWidth(self.movesTitle.frame)/2 - 50, CGRectGetMaxY(self.frame)-50);
@@ -99,15 +101,15 @@
         self.backgroundColor = [UIColor colorWithRed:51/255. green:51/255. blue:51/255. alpha:1];
         
         isAnimatingTurn = NO;
-        grotsCount = 5;
+        boardSize = 4;
         
         self.grots = [NSMutableArray new];
         
-        cellSize = (size.width - 2 * BOARD_MARGIN) / grotsCount;
+        cellSize = (size.width - 2 * BOARD_MARGIN) / boardSize;
         
-        for (NSInteger y = 0; y < grotsCount; y++)
+        for (NSInteger y = 0; y < boardSize; y++)
         {
-            for (NSInteger x = 0; x < grotsCount; x++)
+            for (NSInteger x = 0; x < boardSize; x++)
             {
                 SNGrotView *grot = [[SNGrotView alloc] initWithSize:cellSize- 2*GROT_SPACE];
                 grot.position = [self positionForX:x Y:y];
@@ -146,17 +148,22 @@
         return;
     }
     
-    if (touch.tapCount == 1)
+    if (touch.tapCount == 1 && self.moves > 0)
     {
         NSInteger column, row;
         CGPoint location = [touch locationInNode:self];
         
         if ([self convertPoint:location toColumn:&column row:&row])
         {
-            SNGrotView *subview = (SNGrotView *)[self.grots objectAtIndex:column + row * grotsCount];
+            SNGrotView *subview = (SNGrotView *)[self.grots objectAtIndex:column + row * boardSize];
             
             if ([subview isKindOfClass:[SNGrotView class]])
             {
+                self.moves--;
+                
+                __block int newScore = 0;
+                __block int newMoves = 0;
+                
                 SNGrotView *field = (SNGrotView *)subview;
                 
                 if (field.model.isAvailable)
@@ -193,21 +200,31 @@
                         
                         [self performBlockOnMainThread:^{
                             // add new grots
-                            for (NSInteger y = 0; y < grotsCount; y++)
+                            __block int animationsCount = 0;
+                            
+                            for (NSInteger y = 0; y < boardSize; y++)
                             {
-                                for (NSInteger x = 0; x < grotsCount; x++)
+                                for (NSInteger x = 0; x < boardSize; x++)
                                 {
                                     SNGrotView *grot0 = [self grotForX:x Y:y];
                                     
                                     if (!grot0.model.isAvailable)
                                     {
+                                        animationsCount++;
                                         grot0.center = [self positionForX:x Y:y];
                                         [grot0 randomize];
                                         [grot0 setScale:0.8];
                                         [grot0 runAction:[SKAction group:@[[SKAction fadeAlphaTo:1 duration:0.1],
                                                                            [SKAction scaleTo:1 duration:0.1]
                                                                            ]] completion:^{
-                                            isAnimatingTurn = NO;
+                                            
+                                    
+                                            if (--animationsCount == 0)
+                                            {
+                                                [self addMoves:newMoves];
+                                                [self addScore:newScore];
+                                                isAnimatingTurn = NO;
+                                            }
                                         }];
                                     }
                                 }
@@ -235,11 +252,10 @@
                         else
                         {
                             [grot0 runAction:[SKAction fadeAlphaTo:0 duration:0.25] completion:^{
+                                [self performBlockInCurrentThread:^{
+                                    animateFalling();
+                                } afterDelay:0.1];
                             }];
-                            
-                            [self performBlockInCurrentThread:^{
-                                animateFalling();
-                            } afterDelay:0.1];
                         }
                     };
                     
@@ -247,6 +263,50 @@
                     animationsViews = [NSMutableArray new];
                 
                     [self nextGrot:field level:1];
+                    
+                    // count points
+                    NSMutableDictionary *collumnDictX = [NSMutableDictionary new];
+                    NSMutableDictionary *collumnDictY = [NSMutableDictionary new];
+                    
+                    for (SNGrotView *grot in animationsViews)
+                    {
+                        newScore += grot.model.value;
+                        CGPoint position = [self positionForGrot:grot];
+                        collumnDictX[[NSNumber numberWithInt:position.x]] = [collumnDictX[[NSNumber numberWithInt:position.x]] intValue] > 0 ?
+                        [NSNumber numberWithInt:[collumnDictX[[NSNumber numberWithInt:position.x]] intValue] + 1] : @1;
+                        
+                        collumnDictY[[NSNumber numberWithInt:position.y]] = [collumnDictY[[NSNumber numberWithInt:position.y]] intValue] > 0 ?
+                        [NSNumber numberWithInt:[collumnDictY[[NSNumber numberWithInt:position.y]] intValue] + 1] : @1;
+                        
+                    }
+                    
+                    int emptyRows = 0;
+                    int emptyColumns = 0;
+                    
+                    for (NSNumber *key in collumnDictX)
+                    {
+                        if ([[collumnDictX objectForKey:key] intValue] == boardSize)
+                        {
+                            emptyColumns++;
+                        }
+                    }
+                    
+                    for (NSNumber *key in collumnDictY)
+                    {
+                        if ([[collumnDictY objectForKey:key] intValue] == boardSize)
+                        {
+                            emptyRows++;
+                        }
+                    }
+                    
+                    newScore += (emptyColumns + emptyRows) * boardSize * 10;
+                    
+                    int threshold = floor((newScore + self.score) / (5 * boardSize * boardSize)) + boardSize - 1;
+                    
+                    if (threshold <= animationsViews.count)
+                    {
+                        newMoves = (int)animationsViews.count - threshold;
+                    }
                     
                     animateMove();
                 }
@@ -267,7 +327,6 @@
         }
         else
         {
-//            return CGPointMake(position.x, position.y-1);
             return position;
         }
     }
@@ -277,16 +336,15 @@
 
 - (BOOL)convertPoint:(CGPoint)point toColumn:(NSInteger *)column row:(NSInteger *)row
 {
-    NSParameterAssert(column);
-    NSParameterAssert(row);
-    
-    // Is this a valid location within the cookies layer? If yes,
-    // calculate the corresponding row and column numbers.
-    if (point.x >= 0 && point.x < self.size.width &&
-        point.y >= 0 && point.y < 2*BOARD_MARGIN + grotsCount*cellSize)
+//    NSLog(@"POINT %@", NSStringFromCGPoint(point));
+//    NSLog(@"x >= %i x <= %g", BOARD_MARGIN,  self.size.width - BOARD_MARGIN);
+//    NSLog(@"y >= %i y <= %g", BOARD_MARGIN,  2*BOARD_MARGIN + boardSize*cellSize);
+//    NSLog(@" ");
+    if (point.x >= BOARD_MARGIN && point.x < self.size.width - BOARD_MARGIN &&
+        point.y >= BOARD_MARGIN && point.y < 2*BOARD_MARGIN + boardSize*cellSize)
     {
         *column = (point.x - BOARD_MARGIN)/ cellSize;
-        *row = (point.y - BOARD_MARGIN) / cellSize;
+        *row = (point.y - 2*BOARD_MARGIN) / cellSize;
         
         return YES;
     }
@@ -327,21 +385,21 @@
             break;
             
         case SNFieldDirectionDown:
-            if (newPosition.y < grotsCount - level)
+            if (newPosition.y < boardSize - level)
                 newPosition.y += level;
             else
                 return nil;
             break;
             
         case SNFieldDirectionRight:
-            if (newPosition.x < grotsCount - level)
+            if (newPosition.x < boardSize - level)
                 newPosition.x += level;
             else
                 return nil;
             break;
     }
     
-    SNGrotView *tempView = (SNGrotView *)[self.grots objectAtIndex:newPosition.x + newPosition.y * grotsCount];
+    SNGrotView *tempView = (SNGrotView *)[self.grots objectAtIndex:newPosition.x + newPosition.y * boardSize];
     
     if (!tempView.model.isAvailable) {
         SNGrotView *resultView = [self nextGrot:currentGrot level:++level];
@@ -358,10 +416,7 @@
     return nil;
 }
 
-- (void)update:(CFTimeInterval)currentTime
-{
-    /* Called before each frame is rendered */
-}
+#pragma mark - Calculations
 
 - (CGPoint)positionForX:(NSInteger)x Y:(NSInteger)y
 {
@@ -376,25 +431,26 @@
     {
         return  CGPointZero;
     }
-    int y = (int)index / grotsCount;
-    int x = (int)index - y * grotsCount;
+    
+    int y = (int)index / boardSize;
+    int x = (int)index - y * boardSize;
     
     return CGPointMake(x, y);
 }
 
 - (NSInteger)indexForPositon:(CGPoint)position
 {
-    return position.x + position.y*grotsCount;
+    return position.x + position.y*boardSize;
 }
 
 - (SNGrotView *)grotForPosition:(CGPoint)position
 {
-    return self.grots[(int)position.x + (int)position.y*grotsCount];
+    return self.grots[(int)position.x + (int)position.y*boardSize];
 }
 
 - (SNGrotView *)grotForX:(NSInteger)x Y:(NSInteger)y
 {
-    return self.grots[x + y*grotsCount];
+    return self.grots[x + y*boardSize];
 }
 
 #pragma mark - Labels
@@ -411,14 +467,37 @@
     self.movesValue.text = [NSString stringWithFormat:@"%i", moves];
 }
 
-- (void)setMoveBonusText:(NSString *)text
+- (void)addScore:(int)score
 {
-    
+    if (score > 0)
+    {
+        self.scoreBonus.alpha = 1;
+        self.scoreBonus.text = [NSString stringWithFormat:@"+%i", score];
+        self.score += score;
+        [self.scoreBonus runAction:[SKAction sequence:@[[SKAction waitForDuration:1],
+                                                        [SKAction fadeAlphaTo:0 duration:0.5]]]];
+    }
+    else
+    {
+        self.scoreValue.text = @"";
+    }
 }
 
-- (void)setScoreBonusText:(NSString *)text
+- (void)addMoves:(int)moves
 {
-    
+    if (moves > 0)
+    {
+        self.movesBonus.alpha = 1;
+        self.movesBonus.text = [NSString stringWithFormat:@"+%i", moves];
+        self.moves += moves;
+        
+        [self.movesBonus runAction:[SKAction sequence:@[[SKAction waitForDuration:1],
+                                                        [SKAction fadeAlphaTo:0 duration:0.5]]]];
+    }
+    else
+    {
+        self.movesBonus.text = @"";
+    }
 }
 
 @end
