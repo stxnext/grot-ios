@@ -9,7 +9,7 @@
 #import "SNViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
-#import "SNScene.h"
+#import "SNGameScene.h"
 
 @implementation SNViewController
 
@@ -25,7 +25,7 @@
 //    skView.showsNodeCount = YES;
     
     // Create and configure the scene.
-    SKScene *scene = [SNScene sceneWithSize:skView.bounds.size];
+    SKScene *scene = [SNGameScene sceneWithSize:skView.bounds.size];
     scene.scaleMode = SKSceneScaleModeAspectFill;
     
     // Present the scene.

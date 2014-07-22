@@ -25,7 +25,7 @@
 		666F8F3B1978DDDE00B7B381 /* SNGrotFieldModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 666F8F3A1978DDDE00B7B381 /* SNGrotFieldModel.m */; };
 		666F8F3E1978DE4A00B7B381 /* SNGrotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 666F8F3D1978DE4A00B7B381 /* SNGrotView.m */; };
 		666F8FB21978E65800B7B381 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 666F8FB11978E65800B7B381 /* SpriteKit.framework */; };
-		666F8FFD1978E72100B7B381 /* SNScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 666F8FFC1978E72100B7B381 /* SNScene.m */; };
+		666F8FFD1978E72100B7B381 /* SNGameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 666F8FFC1978E72100B7B381 /* SNGameScene.m */; };
 		66FD01691977C9B70084746F /* NSObject+DelayedBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 66FD01681977C9B70084746F /* NSObject+DelayedBlocks.m */; };
 /* End PBXBuildFile section */
 
@@ -65,8 +65,8 @@
 		666F8F3C1978DE4A00B7B381 /* SNGrotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNGrotView.h; sourceTree = "<group>"; };
 		666F8F3D1978DE4A00B7B381 /* SNGrotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNGrotView.m; sourceTree = "<group>"; };
 		666F8FB11978E65800B7B381 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
-		666F8FFB1978E72100B7B381 /* SNScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNScene.h; sourceTree = "<group>"; };
-		666F8FFC1978E72100B7B381 /* SNScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNScene.m; sourceTree = "<group>"; };
+		666F8FFB1978E72100B7B381 /* SNGameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNGameScene.h; sourceTree = "<group>"; };
+		666F8FFC1978E72100B7B381 /* SNGameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNGameScene.m; sourceTree = "<group>"; };
 		66FD01671977C9B70084746F /* NSObject+DelayedBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+DelayedBlocks.h"; sourceTree = "<group>"; };
 		66FD01681977C9B70084746F /* NSObject+DelayedBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DelayedBlocks.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -130,13 +130,13 @@
 		0C20F5201976745F00831879 /* Grot */ = {
 			isa = PBXGroup;
 			children = (
+				666F8FFB1978E72100B7B381 /* SNGameScene.h */,
 				666F8F391978DDDE00B7B381 /* SNGrotFieldModel.h */,
 				666F8F3C1978DE4A00B7B381 /* SNGrotView.h */,
-				666F8FFB1978E72100B7B381 /* SNScene.h */,
 				0C20F5321976745F00831879 /* SNViewController.h */,
+				666F8FFC1978E72100B7B381 /* SNGameScene.m */,
 				666F8F3A1978DDDE00B7B381 /* SNGrotFieldModel.m */,
 				666F8F3D1978DE4A00B7B381 /* SNGrotView.m */,
-				666F8FFC1978E72100B7B381 /* SNScene.m */,
 				0C20F5331976745F00831879 /* SNViewController.m */,
 				0C20F5351976745F00831879 /* Images.xcassets */,
 				666F8F3F1978E17000B7B381 /* AppDelegate */,
@@ -299,7 +299,7 @@
 			files = (
 				66FD01691977C9B70084746F /* NSObject+DelayedBlocks.m in Sources */,
 				0C20F5271976745F00831879 /* main.m in Sources */,
-				666F8FFD1978E72100B7B381 /* SNScene.m in Sources */,
+				666F8FFD1978E72100B7B381 /* SNGameScene.m in Sources */,
 				666F8F3B1978DDDE00B7B381 /* SNGrotFieldModel.m in Sources */,
 				666F8F3E1978DE4A00B7B381 /* SNGrotView.m in Sources */,
 				0C20F5341976745F00831879 /* SNViewController.m in Sources */,
@@ -443,7 +443,7 @@
 				GCC_PREFIX_HEADER = "Grot/Grot-Prefix.pch";
 				GCC_WARN_CHECK_SWITCH_STATEMENTS = NO;
 				INFOPLIST_FILE = "Grot/Grot-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -459,7 +459,7 @@
 				GCC_PREFIX_HEADER = "Grot/Grot-Prefix.pch";
 				GCC_WARN_CHECK_SWITCH_STATEMENTS = NO;
 				INFOPLIST_FILE = "Grot/Grot-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

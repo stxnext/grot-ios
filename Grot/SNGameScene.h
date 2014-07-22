@@ -11,7 +11,7 @@
 @class SNMutableGrid;
 
 
-@interface SNScene : SKScene
+@interface SNGameScene : SKScene
 {
     BOOL isAnimatingTurn;
     NSMutableArray *animationsViews;
