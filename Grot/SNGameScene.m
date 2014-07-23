@@ -9,10 +9,11 @@
 #import "SNGameScene.h"
 #import "SNGrotView.h"
 #import "SNGrotFieldModel.h"
-//#import "SNMutableGrid.h"
+#import "SNMenuButton.h"
+#import "SNMenuView.h"
 
 #define BOARD_MARGIN 5
-#define BOARD_BOTTOM_MARGIN 40
+#define BOARD_BOTTOM_MARGIN 60
 #define GROT_SPACE 5
 
 @interface SNGameScene ()
@@ -25,10 +26,11 @@
 @property (nonatomic, strong) SKLabelNode *movesValue;
 @property (nonatomic, strong) SKLabelNode *movesBonus;
 
-@property (nonatomic, strong) SKLabelNode *restart;
-@property (nonatomic, strong) SKLabelNode *back;
-
 @property (nonatomic, strong) SKSpriteNode *helpView;
+@property (nonatomic, strong) SKSpriteNode *bottomBar;
+
+@property (nonatomic, strong) SNMenuButton *menuButton;
+@property (nonatomic, strong) SNMenuView *menuView;
 
 @property (nonatomic, assign) int score;
 @property (nonatomic, assign) int moves;
@@ -41,6 +43,7 @@
 {
     if (self = [super initWithSize:size])
     {
+        self.bottomBar = [[SKSpriteNode alloc] initWithImageNamed:@"menu"];
         self.scoreTitle = [SKLabelNode labelNodeWithFontNamed:@"Courier New"];
         self.scoreValue = [SKLabelNode labelNodeWithFontNamed:@"Courier New"];
         self.scoreBonus = [SKLabelNode labelNodeWithFontNamed:@"Courier New"];
@@ -49,9 +52,9 @@
         self.movesValue = [SKLabelNode labelNodeWithFontNamed:@"Courier New"];
         self.movesBonus = [SKLabelNode labelNodeWithFontNamed:@"Courier New"];
 
-        self.back = [SKLabelNode labelNodeWithFontNamed:@"Courier New"];
-        self.restart = [SKLabelNode labelNodeWithFontNamed:@"Courier New"];
-
+        self.menuView = [SNMenuView new];
+        self.menuButton = [[SNMenuButton alloc] initWithSize:50 angle:M_PI/4];
+        
         
         self.scoreTitle.color = colorFromHex(0xecf0f1);
         self.scoreValue.color = colorFromHex(0xecf0f1);
@@ -60,21 +63,16 @@
         self.movesTitle.color = colorFromHex(0xecf0f1);
         self.movesValue.color = colorFromHex(0xecf0f1);
         self.movesBonus.color = colorFromHex(0xecf0f1);
-
-        self.back.color = colorFromHex(0xecf0f1);
-        self.restart.color = colorFromHex(0xecf0f1);
         
         
         self.scoreTitle.fontSize = 22;
         self.scoreValue.fontSize = 22;
-        self.scoreBonus.fontSize = 18;
+        self.scoreBonus.fontSize = 14;
         
         self.movesTitle.fontSize = 22;
         self.movesValue.fontSize = 22;
-        self.movesBonus.fontSize = 18;
+        self.movesBonus.fontSize = 14;
 
-        self.back.fontSize = 18;
-        self.restart.fontSize = 18;
         
         self.scoreTitle.text = @"Score";
         self.scoreBonus.text = @"1";
@@ -83,13 +81,10 @@
         self.movesTitle.text = @"Moves";
         self.movesBonus.text = @"1";
         self.movesBonus.text = @"";
-
-        self.back.text = @"menu";
-        self.restart.text = @"restart";
         
         
-        self.scoreTitle.position = CGPointMake(CGRectGetMinX(self.frame) + CGRectGetWidth(self.scoreTitle.frame)/2 + 50, CGRectGetMaxY(self.frame)-50);
-        self.movesTitle.position = CGPointMake(CGRectGetMaxX(self.frame) - CGRectGetWidth(self.movesTitle.frame)/2 - 50, CGRectGetMaxY(self.frame)-50);
+        self.scoreTitle.position = CGPointMake(CGRectGetMinX(self.frame) + CGRectGetWidth(self.scoreTitle.frame)/2 + 50, CGRectGetMaxY(self.frame) - 30);
+        self.movesTitle.position = CGPointMake(CGRectGetMaxX(self.frame) - CGRectGetWidth(self.movesTitle.frame)/2 - 50, CGRectGetMaxY(self.frame) - 30);
         
         CGPoint position = self.scoreTitle.position;
         position.y -= CGRectGetHeight(self.scoreValue.frame) + CGRectGetHeight(self.scoreTitle.frame) + 10;
@@ -106,10 +101,8 @@
         position = self.movesValue.position;
         position.y -= CGRectGetHeight(self.movesBonus.frame) + CGRectGetHeight(self.movesValue.frame) + 10;
         self.movesBonus.position = position;
-
         
-        self.back.position = CGPointMake(CGRectGetWidth(self.back.frame)/2 + 10, CGRectGetHeight(self.back.frame)/2 + 2);
-        self.restart.position = CGPointMake(CGRectGetWidth(self.frame) -  CGRectGetWidth(self.restart.frame)/2 - 10, CGRectGetHeight(self.restart.frame)/2 + 2);
+        self.bottomBar.position = CGPointMake(CGRectGetWidth(self.bottomBar.frame)/2, CGRectGetHeight(self.bottomBar.frame)/2);
         
         [self addChild:self.scoreTitle];
         [self addChild:self.scoreValue];
@@ -119,16 +112,14 @@
         [self addChild:self.movesValue];
         [self addChild:self.movesBonus];
 
-        [self addChild:self.back];
-        [self addChild:self.restart];
-
+        
         self.score = 0;
         self.moves = 5;
         
         self.backgroundColor = [UIColor colorWithRed:51/255. green:51/255. blue:51/255. alpha:1];
         
         isAnimatingTurn = NO;
-        boardSize = 6;
+        boardSize = 4;
         
         self.grots = [NSMutableArray new];
         
@@ -144,6 +135,10 @@
                 [self.grots addObject:grot];
             }
         }
+        
+        [self addChild:self.menuView];
+        [self addChild:self.bottomBar];
+        [self addChild:self.menuButton];
     }
 
     return self;
@@ -237,6 +232,10 @@
                                         [self addScore:newScore];
                                         
                                         isAnimatingTurn = NO;
+                                        
+                                        if (self.moves == 0) {
+                                            [self endGame];
+                                        }
                                     }
                                 }];
                             }
@@ -321,6 +320,8 @@
                 newMoves = (int)animationsViews.count - threshold;
             }
             
+            // make move
+            
             animateMove();
         }
     }
@@ -349,17 +350,14 @@
             CGPoint touchLocation = [touch locationInNode:self];
             SKNode *touchedNode = [self nodeAtPoint:touchLocation];
 
-            if ([touchedNode isEqual:self.back])
+            if ([touchedNode isEqual:self.menuButton])
             {
-                NSLog(@"BACK");
+                [self toggleMenu];
             }
-            else if ([touchedNode isEqual:self.restart])
-            {
-                NSLog(@"RESTART");
-                [self restartGame];
-            }
-            
-            // back or restart
+//            else if ([touchedNode isEqual:self.restart])
+//            {
+//                [self restartGame];
+//            }
         }
     }
 }
@@ -385,10 +383,6 @@
 
 - (BOOL)convertPoint:(CGPoint)point toColumn:(NSInteger *)column row:(NSInteger *)row
 {
-//    NSLog(@"POINT %@", NSStringFromCGPoint(point));
-//    NSLog(@"x >= %i x <= %g", BOARD_MARGIN,  self.size.width - BOARD_MARGIN);
-//    NSLog(@"y >= %i y <= %g", BOARD_BOTTOM_MARGIN,  BOARD_BOTTOM_MARGIN + BOARD_MARGIN + boardSize*cellSize);
-//    NSLog(@" ");
     if (point.x >= BOARD_MARGIN &&
         point.x < self.size.width - BOARD_MARGIN &&
         point.y >= BOARD_BOTTOM_MARGIN &&
@@ -401,7 +395,7 @@
     }
     else
     {
-        *column = NSNotFound;  // invalid location
+        *column = NSNotFound;
         *row = NSNotFound;
         
         return NO;
@@ -467,16 +461,6 @@
     return nil;
 }
 
-- (void)restartGame
-{
-    self.score = 0;
-    self.moves = 5;
-    
-    for (SNGrotView *grot in self.grots) {
-        [grot randomize];
-    }
-}
-
 #pragma mark - Calculations
 
 - (CGPoint)positionForX:(NSInteger)x Y:(NSInteger)y
@@ -494,7 +478,7 @@
     }
     
     int y = (int)index / boardSize;
-    int x = (int)index - y * boardSize;
+    int x = (int)index - y*boardSize;
     
     return CGPointMake(x, y);
 }
@@ -561,6 +545,8 @@
     }
 }
 
+#pragma mark - Game action
+
 - (void)showHelp
 {
     if (!self.helpView)
@@ -578,6 +564,34 @@
         [self.helpView setScale:1];
         [self.helpView runAction:[SKAction scaleTo:self.frame.size.height/self.helpView.frame.size.height duration:0.1]];
         [self addChild:self.helpView];
+    }
+}
+
+- (void)endGame
+{
+    for (SNGrotView *grot in self.grots)
+    {
+        [grot runAction:[SKAction sequence:@[[SKAction waitForDuration:0.3],
+                                             [SKAction fadeAlphaTo:0.2 duration:0.4]]]];
+        
+    }
+}
+
+- (void)toggleMenu
+{
+    [self.menuView toggle];
+    [self.menuButton toggle];
+}
+
+- (void)restartGame
+{
+    self.score = 0;
+    self.moves = 5;
+    
+    for (SNGrotView *grot in self.grots)
+    {
+        [grot runAction:[SKAction fadeAlphaTo:1 duration:0.2]];
+        [grot randomize];
     }
 }
 

@@ -22,6 +22,8 @@
 		0C20F53F1976745F00831879 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C20F51E1976745F00831879 /* UIKit.framework */; };
 		0C20F5471976745F00831879 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0C20F5451976745F00831879 /* InfoPlist.strings */; };
 		0C20F5491976745F00831879 /* GrotTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C20F5481976745F00831879 /* GrotTests.m */; };
+		664E87BD197FD8D200B22AB6 /* SNMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 664E87BC197FD8D200B22AB6 /* SNMenuButton.m */; };
+		664E87C0197FDD1F00B22AB6 /* SNMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 664E87BF197FDD1F00B22AB6 /* SNMenuView.m */; };
 		666F8F3B1978DDDE00B7B381 /* SNGrotFieldModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 666F8F3A1978DDDE00B7B381 /* SNGrotFieldModel.m */; };
 		666F8F3E1978DE4A00B7B381 /* SNGrotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 666F8F3D1978DE4A00B7B381 /* SNGrotView.m */; };
 		666F8FB21978E65800B7B381 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 666F8FB11978E65800B7B381 /* SpriteKit.framework */; };
@@ -60,6 +62,10 @@
 		0C20F5441976745F00831879 /* GrotTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GrotTests-Info.plist"; sourceTree = "<group>"; };
 		0C20F5461976745F00831879 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0C20F5481976745F00831879 /* GrotTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GrotTests.m; sourceTree = "<group>"; };
+		664E87BB197FD8D200B22AB6 /* SNMenuButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNMenuButton.h; sourceTree = "<group>"; };
+		664E87BC197FD8D200B22AB6 /* SNMenuButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNMenuButton.m; sourceTree = "<group>"; };
+		664E87BE197FDD1F00B22AB6 /* SNMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNMenuView.h; sourceTree = "<group>"; };
+		664E87BF197FDD1F00B22AB6 /* SNMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNMenuView.m; sourceTree = "<group>"; };
 		666F8F391978DDDE00B7B381 /* SNGrotFieldModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNGrotFieldModel.h; sourceTree = "<group>"; };
 		666F8F3A1978DDDE00B7B381 /* SNGrotFieldModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNGrotFieldModel.m; sourceTree = "<group>"; };
 		666F8F3C1978DE4A00B7B381 /* SNGrotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNGrotView.h; sourceTree = "<group>"; };
@@ -143,6 +149,7 @@
 				66FD01661977C9AA0084746F /* Helpers */,
 				0C20F52F1976745F00831879 /* Main_iPad.storyboard */,
 				0C20F52C1976745F00831879 /* Main_iPhone.storyboard */,
+				66D0BCB0197FE000000725FF /* Menu */,
 				0C20F5211976745F00831879 /* Supporting Files */,
 			);
 			path = Grot;
@@ -184,6 +191,17 @@
 				0C20F52A1976745F00831879 /* SNAppDelegate.m */,
 			);
 			name = AppDelegate;
+			sourceTree = "<group>";
+		};
+		66D0BCB0197FE000000725FF /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				664E87BB197FD8D200B22AB6 /* SNMenuButton.h */,
+				664E87BE197FDD1F00B22AB6 /* SNMenuView.h */,
+				664E87BC197FD8D200B22AB6 /* SNMenuButton.m */,
+				664E87BF197FDD1F00B22AB6 /* SNMenuView.m */,
+			);
+			name = Menu;
 			sourceTree = "<group>";
 		};
 		66FD01661977C9AA0084746F /* Helpers */ = {
@@ -300,8 +318,10 @@
 				66FD01691977C9B70084746F /* NSObject+DelayedBlocks.m in Sources */,
 				0C20F5271976745F00831879 /* main.m in Sources */,
 				666F8FFD1978E72100B7B381 /* SNGameScene.m in Sources */,
+				664E87BD197FD8D200B22AB6 /* SNMenuButton.m in Sources */,
 				666F8F3B1978DDDE00B7B381 /* SNGrotFieldModel.m in Sources */,
 				666F8F3E1978DE4A00B7B381 /* SNGrotView.m in Sources */,
+				664E87C0197FDD1F00B22AB6 /* SNMenuView.m in Sources */,
 				0C20F5341976745F00831879 /* SNViewController.m in Sources */,
 				0C20F52B1976745F00831879 /* SNAppDelegate.m in Sources */,
 			);
