@@ -47,8 +47,7 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"Color: %@    Direction: %i    Available: %@", self
-            .colorType, self.direction, self.isAvailable ? @"YES" : @"NO"];
+    return [NSString stringWithFormat:@"Color: %@    Direction: %i    Available: %@", self.colorType, self.direction, self.isAvailable ? @"YES" : @"NO"];
 }
 
 #pragma mark - Methods

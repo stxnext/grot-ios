@@ -9,6 +9,9 @@
 #import <SpriteKit/SpriteKit.h>
 
 @interface SNMenuButton : SKShapeNode
+{
+    BOOL isOpen;
+}
 
 - (id)initWithSize:(CGFloat)size angle:(CGFloat)angle;
 - (void)toggle;

@@ -7,11 +7,16 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "SNNewGameButton.h"
 
 @interface SNMenuView : SKShapeNode
 {
     BOOL isHiden;
 }
+
+@property (nonatomic, strong) SNNewGameButton *level1Button;
+@property (nonatomic, strong) SNNewGameButton *level2Button;
+@property (nonatomic, strong) SNNewGameButton *level3Button;
 
 - (void)toggle;
 

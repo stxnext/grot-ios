@@ -14,8 +14,8 @@
 @interface SNGameScene : SKScene
 {
     BOOL isAnimatingTurn;
+    BOOL isMenuVisible;
     NSMutableArray *animationsViews;
-    int boardSize;
     CGFloat cellSize;
  }
 

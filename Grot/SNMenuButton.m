@@ -27,9 +27,9 @@
         
         self.zRotation = angle;
         
-        self.fillColor = [UIColor colorWithWhite:0.15 alpha:1];//[UIColor colorWithRed:0/255. green:160/255. blue:155/255. alpha:1];
+        self.fillColor = [UIColor colorWithWhite:0.15 alpha:0.51];//[UIColor colorWithRed:0/255. green:160/255. blue:155/255. alpha:1];
 
-        self.strokeColor = [UIColor colorWithWhite:0.1 alpha:1];
+        self.strokeColor = [UIColor colorWithWhite:0.65 alpha:0.5];
         self.lineWidth = 0.5;
         
         self.position = CGPointMake(30, 30);
@@ -41,10 +41,20 @@
 
 - (void)toggle
 {
-//    [self runAction:[SKAction rotateByAngle:M_PI duration:0.01]];
+//    [self runAction:[SKAction rotateByAngle:M_PI duration:0.4]];
     self.zRotation += M_PI;
-}
+    
+    isOpen = !isOpen;
 
+    if (isOpen)
+    {
+        self.strokeColor = [UIColor colorWithWhite:0.5 alpha:0.5];
+    }
+    else
+    {
+        self.strokeColor = [UIColor colorWithWhite:0.65 alpha:0.5];
+    }
+}
 
 + (UIBezierPath *)arrowPathWithSize:(CGFloat)fieldSize
 {

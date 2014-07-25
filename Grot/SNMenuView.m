@@ -10,6 +10,8 @@
 
 @implementation SNMenuView
 
+int size = 350;
+
 - (id)init
 {
     self = [super init];
@@ -19,21 +21,38 @@
         self.lineWidth = 0.5;
         isHiden = YES;
         
-        int size = 500;
         UIBezierPath *circle = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(-size/2, -size/2, size, size)];
-        
-        //circle = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(-10/2, -10/2, 10, 10)];
         
         self.path =  circle.CGPath;
         
+        self.fillColor = [UIColor colorWithWhite:0.15 alpha:1];
+        self.strokeColor = [UIColor colorWithWhite:0.4 alpha:1];
+        self.lineWidth = 3;
+
+        self.position = CGPointMake(-size, -size);
         
+        self.level1Button = [[SNNewGameButton alloc] initWithLevel:SNGameLevelFast];
+        self.level2Button = [[SNNewGameButton alloc] initWithLevel:SNGameLevelMedium];
+        self.level3Button = [[SNNewGameButton alloc] initWithLevel:SNGameLevelSlow];        
         
-        self.fillColor = [UIColor colorWithWhite:0.15 alpha:1];//[UIColor colorWithRed:0/255. green:160/255. blue:155/255. alpha:1];
+        [self addChild:self.level1Button];
+        [self addChild:self.level2Button];
+        [self addChild:self.level3Button];
         
-        self.strokeColor = [UIColor colorWithWhite:0.1 alpha:1];
-        self.lineWidth = 1;
-        self.antialiased = YES;
-        self.position = CGPointMake(-500, -500);
+//        float scale = 0.2;
+//        [self.level1Button setScale:scale];
+//        [self.level2Button setScale:scale];
+//        [self.level3Button setScale:scale];
+
+        CGFloat buttonSize = self.level1Button.frame.size.width / 2;
+        self.level1Button.position = CGPointMake(size/2 * cos(M_PI_2 * 9/10) - buttonSize,
+                                                 size/2 * sin(M_PI_2 * 9/10) - buttonSize);
+        
+        self.level2Button.position = CGPointMake(size/2 * cos(M_PI_2 * 5.5/10) - buttonSize,
+                                                 size/2 * sin(M_PI_2 * 5.5/10) - buttonSize);
+        
+        self.level3Button.position = CGPointMake(size/2 * cos(M_PI_2 * 2/10) - buttonSize,
+                                                 size/2 * sin(M_PI_2 * 2/10) - buttonSize);
     }
     
     return self;
@@ -43,15 +62,15 @@
 {
     if (isHiden)
     {
-        SKAction *action = [SKAction moveTo:CGPointMake(30, 30) duration:0.4];
-//        action.speed = 2; 
-        [self runAction:action];
+        SKAction *showMenuAction = [SKAction moveTo:CGPointMake(30, 30) duration:0.4];
+        showMenuAction.timingMode = SKActionTimingEaseOut;
+        [self runAction:showMenuAction ];
     }
     else
     {
-        SKAction *action = [SKAction moveTo:CGPointMake(-500, -500) duration:0.4];
-//        action.speed = 2;
-        [self runAction:action];
+        SKAction *hideMenuAction = [SKAction moveTo:CGPointMake(-size, -size) duration:0.4];
+        hideMenuAction.timingMode = SKActionTimingEaseIn;
+        [self runAction:hideMenuAction];
     }
     
     isHiden = !isHiden;
