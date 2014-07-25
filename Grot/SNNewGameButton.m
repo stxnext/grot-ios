@@ -24,24 +24,7 @@
         self.strokeColor = [UIColor colorWithWhite:0.5 alpha:1];
         self.lineWidth = 2;
 
-        switch (level)
-        {
-            case SNGameLevelFast:
-                self.name = @"level1Button";
-                break;
-                
-            case SNGameLevelMedium:
-                self.name = @"level2Button";
-                break;
-                
-            case SNGameLevelSlow:
-                self.name = @"level3Button";
-                break;
-                
-            default:
-                break;
-        }
-
+        [self setNameForNode:self withLevel:level];
         [self generateViewForLevel:level];
     }
     
@@ -70,7 +53,30 @@
                                         offset + areaSize/level * y);
             
             [self addChild:node];
+            
+            [self setNameForNode:node withLevel:level];
         }
+    }
+}
+
+- (void)setNameForNode:(SKNode *)node withLevel:(SNGameLevel)level
+{
+    switch (level)
+    {
+        case SNGameLevelFast:
+            node.name = @"level1Button";
+            break;
+            
+        case SNGameLevelMedium:
+            node.name = @"level2Button";
+            break;
+            
+        case SNGameLevelSlow:
+            node.name = @"level3Button";
+            break;
+            
+        default:
+            break;
     }
 }
 
