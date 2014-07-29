@@ -12,13 +12,15 @@
 #import "SNMenuButton.h"
 #import "SNMenuView.h"
 
-#define BOARD_MARGIN 5
-#define BOARD_BOTTOM_MARGIN 60
-#define GROT_SPACE 5
 
 @interface SNGameScene ()
 {
     NSInteger _boardSize;
+    
+    int boardSideMargin;
+    int bottomMargin;
+    int grotSpace;
+    
 }
 
 @property (nonatomic, strong) SKLabelNode *scoreTitle;
@@ -62,6 +64,13 @@
         
         self.menuView.name = @"menuView";
         self.menuButton.name = @"menuButton";
+        
+        boardSideMargin = 5;
+        int boardSideSize = (self.frame.size.width - 2*boardSideMargin);
+        
+        bottomMargin = (self.frame.size.height - boardSideSize - self.topBar.frame.size.height - self.bottomBar.frame.size.height/2) / 2 + self.bottomBar.frame.size.height/2;
+        grotSpace = 5;
+        
         
         self.scoreTitle.color = colorFromHex(0xecf0f1);
         self.scoreValue.color = colorFromHex(0xecf0f1);
@@ -392,13 +401,13 @@
 
 - (BOOL)convertPoint:(CGPoint)point toColumn:(NSInteger *)column row:(NSInteger *)row
 {
-    if (point.x >= BOARD_MARGIN &&
-        point.x < self.size.width - BOARD_MARGIN &&
-        point.y >= BOARD_BOTTOM_MARGIN &&
-        point.y < BOARD_BOTTOM_MARGIN + BOARD_MARGIN + [self boardSize]*cellSize)
+    if (point.x >= boardSideMargin &&
+        point.x < self.size.width - boardSideMargin &&
+        point.y >= bottomMargin &&
+        point.y < bottomMargin + boardSideMargin + [self boardSize]*cellSize)
     {
-        *column = (point.x - BOARD_MARGIN)/ cellSize;
-        *row = (point.y - BOARD_BOTTOM_MARGIN - BOARD_MARGIN) / cellSize;
+        *column = (point.x - boardSideMargin)/ cellSize;
+        *row = (point.y - bottomMargin - boardSideMargin) / cellSize;
         
         return YES;
     }
@@ -475,7 +484,7 @@
 
 - (CGPoint)positionForX:(NSInteger)x Y:(NSInteger)y
 {
-    return CGPointMake(BOARD_MARGIN + cellSize/2 + x*cellSize, BOARD_BOTTOM_MARGIN + cellSize/2 + y*cellSize);
+    return CGPointMake(boardSideMargin + cellSize/2 + x*cellSize, bottomMargin + cellSize/2 + y*cellSize);
 }
 
 - (CGPoint)positionForGrot:(SNGrotView *)grot
@@ -632,13 +641,13 @@
     [self performBlockInCurrentThread:^{
         self.grots = [NSMutableArray new];
         
-        cellSize = (self.size.width - 2 * BOARD_MARGIN) / [self boardSize];
+        cellSize = (self.size.width - 2 * boardSideMargin) / [self boardSize];
         
         for (NSInteger y = 0; y < [self boardSize]; y++)
         {
             for (NSInteger x = 0; x < [self boardSize]; x++)
             {
-                SNGrotView *grot = [[SNGrotView alloc] initWithSize:cellSize - 2*GROT_SPACE];
+                SNGrotView *grot = [[SNGrotView alloc] initWithSize:cellSize - 2*grotSpace];
                 grot.position = [self positionForX:x Y:y];
                 [self addChild:grot];
                 grot.alpha = 0;
