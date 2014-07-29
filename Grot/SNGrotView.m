@@ -71,10 +71,12 @@
     [arrowBezierPath closePath];
     
     
-    [arrowBezierPath applyTransform:CGAffineTransformIdentity];
+    const static CGFloat arrowScale = 0.75;
+    CGFloat arrowSize = fieldSize * arrowScale;
     
-    [arrowBezierPath applyTransform:CGAffineTransformMakeScale(fieldSize, fieldSize)];
-    [arrowBezierPath applyTransform:CGAffineTransformMakeTranslation(-fieldSize/2 , -fieldSize/2)];
+    [arrowBezierPath applyTransform:CGAffineTransformIdentity];
+    [arrowBezierPath applyTransform:CGAffineTransformMakeScale(arrowSize, arrowSize)];
+    [arrowBezierPath applyTransform:CGAffineTransformMakeTranslation(-arrowSize/2 , -arrowSize/2)];
     
     [bezierPath appendPath:arrowBezierPath];
     //    [arrowBezierPath appendPath:bezierPath];

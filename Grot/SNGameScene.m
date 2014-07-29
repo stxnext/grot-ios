@@ -11,6 +11,7 @@
 #import "SNGrotFieldModel.h"
 #import "SNMenuButton.h"
 #import "SNMenuView.h"
+#import "SKTEffects.h"
 
 
 @interface SNGameScene ()
@@ -181,6 +182,9 @@
         {
             isAnimatingTurn = YES;
             
+            CGFloat fallAnimationTime = 0.5;
+            __block BOOL isFalling = NO;
+            
             __block void(^animateFalling)(void) = ^(void) {
                 
                 for (int i = 0;  i < self.grots.count; i++)
@@ -198,13 +202,19 @@
                             
                             SNGrotView *grot1 = [self grotForPosition:nextPoint];
                             
-                            CGFloat animationTime = 0.1;
+                            SKTMoveEffect *moveEffect = [SKTMoveEffect effectWithNode:grot0
+                                                                             duration:fallAnimationTime
+                                                                        startPosition:grot0.position
+                                                                          endPosition:[self positionForX:nextPoint.x Y:nextPoint.y]];
                             
-                            [grot0 runAction:[SKAction group:@[[SKAction moveTo:[self positionForX:nextPoint.x Y:nextPoint.y] duration:animationTime]
-                                                               ]] completion:^{
-                            }];
+                            moveEffect.timingFunction = SKTTimingFunctionBounceEaseOut;
+                            
+                            SKAction* moveAction = [SKAction actionWithEffect:moveEffect];
+                            [grot0 runAction:moveAction];
                             
                             [self.grots exchangeObjectAtIndex:i withObjectAtIndex:[self.grots indexOfObject:grot1]];
+                            
+                            isFalling = YES;
                         }
                     }
                 }
@@ -244,34 +254,61 @@
                             }
                         }
                     }
-                } afterDelay:0.1];
+                } afterDelay:isFalling ? fallAnimationTime : 0.0];
             };
             
             __block void(^animateMove)(void) = ^(void) {
                 
+                const CGFloat animationDivider = 300.0;
+                const CGFloat movementTargetAlpha = 0.25;
+                
                 SNGrotView *grot0 = (SNGrotView *)animationsViews[0];
                 
-                if (animationsViews.count > 1)
+                CGPoint beginPoint = grot0.center;
+                CGPoint endPoint;
+                
+                CGPoint p1 = [self positionForX:0 Y:0];
+                CGPoint p2 = [self positionForX:0 Y:1];
+                CGFloat minAnimationTime = (fabs(p1.x - p2.x) + fabs(p1.y - p2.y)) / animationDivider;
+                
+                __block BOOL isLastMovement = animationsViews.count <= 1;
+                
+                if (isLastMovement)
                 {
-                    SNGrotView *grot1 = (SNGrotView *)animationsViews[1];
-                    
-                    CGFloat animationTime = (fabs(grot0.center.x - grot1.center.x) + fabs(grot0.center.y - grot1.center.y))/400;
-                    
-                    [grot0 runAction:[SKAction sequence:@[[SKAction moveTo:grot1.center duration:animationTime],
-                                                          [SKAction fadeAlphaTo:0 duration:0.05]
-                                                          ]] completion:^{
-                        [animationsViews removeObjectAtIndex:0];
-                        animateMove();
-                    }];
+                    CGPoint endPosition = [self endpointPointedByGrot:grot0];
+                    endPoint = [self positionForX:endPosition.x Y:endPosition.y];
                 }
                 else
                 {
-                    [grot0 runAction:[SKAction fadeAlphaTo:0 duration:0.25] completion:^{
+                    SNGrotView *grot1 = (SNGrotView *)animationsViews[1];
+                    endPoint = grot1.center;
+                }
+                
+                CGFloat animationTime = MAX(minAnimationTime, (fabs(beginPoint.x - endPoint.x) + fabs(beginPoint.y - endPoint.y)) / animationDivider);
+                
+                SKAction* fadeAction = [SKAction fadeAlphaTo:movementTargetAlpha duration:animationTime];
+                SKAction* moveAction = [SKAction moveTo:endPoint duration:animationTime];
+                SKAction* fadeOutAction = [SKAction fadeOutWithDuration:animationTime / 3.0 / 2.0];
+                
+                fadeAction.timingMode = SKActionTimingEaseIn;
+                moveAction.timingMode = SKActionTimingEaseInEaseOut;
+                fadeOutAction.timingMode = SKActionTimingEaseOut;
+                
+                [grot0 runAction:[SKAction sequence:@[ [SKAction group:@[moveAction, fadeAction]], fadeOutAction ]] completion:^{
+                    
+                    if (isLastMovement)
+                    {
                         [self performBlockInCurrentThread:^{
                             animateFalling();
                         } afterDelay:0.1];
-                    }];
-                }
+                    }
+                    else
+                    {
+                        grot0.alpha = 0.0;
+                        [animationsViews removeObjectAtIndex:0];
+                        animateMove();
+                    }
+                }];
             };
             
             //start move
@@ -482,6 +519,32 @@
 
 #pragma mark - Calculations
 
+- (BOOL)isPositionOutOfBounds:(CGPoint)position
+{
+    return position.x < 0 || position.y < 0 || position.x >= self.boardSize || position.y >= self.boardSize;
+}
+
+- (CGPoint)endpointPointedByGrot:(SNGrotView*)grot
+{
+    for (CGPoint nextPosition, position = nextPosition = [self positionForGrot:grot]; true; position = nextPosition)
+    {
+        switch (grot.model.direction)
+        {
+            case SNFieldDirectionUp: nextPosition.y -= 1; break;
+            case SNFieldDirectionLeft: nextPosition.x -= 1; break;
+            case SNFieldDirectionDown: nextPosition.y += 1; break;
+            case SNFieldDirectionRight: nextPosition.x += 1; break;
+        }
+        
+        if ([self grotForPosition:nextPosition].alpha == 1.0)
+            return nextPosition;
+        
+        
+        if ([self isPositionOutOfBounds:nextPosition])
+            return position;
+    }
+}
+
 - (CGPoint)positionForX:(NSInteger)x Y:(NSInteger)y
 {
     return CGPointMake(boardSideMargin + cellSize/2 + x*cellSize, bottomMargin + cellSize/2 + y*cellSize);
@@ -504,17 +567,21 @@
 
 - (NSInteger)indexForPositon:(CGPoint)position
 {
-    return position.x + position.y*[self boardSize];
+    if ([self isPositionOutOfBounds:position])
+        return -1;
+    else
+        return position.x + position.y*[self boardSize];
 }
 
 - (SNGrotView *)grotForPosition:(CGPoint)position
 {
-    return self.grots[(int)position.x + (int)position.y*[self boardSize]];
+    NSInteger index = [self indexForPositon:position];
+    return index >= 0 && self.grots.count > index ? self.grots[index] : nil;
 }
 
 - (SNGrotView *)grotForX:(NSInteger)x Y:(NSInteger)y
 {
-    return self.grots[x + y*[self boardSize]];
+    return [self grotForPosition:CGPointMake(x, y)];
 }
 
 #pragma mark - Labels
