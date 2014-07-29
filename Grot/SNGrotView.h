@@ -11,12 +11,9 @@
 
 @class SNGrotFieldModel;
 
-@interface SNGrotView : SKShapeNode
-{
-    CGFloat fieldSize;
-}
+@interface SNGrotView : SKSpriteNode
 
-@property (nonatomic, strong) SNGrotFieldModel* model;
+@property (nonatomic, strong) SNGrotFieldModel *model;
 @property (nonatomic) CGPoint center;
 
 - (id)initWithSize:(CGFloat)size;

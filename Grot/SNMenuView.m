@@ -34,7 +34,7 @@ int size = 350;
         self.level1Button = [[SNNewGameButton alloc] initWithLevel:SNGameLevelFast];
         self.level2Button = [[SNNewGameButton alloc] initWithLevel:SNGameLevelMedium];
         self.level3Button = [[SNNewGameButton alloc] initWithLevel:SNGameLevelSlow];        
-        
+                
         [self addChild:self.level1Button];
         [self addChild:self.level2Button];
         [self addChild:self.level3Button];
@@ -44,7 +44,7 @@ int size = 350;
 //        [self.level2Button setScale:scale];
 //        [self.level3Button setScale:scale];
 
-        CGFloat buttonSize = self.level1Button.frame.size.width / 2;
+        CGFloat buttonSize = 0;//self.level1Button.frame.size.width / 2;
         self.level1Button.position = CGPointMake(size/2 * cos(M_PI_2 * 9/10) - buttonSize,
                                                  size/2 * sin(M_PI_2 * 9/10) - buttonSize);
         

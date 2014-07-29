@@ -12,25 +12,40 @@
 
 - (id)initWithLevel:(SNGameLevel)level
 {
-    self = [super init];
+    CGFloat size = 50;
+    
+    switch (level)
+    {
+        case SNGameLevelFast:
+            self = [super initWithTexture:[SKTexture textureWithCGImage:[UIImage imageNamed:@"level1"].CGImage] color:[UIColor clearColor] size:CGSizeMake(size, size)];
+            break;
+        case SNGameLevelMedium:
+            self = [super initWithTexture:[SKTexture textureWithCGImage:[UIImage imageNamed:@"level2"].CGImage] color:[UIColor clearColor] size:CGSizeMake(size, size)];
+            break;
+        case SNGameLevelSlow:
+            self = [super initWithTexture:[SKTexture textureWithCGImage:[UIImage imageNamed:@"level3"].CGImage] color:[UIColor clearColor] size:CGSizeMake(size, size)];
+            break;
+            
+        default:
+            break;
+    }
     
     if (self)
     {
-        CGFloat size = 70;
-        UIBezierPath *circle = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(0, 0, size, size)];
-        
-        self.path =  circle.CGPath;
-        self.fillColor = [UIColor colorWithWhite:0.1 alpha:1];
-        self.strokeColor = [UIColor colorWithWhite:0.5 alpha:1];
-        self.lineWidth = 2;
+//        UIBezierPath *circle = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(0, 0, size, size)];
+//        
+//        self.path =  circle.CGPath;
+//        self.fillColor = [UIColor colorWithWhite:0.1 alpha:1];
+//        self.strokeColor = [UIColor colorWithWhite:0.5 alpha:1];
+//        self.lineWidth = 2;
 
         [self setNameForNode:self withLevel:level];
-        [self generateViewForLevel:level];
+//        [self generateViewForLevel:level];
     }
     
     return self;
 }
-
+/*
 - (void)generateViewForLevel:(SNGameLevel)level
 {
     CGFloat circleSize = (self.frame.size.height - 2*self.lineWidth) / level - 5;
@@ -58,7 +73,7 @@
         }
     }
 }
-
+*/
 - (void)setNameForNode:(SKNode *)node withLevel:(SNGameLevel)level
 {
     switch (level)

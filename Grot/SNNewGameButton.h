@@ -16,7 +16,7 @@ typedef NS_ENUM(NSInteger, SNGameLevel) {
 };
 
 
-@interface SNNewGameButton : SKShapeNode
+@interface SNNewGameButton : SKSpriteNode
 
 - (id)initWithLevel:(SNGameLevel)level;
 
