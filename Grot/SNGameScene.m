@@ -70,7 +70,6 @@
         int boardSideSize = (self.frame.size.width - 2*boardSideMargin);
         
         bottomMargin = (self.frame.size.height - boardSideSize - self.topBar.frame.size.height - self.bottomBar.frame.size.height/2) / 2 + self.bottomBar.frame.size.height/2;
-        grotSpace = 5;
         
         
         self.scoreTitle.color = colorFromHex(0xecf0f1);
@@ -396,20 +395,21 @@
             else
             {
                 touchLocation = [touch locationInNode:self.menuView];
-                touchedNode = [self.menuView nodeAtPoint:touchLocation];
-                
-                [self toggleMenu];
+                touchedNode = [self.menuView nodeAtPoint:touchLocation];                
                 
                 if ([touchedNode.name isEqualToString:@"level1Button"])
                 {
+                    [self toggleMenu];
                     [self newGameWithSize:3];
                 }
                 else if ([touchedNode.name isEqualToString:@"level2Button"])
                 {
+                    [self toggleMenu];
                     [self newGameWithSize:4];
                 }
                 else if ([touchedNode.name isEqualToString:@"level3Button"])
                 {
+                    [self toggleMenu];
                     [self newGameWithSize:5];
                 }
             }
@@ -692,6 +692,8 @@
 - (void)newGameWithSize:(int)size
 {
     [self setBoardSize:size];
+    
+    grotSpace = 5 - (size - 2);
     
     self.score = 0;
     self.moves = 5;

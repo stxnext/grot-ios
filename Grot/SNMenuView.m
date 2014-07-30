@@ -39,11 +39,6 @@ int size = 350;
         [self addChild:self.level2Button];
         [self addChild:self.level3Button];
         
-//        float scale = 0.2;
-//        [self.level1Button setScale:scale];
-//        [self.level2Button setScale:scale];
-//        [self.level3Button setScale:scale];
-
         CGFloat buttonSize = 0;//self.level1Button.frame.size.width / 2;
         self.level1Button.position = CGPointMake(size/2 * cos(M_PI_2 * 9/10) - buttonSize,
                                                  size/2 * sin(M_PI_2 * 9/10) - buttonSize);

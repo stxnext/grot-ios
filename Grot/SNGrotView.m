@@ -79,12 +79,8 @@
     [arrowBezierPath applyTransform:CGAffineTransformMakeTranslation(-arrowSize/2 , -arrowSize/2)];
     
     [bezierPath appendPath:arrowBezierPath];
-    //    [arrowBezierPath appendPath:bezierPath];
     bezierPath.usesEvenOddFillRule = YES;
-    //    [bezierPath addClip];
-    
-    //    return arrowBezierPath;
-    
+
     return bezierPath;
 }
 
