@@ -47,6 +47,14 @@
     [_gameView presentScene:self.scene];
 }
 
+- (BOOL)prefersStatusBarHidden {
+    return NO;
+}
+
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
+}
+
 + (UIImage *) setImage:(UIImage *)image withAlpha:(CGFloat)alpha{
     
     // Create a pixel buffer in an easy to use format
@@ -149,6 +157,7 @@
             UIGraphicsEndImageContext();
             GPUImageiOSBlurFilter *blurFilter = [[GPUImageiOSBlurFilter alloc] init];
             blurFilter.blurRadiusInPixels = 6;
+            blurFilter.saturation = 0.5;
 
             image = [blurFilter imageByFilteringImage:image];
             

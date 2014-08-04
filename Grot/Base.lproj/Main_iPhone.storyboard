@@ -9,7 +9,6 @@
         <scene sceneID="hwN-dV-D50">
             <objects>
                 <navigationController definesPresentationContext="YES" navigationBarHidden="YES" id="sgp-aa-1xI" sceneMemberID="viewController">
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="F4u-ZL-Rye">
                         <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
@@ -190,8 +189,8 @@ Collect as many points as possible!</string>
                                     <constraint firstItem="r0x-WE-Yhy" firstAttribute="top" secondItem="Dej-fK-WJa" secondAttribute="top" id="upM-4A-EHe"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R0q-T4-mbe" userLabel="Bottom bar">
-                                <rect key="frame" x="320" y="375" width="320" height="105"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R0q-T4-mbe" userLabel="Bottom bar">
+                                <rect key="frame" x="0.0" y="375" width="320" height="105"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bottomBar" translatesAutoresizingMaskIntoConstraints="NO" id="ZSR-sR-XJB" userLabel="Bottom bar background">

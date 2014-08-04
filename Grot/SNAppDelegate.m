@@ -14,6 +14,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
     // Override point for customization after application launch.
     UIWindow* baseWindow = self.window;
     SplashWindow* splashWindow = [UIWindow splashWindow];
@@ -37,7 +39,7 @@
         }];
     });
     
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
     
     return YES;
 }
