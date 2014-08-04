@@ -10,26 +10,13 @@
 #import "SNGrotFieldModel.h"
 #import "UIBezierPath+Image.h"
 #import "UIImage+Blending.h"
+#import "UIColor+Blending.h"
 
 @implementation SNGrotView
 
 - (id)initWithSize:(CGFloat)size
 {
-    SNGrotFieldModel *model = [SNGrotFieldModel randomModel];
-    
-    UIColor* color1 = colorFromHex(0x00968f);
-    UIColor* color2 = colorFromHex(0x004946);
-    UIColor* color3 = colorFromHex(0x404040);
-    UIBezierPath* arrowPath = [self.class arrowPathWithSize:size];
-    UIBezierPath* circlePath = [self.class circlePathWithSize:size];
-    UIImage* circleImage = [circlePath fillImageWithGradientFromColor:color1 toColor:color2];
-    UIImage* arrowImage = [arrowPath fillImageWithColor:color3];
-    UIImage* combinedImage = [circleImage addImage:arrowImage];
-    SKTexture* texture = [SKTexture textureWithCGImage:combinedImage.CGImage];
-    
-    self = [super initWithTexture:texture
-                            color:[UIColor redColor]
-                             size:CGSizeMake(size, size)];
+    self = [super initWithColor:[UIColor blackColor] size:CGSizeMake(size, size)];
     
     if (self)
     {
@@ -42,7 +29,24 @@
 - (void)randomize
 {
     self.model = [SNGrotFieldModel randomModel];
-    self.zRotation = -_model.angle;
+    
+    // sprite
+    UIImage* sprite = [self.class generateSpriteWithSize:self.size color:self.model.color angle:_model.angle];
+    self.texture = [SKTexture textureWithCGImage:sprite.CGImage];
+}
+
++ (UIImage*)generateSpriteWithSize:(CGSize)size color:(UIColor*)color angle:(CGFloat)angle
+{
+    UIColor* color2 = [color blendWithColor:UIColor.blackColor percent:0.5];
+    UIColor* color3 = colorFromHex(0x404040);
+    UIBezierPath* arrowPath = [self.class arrowPathWithSize:size.width];
+    UIBezierPath* circlePath = [self.class circlePathWithSize:size.width];
+    UIImage* circleImage = [circlePath fillImageWithGradientFromColor:color toColor:color2];
+    UIImage* arrowImage = [arrowPath fillImageWithColor:color3];
+    arrowImage = [arrowImage rotateWithAngle:angle];
+    UIImage* combinedImage = [circleImage addImage:arrowImage];
+    
+    return combinedImage;
 }
 
 + (UIBezierPath*)circlePathWithArrowMaskAndSize:(CGFloat)circleSize

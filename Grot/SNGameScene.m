@@ -43,12 +43,14 @@
         self.moves = 5;
         
         int boardSideSize = (self.frame.size.width - 2*boardSideMargin);
-        self.backgroundColor = [UIColor colorWithWhite:1 alpha:1.0];
+        self.backgroundColor = [UIColor colorWithWhite:0.2 alpha:1.0];
         bottomMargin = (self.frame.size.height - boardSideSize) / 2;
         
-//        backgroundSprite = [[SKSpriteNode alloc] initWithImageNamed:@"Back"];
-//        backgroundSprite.xScale = self.size.width / backgroundSprite.size.width;
-//        backgroundSprite.position = CGPointMake(self.size.width / 2.0, self.size.height - backgroundSprite.size.height / 2.0);
+        backgroundSprite = [[SKSpriteNode alloc] initWithImageNamed:@"shadow"];
+        backgroundSprite.xScale = self.size.width / backgroundSprite.size.width;
+        backgroundSprite.zPosition = -1;
+        backgroundSprite.position = CGPointMake(self.size.width / 2.0, self.size.height - backgroundSprite.size.height / 2.0);
+        [self addChild:backgroundSprite];
         
         [self newGameWithSize:[self boardSize]];
     }

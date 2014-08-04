@@ -1,5 +1,5 @@
 //
-//  UIImage+Blending.h
+//  UIColor+Blending.h
 //  Grot
 //
 //  Created by Dawid Żakowski on 04/08/2014.
@@ -8,9 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIImage (Blending)
+@interface UIColor (Blending)
 
-- (UIImage*)addImage:(UIImage*)image;
-- (UIImage*)rotateWithAngle:(CGFloat)angle;
+- (UIColor*)blendWithColor:(UIColor*)color percent:(CGFloat)percent;
 
 @end

@@ -31,6 +31,7 @@
 		0C4C5A641988F8A30057084E /* SKTEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C4C5A5A1988F8A30057084E /* SKTEffects.m */; };
 		0C4C5A651988F8A30057084E /* SKTTimingFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C4C5A5C1988F8A30057084E /* SKTTimingFunctions.m */; };
 		0CB9DFE8198F6F5D00DE89E9 /* UIImage+Blending.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CB9DFE7198F6F5D00DE89E9 /* UIImage+Blending.m */; };
+		0CB9DFF0198F89B400DE89E9 /* UIColor+Blending.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CB9DFEF198F89B400DE89E9 /* UIColor+Blending.m */; };
 		0CFC31D9198A11FB00C7499A /* SNGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CFC31D8198A11FB00C7499A /* SNGameViewController.m */; };
 		0CFC31DB198A551800C7499A /* Grot-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0C20F5221976745F00831879 /* Grot-Info.plist */; };
 		0CFC31DC198A563600C7499A /* xirod.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0CFC31DA198A54FC00C7499A /* xirod.ttf */; };
@@ -97,6 +98,8 @@
 		0C4C5A6619890B9F0057084E /* MacroHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacroHelpers.h; sourceTree = "<group>"; };
 		0CB9DFE6198F6F5D00DE89E9 /* UIImage+Blending.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Blending.h"; sourceTree = "<group>"; };
 		0CB9DFE7198F6F5D00DE89E9 /* UIImage+Blending.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Blending.m"; sourceTree = "<group>"; };
+		0CB9DFEE198F89B400DE89E9 /* UIColor+Blending.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Blending.h"; sourceTree = "<group>"; };
+		0CB9DFEF198F89B400DE89E9 /* UIColor+Blending.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Blending.m"; sourceTree = "<group>"; };
 		0CFC31D7198A11FB00C7499A /* SNGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNGameViewController.h; sourceTree = "<group>"; };
 		0CFC31D8198A11FB00C7499A /* SNGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNGameViewController.m; sourceTree = "<group>"; };
 		0CFC31DA198A54FC00C7499A /* xirod.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = xirod.ttf; sourceTree = "<group>"; };
@@ -291,6 +294,8 @@
 				0C4C5A6619890B9F0057084E /* MacroHelpers.h */,
 				0CB9DFE6198F6F5D00DE89E9 /* UIImage+Blending.h */,
 				0CB9DFE7198F6F5D00DE89E9 /* UIImage+Blending.m */,
+				0CB9DFEE198F89B400DE89E9 /* UIColor+Blending.h */,
+				0CB9DFEF198F89B400DE89E9 /* UIColor+Blending.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -449,6 +454,7 @@
 				0C4C5A651988F8A30057084E /* SKTTimingFunctions.m in Sources */,
 				0C4C5A641988F8A30057084E /* SKTEffects.m in Sources */,
 				0C4C5A611988F8A30057084E /* SKNode+SKTDebugDraw.m in Sources */,
+				0CB9DFF0198F89B400DE89E9 /* UIColor+Blending.m in Sources */,
 				666F8F3E1978DE4A00B7B381 /* SNGrotView.m in Sources */,
 				0C4C5A5F1988F8A30057084E /* SKAction+SKTSpecialEffects.m in Sources */,
 				0CFC31D9198A11FB00C7499A /* SNGameViewController.m in Sources */,
