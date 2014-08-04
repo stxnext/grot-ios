@@ -9,12 +9,22 @@
 #import "SNGameViewController.h"
 #import <SpriteKit/SpriteKit.h>
 #import "SNGameScene.h"
+#import "SNGrotFieldModel.h"
+#import "GPUImage.h"
 
 @interface SNGameViewController ()
+{
+    BOOL helpVisible;
+}
+@property (weak, nonatomic) IBOutlet UIView *score1x;
+@property (weak, nonatomic) IBOutlet UIView *score2x;
+@property (weak, nonatomic) IBOutlet UIView *score3x;
+@property (weak, nonatomic) IBOutlet UIView *score4x;
+@property (weak, nonatomic) IBOutlet UIImageView *helpBackground;
 
 @property (nonatomic, strong) IBOutlet UILabel* nameLabel;
 @property (nonatomic, strong) IBOutlet SKView* gameView;
-
+@property (nonatomic, strong) SNGameScene *scene;
 @end
 
 @implementation SNGameViewController
@@ -32,9 +42,9 @@
 {
     [super viewDidLoad];
     
-    SKScene *scene = [SNGameScene sceneWithSize:_gameView.bounds.size];
-    scene.scaleMode = SKSceneScaleModeAspectFill;
-    [_gameView presentScene:scene];
+    self.scene = [SNGameScene sceneWithSize:_gameView.bounds.size];
+    self.scene.scaleMode = SKSceneScaleModeAspectFill;
+    [_gameView presentScene:self.scene];
 }
 
 + (UIImage *) setImage:(UIImage *)image withAlpha:(CGFloat)alpha{
@@ -97,5 +107,89 @@
         return UIInterfaceOrientationMaskLandscape;
     }
 }
+
+
+#pragma mark - Menu Actions
+
+- (IBAction)menuTapped:(id)sender
+{
+    if (helpVisible)
+    {
+        
+        [UIView animateWithDuration:0.4 animations:^{
+            self.helpContainter.alpha = 0;
+        } completion:^(BOOL finished) {
+            self.helpContainter.hidden = YES;
+            helpVisible = NO;
+ 
+        }];
+
+        
+    }
+    else
+    {
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Menu" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"New game", @"Help", nil];
+        
+        [actionSheet showInView:self.view];
+    }
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+
+    switch (buttonIndex) {
+        case 0:
+            [self.scene newGameWithSize:4];
+            break;
+            
+        case 1:
+            UIGraphicsBeginImageContext(self.gameView.bounds.size);
+            [self.gameView drawViewHierarchyInRect:self.gameView.bounds afterScreenUpdates:YES];
+            UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+            UIGraphicsEndImageContext();
+            GPUImageiOSBlurFilter *blurFilter = [[GPUImageiOSBlurFilter alloc] init];
+            blurFilter.blurRadiusInPixels = 6;
+
+            image = [blurFilter imageByFilteringImage:image];
+            
+            self.helpBackground.image = image;
+            
+
+            self.score1x.layer.cornerRadius = self.score1x.frame.size.width/2;
+            self.score2x.layer.cornerRadius = self.score2x.frame.size.width/2;
+            self.score3x.layer.cornerRadius = self.score3x.frame.size.width/2;
+            self.score4x.layer.cornerRadius = self.score4x.frame.size.width/2;
+            
+            self.score1x.layer.borderColor = [UIColor whiteColor].CGColor;
+            self.score1x.layer.borderWidth = 1;
+
+            self.score2x.layer.borderColor = [UIColor whiteColor].CGColor;
+            self.score2x.layer.borderWidth = 1;
+
+            self.score3x.layer.borderColor = [UIColor whiteColor].CGColor;
+            self.score3x.layer.borderWidth = 1;
+
+            self.score4x.layer.borderColor = [UIColor whiteColor].CGColor;
+            self.score4x.layer.borderWidth = 1;
+
+            self.score1x.backgroundColor = [SNGrotFieldModel colors][kColorGray];
+            self.score2x.backgroundColor = [SNGrotFieldModel colors][kColorBlue];
+            self.score3x.backgroundColor = [SNGrotFieldModel colors][kColorGreen];
+            self.score4x.backgroundColor = [SNGrotFieldModel colors][kColorRed];
+
+            helpVisible = YES;
+            self.helpContainter.alpha = 0;
+            self.helpContainter.hidden = NO;
+            
+            [UIView animateWithDuration:0.4 animations:^{
+                            self.helpContainter.alpha = 1;
+            } completion:^(BOOL finished) {
+                
+            }];
+            
+            break;
+    }
+}
+
 
 @end

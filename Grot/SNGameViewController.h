@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <SpriteKit/SpriteKit.h>
 
-@interface SNGameViewController : UIViewController
+@interface SNGameViewController : UIViewController <UIActionSheetDelegate>
+
+@property (weak, nonatomic) IBOutlet SKView *helpContainter;
 
 @end

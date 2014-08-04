@@ -20,5 +20,6 @@
  }
 
 @property (nonatomic, strong) NSMutableArray *grots;
+- (void)newGameWithSize:(int)size;
 
 @end
