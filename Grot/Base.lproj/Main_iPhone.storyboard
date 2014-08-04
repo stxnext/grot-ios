@@ -272,6 +272,12 @@ Collect as many points as possible!</string>
                         <outletCollection property="passThroughViews" destination="ZSR-sR-XJB" id="kDD-Wd-fl9"/>
                         <outletCollection property="passThroughViews" destination="R0q-T4-mbe" id="QhA-0m-9R6"/>
                         <outletCollection property="passThroughViews" destination="3Rz-je-0MT" id="Kbf-G0-aU8"/>
+                        <outlet property="helpBackground" destination="r0x-WE-Yhy" id="Ml7-2K-1r6"/>
+                        <outlet property="helpContainter" destination="Dej-fK-WJa" id="OY2-Oz-PwV"/>
+                        <outlet property="score1x" destination="Yd3-sf-LjP" id="B9c-Fn-bZO"/>
+                        <outlet property="score2x" destination="vxY-ia-17a" id="bH1-X6-RMt"/>
+                        <outlet property="score3x" destination="Hhl-cV-Wjg" id="iQ4-6Y-R5t"/>
+                        <outlet property="score4x" destination="s7U-gC-8yc" id="29m-Tm-UIF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zej-9f-oHp" userLabel="First Responder" sceneMemberID="firstResponder"/>

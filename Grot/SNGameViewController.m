@@ -8,12 +8,22 @@
 
 #import "SNGameViewController.h"
 #import <SpriteKit/SpriteKit.h>
+#import "SNGameScene.h"
+#import "SNGrotFieldModel.h"
+#import "GPUImage.h"
 
 @interface SNGameViewController ()
 {
     NSUInteger _score;
     NSUInteger _moves;
+    
+    BOOL helpVisible;
 }
+@property (weak, nonatomic) IBOutlet UIView *score1x;
+@property (weak, nonatomic) IBOutlet UIView *score2x;
+@property (weak, nonatomic) IBOutlet UIView *score3x;
+@property (weak, nonatomic) IBOutlet UIView *score4x;
+@property (weak, nonatomic) IBOutlet UIImageView *helpBackground;
 
 @property (nonatomic, strong) IBOutlet UILabel* scoreLabel;
 @property (nonatomic, strong) IBOutlet UILabel* movesLabel;
@@ -42,12 +52,20 @@
 {
     [super viewDidLoad];
     
-    SNGameScene *scene = [[SNGameScene alloc] initWithSize:_gameView.bounds.size withDelegate:self];
-    scene.scaleMode = SKSceneScaleModeAspectFill;
-    [_gameView presentScene:scene];
+    self.scene = [[SNGameScene alloc] initWithSize:_gameView.bounds.size withDelegate:self];
+    self.scene.scaleMode = SKSceneScaleModeAspectFill;
+    [_gameView presentScene:self.scene];
     
     for (UILabel* latoLabel in self.latoFontLabels)
         latoLabel.font = [UIFont fontWithName:@"Lato-Light" size:latoLabel.font.pointSize];
+}
+
+- (BOOL)prefersStatusBarHidden {
+    return NO;
+}
+
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
 }
 
 + (UIImage *) setImage:(UIImage *)image withAlpha:(CGFloat)alpha{
@@ -164,6 +182,89 @@
                          animations:^{
                              self.movesDeltaLabel.alpha = 0.0;
                          } completion:nil];
+    }
+}
+
+#pragma mark - Menu Actions
+
+- (IBAction)menuTapped:(id)sender
+{
+    if (helpVisible)
+    {
+        
+        [UIView animateWithDuration:0.4 animations:^{
+            self.helpContainter.alpha = 0;
+        } completion:^(BOOL finished) {
+            self.helpContainter.hidden = YES;
+            helpVisible = NO;
+            
+        }];
+        
+        
+    }
+    else
+    {
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Menu" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"New game", @"Help", nil];
+        
+        [actionSheet showInView:self.view];
+    }
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    
+    switch (buttonIndex) {
+        case 0:
+            [self.scene newGameWithSize:4];
+            break;
+            
+        case 1:
+            UIGraphicsBeginImageContext(self.gameView.bounds.size);
+            [self.gameView drawViewHierarchyInRect:self.gameView.bounds afterScreenUpdates:NO];
+            UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+            UIGraphicsEndImageContext();
+            GPUImageiOSBlurFilter *blurFilter = [[GPUImageiOSBlurFilter alloc] init];
+            blurFilter.blurRadiusInPixels = 6;
+            blurFilter.saturation = 0.5;
+            
+            image = [blurFilter imageByFilteringImage:image];
+            
+            self.helpBackground.image = image;
+            
+            
+            self.score1x.layer.cornerRadius = self.score1x.frame.size.width/2;
+            self.score2x.layer.cornerRadius = self.score2x.frame.size.width/2;
+            self.score3x.layer.cornerRadius = self.score3x.frame.size.width/2;
+            self.score4x.layer.cornerRadius = self.score4x.frame.size.width/2;
+            
+            self.score1x.layer.borderColor = [UIColor whiteColor].CGColor;
+            self.score1x.layer.borderWidth = 1;
+            
+            self.score2x.layer.borderColor = [UIColor whiteColor].CGColor;
+            self.score2x.layer.borderWidth = 1;
+            
+            self.score3x.layer.borderColor = [UIColor whiteColor].CGColor;
+            self.score3x.layer.borderWidth = 1;
+            
+            self.score4x.layer.borderColor = [UIColor whiteColor].CGColor;
+            self.score4x.layer.borderWidth = 1;
+            
+            self.score1x.backgroundColor = [SNGrotFieldModel colors][kColorGray];
+            self.score2x.backgroundColor = [SNGrotFieldModel colors][kColorBlue];
+            self.score3x.backgroundColor = [SNGrotFieldModel colors][kColorGreen];
+            self.score4x.backgroundColor = [SNGrotFieldModel colors][kColorRed];
+            
+            helpVisible = YES;
+            self.helpContainter.alpha = 0;
+            self.helpContainter.hidden = NO;
+            
+            [UIView animateWithDuration:0.4 animations:^{
+                self.helpContainter.alpha = 1;
+            } completion:^(BOOL finished) {
+                
+            }];
+            
+            break;
     }
 }
 

@@ -31,6 +31,7 @@
 @property (nonatomic, strong) NSMutableArray *grots;
 @property (nonatomic, weak) id<SNGameplayDelegate> delegate;
 
+- (void)newGameWithSize:(int)size;
 - (id)initWithSize:(CGSize)size withDelegate:(id<SNGameplayDelegate>)delegate;
 
 @end
