@@ -144,7 +144,7 @@
             
         case 1:
             UIGraphicsBeginImageContext(self.gameView.bounds.size);
-            [self.gameView drawViewHierarchyInRect:self.gameView.bounds afterScreenUpdates:YES];
+            [self.gameView drawViewHierarchyInRect:self.gameView.bounds afterScreenUpdates:NO];
             UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
             UIGraphicsEndImageContext();
             GPUImageiOSBlurFilter *blurFilter = [[GPUImageiOSBlurFilter alloc] init];
