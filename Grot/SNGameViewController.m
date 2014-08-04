@@ -24,7 +24,7 @@
 @property (nonatomic, strong) IBOutletCollection(UILabel) NSArray* latoFontLabels;
 @property (nonatomic, strong) IBOutlet UILabel* nameLabel;
 @property (nonatomic, strong) IBOutlet SKView* gameView;
-
+@property (nonatomic, strong) SNGameScene *scene;
 @end
 
 @implementation SNGameViewController

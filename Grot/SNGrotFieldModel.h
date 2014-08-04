@@ -37,6 +37,7 @@ const static SNFieldColor kColorRed   = @"red";
 @property (nonatomic, readonly) SNFieldDirection direction;
 
 + (instancetype)randomModel;
++ (NSDictionary *)colors;
 
 - (NSInteger)value;
 - (UIColor*)color;
