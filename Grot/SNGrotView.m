@@ -37,12 +37,12 @@
 
 + (UIImage*)generateSpriteWithSize:(CGSize)size color:(UIColor*)color angle:(CGFloat)angle
 {
-    UIColor* color2 = [color blendWithColor:UIColor.blackColor percent:0.5];
-    UIColor* color3 = colorFromHex(0x404040);
+    UIColor* darkColor = [color blendWithColor:UIColor.blackColor percent:0.5];
+    UIColor* arrowColor = colorFromHex(0x404040);
     UIBezierPath* arrowPath = [self.class arrowPathWithSize:size.width];
     UIBezierPath* circlePath = [self.class circlePathWithSize:size.width];
-    UIImage* circleImage = [circlePath fillImageWithGradientFromColor:color toColor:color2];
-    UIImage* arrowImage = [arrowPath fillImageWithColor:color3];
+    UIImage* circleImage = [circlePath fillImageWithGradientFromColor:darkColor toColor:color];
+    UIImage* arrowImage = [arrowPath fillImageWithColor:arrowColor];
     arrowImage = [arrowImage rotateWithAngle:angle];
     UIImage* combinedImage = [circleImage addImage:arrowImage];
     

@@ -33,15 +33,15 @@
 
 @implementation SNGameScene
 
-- (id)initWithSize:(CGSize)size
+- (id)initWithSize:(CGSize)size withDelegate:(id<SNGameplayDelegate>)delegate
 {
     if (self = [super initWithSize:size])
     {
-        boardSideMargin = 5;
-
+        self.delegate = delegate;
         self.score = 0;
         self.moves = 5;
         
+        boardSideMargin = INTERFACE_IS_PHONE_SMALL_SCREEN ? 20.0 : 5.0;
         int boardSideSize = (self.frame.size.width - 2*boardSideMargin);
         self.backgroundColor = [UIColor colorWithWhite:0.2 alpha:1.0];
         bottomMargin = (self.frame.size.height - boardSideSize) / 2;
@@ -204,6 +204,8 @@
                 moveAction.timingMode = SKActionTimingEaseOut;
                 fadeOutAction.timingMode = SKActionTimingEaseOut;
                 
+                grot0.zPosition = 20;
+                
                 [grot0 runAction:[SKAction sequence:@[ [SKAction group:@[moveAction, fadeAction]], fadeOutAction ]] completion:^{
                     
                     if (isLastMovement)
@@ -239,6 +241,8 @@
                 
                 collumnDictY[[NSNumber numberWithInt:position.y]] = [collumnDictY[[NSNumber numberWithInt:position.y]] intValue] > 0 ?
                 [NSNumber numberWithInt:[collumnDictY[[NSNumber numberWithInt:position.y]] intValue] + 1] : @1;
+                
+                grot.zPosition = 10;
             }
             
             int emptyRows = 0;
@@ -500,69 +504,28 @@
 - (void)setScore:(int)score
 {
     _score = score;
-//    self.scoreValue.text = [NSString stringWithFormat:@"%i", score];
+    self.delegate.score = self.score;
 }
 
 - (void)setMoves:(int)moves
 {
     _moves = moves;
-//    self.movesValue.text = [NSString stringWithFormat:@"%i", moves];
+    self.delegate.moves = self.moves;
 }
 
 - (void)addScore:(int)score
 {
-    if (score > 0)
-    {
-//        self.scoreBonus.alpha = 1;
-//        self.scoreBonus.text = [NSString stringWithFormat:@"+%i", score];
-        self.score += score;
-//        [self.scoreBonus runAction:[SKAction sequence:@[[SKAction waitForDuration:1],
-//                                                        [SKAction fadeAlphaTo:0 duration:0.5]]]];
-    }
-    else
-    {
-//        self.scoreValue.text = @"";
-    }
+    self.score += score;
+    [self.delegate addScore:score];
 }
 
 - (void)addMoves:(int)moves
 {
-    if (moves > 0)
-    {
-//        self.movesBonus.alpha = 1;
-//        self.movesBonus.text = [NSString stringWithFormat:@"+%i", moves];
-        self.moves += moves;
-        
-//        [self.movesBonus runAction:[SKAction sequence:@[[SKAction waitForDuration:1],
-//                                                        [SKAction fadeAlphaTo:0 duration:0.5]]]];
-    }
-    else
-    {
-//        self.movesBonus.text = @"";
-    }
+    self.moves += moves;
+    [self.delegate addMoves:moves];
 }
 
 #pragma mark - Game action
-
-//- (void)showHelp
-//{
-//    if (!self.helpView)
-//    {
-//        self.helpView = [[SKSpriteNode alloc] initWithImageNamed:@"help"];
-//        self.helpView.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
-//    }
-//    
-//    if ([self.helpView inParentHierarchy:self])
-//    {
-//        [self.helpView runAction:[SKAction removeFromParent]];
-//    }
-//    else
-//    {
-//        [self.helpView setScale:1];
-//        [self.helpView runAction:[SKAction scaleTo:self.frame.size.height/self.helpView.frame.size.height duration:0.1]];
-//        [self addChild:self.helpView];
-//    }
-//}
 
 - (void)endGame
 {
@@ -576,9 +539,6 @@
 - (void)toggleMenu
 {
     isMenuVisible = !isMenuVisible;
-    
-//    [self.menuView toggle];
-//    [self.menuButton toggle];
     
     for (SNGrotView *grot in self.grots)
     {

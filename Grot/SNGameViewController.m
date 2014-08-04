@@ -8,10 +8,20 @@
 
 #import "SNGameViewController.h"
 #import <SpriteKit/SpriteKit.h>
-#import "SNGameScene.h"
 
 @interface SNGameViewController ()
+{
+    NSUInteger _score;
+    NSUInteger _moves;
+}
 
+@property (nonatomic, strong) IBOutlet UILabel* scoreLabel;
+@property (nonatomic, strong) IBOutlet UILabel* movesLabel;
+@property (nonatomic, strong) IBOutlet UILabel* scoreDeltaLabel;
+@property (nonatomic, strong) IBOutlet UILabel* movesDeltaLabel;
+
+@property (nonatomic, strong) IBOutletCollection(UIView) NSArray* passThroughViews;
+@property (nonatomic, strong) IBOutletCollection(UILabel) NSArray* latoFontLabels;
 @property (nonatomic, strong) IBOutlet UILabel* nameLabel;
 @property (nonatomic, strong) IBOutlet SKView* gameView;
 
@@ -32,9 +42,12 @@
 {
     [super viewDidLoad];
     
-    SKScene *scene = [SNGameScene sceneWithSize:_gameView.bounds.size];
+    SNGameScene *scene = [[SNGameScene alloc] initWithSize:_gameView.bounds.size withDelegate:self];
     scene.scaleMode = SKSceneScaleModeAspectFill;
     [_gameView presentScene:scene];
+    
+    for (UILabel* latoLabel in self.latoFontLabels)
+        latoLabel.font = [UIFont fontWithName:@"Lato-Light" size:latoLabel.font.pointSize];
 }
 
 + (UIImage *) setImage:(UIImage *)image withAlpha:(CGFloat)alpha{
@@ -95,6 +108,62 @@
     else
     {
         return UIInterfaceOrientationMaskLandscape;
+    }
+}
+
+#pragma mark Gameplay delegate
+
+- (void)setScore:(NSUInteger)value
+{
+    _score = value;
+    
+    self.scoreLabel.text = [NSString stringWithFormat:@"%d", value];
+}
+
+- (void)setMoves:(NSUInteger)value
+{
+    _moves = value;
+    
+    self.movesLabel.text = [NSString stringWithFormat:@"%d", value];
+}
+
+- (void)addScore:(NSUInteger)value
+{
+    _score += value;
+    
+    self.scoreLabel.text = [NSString stringWithFormat:@"%d", _score];
+    
+    if (value > 0)
+    {
+        self.scoreDeltaLabel.text = [NSString stringWithFormat:@"+%d", value];
+        
+        self.scoreDeltaLabel.alpha = 1.0;
+        [UIView animateWithDuration:0.666
+                              delay:1.222
+                            options:UIViewAnimationOptionCurveEaseIn
+                         animations:^{
+                             self.scoreDeltaLabel.alpha = 0.0;
+                         } completion:nil];
+    }
+}
+
+- (void)addMoves:(NSUInteger)value
+{
+    _moves += value;
+    
+    self.movesLabel.text = [NSString stringWithFormat:@"%d", _moves];
+    
+    if (value > 0)
+    {
+        self.movesDeltaLabel.text = [NSString stringWithFormat:@"+%d", value];
+        
+        self.movesDeltaLabel.alpha = 1.0;
+        [UIView animateWithDuration:0.666
+                              delay:1.222
+                            options:UIViewAnimationOptionCurveEaseIn
+                         animations:^{
+                             self.movesDeltaLabel.alpha = 0.0;
+                         } completion:nil];
     }
 }
 

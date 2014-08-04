@@ -10,6 +10,15 @@
 
 @class SNMutableGrid;
 
+@protocol SNGameplayDelegate <NSObject>
+
+@property (nonatomic, assign) NSUInteger score;
+@property (nonatomic, assign) NSUInteger moves;
+
+- (void)addScore:(NSUInteger)value;
+- (void)addMoves:(NSUInteger)value;
+
+@end
 
 @interface SNGameScene : SKScene
 {
@@ -20,5 +29,8 @@
  }
 
 @property (nonatomic, strong) NSMutableArray *grots;
+@property (nonatomic, weak) id<SNGameplayDelegate> delegate;
+
+- (id)initWithSize:(CGSize)size withDelegate:(id<SNGameplayDelegate>)delegate;
 
 @end

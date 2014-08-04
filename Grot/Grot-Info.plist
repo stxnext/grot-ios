@@ -44,7 +44,9 @@
 	<false/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>xirod.ttf</string>
+		<string>Lato-Thin.ttf</string>
+		<string>Lato-Light.ttf</string>
+		<string>Lato-Regular.ttf</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>

@@ -32,9 +32,12 @@
 		0C4C5A651988F8A30057084E /* SKTTimingFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C4C5A5C1988F8A30057084E /* SKTTimingFunctions.m */; };
 		0CB9DFE8198F6F5D00DE89E9 /* UIImage+Blending.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CB9DFE7198F6F5D00DE89E9 /* UIImage+Blending.m */; };
 		0CB9DFF0198F89B400DE89E9 /* UIColor+Blending.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CB9DFEF198F89B400DE89E9 /* UIColor+Blending.m */; };
+		0CB9DFF7198F9B0900DE89E9 /* Lato-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0CB9DFF1198F99E800DE89E9 /* Lato-Thin.ttf */; };
+		0CB9DFF9198F9C2400DE89E9 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0CB9DFF8198F9C2400DE89E9 /* Lato-Light.ttf */; };
+		0CB9DFFB198FA25F00DE89E9 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0CB9DFFA198FA25F00DE89E9 /* Lato-Regular.ttf */; };
+		0CB9E001198FAEF500DE89E9 /* UIPassthroughView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CB9E000198FAEF500DE89E9 /* UIPassthroughView.m */; };
 		0CFC31D9198A11FB00C7499A /* SNGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CFC31D8198A11FB00C7499A /* SNGameViewController.m */; };
 		0CFC31DB198A551800C7499A /* Grot-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0C20F5221976745F00831879 /* Grot-Info.plist */; };
-		0CFC31DC198A563600C7499A /* xirod.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0CFC31DA198A54FC00C7499A /* xirod.ttf */; };
 		403F0DFFC1A54F59AC45666B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D97F6D7747C44FE0A2277F3A /* libPods.a */; };
 		6644AC671987A73700799332 /* UIBezierPath+Image.m in Sources */ = {isa = PBXBuildFile; fileRef = 6644AC661987A73700799332 /* UIBezierPath+Image.m */; };
 		664E87BD197FD8D200B22AB6 /* SNMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 664E87BC197FD8D200B22AB6 /* SNMenuButton.m */; };
@@ -100,9 +103,13 @@
 		0CB9DFE7198F6F5D00DE89E9 /* UIImage+Blending.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Blending.m"; sourceTree = "<group>"; };
 		0CB9DFEE198F89B400DE89E9 /* UIColor+Blending.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Blending.h"; sourceTree = "<group>"; };
 		0CB9DFEF198F89B400DE89E9 /* UIColor+Blending.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Blending.m"; sourceTree = "<group>"; };
+		0CB9DFF1198F99E800DE89E9 /* Lato-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Thin.ttf"; sourceTree = "<group>"; };
+		0CB9DFF8198F9C2400DE89E9 /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
+		0CB9DFFA198FA25F00DE89E9 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
+		0CB9DFFF198FAEF500DE89E9 /* UIPassthroughView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPassthroughView.h; sourceTree = "<group>"; };
+		0CB9E000198FAEF500DE89E9 /* UIPassthroughView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPassthroughView.m; sourceTree = "<group>"; };
 		0CFC31D7198A11FB00C7499A /* SNGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNGameViewController.h; sourceTree = "<group>"; };
 		0CFC31D8198A11FB00C7499A /* SNGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNGameViewController.m; sourceTree = "<group>"; };
-		0CFC31DA198A54FC00C7499A /* xirod.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = xirod.ttf; sourceTree = "<group>"; };
 		6644AC651987A73700799332 /* UIBezierPath+Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+Image.h"; sourceTree = "<group>"; };
 		6644AC661987A73700799332 /* UIBezierPath+Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath+Image.m"; sourceTree = "<group>"; };
 		664E87BB197FD8D200B22AB6 /* SNMenuButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNMenuButton.h; sourceTree = "<group>"; };
@@ -193,6 +200,8 @@
 				666F8FFC1978E72100B7B381 /* SNGameScene.m */,
 				666F8F3A1978DDDE00B7B381 /* SNGrotFieldModel.m */,
 				666F8F3D1978DE4A00B7B381 /* SNGrotView.m */,
+				0CFC31D7198A11FB00C7499A /* SNGameViewController.h */,
+				0CFC31D8198A11FB00C7499A /* SNGameViewController.m */,
 				0C20F5351976745F00831879 /* Images.xcassets */,
 				666F8F3F1978E17000B7B381 /* AppDelegate */,
 				66FD01661977C9AA0084746F /* Helpers */,
@@ -200,8 +209,6 @@
 				0C20F52C1976745F00831879 /* Main_iPhone.storyboard */,
 				66D0BCB0197FE000000725FF /* Menu */,
 				0C20F5211976745F00831879 /* Supporting Files */,
-				0CFC31D7198A11FB00C7499A /* SNGameViewController.h */,
-				0CFC31D8198A11FB00C7499A /* SNGameViewController.m */,
 			);
 			path = Grot;
 			sourceTree = "<group>";
@@ -209,8 +216,10 @@
 		0C20F5211976745F00831879 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				0CFC31DA198A54FC00C7499A /* xirod.ttf */,
 				0C20F5221976745F00831879 /* Grot-Info.plist */,
+				0CB9DFFA198FA25F00DE89E9 /* Lato-Regular.ttf */,
+				0CB9DFF1198F99E800DE89E9 /* Lato-Thin.ttf */,
+				0CB9DFF8198F9C2400DE89E9 /* Lato-Light.ttf */,
 				0C20F5231976745F00831879 /* InfoPlist.strings */,
 				0C20F5261976745F00831879 /* main.m */,
 				0C20F5281976745F00831879 /* Grot-Prefix.pch */,
@@ -296,6 +305,8 @@
 				0CB9DFE7198F6F5D00DE89E9 /* UIImage+Blending.m */,
 				0CB9DFEE198F89B400DE89E9 /* UIColor+Blending.h */,
 				0CB9DFEF198F89B400DE89E9 /* UIColor+Blending.m */,
+				0CB9DFFF198FAEF500DE89E9 /* UIPassthroughView.h */,
+				0CB9E000198FAEF500DE89E9 /* UIPassthroughView.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -387,12 +398,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0CFC31DC198A563600C7499A /* xirod.ttf in Resources */,
+				0CB9DFF7198F9B0900DE89E9 /* Lato-Thin.ttf in Resources */,
 				0C20F5311976745F00831879 /* Main_iPad.storyboard in Resources */,
 				0C20F5361976745F00831879 /* Images.xcassets in Resources */,
+				0CB9DFFB198FA25F00DE89E9 /* Lato-Regular.ttf in Resources */,
 				0C20F52E1976745F00831879 /* Main_iPhone.storyboard in Resources */,
 				0CFC31DB198A551800C7499A /* Grot-Info.plist in Resources */,
 				0C20F5251976745F00831879 /* InfoPlist.strings in Resources */,
+				0CB9DFF9198F9C2400DE89E9 /* Lato-Light.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,6 +479,7 @@
 				0C4C5A621988F8A30057084E /* SKNode+SKTExtras.m in Sources */,
 				6644AC671987A73700799332 /* UIBezierPath+Image.m in Sources */,
 				0C20F52B1976745F00831879 /* SNAppDelegate.m in Sources */,
+				0CB9E001198FAEF500DE89E9 /* UIPassthroughView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

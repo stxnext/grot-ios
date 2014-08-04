@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SNGameScene.h"
 
-@interface SNGameViewController : UIViewController
+@interface SNGameViewController : UIViewController<SNGameplayDelegate>
 
 @end
