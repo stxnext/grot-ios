@@ -9,13 +9,25 @@
 #import "SNGrotView.h"
 #import "SNGrotFieldModel.h"
 #import "UIBezierPath+Image.h"
+#import "UIImage+Blending.h"
+
 @implementation SNGrotView
 
 - (id)initWithSize:(CGFloat)size
 {
     SNGrotFieldModel *model = [SNGrotFieldModel randomModel];
     
-    self = [super initWithTexture:[SKTexture textureWithCGImage:[[self.class arrowPathWithSize:size] strokeImageWithColor:model.color].CGImage]
+    UIColor* color1 = colorFromHex(0x00968f);
+    UIColor* color2 = colorFromHex(0x004946);
+    UIColor* color3 = colorFromHex(0x404040);
+    UIBezierPath* arrowPath = [self.class arrowPathWithSize:size];
+    UIBezierPath* circlePath = [self.class circlePathWithSize:size];
+    UIImage* circleImage = [circlePath fillImageWithGradientFromColor:color1 toColor:color2];
+    UIImage* arrowImage = [arrowPath fillImageWithColor:color3];
+    UIImage* combinedImage = [circleImage addImage:arrowImage];
+    SKTexture* texture = [SKTexture textureWithCGImage:combinedImage.CGImage];
+    
+    self = [super initWithTexture:texture
                             color:[UIColor redColor]
                              size:CGSizeMake(size, size)];
     
@@ -33,22 +45,20 @@
     self.zRotation = -_model.angle;
 }
 
-+ (UIBezierPath *)arrowPathWithSize:(CGFloat)fieldSize
++ (UIBezierPath*)circlePathWithArrowMaskAndSize:(CGFloat)circleSize
 {
-    static UIBezierPath* bezierPath;
+    UIBezierPath* bezierPath = UIBezierPath.bezierPath;
+    [bezierPath appendPath:[self circlePathWithSize:circleSize]];
+    [bezierPath appendPath:[self arrowPathWithSize:circleSize]];
     
-    bezierPath = UIBezierPath.bezierPath;
+    bezierPath.usesEvenOddFillRule = YES;
     
-    [bezierPath addArcWithCenter:CGPointMake(bezierPath.bounds.size.width/2, bezierPath.bounds.size.height/2)
-                          radius:fieldSize/2
-                      startAngle:0
-                        endAngle:2*M_PI
-                       clockwise:YES];
-    
-    
-    static UIBezierPath* arrowBezierPath;
-    
-    arrowBezierPath = UIBezierPath.bezierPath;
+    return bezierPath;
+}
+
++ (UIBezierPath*)arrowPathWithSize:(CGFloat)fieldSize
+{
+    UIBezierPath* arrowBezierPath = UIBezierPath.bezierPath;
     
     [arrowBezierPath moveToPoint: CGPointMake(0.145, 0.495)];
     [arrowBezierPath addLineToPoint: CGPointMake(0.1453, 0.4758)];
@@ -70,7 +80,6 @@
     
     [arrowBezierPath closePath];
     
-    
     const static CGFloat arrowScale = 0.75;
     CGFloat arrowSize = fieldSize * arrowScale;
     
@@ -78,9 +87,19 @@
     [arrowBezierPath applyTransform:CGAffineTransformMakeScale(arrowSize, arrowSize)];
     [arrowBezierPath applyTransform:CGAffineTransformMakeTranslation(-arrowSize/2 , -arrowSize/2)];
     
-    [bezierPath appendPath:arrowBezierPath];
-    bezierPath.usesEvenOddFillRule = YES;
+    return arrowBezierPath;
+}
 
++ (UIBezierPath*)circlePathWithSize:(CGFloat)circleSize
+{
+    UIBezierPath* bezierPath = UIBezierPath.bezierPath;
+    
+    [bezierPath addArcWithCenter:CGPointMake(bezierPath.bounds.size.width/2, bezierPath.bounds.size.height/2)
+                          radius:circleSize/2
+                      startAngle:0
+                        endAngle:2*M_PI
+                       clockwise:YES];
+    
     return bezierPath;
 }
 

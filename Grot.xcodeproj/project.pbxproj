@@ -15,21 +15,26 @@
 		0C20F52B1976745F00831879 /* SNAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C20F52A1976745F00831879 /* SNAppDelegate.m */; };
 		0C20F52E1976745F00831879 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C20F52C1976745F00831879 /* Main_iPhone.storyboard */; };
 		0C20F5311976745F00831879 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C20F52F1976745F00831879 /* Main_iPad.storyboard */; };
-		0C20F5341976745F00831879 /* SNViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C20F5331976745F00831879 /* SNViewController.m */; };
 		0C20F5361976745F00831879 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C20F5351976745F00831879 /* Images.xcassets */; };
 		0C20F53D1976745F00831879 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C20F53C1976745F00831879 /* XCTest.framework */; };
 		0C20F53E1976745F00831879 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C20F51A1976745F00831879 /* Foundation.framework */; };
 		0C20F53F1976745F00831879 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C20F51E1976745F00831879 /* UIKit.framework */; };
 		0C20F5471976745F00831879 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0C20F5451976745F00831879 /* InfoPlist.strings */; };
 		0C20F5491976745F00831879 /* GrotTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C20F5481976745F00831879 /* GrotTests.m */; };
-		0CC937A61987E98F00ACE8D8 /* SKAction+SKTExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CC937961987E98F00ACE8D8 /* SKAction+SKTExtras.m */; };
-		0CC937A71987E98F00ACE8D8 /* SKAction+SKTSpecialEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CC937981987E98F00ACE8D8 /* SKAction+SKTSpecialEffects.m */; };
-		0CC937A81987E98F00ACE8D8 /* SKEmitterNode+SKTExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CC9379A1987E98F00ACE8D8 /* SKEmitterNode+SKTExtras.m */; };
-		0CC937A91987E98F00ACE8D8 /* SKNode+SKTDebugDraw.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CC9379C1987E98F00ACE8D8 /* SKNode+SKTDebugDraw.m */; };
-		0CC937AA1987E98F00ACE8D8 /* SKNode+SKTExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CC9379E1987E98F00ACE8D8 /* SKNode+SKTExtras.m */; };
-		0CC937AB1987E98F00ACE8D8 /* SKTAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CC937A01987E98F00ACE8D8 /* SKTAudio.m */; };
-		0CC937AC1987E98F00ACE8D8 /* SKTEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CC937A21987E98F00ACE8D8 /* SKTEffects.m */; };
-		0CC937AD1987E98F00ACE8D8 /* SKTTimingFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CC937A41987E98F00ACE8D8 /* SKTTimingFunctions.m */; };
+		0C4C5A4C1988E7730057084E /* UIWindow+Splash.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C4C5A4B1988E7730057084E /* UIWindow+Splash.m */; };
+		0C4C5A5E1988F8A30057084E /* SKAction+SKTExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C4C5A4E1988F8A30057084E /* SKAction+SKTExtras.m */; };
+		0C4C5A5F1988F8A30057084E /* SKAction+SKTSpecialEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C4C5A501988F8A30057084E /* SKAction+SKTSpecialEffects.m */; };
+		0C4C5A601988F8A30057084E /* SKEmitterNode+SKTExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C4C5A521988F8A30057084E /* SKEmitterNode+SKTExtras.m */; };
+		0C4C5A611988F8A30057084E /* SKNode+SKTDebugDraw.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C4C5A541988F8A30057084E /* SKNode+SKTDebugDraw.m */; };
+		0C4C5A621988F8A30057084E /* SKNode+SKTExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C4C5A561988F8A30057084E /* SKNode+SKTExtras.m */; };
+		0C4C5A631988F8A30057084E /* SKTAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C4C5A581988F8A30057084E /* SKTAudio.m */; };
+		0C4C5A641988F8A30057084E /* SKTEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C4C5A5A1988F8A30057084E /* SKTEffects.m */; };
+		0C4C5A651988F8A30057084E /* SKTTimingFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C4C5A5C1988F8A30057084E /* SKTTimingFunctions.m */; };
+		0CB9DFE8198F6F5D00DE89E9 /* UIImage+Blending.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CB9DFE7198F6F5D00DE89E9 /* UIImage+Blending.m */; };
+		0CFC31D9198A11FB00C7499A /* SNGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CFC31D8198A11FB00C7499A /* SNGameViewController.m */; };
+		0CFC31DB198A551800C7499A /* Grot-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0C20F5221976745F00831879 /* Grot-Info.plist */; };
+		0CFC31DC198A563600C7499A /* xirod.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0CFC31DA198A54FC00C7499A /* xirod.ttf */; };
+		403F0DFFC1A54F59AC45666B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D97F6D7747C44FE0A2277F3A /* libPods.a */; };
 		6644AC671987A73700799332 /* UIBezierPath+Image.m in Sources */ = {isa = PBXBuildFile; fileRef = 6644AC661987A73700799332 /* UIBezierPath+Image.m */; };
 		664E87BD197FD8D200B22AB6 /* SNMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 664E87BC197FD8D200B22AB6 /* SNMenuButton.m */; };
 		664E87C0197FDD1F00B22AB6 /* SNMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 664E87BF197FDD1F00B22AB6 /* SNMenuView.m */; };
@@ -64,31 +69,37 @@
 		0C20F52A1976745F00831879 /* SNAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNAppDelegate.m; sourceTree = "<group>"; };
 		0C20F52D1976745F00831879 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		0C20F5301976745F00831879 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
-		0C20F5321976745F00831879 /* SNViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNViewController.h; sourceTree = "<group>"; };
-		0C20F5331976745F00831879 /* SNViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNViewController.m; sourceTree = "<group>"; };
 		0C20F5351976745F00831879 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0C20F53B1976745F00831879 /* GrotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GrotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C20F53C1976745F00831879 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		0C20F5441976745F00831879 /* GrotTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GrotTests-Info.plist"; sourceTree = "<group>"; };
 		0C20F5461976745F00831879 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0C20F5481976745F00831879 /* GrotTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GrotTests.m; sourceTree = "<group>"; };
-		0CC937951987E98F00ACE8D8 /* SKAction+SKTExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKAction+SKTExtras.h"; sourceTree = "<group>"; };
-		0CC937961987E98F00ACE8D8 /* SKAction+SKTExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKAction+SKTExtras.m"; sourceTree = "<group>"; };
-		0CC937971987E98F00ACE8D8 /* SKAction+SKTSpecialEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKAction+SKTSpecialEffects.h"; sourceTree = "<group>"; };
-		0CC937981987E98F00ACE8D8 /* SKAction+SKTSpecialEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKAction+SKTSpecialEffects.m"; sourceTree = "<group>"; };
-		0CC937991987E98F00ACE8D8 /* SKEmitterNode+SKTExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKEmitterNode+SKTExtras.h"; sourceTree = "<group>"; };
-		0CC9379A1987E98F00ACE8D8 /* SKEmitterNode+SKTExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKEmitterNode+SKTExtras.m"; sourceTree = "<group>"; };
-		0CC9379B1987E98F00ACE8D8 /* SKNode+SKTDebugDraw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKNode+SKTDebugDraw.h"; sourceTree = "<group>"; };
-		0CC9379C1987E98F00ACE8D8 /* SKNode+SKTDebugDraw.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKNode+SKTDebugDraw.m"; sourceTree = "<group>"; };
-		0CC9379D1987E98F00ACE8D8 /* SKNode+SKTExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKNode+SKTExtras.h"; sourceTree = "<group>"; };
-		0CC9379E1987E98F00ACE8D8 /* SKNode+SKTExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKNode+SKTExtras.m"; sourceTree = "<group>"; };
-		0CC9379F1987E98F00ACE8D8 /* SKTAudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTAudio.h; sourceTree = "<group>"; };
-		0CC937A01987E98F00ACE8D8 /* SKTAudio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTAudio.m; sourceTree = "<group>"; };
-		0CC937A11987E98F00ACE8D8 /* SKTEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTEffects.h; sourceTree = "<group>"; };
-		0CC937A21987E98F00ACE8D8 /* SKTEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTEffects.m; sourceTree = "<group>"; };
-		0CC937A31987E98F00ACE8D8 /* SKTTimingFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTTimingFunctions.h; sourceTree = "<group>"; };
-		0CC937A41987E98F00ACE8D8 /* SKTTimingFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTTimingFunctions.m; sourceTree = "<group>"; };
-		0CC937A51987E98F00ACE8D8 /* SKTUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTUtils.h; sourceTree = "<group>"; };
+		0C4C5A4A1988E7730057084E /* UIWindow+Splash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+Splash.h"; sourceTree = "<group>"; };
+		0C4C5A4B1988E7730057084E /* UIWindow+Splash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+Splash.m"; sourceTree = "<group>"; };
+		0C4C5A4D1988F8A30057084E /* SKAction+SKTExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SKAction+SKTExtras.h"; path = "SKTUtils/SKAction+SKTExtras.h"; sourceTree = "<group>"; };
+		0C4C5A4E1988F8A30057084E /* SKAction+SKTExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SKAction+SKTExtras.m"; path = "SKTUtils/SKAction+SKTExtras.m"; sourceTree = "<group>"; };
+		0C4C5A4F1988F8A30057084E /* SKAction+SKTSpecialEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SKAction+SKTSpecialEffects.h"; path = "SKTUtils/SKAction+SKTSpecialEffects.h"; sourceTree = "<group>"; };
+		0C4C5A501988F8A30057084E /* SKAction+SKTSpecialEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SKAction+SKTSpecialEffects.m"; path = "SKTUtils/SKAction+SKTSpecialEffects.m"; sourceTree = "<group>"; };
+		0C4C5A511988F8A30057084E /* SKEmitterNode+SKTExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SKEmitterNode+SKTExtras.h"; path = "SKTUtils/SKEmitterNode+SKTExtras.h"; sourceTree = "<group>"; };
+		0C4C5A521988F8A30057084E /* SKEmitterNode+SKTExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SKEmitterNode+SKTExtras.m"; path = "SKTUtils/SKEmitterNode+SKTExtras.m"; sourceTree = "<group>"; };
+		0C4C5A531988F8A30057084E /* SKNode+SKTDebugDraw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SKNode+SKTDebugDraw.h"; path = "SKTUtils/SKNode+SKTDebugDraw.h"; sourceTree = "<group>"; };
+		0C4C5A541988F8A30057084E /* SKNode+SKTDebugDraw.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SKNode+SKTDebugDraw.m"; path = "SKTUtils/SKNode+SKTDebugDraw.m"; sourceTree = "<group>"; };
+		0C4C5A551988F8A30057084E /* SKNode+SKTExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SKNode+SKTExtras.h"; path = "SKTUtils/SKNode+SKTExtras.h"; sourceTree = "<group>"; };
+		0C4C5A561988F8A30057084E /* SKNode+SKTExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SKNode+SKTExtras.m"; path = "SKTUtils/SKNode+SKTExtras.m"; sourceTree = "<group>"; };
+		0C4C5A571988F8A30057084E /* SKTAudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SKTAudio.h; path = SKTUtils/SKTAudio.h; sourceTree = "<group>"; };
+		0C4C5A581988F8A30057084E /* SKTAudio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SKTAudio.m; path = SKTUtils/SKTAudio.m; sourceTree = "<group>"; };
+		0C4C5A591988F8A30057084E /* SKTEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SKTEffects.h; path = SKTUtils/SKTEffects.h; sourceTree = "<group>"; };
+		0C4C5A5A1988F8A30057084E /* SKTEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SKTEffects.m; path = SKTUtils/SKTEffects.m; sourceTree = "<group>"; };
+		0C4C5A5B1988F8A30057084E /* SKTTimingFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SKTTimingFunctions.h; path = SKTUtils/SKTTimingFunctions.h; sourceTree = "<group>"; };
+		0C4C5A5C1988F8A30057084E /* SKTTimingFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SKTTimingFunctions.m; path = SKTUtils/SKTTimingFunctions.m; sourceTree = "<group>"; };
+		0C4C5A5D1988F8A30057084E /* SKTUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SKTUtils.h; path = SKTUtils/SKTUtils.h; sourceTree = "<group>"; };
+		0C4C5A6619890B9F0057084E /* MacroHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacroHelpers.h; sourceTree = "<group>"; };
+		0CB9DFE6198F6F5D00DE89E9 /* UIImage+Blending.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Blending.h"; sourceTree = "<group>"; };
+		0CB9DFE7198F6F5D00DE89E9 /* UIImage+Blending.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Blending.m"; sourceTree = "<group>"; };
+		0CFC31D7198A11FB00C7499A /* SNGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNGameViewController.h; sourceTree = "<group>"; };
+		0CFC31D8198A11FB00C7499A /* SNGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNGameViewController.m; sourceTree = "<group>"; };
+		0CFC31DA198A54FC00C7499A /* xirod.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = xirod.ttf; sourceTree = "<group>"; };
 		6644AC651987A73700799332 /* UIBezierPath+Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+Image.h"; sourceTree = "<group>"; };
 		6644AC661987A73700799332 /* UIBezierPath+Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath+Image.m"; sourceTree = "<group>"; };
 		664E87BB197FD8D200B22AB6 /* SNMenuButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNMenuButton.h; sourceTree = "<group>"; };
@@ -106,6 +117,8 @@
 		666F8FFC1978E72100B7B381 /* SNGameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNGameScene.m; sourceTree = "<group>"; };
 		66FD01671977C9B70084746F /* NSObject+DelayedBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+DelayedBlocks.h"; sourceTree = "<group>"; };
 		66FD01681977C9B70084746F /* NSObject+DelayedBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DelayedBlocks.m"; sourceTree = "<group>"; };
+		D97F6D7747C44FE0A2277F3A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F6A3A9DD35484FF4A846FE98 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +130,7 @@
 				0C20F51D1976745F00831879 /* CoreGraphics.framework in Frameworks */,
 				0C20F51F1976745F00831879 /* UIKit.framework in Frameworks */,
 				0C20F51B1976745F00831879 /* Foundation.framework in Frameworks */,
+				403F0DFFC1A54F59AC45666B /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,11 +150,11 @@
 		0C20F50E1976745F00831879 = {
 			isa = PBXGroup;
 			children = (
-				0CC937941987E98600ACE8D8 /* SKTUtils */,
 				0C20F5191976745F00831879 /* Frameworks */,
 				0C20F5201976745F00831879 /* Grot */,
 				0C20F5421976745F00831879 /* GrotTests */,
 				0C20F5181976745F00831879 /* Products */,
+				F6A3A9DD35484FF4A846FE98 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -156,11 +170,13 @@
 		0C20F5191976745F00831879 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0CC937941987E98600ACE8D8 /* SKTUtils */,
 				666F8FB11978E65800B7B381 /* SpriteKit.framework */,
 				0C20F51A1976745F00831879 /* Foundation.framework */,
 				0C20F51C1976745F00831879 /* CoreGraphics.framework */,
 				0C20F51E1976745F00831879 /* UIKit.framework */,
 				0C20F53C1976745F00831879 /* XCTest.framework */,
+				D97F6D7747C44FE0A2277F3A /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -171,11 +187,9 @@
 				666F8FFB1978E72100B7B381 /* SNGameScene.h */,
 				666F8F391978DDDE00B7B381 /* SNGrotFieldModel.h */,
 				666F8F3C1978DE4A00B7B381 /* SNGrotView.h */,
-				0C20F5321976745F00831879 /* SNViewController.h */,
 				666F8FFC1978E72100B7B381 /* SNGameScene.m */,
 				666F8F3A1978DDDE00B7B381 /* SNGrotFieldModel.m */,
 				666F8F3D1978DE4A00B7B381 /* SNGrotView.m */,
-				0C20F5331976745F00831879 /* SNViewController.m */,
 				0C20F5351976745F00831879 /* Images.xcassets */,
 				666F8F3F1978E17000B7B381 /* AppDelegate */,
 				66FD01661977C9AA0084746F /* Helpers */,
@@ -183,6 +197,8 @@
 				0C20F52C1976745F00831879 /* Main_iPhone.storyboard */,
 				66D0BCB0197FE000000725FF /* Menu */,
 				0C20F5211976745F00831879 /* Supporting Files */,
+				0CFC31D7198A11FB00C7499A /* SNGameViewController.h */,
+				0CFC31D8198A11FB00C7499A /* SNGameViewController.m */,
 			);
 			path = Grot;
 			sourceTree = "<group>";
@@ -190,6 +206,7 @@
 		0C20F5211976745F00831879 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0CFC31DA198A54FC00C7499A /* xirod.ttf */,
 				0C20F5221976745F00831879 /* Grot-Info.plist */,
 				0C20F5231976745F00831879 /* InfoPlist.strings */,
 				0C20F5261976745F00831879 /* main.m */,
@@ -219,23 +236,23 @@
 		0CC937941987E98600ACE8D8 /* SKTUtils */ = {
 			isa = PBXGroup;
 			children = (
-				0CC937951987E98F00ACE8D8 /* SKAction+SKTExtras.h */,
-				0CC937961987E98F00ACE8D8 /* SKAction+SKTExtras.m */,
-				0CC937971987E98F00ACE8D8 /* SKAction+SKTSpecialEffects.h */,
-				0CC937981987E98F00ACE8D8 /* SKAction+SKTSpecialEffects.m */,
-				0CC937991987E98F00ACE8D8 /* SKEmitterNode+SKTExtras.h */,
-				0CC9379A1987E98F00ACE8D8 /* SKEmitterNode+SKTExtras.m */,
-				0CC9379B1987E98F00ACE8D8 /* SKNode+SKTDebugDraw.h */,
-				0CC9379C1987E98F00ACE8D8 /* SKNode+SKTDebugDraw.m */,
-				0CC9379D1987E98F00ACE8D8 /* SKNode+SKTExtras.h */,
-				0CC9379E1987E98F00ACE8D8 /* SKNode+SKTExtras.m */,
-				0CC9379F1987E98F00ACE8D8 /* SKTAudio.h */,
-				0CC937A01987E98F00ACE8D8 /* SKTAudio.m */,
-				0CC937A11987E98F00ACE8D8 /* SKTEffects.h */,
-				0CC937A21987E98F00ACE8D8 /* SKTEffects.m */,
-				0CC937A31987E98F00ACE8D8 /* SKTTimingFunctions.h */,
-				0CC937A41987E98F00ACE8D8 /* SKTTimingFunctions.m */,
-				0CC937A51987E98F00ACE8D8 /* SKTUtils.h */,
+				0C4C5A4D1988F8A30057084E /* SKAction+SKTExtras.h */,
+				0C4C5A4E1988F8A30057084E /* SKAction+SKTExtras.m */,
+				0C4C5A4F1988F8A30057084E /* SKAction+SKTSpecialEffects.h */,
+				0C4C5A501988F8A30057084E /* SKAction+SKTSpecialEffects.m */,
+				0C4C5A511988F8A30057084E /* SKEmitterNode+SKTExtras.h */,
+				0C4C5A521988F8A30057084E /* SKEmitterNode+SKTExtras.m */,
+				0C4C5A531988F8A30057084E /* SKNode+SKTDebugDraw.h */,
+				0C4C5A541988F8A30057084E /* SKNode+SKTDebugDraw.m */,
+				0C4C5A551988F8A30057084E /* SKNode+SKTExtras.h */,
+				0C4C5A561988F8A30057084E /* SKNode+SKTExtras.m */,
+				0C4C5A571988F8A30057084E /* SKTAudio.h */,
+				0C4C5A581988F8A30057084E /* SKTAudio.m */,
+				0C4C5A591988F8A30057084E /* SKTEffects.h */,
+				0C4C5A5A1988F8A30057084E /* SKTEffects.m */,
+				0C4C5A5B1988F8A30057084E /* SKTTimingFunctions.h */,
+				0C4C5A5C1988F8A30057084E /* SKTTimingFunctions.m */,
+				0C4C5A5D1988F8A30057084E /* SKTUtils.h */,
 			);
 			name = SKTUtils;
 			sourceTree = "<group>";
@@ -269,6 +286,11 @@
 				6644AC651987A73700799332 /* UIBezierPath+Image.h */,
 				66FD01681977C9B70084746F /* NSObject+DelayedBlocks.m */,
 				6644AC661987A73700799332 /* UIBezierPath+Image.m */,
+				0C4C5A4A1988E7730057084E /* UIWindow+Splash.h */,
+				0C4C5A4B1988E7730057084E /* UIWindow+Splash.m */,
+				0C4C5A6619890B9F0057084E /* MacroHelpers.h */,
+				0CB9DFE6198F6F5D00DE89E9 /* UIImage+Blending.h */,
+				0CB9DFE7198F6F5D00DE89E9 /* UIImage+Blending.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -280,9 +302,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0C20F54C1976745F00831879 /* Build configuration list for PBXNativeTarget "Grot" */;
 			buildPhases = (
+				C549C30227B247B7B430BFEB /* Check Pods Manifest.lock */,
 				0C20F5131976745F00831879 /* Sources */,
 				0C20F5141976745F00831879 /* Frameworks */,
 				0C20F5151976745F00831879 /* Resources */,
+				B91DA02DE8824D88A299CB80 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -358,9 +382,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CFC31DC198A563600C7499A /* xirod.ttf in Resources */,
 				0C20F5311976745F00831879 /* Main_iPad.storyboard in Resources */,
 				0C20F5361976745F00831879 /* Images.xcassets in Resources */,
 				0C20F52E1976745F00831879 /* Main_iPhone.storyboard in Resources */,
+				0CFC31DB198A551800C7499A /* Grot-Info.plist in Resources */,
 				0C20F5251976745F00831879 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -375,6 +401,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		B91DA02DE8824D88A299CB80 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C549C30227B247B7B430BFEB /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		0C20F5131976745F00831879 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -382,22 +441,24 @@
 			files = (
 				66FD01691977C9B70084746F /* NSObject+DelayedBlocks.m in Sources */,
 				0C20F5271976745F00831879 /* main.m in Sources */,
-				0CC937A81987E98F00ACE8D8 /* SKEmitterNode+SKTExtras.m in Sources */,
+				0CB9DFE8198F6F5D00DE89E9 /* UIImage+Blending.m in Sources */,
 				666F8FFD1978E72100B7B381 /* SNGameScene.m in Sources */,
-				0CC937A61987E98F00ACE8D8 /* SKAction+SKTExtras.m in Sources */,
-				0CC937AC1987E98F00ACE8D8 /* SKTEffects.m in Sources */,
-				0CC937AA1987E98F00ACE8D8 /* SKNode+SKTExtras.m in Sources */,
 				664E87BD197FD8D200B22AB6 /* SNMenuButton.m in Sources */,
-				0CC937A91987E98F00ACE8D8 /* SKNode+SKTDebugDraw.m in Sources */,
+				0C4C5A4C1988E7730057084E /* UIWindow+Splash.m in Sources */,
 				666F8F3B1978DDDE00B7B381 /* SNGrotFieldModel.m in Sources */,
+				0C4C5A651988F8A30057084E /* SKTTimingFunctions.m in Sources */,
+				0C4C5A641988F8A30057084E /* SKTEffects.m in Sources */,
+				0C4C5A611988F8A30057084E /* SKNode+SKTDebugDraw.m in Sources */,
 				666F8F3E1978DE4A00B7B381 /* SNGrotView.m in Sources */,
-				0CC937A71987E98F00ACE8D8 /* SKAction+SKTSpecialEffects.m in Sources */,
+				0C4C5A5F1988F8A30057084E /* SKAction+SKTSpecialEffects.m in Sources */,
+				0CFC31D9198A11FB00C7499A /* SNGameViewController.m in Sources */,
+				0C4C5A601988F8A30057084E /* SKEmitterNode+SKTExtras.m in Sources */,
 				664E87C0197FDD1F00B22AB6 /* SNMenuView.m in Sources */,
+				0C4C5A5E1988F8A30057084E /* SKAction+SKTExtras.m in Sources */,
 				666C3EFB1980D8EB00C4E5E7 /* SNNewGameButton.m in Sources */,
-				0C20F5341976745F00831879 /* SNViewController.m in Sources */,
-				0CC937AD1987E98F00ACE8D8 /* SKTTimingFunctions.m in Sources */,
+				0C4C5A631988F8A30057084E /* SKTAudio.m in Sources */,
+				0C4C5A621988F8A30057084E /* SKNode+SKTExtras.m in Sources */,
 				6644AC671987A73700799332 /* UIBezierPath+Image.m in Sources */,
-				0CC937AB1987E98F00ACE8D8 /* SKTAudio.m in Sources */,
 				0C20F52B1976745F00831879 /* SNAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -530,6 +591,7 @@
 		};
 		0C20F54D1976745F00831879 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F6A3A9DD35484FF4A846FE98 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -546,6 +608,7 @@
 		};
 		0C20F54E1976745F00831879 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F6A3A9DD35484FF4A846FE98 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;

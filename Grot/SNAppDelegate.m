@@ -8,11 +8,37 @@
 
 #import "SNAppDelegate.h"
 
+#import "UIWindow+Splash.h"
+
 @implementation SNAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    UIWindow* baseWindow = self.window;
+    SplashWindow* splashWindow = [UIWindow splashWindow];
+    
+    self.window = splashWindow;
+    [self.window makeKeyAndVisible];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.333 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [baseWindow makeKeyAndVisible];
+        
+        // Fade in blur
+        [UIView animateWithDuration:0.999 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            [splashWindow.mainImageView setAlpha:0.0];
+        } completion:nil];
+        
+        // Fade out splash
+        [UIView animateWithDuration:0.777 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            splashWindow.alpha = 0.0;
+        } completion:^(BOOL finished) {
+            self.window = baseWindow;
+        }];
+    });
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
     return YES;
 }
 							

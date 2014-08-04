@@ -8,11 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-#define colorFromHex(hex) ([UIColor colorWithRed:((hex >> 16) & 0xFF) / 255.0 \
-green:((hex >> 8)  & 0xFF) / 255.0 \
-blue:((hex >> 0)  & 0xFF) / 255.0 \
-alpha:1.0])
-
 #define randomElement(array) array[arc4random_uniform(array.count)]
 
 #define deg2rad(degrees) ((degrees) / 180.0 * M_PI)

@@ -12,7 +12,7 @@
 #import "SNMenuButton.h"
 #import "SNMenuView.h"
 #import "SKTEffects.h"
-
+#import "UIBezierPath+Image.h"
 
 @interface SNGameScene ()
 {
@@ -22,22 +22,9 @@
     int bottomMargin;
     int grotSpace;
     
+    SKSpriteNode* backgroundSprite;
+    
 }
-
-@property (nonatomic, strong) SKLabelNode *scoreTitle;
-@property (nonatomic, strong) SKLabelNode *scoreValue;
-@property (nonatomic, strong) SKLabelNode *scoreBonus;
-
-@property (nonatomic, strong) SKLabelNode *movesTitle;
-@property (nonatomic, strong) SKLabelNode *movesValue;
-@property (nonatomic, strong) SKLabelNode *movesBonus;
-
-@property (nonatomic, strong) SKSpriteNode *helpView;
-@property (nonatomic, strong) SKSpriteNode *bottomBar;
-@property (nonatomic, strong) SKSpriteNode *topBar;
-
-@property (nonatomic, strong) SNMenuButton *menuButton;
-@property (nonatomic, strong) SNMenuView *menuView;
 
 @property (nonatomic, assign) int score;
 @property (nonatomic, assign) int moves;
@@ -50,98 +37,20 @@
 {
     if (self = [super initWithSize:size])
     {
-        self.bottomBar = [[SKSpriteNode alloc] initWithImageNamed:@"menu"];
-        self.topBar = [[SKSpriteNode alloc] initWithImageNamed:@"topMenu"];
-        self.scoreTitle = [SKLabelNode labelNodeWithFontNamed:@"Courier New"];
-        self.scoreValue = [SKLabelNode labelNodeWithFontNamed:@"Courier New"];
-        self.scoreBonus = [SKLabelNode labelNodeWithFontNamed:@"Courier New"];
-        
-        self.movesTitle = [SKLabelNode labelNodeWithFontNamed:@"Courier New"];
-        self.movesValue = [SKLabelNode labelNodeWithFontNamed:@"Courier New"];
-        self.movesBonus = [SKLabelNode labelNodeWithFontNamed:@"Courier New"];
-        
-        self.menuView = [SNMenuView new];
-        self.menuButton = [[SNMenuButton alloc] initWithSize:50 angle:M_PI/4];
-        
-        self.menuView.name = @"menuView";
-        self.menuButton.name = @"menuButton";
-        
         boardSideMargin = 5;
-        int boardSideSize = (self.frame.size.width - 2*boardSideMargin);
-        
-        bottomMargin = (self.frame.size.height - boardSideSize - self.topBar.frame.size.height - self.bottomBar.frame.size.height/2) / 2 + self.bottomBar.frame.size.height/2;
-        
-        
-        self.scoreTitle.color = colorFromHex(0xecf0f1);
-        self.scoreValue.color = colorFromHex(0xecf0f1);
-        self.scoreBonus.color = colorFromHex(0xecf0f1);
-        
-        self.movesTitle.color = colorFromHex(0xecf0f1);
-        self.movesValue.color = colorFromHex(0xecf0f1);
-        self.movesBonus.color = colorFromHex(0xecf0f1);
-        
-        
-        self.scoreTitle.fontSize = 22;
-        self.scoreValue.fontSize = 22;
-        self.scoreBonus.fontSize = 14;
-        
-        self.movesTitle.fontSize = 22;
-        self.movesValue.fontSize = 22;
-        self.movesBonus.fontSize = 14;
-        
-        
-        self.scoreTitle.text = @"Score";
-        self.scoreBonus.text = @"1";
-        self.scoreBonus.text = @"";
-        
-        self.movesTitle.text = @"Moves";
-        self.movesBonus.text = @"1";
-        self.movesBonus.text = @"";
-        
-        
-        self.scoreTitle.position = CGPointMake(CGRectGetMinX(self.frame) + CGRectGetWidth(self.scoreTitle.frame)/2 + 50, CGRectGetMaxY(self.frame) - 30);
-        self.movesTitle.position = CGPointMake(CGRectGetMaxX(self.frame) - CGRectGetWidth(self.movesTitle.frame)/2 - 50, CGRectGetMaxY(self.frame) - 30);
-        
-        CGPoint position = self.scoreTitle.position;
-        position.y -= CGRectGetHeight(self.scoreValue.frame) + CGRectGetHeight(self.scoreTitle.frame) + 10;
-        self.scoreValue.position = position;
-        
-        position = self.movesTitle.position;
-        position.y -= CGRectGetHeight(self.movesValue.frame) + CGRectGetHeight(self.movesTitle.frame) + 10;
-        self.movesValue.position = position;
-        
-        position = self.scoreValue.position;
-        position.y -= CGRectGetHeight(self.scoreBonus.frame) + CGRectGetHeight(self.scoreValue.frame) + 10;
-        self.scoreBonus.position = position;
-        
-        position = self.movesValue.position;
-        position.y -= CGRectGetHeight(self.movesBonus.frame) + CGRectGetHeight(self.movesValue.frame) + 10;
-        self.movesBonus.position = position;
-        
-        self.bottomBar.position = CGPointMake(CGRectGetWidth(self.bottomBar.frame)/2, CGRectGetHeight(self.bottomBar.frame)/2);
-        self.topBar.position =  CGPointMake(CGRectGetWidth(self.topBar.frame)/2, CGRectGetHeight(self.frame) - CGRectGetHeight(self.topBar.frame)/2);
-        
-        [self addChild:self.topBar];
-        [self addChild:self.scoreTitle];
-        [self addChild:self.scoreValue];
-        [self addChild:self.scoreBonus];
-        
-        [self addChild:self.movesTitle];
-        [self addChild:self.movesValue];
-        [self addChild:self.movesBonus];
-        
-        
+
         self.score = 0;
         self.moves = 5;
         
-        CGFloat grayValue = 58/255.;
-        self.backgroundColor = [UIColor colorWithRed:grayValue green:grayValue blue:grayValue alpha:1];
+        int boardSideSize = (self.frame.size.width - 2*boardSideMargin);
+        self.backgroundColor = [UIColor colorWithWhite:1 alpha:1.0];
+        bottomMargin = (self.frame.size.height - boardSideSize) / 2;
+        
+//        backgroundSprite = [[SKSpriteNode alloc] initWithImageNamed:@"Back"];
+//        backgroundSprite.xScale = self.size.width / backgroundSprite.size.width;
+//        backgroundSprite.position = CGPointMake(self.size.width / 2.0, self.size.height - backgroundSprite.size.height / 2.0);
         
         [self newGameWithSize:[self boardSize]];
-        
-        [self addChild:self.menuView];
-        [self addChild:self.bottomBar];
-        [self addChild:self.menuButton];
     }
     
     return self;
@@ -290,7 +199,7 @@
                 SKAction* fadeOutAction = [SKAction fadeOutWithDuration:animationTime / 3.0 / 2.0];
                 
                 fadeAction.timingMode = SKActionTimingEaseIn;
-                moveAction.timingMode = SKActionTimingEaseInEaseOut;
+                moveAction.timingMode = SKActionTimingEaseOut;
                 fadeOutAction.timingMode = SKActionTimingEaseOut;
                 
                 [grot0 runAction:[SKAction sequence:@[ [SKAction group:@[moveAction, fadeAction]], fadeOutAction ]] completion:^{
@@ -394,8 +303,8 @@
             }
             else
             {
-                touchLocation = [touch locationInNode:self.menuView];
-                touchedNode = [self.menuView nodeAtPoint:touchLocation];                
+//                touchLocation = [touch locationInNode:self.menuView];
+//                touchedNode = [self.menuView nodeAtPoint:touchLocation];                
                 
                 if ([touchedNode.name isEqualToString:@"level1Button"])
                 {
@@ -589,28 +498,28 @@
 - (void)setScore:(int)score
 {
     _score = score;
-    self.scoreValue.text = [NSString stringWithFormat:@"%i", score];
+//    self.scoreValue.text = [NSString stringWithFormat:@"%i", score];
 }
 
 - (void)setMoves:(int)moves
 {
     _moves = moves;
-    self.movesValue.text = [NSString stringWithFormat:@"%i", moves];
+//    self.movesValue.text = [NSString stringWithFormat:@"%i", moves];
 }
 
 - (void)addScore:(int)score
 {
     if (score > 0)
     {
-        self.scoreBonus.alpha = 1;
-        self.scoreBonus.text = [NSString stringWithFormat:@"+%i", score];
+//        self.scoreBonus.alpha = 1;
+//        self.scoreBonus.text = [NSString stringWithFormat:@"+%i", score];
         self.score += score;
-        [self.scoreBonus runAction:[SKAction sequence:@[[SKAction waitForDuration:1],
-                                                        [SKAction fadeAlphaTo:0 duration:0.5]]]];
+//        [self.scoreBonus runAction:[SKAction sequence:@[[SKAction waitForDuration:1],
+//                                                        [SKAction fadeAlphaTo:0 duration:0.5]]]];
     }
     else
     {
-        self.scoreValue.text = @"";
+//        self.scoreValue.text = @"";
     }
 }
 
@@ -618,40 +527,40 @@
 {
     if (moves > 0)
     {
-        self.movesBonus.alpha = 1;
-        self.movesBonus.text = [NSString stringWithFormat:@"+%i", moves];
+//        self.movesBonus.alpha = 1;
+//        self.movesBonus.text = [NSString stringWithFormat:@"+%i", moves];
         self.moves += moves;
         
-        [self.movesBonus runAction:[SKAction sequence:@[[SKAction waitForDuration:1],
-                                                        [SKAction fadeAlphaTo:0 duration:0.5]]]];
+//        [self.movesBonus runAction:[SKAction sequence:@[[SKAction waitForDuration:1],
+//                                                        [SKAction fadeAlphaTo:0 duration:0.5]]]];
     }
     else
     {
-        self.movesBonus.text = @"";
+//        self.movesBonus.text = @"";
     }
 }
 
 #pragma mark - Game action
 
-- (void)showHelp
-{
-    if (!self.helpView)
-    {
-        self.helpView = [[SKSpriteNode alloc] initWithImageNamed:@"help"];
-        self.helpView.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
-    }
-    
-    if ([self.helpView inParentHierarchy:self])
-    {
-        [self.helpView runAction:[SKAction removeFromParent]];
-    }
-    else
-    {
-        [self.helpView setScale:1];
-        [self.helpView runAction:[SKAction scaleTo:self.frame.size.height/self.helpView.frame.size.height duration:0.1]];
-        [self addChild:self.helpView];
-    }
-}
+//- (void)showHelp
+//{
+//    if (!self.helpView)
+//    {
+//        self.helpView = [[SKSpriteNode alloc] initWithImageNamed:@"help"];
+//        self.helpView.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
+//    }
+//    
+//    if ([self.helpView inParentHierarchy:self])
+//    {
+//        [self.helpView runAction:[SKAction removeFromParent]];
+//    }
+//    else
+//    {
+//        [self.helpView setScale:1];
+//        [self.helpView runAction:[SKAction scaleTo:self.frame.size.height/self.helpView.frame.size.height duration:0.1]];
+//        [self addChild:self.helpView];
+//    }
+//}
 
 - (void)endGame
 {
@@ -666,8 +575,8 @@
 {
     isMenuVisible = !isMenuVisible;
     
-    [self.menuView toggle];
-    [self.menuButton toggle];
+//    [self.menuView toggle];
+//    [self.menuButton toggle];
     
     for (SNGrotView *grot in self.grots)
     {
@@ -735,7 +644,7 @@
 {
     if (_boardSize == 0)
     {
-        _boardSize = [[NSUserDefaults standardUserDefaults] integerForKey:@"boardSize"] ? : 3;
+        _boardSize = [[NSUserDefaults standardUserDefaults] integerForKey:@"boardSize"] ? : 4;
     }
     
     return (int)_boardSize;

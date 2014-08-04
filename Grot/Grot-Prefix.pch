@@ -15,3 +15,5 @@
     #import <Foundation/Foundation.h>
 #endif
 #import "NSObject+DelayedBlocks.h"
+
+#import "MacroHelpers.h"
