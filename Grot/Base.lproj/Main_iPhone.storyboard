@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="sgp-aa-1xI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="sgp-aa-1xI">
     <dependencies>
         <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
@@ -46,7 +46,7 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Scores" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6cZ-oL-73q">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6cZ-oL-73q">
                                         <rect key="frame" x="52" y="30" width="104" height="38"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
@@ -204,7 +204,7 @@ Collect as many points as possible!</string>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bottomBar" translatesAutoresizingMaskIntoConstraints="NO" id="ZSR-sR-XJB" userLabel="Bottom bar background">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="105"/>
+                                        <rect key="frame" x="0.0" y="23" width="320" height="82"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tmn-L9-Ya8" userLabel="Home button">
@@ -224,7 +224,7 @@ Collect as many points as possible!</string>
                                 </subviews>
                                 <color key="backgroundColor" white="0.15981409671532848" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="ZSR-sR-XJB" firstAttribute="top" secondItem="R0q-T4-mbe" secondAttribute="top" id="3bt-q6-jeW"/>
+                                    <constraint firstItem="ZSR-sR-XJB" firstAttribute="top" secondItem="R0q-T4-mbe" secondAttribute="top" constant="23" id="3bt-q6-jeW"/>
                                     <constraint firstAttribute="bottom" secondItem="ZSR-sR-XJB" secondAttribute="bottom" id="AE4-Ny-JEC"/>
                                     <constraint firstAttribute="trailing" secondItem="ZSR-sR-XJB" secondAttribute="trailing" id="IgC-PG-d5x"/>
                                     <constraint firstAttribute="height" constant="105" id="Ndr-V9-FiF"/>
@@ -282,7 +282,7 @@ Collect as many points as possible!</string>
         </scene>
     </scenes>
     <resources>
-        <image name="bottomBar" width="640" height="211"/>
+        <image name="bottomBar" width="320" height="82"/>
         <image name="button" width="106" height="106"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

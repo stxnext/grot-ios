@@ -73,8 +73,8 @@
 {
     return @{ kColorGray  : colorFromHex(0xffffff),
               kColorBlue  : colorFromHex(0xffec00),
-              kColorGreen : colorFromHex(0xe50000),
-              kColorRed   : colorFromHex(0x00968f) };
+              kColorGreen : colorFromHex(0xe50f0f),
+              kColorRed   : colorFromHex(0x00968f) }; //
 }
 
 + (NSDictionary *)points
