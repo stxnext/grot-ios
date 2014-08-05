@@ -42,20 +42,29 @@
         self.moves = 5;
         
         boardSideMargin = INTERFACE_IS_PHONE_SMALL_SCREEN ? 20.0 : 5.0;
-        int boardSideSize = (self.frame.size.width - 2*boardSideMargin);
         self.backgroundColor = [UIColor colorWithWhite:0.2 alpha:1.0];
-        bottomMargin = (self.frame.size.height - boardSideSize) / 2;
         
         backgroundSprite = [[SKSpriteNode alloc] initWithImageNamed:@"shadow"];
-        backgroundSprite.xScale = self.size.width / backgroundSprite.size.width;
         backgroundSprite.zPosition = -1;
-        backgroundSprite.position = CGPointMake(self.size.width / 2.0, self.size.height - backgroundSprite.size.height / 2.0);
         [self addChild:backgroundSprite];
         
         [self newGameWithSize:[self boardSize]];
     }
     
     return self;
+}
+
+- (void)setSize:(CGSize)size
+{
+    [super setSize:size];
+    
+    int boardSideSize = (self.frame.size.width - 2*boardSideMargin);
+    bottomMargin = (self.frame.size.height - boardSideSize) / 2;
+    
+    backgroundSprite.xScale = self.size.width / backgroundSprite.size.width;
+    backgroundSprite.position = CGPointMake(self.size.width / 2.0, self.size.height - backgroundSprite.size.height / 2.0);
+    
+    cellSize = (self.size.width - 2 * boardSideMargin) / [self boardSize];
 }
 
 #pragma mark - Touches
@@ -580,8 +589,6 @@
     
     [self performBlockInCurrentThread:^{
         self.grots = [NSMutableArray new];
-        
-        cellSize = (self.size.width - 2 * boardSideMargin) / [self boardSize];
         
         for (NSInteger y = 0; y < [self boardSize]; y++)
         {

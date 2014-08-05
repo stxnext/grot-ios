@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="sgp-aa-1xI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="sgp-aa-1xI">
     <dependencies>
         <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -83,13 +84,16 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.58823529411764708" blue="0.55686274509803924" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="aJM-TD-Uqd"/>
+                                    <constraint firstAttribute="height" constant="120" id="ezU-9h-MLe"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Rz-je-0MT" userLabel="Game scene" customClass="SKView">
                                 <rect key="frame" x="0.0" y="120" width="320" height="319"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="pDP-7q-Qzq"/>
+                                </constraints>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dej-fK-WJa" userLabel="Help container" customClass="SKView">
                                 <rect key="frame" x="0.0" y="120" width="320" height="319"/>
@@ -99,24 +103,13 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="319"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2NA-iH-0ej">
-                                        <rect key="frame" x="20" y="0.0" width="280" height="275"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2NA-iH-0ej" userLabel="Help text">
+                                        <rect key="frame" x="20" y="20" width="280" height="255"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <attributedString key="attributedText">
                                             <fragment>
-                                                <string key="content">Grot
-(eng. Arrowhead)
-</string>
-                                                <attributes>
-                                                    <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <font key="NSFont" metaFont="smallSystem"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                                </attributes>
-                                            </fragment>
-                                            <fragment>
-                                                <string key="content">
-This logic game is about making the most valuable chains possible!
+                                                <string key="content">This logic game is about making the most valuable chains possible!
 
 Tap any field to start chain reaction - fields will move one by one in direction shown by arrowheads.
 
@@ -132,8 +125,8 @@ Collect as many points as possible!</string>
                                         </attributedString>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ru2-Xo-ltI">
-                                        <rect key="frame" x="0.0" y="264" width="320" height="50"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ru2-Xo-ltI" userLabel="Scores container">
+                                        <rect key="frame" x="0.0" y="254" width="320" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yd3-sf-LjP">
@@ -187,24 +180,27 @@ Collect as many points as possible!</string>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="7HP-DS-fkx"/>
-                                            <constraint firstAttribute="width" constant="320" id="Fh3-Xe-BrG"/>
+                                            <constraint firstAttribute="height" constant="50" id="WLy-lI-WmA"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="r0x-WE-Yhy" secondAttribute="trailing" id="1fX-ZC-Rln"/>
-                                    <constraint firstAttribute="bottom" secondItem="r0x-WE-Yhy" secondAttribute="bottom" id="4Lk-Hr-3G2"/>
-                                    <constraint firstAttribute="bottom" secondItem="ru2-Xo-ltI" secondAttribute="bottom" constant="5" id="4up-wE-QGK"/>
-                                    <constraint firstItem="ru2-Xo-ltI" firstAttribute="leading" secondItem="Dej-fK-WJa" secondAttribute="leading" id="P21-OV-d7Z"/>
-                                    <constraint firstAttribute="trailing" secondItem="ru2-Xo-ltI" secondAttribute="trailing" id="gcu-l2-7Jy"/>
-                                    <constraint firstItem="r0x-WE-Yhy" firstAttribute="leading" secondItem="Dej-fK-WJa" secondAttribute="leading" id="rmV-Af-mId"/>
-                                    <constraint firstItem="r0x-WE-Yhy" firstAttribute="top" secondItem="Dej-fK-WJa" secondAttribute="top" id="upM-4A-EHe"/>
+                                    <constraint firstAttribute="bottom" secondItem="2NA-iH-0ej" secondAttribute="bottom" constant="44" id="190-7M-3X2"/>
+                                    <constraint firstItem="ru2-Xo-ltI" firstAttribute="leading" secondItem="Dej-fK-WJa" secondAttribute="leading" id="Ets-mN-iVI"/>
+                                    <constraint firstAttribute="trailing" secondItem="2NA-iH-0ej" secondAttribute="trailing" constant="20" id="HMA-3s-Rf9"/>
+                                    <constraint firstAttribute="trailing" secondItem="ru2-Xo-ltI" secondAttribute="trailing" id="MPq-kl-OGs"/>
+                                    <constraint firstItem="r0x-WE-Yhy" firstAttribute="leading" secondItem="Dej-fK-WJa" secondAttribute="leading" id="Mb2-to-l3y"/>
+                                    <constraint firstAttribute="trailing" secondItem="r0x-WE-Yhy" secondAttribute="trailing" id="NMq-WQ-Cb7"/>
+                                    <constraint firstItem="r0x-WE-Yhy" firstAttribute="top" secondItem="Dej-fK-WJa" secondAttribute="top" id="UG4-aY-sa0"/>
+                                    <constraint firstItem="2NA-iH-0ej" firstAttribute="top" secondItem="Dej-fK-WJa" secondAttribute="top" constant="20" id="a4j-D8-aib"/>
+                                    <constraint firstAttribute="bottom" secondItem="ru2-Xo-ltI" secondAttribute="bottom" multiplier="3.4" constant="-715" id="arx-Mt-600"/>
+                                    <constraint firstAttribute="bottom" secondItem="r0x-WE-Yhy" secondAttribute="bottom" id="i2S-Tb-o9G"/>
+                                    <constraint firstItem="2NA-iH-0ej" firstAttribute="leading" secondItem="Dej-fK-WJa" secondAttribute="leading" constant="20" id="jUc-qP-4BI"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R0q-T4-mbe" userLabel="Bottom bar" customClass="UIPassthroughView">
-                                <rect key="frame" x="0.0" y="463" width="320" height="105"/>
+                                <rect key="frame" x="0.0" y="375" width="320" height="105"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bottomBar" translatesAutoresizingMaskIntoConstraints="NO" id="ZSR-sR-XJB" userLabel="Bottom bar background">
@@ -215,8 +211,8 @@ Collect as many points as possible!</string>
                                         <rect key="frame" x="4" y="49" width="53" height="53"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="53" id="s4z-Yz-WpO"/>
-                                            <constraint firstAttribute="height" constant="53" id="wdQ-09-HTa"/>
+                                            <constraint firstAttribute="width" constant="53" id="COi-tJ-GNu"/>
+                                            <constraint firstAttribute="height" constant="53" id="Sos-6v-V8n"/>
                                         </constraints>
                                         <state key="normal" image="button">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -228,39 +224,45 @@ Collect as many points as possible!</string>
                                 </subviews>
                                 <color key="backgroundColor" white="0.15981409671532848" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="ZSR-sR-XJB" secondAttribute="trailing" id="8EP-Tn-hvG"/>
-                                    <constraint firstAttribute="height" constant="105" id="JVR-QZ-3be"/>
-                                    <constraint firstAttribute="bottom" secondItem="tmn-L9-Ya8" secondAttribute="bottom" constant="3" id="Rl3-7J-79g"/>
-                                    <constraint firstItem="ZSR-sR-XJB" firstAttribute="leading" secondItem="R0q-T4-mbe" secondAttribute="leading" id="b7E-lB-Efw"/>
-                                    <constraint firstItem="ZSR-sR-XJB" firstAttribute="top" secondItem="R0q-T4-mbe" secondAttribute="top" id="n8P-Tb-VMw"/>
-                                    <constraint firstItem="tmn-L9-Ya8" firstAttribute="leading" secondItem="R0q-T4-mbe" secondAttribute="leading" constant="4" id="pgH-Ko-0ro"/>
-                                    <constraint firstAttribute="bottom" secondItem="ZSR-sR-XJB" secondAttribute="bottom" id="rIY-6p-pb3"/>
+                                    <constraint firstItem="ZSR-sR-XJB" firstAttribute="top" secondItem="R0q-T4-mbe" secondAttribute="top" id="3bt-q6-jeW"/>
+                                    <constraint firstAttribute="bottom" secondItem="ZSR-sR-XJB" secondAttribute="bottom" id="AE4-Ny-JEC"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZSR-sR-XJB" secondAttribute="trailing" id="IgC-PG-d5x"/>
+                                    <constraint firstAttribute="height" constant="105" id="Ndr-V9-FiF"/>
+                                    <constraint firstItem="tmn-L9-Ya8" firstAttribute="leading" secondItem="R0q-T4-mbe" secondAttribute="leading" constant="4" id="UEw-OU-nu2"/>
+                                    <constraint firstAttribute="bottom" secondItem="tmn-L9-Ya8" secondAttribute="bottom" constant="3" id="XQA-gG-26X"/>
+                                    <constraint firstItem="ZSR-sR-XJB" firstAttribute="leading" secondItem="R0q-T4-mbe" secondAttribute="leading" id="cAU-b6-GJy"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="3Rz-je-0MT" firstAttribute="leading" secondItem="Mvj-OK-3ZR" secondAttribute="leading" id="0gB-ay-5Pw"/>
-                            <constraint firstItem="Zih-dy-GQb" firstAttribute="leading" secondItem="Mvj-OK-3ZR" secondAttribute="leading" id="2cm-YP-LIE"/>
-                            <constraint firstAttribute="bottom" secondItem="3Rz-je-0MT" secondAttribute="bottom" constant="41" id="Anb-hv-qej"/>
-                            <constraint firstItem="Dej-fK-WJa" firstAttribute="top" secondItem="Zih-dy-GQb" secondAttribute="bottom" id="Kye-EB-skc"/>
-                            <constraint firstAttribute="trailing" secondItem="R0q-T4-mbe" secondAttribute="trailing" id="NK8-ke-teC"/>
-                            <constraint firstItem="R0q-T4-mbe" firstAttribute="leading" secondItem="Mvj-OK-3ZR" secondAttribute="leading" id="RN0-FY-OHg"/>
-                            <constraint firstAttribute="bottom" secondItem="R0q-T4-mbe" secondAttribute="bottom" id="SHx-R7-ap4"/>
-                            <constraint firstAttribute="bottom" secondItem="Dej-fK-WJa" secondAttribute="bottom" constant="41" id="WE5-Mg-CFh"/>
-                            <constraint firstAttribute="trailing" secondItem="Zih-dy-GQb" secondAttribute="trailing" id="X17-u2-yhJ"/>
-                            <constraint firstItem="Zih-dy-GQb" firstAttribute="top" secondItem="Mvj-OK-3ZR" secondAttribute="top" id="Ykw-4V-wFf"/>
-                            <constraint firstAttribute="trailing" secondItem="3Rz-je-0MT" secondAttribute="trailing" id="gOo-jz-xtk"/>
-                            <constraint firstItem="3Rz-je-0MT" firstAttribute="top" secondItem="Zih-dy-GQb" secondAttribute="bottom" id="lli-it-Xdu"/>
-                            <constraint firstAttribute="trailing" secondItem="Dej-fK-WJa" secondAttribute="trailing" id="vcu-Pq-Xkg"/>
-                            <constraint firstItem="Dej-fK-WJa" firstAttribute="leading" secondItem="Mvj-OK-3ZR" secondAttribute="leading" id="vfr-SP-dlz"/>
+                            <constraint firstItem="3Rz-je-0MT" firstAttribute="leading" secondItem="Mvj-OK-3ZR" secondAttribute="leading" id="7Wb-aa-Vzk"/>
+                            <constraint firstItem="3Rz-je-0MT" firstAttribute="top" secondItem="Zih-dy-GQb" secondAttribute="bottom" id="7mO-8I-z5P"/>
+                            <constraint firstItem="JJw-3F-4mO" firstAttribute="top" secondItem="3Rz-je-0MT" secondAttribute="bottom" constant="41" id="EGh-a6-Kue"/>
+                            <constraint firstAttribute="trailing" secondItem="Dej-fK-WJa" secondAttribute="trailing" id="FwQ-Go-kIe"/>
+                            <constraint firstItem="Dej-fK-WJa" firstAttribute="top" secondItem="Zih-dy-GQb" secondAttribute="bottom" id="S0y-fQ-mYD"/>
+                            <constraint firstAttribute="trailing" secondItem="3Rz-je-0MT" secondAttribute="trailing" id="Tyx-cP-vbV"/>
+                            <constraint firstAttribute="trailing" secondItem="Zih-dy-GQb" secondAttribute="trailing" id="XcO-fz-os6"/>
+                            <constraint firstItem="Dej-fK-WJa" firstAttribute="leading" secondItem="Mvj-OK-3ZR" secondAttribute="leading" id="YPz-zx-kzk"/>
+                            <constraint firstAttribute="bottom" secondItem="R0q-T4-mbe" secondAttribute="bottom" id="ZZs-9b-N6i"/>
+                            <constraint firstAttribute="bottom" secondItem="Dej-fK-WJa" secondAttribute="bottom" constant="41" id="gYF-E1-0el"/>
+                            <constraint firstItem="Zih-dy-GQb" firstAttribute="leading" secondItem="Mvj-OK-3ZR" secondAttribute="leading" id="iXf-ku-qdx"/>
+                            <constraint firstItem="R0q-T4-mbe" firstAttribute="leading" secondItem="Mvj-OK-3ZR" secondAttribute="leading" id="tEX-Me-DYm"/>
+                            <constraint firstItem="Zih-dy-GQb" firstAttribute="top" secondItem="Mvj-OK-3ZR" secondAttribute="top" id="wYA-AH-zMI"/>
+                            <constraint firstAttribute="trailing" secondItem="R0q-T4-mbe" secondAttribute="trailing" id="zEX-Za-WPo"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="tBw-fZ-ml3"/>
                     <connections>
                         <outlet property="gameView" destination="3Rz-je-0MT" id="Bxj-LY-GAN"/>
+                        <outlet property="helpBackground" destination="r0x-WE-Yhy" id="Ml7-2K-1r6"/>
+                        <outlet property="helpContainter" destination="Dej-fK-WJa" id="OY2-Oz-PwV"/>
                         <outlet property="movesDeltaLabel" destination="goF-Wx-n3l" id="KyV-5x-afn"/>
                         <outlet property="movesLabel" destination="d6y-UV-M0U" id="BYI-pT-e9A"/>
+                        <outlet property="score1x" destination="Yd3-sf-LjP" id="B9c-Fn-bZO"/>
+                        <outlet property="score2x" destination="vxY-ia-17a" id="bH1-X6-RMt"/>
+                        <outlet property="score3x" destination="Hhl-cV-Wjg" id="iQ4-6Y-R5t"/>
+                        <outlet property="score4x" destination="s7U-gC-8yc" id="29m-Tm-UIF"/>
                         <outlet property="scoreDeltaLabel" destination="esi-XH-K0g" id="uJy-FD-Yhn"/>
                         <outlet property="scoreLabel" destination="jT7-hQ-Oz8" id="NbH-xJ-GIq"/>
                         <outletCollection property="latoFontLabels" destination="jT7-hQ-Oz8" id="W5U-nQ-4fM"/>
@@ -272,12 +274,6 @@ Collect as many points as possible!</string>
                         <outletCollection property="passThroughViews" destination="ZSR-sR-XJB" id="kDD-Wd-fl9"/>
                         <outletCollection property="passThroughViews" destination="R0q-T4-mbe" id="QhA-0m-9R6"/>
                         <outletCollection property="passThroughViews" destination="3Rz-je-0MT" id="Kbf-G0-aU8"/>
-                        <outlet property="helpBackground" destination="r0x-WE-Yhy" id="Ml7-2K-1r6"/>
-                        <outlet property="helpContainter" destination="Dej-fK-WJa" id="OY2-Oz-PwV"/>
-                        <outlet property="score1x" destination="Yd3-sf-LjP" id="B9c-Fn-bZO"/>
-                        <outlet property="score2x" destination="vxY-ia-17a" id="bH1-X6-RMt"/>
-                        <outlet property="score3x" destination="Hhl-cV-Wjg" id="iQ4-6Y-R5t"/>
-                        <outlet property="score4x" destination="s7U-gC-8yc" id="29m-Tm-UIF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zej-9f-oHp" userLabel="First Responder" sceneMemberID="firstResponder"/>
