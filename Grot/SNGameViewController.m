@@ -14,11 +14,9 @@
 
 @interface SNGameViewController ()
 {
-    NSUInteger _score;
-    NSUInteger _moves;
-    
     BOOL helpVisible;
 }
+
 @property (weak, nonatomic) IBOutlet UIView *score1x;
 @property (weak, nonatomic) IBOutlet UIView *score2x;
 @property (weak, nonatomic) IBOutlet UIView *score3x;

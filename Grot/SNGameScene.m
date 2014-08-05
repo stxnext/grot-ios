@@ -26,9 +26,6 @@
     
 }
 
-@property (nonatomic, assign) int score;
-@property (nonatomic, assign) int moves;
-
 @end
 
 @implementation SNGameScene
@@ -38,8 +35,6 @@
     if (self = [super initWithSize:size])
     {
         self.delegate = delegate;
-        self.score = 0;
-        self.moves = 5;
         
         boardSideMargin = INTERFACE_IS_PHONE_SMALL_SCREEN ? 20.0 : 5.0;
         self.backgroundColor = [UIColor colorWithWhite:0.2 alpha:1.0];
@@ -90,7 +85,7 @@
     
     if ([subview isKindOfClass:[SNGrotView class]])
     {
-        self.moves--;
+        self.delegate.moves--;
         
         __block int newScore = 0;
         __block int newMoves = 0;
@@ -160,12 +155,12 @@
                                     
                                     if (--animationsCount == 0)
                                     {
-                                        [self addMoves:newMoves];
-                                        [self addScore:newScore];
+                                        [self.delegate addMoves:newMoves];
+                                        [self.delegate addScore:newScore];
                                         
                                         isAnimatingTurn = NO;
                                         
-                                        if (self.moves == 0) {
+                                        if (self.delegate.moves == 0) {
                                             [self endGame];
                                         }
                                     }
@@ -275,7 +270,7 @@
             
             newScore += (emptyColumns + emptyRows) * [self boardSize] * 10;
             
-            int threshold = floor((newScore + self.score) / (5 * [self boardSize] * [self boardSize])) + [self boardSize] - 1;
+            int threshold = floor((newScore + self.delegate.score) / (5 * [self boardSize] * [self boardSize])) + [self boardSize] - 1;
             
             if (threshold <= animationsViews.count)
             {
@@ -303,7 +298,7 @@
         NSInteger column, row;
         CGPoint location = [touch locationInNode:self];
         
-        if ([self convertPoint:location toColumn:&column row:&row] && self.moves > 0 && !isMenuVisible)
+        if ([self convertPoint:location toColumn:&column row:&row] && self.delegate.moves > 0 && !isMenuVisible)
         {
             [self makeMoveAtRow:row column:column];
         }
@@ -318,9 +313,6 @@
             }
             else
             {
-//                touchLocation = [touch locationInNode:self.menuView];
-//                touchedNode = [self.menuView nodeAtPoint:touchLocation];                
-                
                 if ([touchedNode.name isEqualToString:@"level1Button"])
                 {
                     [self toggleMenu];
@@ -508,32 +500,6 @@
     return [self grotForPosition:CGPointMake(x, y)];
 }
 
-#pragma mark - Labels
-
-- (void)setScore:(int)score
-{
-    _score = score;
-    self.delegate.score = self.score;
-}
-
-- (void)setMoves:(int)moves
-{
-    _moves = moves;
-    self.delegate.moves = self.moves;
-}
-
-- (void)addScore:(int)score
-{
-    self.score += score;
-    [self.delegate addScore:score];
-}
-
-- (void)addMoves:(int)moves
-{
-    self.moves += moves;
-    [self.delegate addMoves:moves];
-}
-
 #pragma mark - Game action
 
 - (void)endGame
@@ -553,7 +519,7 @@
     {
         CGFloat alpha = 1;
         
-        if (self.moves == 0)
+        if (self.delegate.moves == 0)
         {
             alpha = grot.alpha;
         }
@@ -575,8 +541,8 @@
     
     grotSpace = 5 - (size - 2);
     
-    self.score = 0;
-    self.moves = 5;
+    self.delegate.score = 0;
+    self.delegate.moves = 5;
     
     for (SNGrotView *grot in self.grots)
     {
