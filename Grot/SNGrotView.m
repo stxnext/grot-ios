@@ -37,7 +37,7 @@
 
 + (UIImage*)generateSpriteWithSize:(CGSize)size color:(UIColor*)color angle:(CGFloat)angle
 {
-    UIColor* darkColor = [color blendWithColor:UIColor.blackColor percent:0.5];
+    UIColor* darkColor = [color blendWithColor:UIColor.darkGrayColor percent:0.6];
     UIColor* arrowColor = colorFromHex(0x404040);
     UIBezierPath* arrowPath = [self.class arrowPathWithSize:size.width];
     UIBezierPath* circlePath = [self.class circlePathWithSize:size.width];
