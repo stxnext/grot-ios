@@ -20,7 +20,7 @@
 
 @end
 
-@interface SNGameScene : SKScene
+@interface SNGameScene : SKScene <UIAlertViewDelegate>
 {
     BOOL isAnimatingTurn;
     BOOL isMenuVisible;

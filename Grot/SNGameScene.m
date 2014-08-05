@@ -509,6 +509,17 @@
         [grot runAction:[SKAction sequence:@[[SKAction waitForDuration:0.3],
                                              [SKAction fadeAlphaTo:0.2 duration:0.4]]]];
     }
+    
+    [self performBlockInCurrentThread:^{
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Game Over"
+                                                            message:[NSString stringWithFormat:@"You've scored %lu points. Try again!", (unsigned long)self.delegate.score]
+                                                           delegate:self
+                                                  cancelButtonTitle:nil
+                                                  otherButtonTitles:@"New game", nil];
+        
+        [alertView show];
+    } afterDelay:0.8];
+    
 }
 
 - (void)toggleMenu
@@ -591,6 +602,11 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     _boardSize = 0;
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    [self newGameWithSize:[self boardSize]];
 }
 
 @end

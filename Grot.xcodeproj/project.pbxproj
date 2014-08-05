@@ -195,13 +195,13 @@
 			isa = PBXGroup;
 			children = (
 				666F8FFB1978E72100B7B381 /* SNGameScene.h */,
+				0CFC31D7198A11FB00C7499A /* SNGameViewController.h */,
 				666F8F391978DDDE00B7B381 /* SNGrotFieldModel.h */,
 				666F8F3C1978DE4A00B7B381 /* SNGrotView.h */,
 				666F8FFC1978E72100B7B381 /* SNGameScene.m */,
+				0CFC31D8198A11FB00C7499A /* SNGameViewController.m */,
 				666F8F3A1978DDDE00B7B381 /* SNGrotFieldModel.m */,
 				666F8F3D1978DE4A00B7B381 /* SNGrotView.m */,
-				0CFC31D7198A11FB00C7499A /* SNGameViewController.h */,
-				0CFC31D8198A11FB00C7499A /* SNGameViewController.m */,
 				0C20F5351976745F00831879 /* Images.xcassets */,
 				666F8F3F1978E17000B7B381 /* AppDelegate */,
 				66FD01661977C9AA0084746F /* Helpers */,
@@ -216,13 +216,13 @@
 		0C20F5211976745F00831879 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				0C20F5221976745F00831879 /* Grot-Info.plist */,
-				0CB9DFFA198FA25F00DE89E9 /* Lato-Regular.ttf */,
-				0CB9DFF1198F99E800DE89E9 /* Lato-Thin.ttf */,
-				0CB9DFF8198F9C2400DE89E9 /* Lato-Light.ttf */,
-				0C20F5231976745F00831879 /* InfoPlist.strings */,
 				0C20F5261976745F00831879 /* main.m */,
 				0C20F5281976745F00831879 /* Grot-Prefix.pch */,
+				0C20F5221976745F00831879 /* Grot-Info.plist */,
+				0CB9DFF8198F9C2400DE89E9 /* Lato-Light.ttf */,
+				0CB9DFFA198FA25F00DE89E9 /* Lato-Regular.ttf */,
+				0CB9DFF1198F99E800DE89E9 /* Lato-Thin.ttf */,
+				0C20F5231976745F00831879 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -294,19 +294,19 @@
 		66FD01661977C9AA0084746F /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				0C4C5A6619890B9F0057084E /* MacroHelpers.h */,
 				66FD01671977C9B70084746F /* NSObject+DelayedBlocks.h */,
 				6644AC651987A73700799332 /* UIBezierPath+Image.h */,
+				0CB9DFEE198F89B400DE89E9 /* UIColor+Blending.h */,
+				0CB9DFE6198F6F5D00DE89E9 /* UIImage+Blending.h */,
+				0CB9DFFF198FAEF500DE89E9 /* UIPassthroughView.h */,
+				0C4C5A4A1988E7730057084E /* UIWindow+Splash.h */,
 				66FD01681977C9B70084746F /* NSObject+DelayedBlocks.m */,
 				6644AC661987A73700799332 /* UIBezierPath+Image.m */,
-				0C4C5A4A1988E7730057084E /* UIWindow+Splash.h */,
-				0C4C5A4B1988E7730057084E /* UIWindow+Splash.m */,
-				0C4C5A6619890B9F0057084E /* MacroHelpers.h */,
-				0CB9DFE6198F6F5D00DE89E9 /* UIImage+Blending.h */,
-				0CB9DFE7198F6F5D00DE89E9 /* UIImage+Blending.m */,
-				0CB9DFEE198F89B400DE89E9 /* UIColor+Blending.h */,
 				0CB9DFEF198F89B400DE89E9 /* UIColor+Blending.m */,
-				0CB9DFFF198FAEF500DE89E9 /* UIPassthroughView.h */,
+				0CB9DFE7198F6F5D00DE89E9 /* UIImage+Blending.m */,
 				0CB9E000198FAEF500DE89E9 /* UIPassthroughView.m */,
+				0C4C5A4B1988E7730057084E /* UIWindow+Splash.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
