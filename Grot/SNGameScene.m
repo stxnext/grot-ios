@@ -198,7 +198,7 @@
                     endPoint = grot1.center;
                 }
                 
-                CGFloat animationTime = MAX(minAnimationTime, (fabs(beginPoint.x - endPoint.x) + fabs(beginPoint.y - endPoint.y)) / animationDivider);
+                CGFloat animationTime = MAX(minAnimationTime, (fabs(beginPoint.x - endPoint.x) + fabs(beginPoint.y - endPoint.y)) / animationDivider) / (INTERFACE_IS_PHONE ? 1 : 2.5);
                 
                 SKAction* fadeAction = [SKAction fadeAlphaTo:movementTargetAlpha duration:animationTime];
                 SKAction* moveAction = [SKAction moveTo:endPoint duration:animationTime];

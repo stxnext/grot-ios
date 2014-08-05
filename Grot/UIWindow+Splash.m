@@ -40,6 +40,11 @@
     :(!iOS7 & iPad & portrait & !retina)?  @"LaunchImage-Portrait~ipad.png"
     :                                      nil;
     
+    
+    if (iPad) {
+        imagePath =@"LaunchImage-700-Portrait~ipad.png";
+//                    LaunchImage-700-Portrait~ipad
+    }
     // Load splash image with proper orientation and position
     UIImage* rawImage = [UIImage imageNamed:imagePath];
     UIImage* image = [UIImage imageWithCGImage:rawImage.CGImage scale:[UIScreen mainScreen].scale orientation:UIImageOrientationUp];

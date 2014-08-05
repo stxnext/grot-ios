@@ -58,6 +58,13 @@
         latoLabel.font = [UIFont fontWithName:@"Lato-Light" size:latoLabel.font.pointSize];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    self.scene.size = _gameView.bounds.size;
+}
+
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -243,16 +250,16 @@
             self.score4x.layer.cornerRadius = self.score4x.frame.size.width/2;
             
             self.score1x.layer.borderColor = [UIColor whiteColor].CGColor;
-            self.score1x.layer.borderWidth = 1;
+            self.score1x.layer.borderWidth = INTERFACE_IS_PHONE ? 1 : 2;
             
             self.score2x.layer.borderColor = [UIColor whiteColor].CGColor;
-            self.score2x.layer.borderWidth = 1;
+            self.score2x.layer.borderWidth = INTERFACE_IS_PHONE ? 1 : 2;
             
             self.score3x.layer.borderColor = [UIColor whiteColor].CGColor;
-            self.score3x.layer.borderWidth = 1;
+            self.score3x.layer.borderWidth = INTERFACE_IS_PHONE ? 1 : 2;
             
             self.score4x.layer.borderColor = [UIColor whiteColor].CGColor;
-            self.score4x.layer.borderWidth = 1;
+            self.score4x.layer.borderWidth = INTERFACE_IS_PHONE ? 1 : 2;
             
             self.score1x.backgroundColor = [SNGrotFieldModel colors][kColorGray];
             self.score2x.backgroundColor = [SNGrotFieldModel colors][kColorBlue];
