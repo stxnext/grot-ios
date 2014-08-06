@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <SpriteKit/SpriteKit.h>
 #import "SNGameScene.h"
+#import "SKObservableView.h"
 
-@interface SNGameViewController : UIViewController<UIActionSheetDelegate, SNGameplayDelegate>
+@interface SNGameViewController : UIViewController<UIActionSheetDelegate, SNGameplayDelegate, SKObservableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet SKView *helpContainter;
 

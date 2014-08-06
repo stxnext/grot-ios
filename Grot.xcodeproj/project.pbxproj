@@ -30,6 +30,7 @@
 		0C4C5A631988F8A30057084E /* SKTAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C4C5A581988F8A30057084E /* SKTAudio.m */; };
 		0C4C5A641988F8A30057084E /* SKTEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C4C5A5A1988F8A30057084E /* SKTEffects.m */; };
 		0C4C5A651988F8A30057084E /* SKTTimingFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C4C5A5C1988F8A30057084E /* SKTTimingFunctions.m */; };
+		0C61A4831991F82B0065CD1C /* SKObservableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C61A4821991F82B0065CD1C /* SKObservableView.m */; };
 		0CB9DFE8198F6F5D00DE89E9 /* UIImage+Blending.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CB9DFE7198F6F5D00DE89E9 /* UIImage+Blending.m */; };
 		0CB9DFF0198F89B400DE89E9 /* UIColor+Blending.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CB9DFEF198F89B400DE89E9 /* UIColor+Blending.m */; };
 		0CB9DFF7198F9B0900DE89E9 /* Lato-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0CB9DFF1198F99E800DE89E9 /* Lato-Thin.ttf */; };
@@ -99,6 +100,8 @@
 		0C4C5A5C1988F8A30057084E /* SKTTimingFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SKTTimingFunctions.m; path = SKTUtils/SKTTimingFunctions.m; sourceTree = "<group>"; };
 		0C4C5A5D1988F8A30057084E /* SKTUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SKTUtils.h; path = SKTUtils/SKTUtils.h; sourceTree = "<group>"; };
 		0C4C5A6619890B9F0057084E /* MacroHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacroHelpers.h; sourceTree = "<group>"; };
+		0C61A4811991F82B0065CD1C /* SKObservableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKObservableView.h; sourceTree = "<group>"; };
+		0C61A4821991F82B0065CD1C /* SKObservableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKObservableView.m; sourceTree = "<group>"; };
 		0CB9DFE6198F6F5D00DE89E9 /* UIImage+Blending.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Blending.h"; sourceTree = "<group>"; };
 		0CB9DFE7198F6F5D00DE89E9 /* UIImage+Blending.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Blending.m"; sourceTree = "<group>"; };
 		0CB9DFEE198F89B400DE89E9 /* UIColor+Blending.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Blending.h"; sourceTree = "<group>"; };
@@ -194,6 +197,7 @@
 		0C20F5201976745F00831879 /* Grot */ = {
 			isa = PBXGroup;
 			children = (
+				0C61A4801991F7B90065CD1C /* Extensions */,
 				666F8FFB1978E72100B7B381 /* SNGameScene.h */,
 				0CFC31D7198A11FB00C7499A /* SNGameViewController.h */,
 				666F8F391978DDDE00B7B381 /* SNGrotFieldModel.h */,
@@ -243,6 +247,15 @@
 				0C20F5451976745F00831879 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0C61A4801991F7B90065CD1C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0C61A4811991F82B0065CD1C /* SKObservableView.h */,
+				0C61A4821991F82B0065CD1C /* SKObservableView.m */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		0CC937941987E98600ACE8D8 /* SKTUtils */ = {
@@ -460,6 +473,7 @@
 				66FD01691977C9B70084746F /* NSObject+DelayedBlocks.m in Sources */,
 				0C20F5271976745F00831879 /* main.m in Sources */,
 				0CB9DFE8198F6F5D00DE89E9 /* UIImage+Blending.m in Sources */,
+				0C61A4831991F82B0065CD1C /* SKObservableView.m in Sources */,
 				666F8FFD1978E72100B7B381 /* SNGameScene.m in Sources */,
 				664E87BD197FD8D200B22AB6 /* SNMenuButton.m in Sources */,
 				0C4C5A4C1988E7730057084E /* UIWindow+Splash.m in Sources */,

@@ -70,7 +70,7 @@
                                     <constraint firstAttribute="height" constant="120" id="oqP-EC-XQ6"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kiR-ct-bzR" userLabel="Game scene" customClass="SKView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kiR-ct-bzR" userLabel="Game scene" customClass="SKObservableView">
                                 <rect key="frame" x="0.0" y="120" width="768" height="863"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -78,7 +78,7 @@
                                     <constraint firstAttribute="width" constant="768" id="hGe-Hy-QJf"/>
                                 </constraints>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wPi-U6-z2y" userLabel="Help container" customClass="SKView">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wPi-U6-z2y" userLabel="Help container">
                                 <rect key="frame" x="0.0" y="120" width="768" height="863"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>

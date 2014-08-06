@@ -60,6 +60,19 @@
     backgroundSprite.position = CGPointMake(self.size.width / 2.0, self.size.height - backgroundSprite.size.height / 2.0);
     
     cellSize = (self.size.width - 2 * boardSideMargin) / [self boardSize];
+    
+    [self revalidateGrotPositions];
+}
+
+- (void)revalidateGrotPositions
+{
+    for (SNGrotView* grot in self.grots)
+    {
+        CGFloat squareSide = cellSize - 2 * grotSpace;
+        grot.size = CGSizeMake(squareSide, squareSide);
+        CGPoint point = [self positionForGrot:grot];
+        grot.position = [self positionForX:point.x Y:point.y];
+    }
 }
 
 #pragma mark - Touches

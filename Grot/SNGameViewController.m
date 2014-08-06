@@ -30,8 +30,7 @@
 
 @property (nonatomic, strong) IBOutletCollection(UIView) NSArray* passThroughViews;
 @property (nonatomic, strong) IBOutletCollection(UILabel) NSArray* latoFontLabels;
-@property (nonatomic, strong) IBOutlet UILabel* nameLabel;
-@property (nonatomic, strong) IBOutlet SKView* gameView;
+@property (nonatomic, strong) IBOutlet SKObservableView* gameView;
 @property (nonatomic, strong) SNGameScene *scene;
 @end
 
@@ -52,32 +51,20 @@
     
     self.scene = [[SNGameScene alloc] initWithSize:_gameView.bounds.size withDelegate:self];
     self.scene.scaleMode = SKSceneScaleModeAspectFit;
+    
+    _gameView.delegate = self;
     [_gameView presentScene:self.scene];
     
     for (UILabel* latoLabel in self.latoFontLabels)
         latoLabel.font = [UIFont fontWithName:@"Lato-Light" size:latoLabel.font.pointSize];
+
+    [_gameView setNeedsLayout];
+    [_gameView layoutIfNeeded];
 }
 
-- (void)viewWillAppear:(BOOL)animated
+- (void)viewDidLayoutSubviews:(UIView*)view
 {
-    [super viewWillAppear:animated];
-    
     self.scene.size = _gameView.bounds.size;
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
-    self.scene.size = _gameView.bounds.size;
-}
-
-- (BOOL)prefersStatusBarHidden {
-    return NO;
-}
-
--(UIStatusBarStyle)preferredStatusBarStyle{
-    return UIStatusBarStyleLightContent;
 }
 
 + (UIImage *) setImage:(UIImage *)image withAlpha:(CGFloat)alpha{
