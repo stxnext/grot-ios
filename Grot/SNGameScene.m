@@ -36,7 +36,7 @@
     {
         self.delegate = delegate;
         
-        boardSideMargin = INTERFACE_IS_PHONE_SMALL_SCREEN ? 20.0 : 5.0;
+        boardSideMargin = INTERFACE_IS_PHONE_SMALL_SCREEN ? 20.0 : INTERFACE_IS_PAD ? 20.0 : 5.0;
         self.backgroundColor = [UIColor colorWithWhite:0.2 alpha:1.0];
         
         backgroundSprite = [[SKSpriteNode alloc] initWithImageNamed:@"shadow"];
@@ -524,7 +524,7 @@
     }
     
     [self performBlockInCurrentThread:^{
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Game Over"
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Game over"
                                                             message:[NSString stringWithFormat:@"You've scored %lu points. Try again!", (unsigned long)self.delegate.score]
                                                            delegate:self
                                                   cancelButtonTitle:nil
@@ -563,7 +563,7 @@
 {
     [self setBoardSize:size];
     
-    grotSpace = 5 - (size - 2);
+    grotSpace = (INTERFACE_IS_PAD ? 10.0 : 5.0) - (size - 2);
     
     self.delegate.score = 0;
     self.delegate.moves = 5;

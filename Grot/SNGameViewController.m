@@ -203,7 +203,7 @@
     }
     else
     {
-        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Menu" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"New game", @"Help", nil];
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Main menu" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"New game", @"Help", nil];
         
         [actionSheet showInView:self.view];
     }
