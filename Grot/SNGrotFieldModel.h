@@ -31,7 +31,7 @@ const static SNFieldColor kColorRed   = @"red";
 
 @interface SNGrotFieldModel : NSObject
 
-//@property (nonatomic) CGPoint position;
+@property (nonatomic) CGPoint position;
 @property (nonatomic) BOOL isAvailable;
 @property (nonatomic, readonly) SNFieldColor colorType;
 @property (nonatomic, readonly) SNFieldDirection direction;
