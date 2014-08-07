@@ -44,6 +44,8 @@
 		664E87BD197FD8D200B22AB6 /* SNMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 664E87BC197FD8D200B22AB6 /* SNMenuButton.m */; };
 		664E87C0197FDD1F00B22AB6 /* SNMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 664E87BF197FDD1F00B22AB6 /* SNMenuView.m */; };
 		666C3EFB1980D8EB00C4E5E7 /* SNNewGameButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 666C3EFA1980D8EB00C4E5E7 /* SNNewGameButton.m */; };
+		666EDA4D1993546600F80AC1 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 666EDA4C1993546600F80AC1 /* GameKit.framework */; };
+		666EDA51199355BC00F80AC1 /* GameKitHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 666EDA50199355BC00F80AC1 /* GameKitHelper.m */; };
 		666F8F3B1978DDDE00B7B381 /* SNGrotFieldModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 666F8F3A1978DDDE00B7B381 /* SNGrotFieldModel.m */; };
 		666F8F3E1978DE4A00B7B381 /* SNGrotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 666F8F3D1978DE4A00B7B381 /* SNGrotView.m */; };
 		666F8FB21978E65800B7B381 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 666F8FB11978E65800B7B381 /* SpriteKit.framework */; };
@@ -121,6 +123,9 @@
 		664E87BF197FDD1F00B22AB6 /* SNMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNMenuView.m; sourceTree = "<group>"; };
 		666C3EF91980D8EB00C4E5E7 /* SNNewGameButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNNewGameButton.h; sourceTree = "<group>"; };
 		666C3EFA1980D8EB00C4E5E7 /* SNNewGameButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNNewGameButton.m; sourceTree = "<group>"; };
+		666EDA4C1993546600F80AC1 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		666EDA4F199355BC00F80AC1 /* GameKitHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameKitHelper.h; sourceTree = "<group>"; };
+		666EDA50199355BC00F80AC1 /* GameKitHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameKitHelper.m; sourceTree = "<group>"; };
 		666F8F391978DDDE00B7B381 /* SNGrotFieldModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNGrotFieldModel.h; sourceTree = "<group>"; };
 		666F8F3A1978DDDE00B7B381 /* SNGrotFieldModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNGrotFieldModel.m; sourceTree = "<group>"; };
 		666F8F3C1978DE4A00B7B381 /* SNGrotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNGrotView.h; sourceTree = "<group>"; };
@@ -142,6 +147,7 @@
 				666F8FB21978E65800B7B381 /* SpriteKit.framework in Frameworks */,
 				0C20F51D1976745F00831879 /* CoreGraphics.framework in Frameworks */,
 				0C20F51F1976745F00831879 /* UIKit.framework in Frameworks */,
+				666EDA4D1993546600F80AC1 /* GameKit.framework in Frameworks */,
 				0C20F51B1976745F00831879 /* Foundation.framework in Frameworks */,
 				403F0DFFC1A54F59AC45666B /* libPods.a in Frameworks */,
 			);
@@ -183,6 +189,7 @@
 		0C20F5191976745F00831879 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				666EDA4C1993546600F80AC1 /* GameKit.framework */,
 				0CC937941987E98600ACE8D8 /* SKTUtils */,
 				666F8FB11978E65800B7B381 /* SpriteKit.framework */,
 				0C20F51A1976745F00831879 /* Foundation.framework */,
@@ -197,6 +204,7 @@
 		0C20F5201976745F00831879 /* Grot */ = {
 			isa = PBXGroup;
 			children = (
+				666EDA4E1993559F00F80AC1 /* GameKitFiles */,
 				0C61A4801991F7B90065CD1C /* Extensions */,
 				666F8FFB1978E72100B7B381 /* SNGameScene.h */,
 				0CFC31D7198A11FB00C7499A /* SNGameViewController.h */,
@@ -280,6 +288,15 @@
 				0C4C5A5D1988F8A30057084E /* SKTUtils.h */,
 			);
 			name = SKTUtils;
+			sourceTree = "<group>";
+		};
+		666EDA4E1993559F00F80AC1 /* GameKitFiles */ = {
+			isa = PBXGroup;
+			children = (
+				666EDA4F199355BC00F80AC1 /* GameKitHelper.h */,
+				666EDA50199355BC00F80AC1 /* GameKitHelper.m */,
+			);
+			name = GameKitFiles;
 			sourceTree = "<group>";
 		};
 		666F8F3F1978E17000B7B381 /* AppDelegate */ = {
@@ -377,6 +394,9 @@
 					0C20F5161976745F00831879 = {
 						DevelopmentTeam = B7EKJ66X5Q;
 						SystemCapabilities = {
+							com.apple.GameCenter = {
+								enabled = 1;
+							};
 							com.apple.iOS = {
 								enabled = 0;
 							};
@@ -488,6 +508,7 @@
 				0C4C5A601988F8A30057084E /* SKEmitterNode+SKTExtras.m in Sources */,
 				664E87C0197FDD1F00B22AB6 /* SNMenuView.m in Sources */,
 				0C4C5A5E1988F8A30057084E /* SKAction+SKTExtras.m in Sources */,
+				666EDA51199355BC00F80AC1 /* GameKitHelper.m in Sources */,
 				666C3EFB1980D8EB00C4E5E7 /* SNNewGameButton.m in Sources */,
 				0C4C5A631988F8A30057084E /* SKTAudio.m in Sources */,
 				0C4C5A621988F8A30057084E /* SKNode+SKTExtras.m in Sources */,
@@ -638,15 +659,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Maciej Dziergwa (24CP896HJZ)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Maciej Dziergwa (24CP896HJZ)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Grot/Grot-Prefix.pch";
 				GCC_WARN_CHECK_SWITCH_STATEMENTS = NO;
 				INFOPLIST_FILE = "Grot/Grot-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6A562C8B-E0A9-4F0F-910F-08FB33DCA48F";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -657,15 +678,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: STX Next sp. z o.o. (B7EKJ66X5Q)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: STX Next sp. z o.o. (B7EKJ66X5Q)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Grot/Grot-Prefix.pch";
 				GCC_WARN_CHECK_SWITCH_STATEMENTS = NO;
 				INFOPLIST_FILE = "Grot/Grot-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "FCD15036-087B-4DCD-B730-151B51430A68";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

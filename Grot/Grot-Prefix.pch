@@ -16,4 +16,5 @@
 #endif
 #import "NSObject+DelayedBlocks.h"
 
+#import "GameKitHelper.h"
 #import "MacroHelpers.h"

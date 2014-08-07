@@ -517,6 +517,13 @@
 
 - (void)endGame
 {
+    int64_t score = self.delegate.score;
+    
+    NSLog(@"%i", self.delegate.score);
+    NSLog(@"%lli", score);
+    
+    [[GameKitHelper sharedGameKitHelper] submitScore:(int64_t)score category:kHighScoreLeaderboardCategory];
+    
     for (SNGrotView *grot in self.grots)
     {
         [grot runAction:[SKAction sequence:@[[SKAction waitForDuration:0.3],
@@ -532,7 +539,6 @@
         
         [alertView show];
     } afterDelay:0.8];
-    
 }
 
 - (void)toggleMenu
@@ -620,6 +626,8 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     [self newGameWithSize:[self boardSize]];
+    
+    [GameKitHelper sharedGameKitHelper] showLeaderboardAndAchievements:NO category:kHighScoreLeaderboardCategory];
 }
 
 @end

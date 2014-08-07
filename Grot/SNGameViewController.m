@@ -60,6 +60,14 @@
 
     [_gameView setNeedsLayout];
     [_gameView layoutIfNeeded];
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [[GameKitHelper sharedGameKitHelper] authenticateLocalPlayer];
 }
 
 - (void)viewDidLayoutSubviews:(UIView*)view
@@ -129,6 +137,11 @@
 }
 
 #pragma mark Gameplay delegate
+
+//- (NSUInteger)score
+//{
+//    return _score;
+//}
 
 - (void)setScore:(NSUInteger)value
 {
