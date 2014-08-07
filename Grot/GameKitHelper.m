@@ -49,6 +49,10 @@
     };
 }
 
+- (BOOL)isAuthenticated
+{
+    return _gameCenterFeaturesEnabled;
+}
 #pragma mark Property setters
 
 - (void)setLastError:(NSError*)error
@@ -88,13 +92,11 @@
         return;
     }
  
-      NSLog(@"%lli", score);
     //2: Create a GKScore object
     GKScore *gkScore = [[GKScore alloc] initWithLeaderboardIdentifier:category];
     
     //3: Set the score value
     gkScore.value = score;
-    NSLog(@"%lli", gkScore.value);
 
     //4: Send the score to Game Center
 
@@ -139,6 +141,11 @@
     }
     
     [self presentViewController:gcViewController];
+}
+
+-(void)gameCenterViewControllerDidFinish:(GKGameCenterViewController *)gameCenterViewController
+{
+    [gameCenterViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

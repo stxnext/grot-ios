@@ -37,5 +37,5 @@ id<GameKitHelperProtocol> delegate;
 // Scores
 - (void)submitScore:(int64_t)score category:(NSString *)category;
 -(void)showLeaderboardAndAchievements:(BOOL)shouldShowLeaderboard category:(NSString*)category;
-
+- (BOOL)isAuthenticated;
 @end

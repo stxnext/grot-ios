@@ -169,11 +169,11 @@
 		0C20F50E1976745F00831879 = {
 			isa = PBXGroup;
 			children = (
+				F6A3A9DD35484FF4A846FE98 /* Pods.xcconfig */,
 				0C20F5191976745F00831879 /* Frameworks */,
 				0C20F5201976745F00831879 /* Grot */,
 				0C20F5421976745F00831879 /* GrotTests */,
 				0C20F5181976745F00831879 /* Products */,
-				F6A3A9DD35484FF4A846FE98 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};

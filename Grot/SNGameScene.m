@@ -519,9 +519,6 @@
 {
     int64_t score = self.delegate.score;
     
-    NSLog(@"%i", self.delegate.score);
-    NSLog(@"%lli", score);
-    
     [[GameKitHelper sharedGameKitHelper] submitScore:(int64_t)score category:kHighScoreLeaderboardCategory];
     
     for (SNGrotView *grot in self.grots)
@@ -626,8 +623,6 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     [self newGameWithSize:[self boardSize]];
-    
-    [GameKitHelper sharedGameKitHelper] showLeaderboardAndAchievements:NO category:kHighScoreLeaderboardCategory];
 }
 
 @end

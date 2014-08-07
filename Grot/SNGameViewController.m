@@ -57,7 +57,7 @@
     
     for (UILabel* latoLabel in self.latoFontLabels)
         latoLabel.font = [UIFont fontWithName:@"Lato-Light" size:latoLabel.font.pointSize];
-
+    
     [_gameView setNeedsLayout];
     [_gameView layoutIfNeeded];
     
@@ -216,9 +216,18 @@
     }
     else
     {
-        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Main menu" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"New game", @"Help", nil];
-        
-        [actionSheet showInView:self.view];
+        if ([[GameKitHelper sharedGameKitHelper] isAuthenticated])
+        {
+            UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Main menu" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"New game", @"Help", @"Game Center", nil];
+            
+            [actionSheet showInView:self.view];
+        }
+        else
+        {
+            UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Main menu" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"New game", @"Help", nil];
+            
+            [actionSheet showInView:self.view];
+        }
     }
 }
 
@@ -227,10 +236,13 @@
     
     switch (buttonIndex) {
         case 0:
+        {
             [self.scene newGameWithSize:4];
+        }
             break;
             
         case 1:
+        {
             UIGraphicsBeginImageContext(self.gameView.bounds.size);
             [self.gameView drawViewHierarchyInRect:self.gameView.bounds afterScreenUpdates:NO];
             UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
@@ -275,7 +287,16 @@
             } completion:^(BOOL finished) {
                 
             }];
+        }
+            break;
             
+        case 2:
+        {
+            [self performBlockInCurrentThread:^{
+            [[GameKitHelper sharedGameKitHelper] showLeaderboardAndAchievements:YES category:kHighScoreLeaderboardCategory];
+            } afterDelay:1];
+
+        }
             break;
     }
 }
