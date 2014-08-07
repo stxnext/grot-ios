@@ -7,7 +7,7 @@
     {
       "idiom" : "iphone",
       "scale" : "2x",
-      "filename" : "shadow-1.png"
+      "filename" : "shadow-iphone.png"
     },
     {
       "idiom" : "ipad",
@@ -16,7 +16,7 @@
     {
       "idiom" : "ipad",
       "scale" : "2x",
-      "filename" : "shadow-1-kopia.png"
+      "filename" : "shadow-ipad.png"
     }
   ],
   "info" : {
