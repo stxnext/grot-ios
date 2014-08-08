@@ -75,7 +75,7 @@
     self.scene.size = _gameView.bounds.size;
 }
 
-+ (UIImage *) setImage:(UIImage *)image withAlpha:(CGFloat)alpha{
++ (UIImage *)setImage:(UIImage *)image withAlpha:(CGFloat)alpha{
     
     // Create a pixel buffer in an easy to use format
     CGImageRef imageRef = [image CGImage];
@@ -101,7 +101,6 @@
     {
         m_PixelBuf[i+3] =  255*alpha;
     }
-    
     
     //create a new image
     CGContextRef ctx = CGBitmapContextCreate(m_PixelBuf, width, height,
@@ -138,34 +137,29 @@
 
 #pragma mark Gameplay delegate
 
-//- (NSUInteger)score
-//{
-//    return _score;
-//}
-
 - (void)setScore:(NSUInteger)value
 {
     _score = value;
     
-    self.scoreLabel.text = [NSString stringWithFormat:@"%d", value];
+    self.scoreLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)value];
 }
 
 - (void)setMoves:(NSUInteger)value
 {
     _moves = value;
     
-    self.movesLabel.text = [NSString stringWithFormat:@"%d", value];
+    self.movesLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)value];
 }
 
 - (void)addScore:(NSUInteger)value
 {
     _score += value;
     
-    self.scoreLabel.text = [NSString stringWithFormat:@"%d", _score];
+    self.scoreLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)_score];
     
     if (value > 0)
     {
-        self.scoreDeltaLabel.text = [NSString stringWithFormat:@"+%d", value];
+        self.scoreDeltaLabel.text = [NSString stringWithFormat:@"+%lu", (unsigned long)value];
         
         self.scoreDeltaLabel.alpha = 1.0;
         [UIView animateWithDuration:0.666
@@ -181,11 +175,11 @@
 {
     _moves += value;
     
-    self.movesLabel.text = [NSString stringWithFormat:@"%d", _moves];
+    self.movesLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)_moves];
     
     if (value > 0)
     {
-        self.movesDeltaLabel.text = [NSString stringWithFormat:@"+%d", value];
+        self.movesDeltaLabel.text = [NSString stringWithFormat:@"+%lu", (unsigned long)value];
         
         self.movesDeltaLabel.alpha = 1.0;
         [UIView animateWithDuration:0.666
@@ -203,31 +197,27 @@
 {
     if (helpVisible)
     {
-        
         [UIView animateWithDuration:0.4 animations:^{
             self.helpContainter.alpha = 0;
         } completion:^(BOOL finished) {
             self.helpContainter.hidden = YES;
             helpVisible = NO;
-            
         }];
-        
-        
     }
     else
     {
+        UIActionSheet *actionSheet;
+        
         if ([[GameKitHelper sharedGameKitHelper] isAuthenticated])
         {
-            UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Main menu" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"New game", @"Help", @"Game Center", nil];
-            
-            [actionSheet showInView:self.view];
+            actionSheet = [[UIActionSheet alloc] initWithTitle:@"Main menu" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"New game", @"Help", @"Game Center", nil];
         }
         else
         {
-            UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Main menu" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"New game", @"Help", nil];
-            
-            [actionSheet showInView:self.view];
+            actionSheet = [[UIActionSheet alloc] initWithTitle:@"Main menu" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"New game", @"Help", nil];
         }
+        
+        [actionSheet showInView:self.view];
     }
 }
 
@@ -255,28 +245,25 @@
             
             self.helpBackground.image = image;
             
-            
-            self.score1x.layer.cornerRadius = self.score1x.frame.size.width/2;
-            self.score2x.layer.cornerRadius = self.score2x.frame.size.width/2;
-            self.score3x.layer.cornerRadius = self.score3x.frame.size.width/2;
-            self.score4x.layer.cornerRadius = self.score4x.frame.size.width/2;
-            
+            self.score1x.backgroundColor = [SNGrotFieldModel colors][kColorGray];
             self.score1x.layer.borderColor = [UIColor whiteColor].CGColor;
             self.score1x.layer.borderWidth = INTERFACE_IS_PHONE ? 1 : 2;
+            self.score1x.layer.cornerRadius = self.score1x.frame.size.width/2;
             
+            self.score2x.backgroundColor = [SNGrotFieldModel colors][kColorBlue];
             self.score2x.layer.borderColor = [UIColor whiteColor].CGColor;
             self.score2x.layer.borderWidth = INTERFACE_IS_PHONE ? 1 : 2;
+            self.score2x.layer.cornerRadius = self.score2x.frame.size.width/2;
             
+            self.score3x.backgroundColor = [SNGrotFieldModel colors][kColorGreen];
             self.score3x.layer.borderColor = [UIColor whiteColor].CGColor;
             self.score3x.layer.borderWidth = INTERFACE_IS_PHONE ? 1 : 2;
+            self.score3x.layer.cornerRadius = self.score3x.frame.size.width/2;
             
+            self.score4x.backgroundColor = [SNGrotFieldModel colors][kColorRed];
             self.score4x.layer.borderColor = [UIColor whiteColor].CGColor;
             self.score4x.layer.borderWidth = INTERFACE_IS_PHONE ? 1 : 2;
-            
-            self.score1x.backgroundColor = [SNGrotFieldModel colors][kColorGray];
-            self.score2x.backgroundColor = [SNGrotFieldModel colors][kColorBlue];
-            self.score3x.backgroundColor = [SNGrotFieldModel colors][kColorGreen];
-            self.score4x.backgroundColor = [SNGrotFieldModel colors][kColorRed];
+            self.score4x.layer.cornerRadius = self.score4x.frame.size.width/2;
             
             helpVisible = YES;
             self.helpContainter.alpha = 0;
@@ -293,9 +280,8 @@
         case 2:
         {
             [self performBlockInCurrentThread:^{
-            [[GameKitHelper sharedGameKitHelper] showLeaderboardAndAchievements:YES category:kHighScoreLeaderboardCategory];
+                [[GameKitHelper sharedGameKitHelper] showLeaderboardAndAchievements:YES category:kHighScoreLeaderboardCategory];
             } afterDelay:1];
-
         }
             break;
     }

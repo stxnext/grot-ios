@@ -14,6 +14,8 @@
 #import "SKTEffects.h"
 #import "UIBezierPath+Image.h"
 
+#define FAST_FACTOR 1
+
 @interface SNGameScene ()
 {
     NSInteger _boardSize;
@@ -22,8 +24,7 @@
     int bottomMargin;
     int grotSpace;
     
-    SKSpriteNode* backgroundSprite;
-    
+    SKSpriteNode *backgroundSprite;
 }
 
 @end
@@ -77,21 +78,6 @@
 
 #pragma mark - Touches
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    // Intentional no-op
-}
-
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    // Intentional no-op
-}
-
-- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    // Intentional no-op
-}
-
 - (void)makeMoveAtRow:(NSInteger)row column:(NSInteger)column
 {
     SNGrotView *subview = (SNGrotView *)[self.grots objectAtIndex:column + row * [self boardSize]];
@@ -109,7 +95,7 @@
         {
             isAnimatingTurn = YES;
             
-            CGFloat fallAnimationTime = 0.5;
+            CGFloat fallAnimationTime = 0.5 / FAST_FACTOR;
             __block BOOL isFalling = NO;
             
             __block void(^animateFalling)(void) = ^(void) {
@@ -136,7 +122,7 @@
                             
                             moveEffect.timingFunction = SKTTimingFunctionBounceEaseOut;
                             
-                            SKAction* moveAction = [SKAction actionWithEffect:moveEffect];
+                            SKAction *moveAction = [SKAction actionWithEffect:moveEffect];
                             [grot0 runAction:moveAction];
                             
                             [self.grots exchangeObjectAtIndex:i withObjectAtIndex:[self.grots indexOfObject:grot1]];
@@ -173,8 +159,13 @@
                                         
                                         isAnimatingTurn = NO;
                                         
-                                        if (self.delegate.moves == 0) {
+                                        if (self.delegate.moves == 0)
+                                        {
                                             [self endGame];
+                                        }
+                                        else
+                                        {
+                                            [self findBestMove];
                                         }
                                     }
                                 }];
@@ -212,6 +203,7 @@
                 }
                 
                 CGFloat animationTime = MAX(minAnimationTime, (fabs(beginPoint.x - endPoint.x) + fabs(beginPoint.y - endPoint.y)) / animationDivider) / (INTERFACE_IS_PHONE ? 1 : 2.5);
+                animationTime /= FAST_FACTOR;
                 
                 SKAction* fadeAction = [SKAction fadeAlphaTo:movementTargetAlpha duration:animationTime];
                 SKAction* moveAction = [SKAction moveTo:endPoint duration:animationTime];
@@ -246,54 +238,58 @@
             [self nextGrot:field level:1];
             
             // count points
-            NSMutableDictionary *collumnDictX = [NSMutableDictionary new];
-            NSMutableDictionary *collumnDictY = [NSMutableDictionary new];
-            
-            for (SNGrotView *grot in animationsViews)
-            {
-                newScore += grot.model.value;
-                CGPoint position = [self positionForGrot:grot];
-                collumnDictX[[NSNumber numberWithInt:position.x]] = [collumnDictX[[NSNumber numberWithInt:position.x]] intValue] > 0 ?
-                [NSNumber numberWithInt:[collumnDictX[[NSNumber numberWithInt:position.x]] intValue] + 1] : @1;
-                
-                collumnDictY[[NSNumber numberWithInt:position.y]] = [collumnDictY[[NSNumber numberWithInt:position.y]] intValue] > 0 ?
-                [NSNumber numberWithInt:[collumnDictY[[NSNumber numberWithInt:position.y]] intValue] + 1] : @1;
-                
-                grot.zPosition = 10;
-            }
-            
-            int emptyRows = 0;
-            int emptyColumns = 0;
-            
-            for (NSNumber *key in collumnDictX)
-            {
-                if ([[collumnDictX objectForKey:key] intValue] == [self boardSize])
-                {
-                    emptyColumns++;
-                }
-            }
-            
-            for (NSNumber *key in collumnDictY)
-            {
-                if ([[collumnDictY objectForKey:key] intValue] == [self boardSize])
-                {
-                    emptyRows++;
-                }
-            }
-            
-            newScore += (emptyColumns + emptyRows) * [self boardSize] * 10;
-            
-            int threshold = floor((newScore + self.delegate.score) / (5 * [self boardSize] * [self boardSize])) + [self boardSize] - 1;
-            
-            if (threshold <= animationsViews.count)
-            {
-                newMoves = (int)animationsViews.count - threshold;
-            }
-            
+            [self countScore:&newScore moves:&newMoves];
             // make move
             
             animateMove();
         }
+    }
+}
+
+- (void)countScore:(int *)newScore moves:(int *)newMoves
+{
+    NSMutableDictionary *collumnDictX = [NSMutableDictionary new];
+    NSMutableDictionary *collumnDictY = [NSMutableDictionary new];
+    
+    for (SNGrotView *grot in animationsViews)
+    {
+        *newScore += grot.model.value;
+        CGPoint position = [self positionForGrot:grot];
+        collumnDictX[[NSNumber numberWithInt:position.x]] = [collumnDictX[[NSNumber numberWithInt:position.x]] intValue] > 0 ?
+        [NSNumber numberWithInt:[collumnDictX[[NSNumber numberWithInt:position.x]] intValue] + 1] : @1;
+        
+        collumnDictY[[NSNumber numberWithInt:position.y]] = [collumnDictY[[NSNumber numberWithInt:position.y]] intValue] > 0 ?
+        [NSNumber numberWithInt:[collumnDictY[[NSNumber numberWithInt:position.y]] intValue] + 1] : @1;
+        
+        grot.zPosition = 10;
+    }
+    
+    int emptyRows = 0;
+    int emptyColumns = 0;
+    
+    for (NSNumber *key in collumnDictX)
+    {
+        if ([[collumnDictX objectForKey:key] intValue] == [self boardSize])
+        {
+            emptyColumns++;
+        }
+    }
+    
+    for (NSNumber *key in collumnDictY)
+    {
+        if ([[collumnDictY objectForKey:key] intValue] == [self boardSize])
+        {
+            emptyRows++;
+        }
+    }
+    
+    *newScore += (emptyColumns + emptyRows) * [self boardSize] * 10;
+    
+    int threshold = floor((*newScore + self.delegate.score) / (5 * [self boardSize] * [self boardSize])) + [self boardSize] - 1;
+    
+    if (threshold <= animationsViews.count)
+    {
+        *newMoves = (int)animationsViews.count - threshold;
     }
 }
 
@@ -466,17 +462,28 @@
         }
         
         if ([self grotForPosition:nextPosition].alpha == 1.0)
+        {
             return nextPosition;
-        
+        }
         
         if ([self isPositionOutOfBounds:nextPosition])
+        {
             return position;
+        }
     }
 }
 
 - (CGPoint)positionForX:(NSInteger)x Y:(NSInteger)y
 {
     return CGPointMake(boardSideMargin + cellSize/2 + x*cellSize, bottomMargin + cellSize/2 + y*cellSize);
+}
+
+- (CGPoint)positionForIndex:(int)index
+{
+    int y = (int)index / [self boardSize];
+    int x = (int)index - y*[self boardSize];
+    
+    return CGPointMake(y, x);
 }
 
 - (CGPoint)positionForGrot:(SNGrotView *)grot
@@ -497,14 +504,19 @@
 - (NSInteger)indexForPositon:(CGPoint)position
 {
     if ([self isPositionOutOfBounds:position])
+    {
         return -1;
+    }
     else
+    {
         return position.x + position.y*[self boardSize];
+    }
 }
 
 - (SNGrotView *)grotForPosition:(CGPoint)position
 {
     NSInteger index = [self indexForPositon:position];
+    
     return index >= 0 && self.grots.count > index ? self.grots[index] : nil;
 }
 
@@ -526,6 +538,11 @@
         [grot runAction:[SKAction sequence:@[[SKAction waitForDuration:0.3],
                                              [SKAction fadeAlphaTo:0.2 duration:0.4]]]];
     }
+    
+    NSLog(@"%lu" , (unsigned long)self.delegate.score);
+    [self newGameWithSize:[self boardSize]];
+    
+    return;
     
     [self performBlockInCurrentThread:^{
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Game over"
@@ -589,14 +606,17 @@
             {
                 SNGrotView *grot = [[SNGrotView alloc] initWithSize:cellSize - 2*grotSpace];
                 grot.position = [self positionForX:x Y:y];
-                [self addChild:grot];
                 grot.alpha = 0;
-                [self.grots addObject:grot];
                 grot.zPosition = -1;
+                
+                [self addChild:grot];
+                [self.grots addObject:grot];
                 
                 [grot runAction:[SKAction fadeAlphaTo:1 duration:0.2]];
             }
         }
+        
+        [self findBestMove];
     } afterDelay:0.2];
 }
 
@@ -623,6 +643,67 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     [self newGameWithSize:[self boardSize]];
+}
+
+#pragma mark - AI
+
+- (void)findBestMove
+{
+    if (FAST_FACTOR == 1)
+    {
+        return;
+    }
+    
+    SNGrotView *bestGrot;
+    int i = 1;
+    int maxi = 1;
+    int maxnewMoves = 0;
+    int maxnewScore = 0;
+    
+    for (SNGrotView *grot in self.grots)
+    {
+        animationsViews = [NSMutableArray new];
+        [self nextGrot:grot level:1];
+        int newScore = 0;
+        int newMoves = 0;
+        [self countScore:&newScore moves:&newMoves];
+        
+        BOOL checkBestScore = NO;
+        
+        if (checkBestScore)
+        {
+            if (newScore > maxnewScore || (newScore == maxnewScore && newMoves > maxnewMoves))
+            {
+                maxnewScore = newScore;
+                maxnewMoves = newMoves;
+                bestGrot = grot;
+                
+                maxi = i;
+            }
+        }
+        else
+        {
+            if (newMoves > maxnewMoves || (newMoves == maxnewMoves && newScore > maxnewScore))
+            {
+                maxnewScore = newScore;
+                maxnewMoves = newMoves;
+                bestGrot = grot;
+                
+                maxi = i;
+            }
+        }
+        i++;
+        
+        for (SNGrotView *usedGrot in animationsViews) {
+            usedGrot.model.isAvailable = YES;
+        }
+    }
+    
+    CGPoint position = [self positionForIndex:maxi-1];
+    
+    [self performBlockInCurrentThread:^{
+        [self makeMoveAtRow:position.x column:position.y];
+    } afterDelay:1 / FAST_FACTOR] ;
 }
 
 @end
