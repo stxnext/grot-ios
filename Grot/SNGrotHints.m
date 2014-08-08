@@ -8,6 +8,58 @@
 
 #import "SNGrotHints.h"
 
+@implementation NSDictionary (Aggregation)
+
+- (id)keyForMaxValueUsingValueComparator:(NSComparator)comparator
+{
+    id keyForMaxValue = nil;
+    
+    for (id key in self.allKeys)
+    {
+        NSComparisonResult result = comparator(self[key], self[keyForMaxValue]);
+        
+        if (result != NSOrderedAscending)
+            keyForMaxValue = key;
+    }
+    
+    return keyForMaxValue;
+}
+
+@end
+
+@implementation SNGameResults
+
++ (SNGameResults*)zeroResults
+{
+    SNGameResults* results = SNGameResults.new;
+    results.score = 0;
+    results.moves = 0;
+    
+    return results;
+}
+
+- (void)add:(SNGameResults*)results
+{
+    self.score += results.score;
+    self.moves += results.moves;
+}
+
+- (id)copyWithZone:(NSZone *)zone
+{
+    SNGameResults* copy = SNGameResults.new;
+    copy.score = self.score;
+    copy.moves = self.moves;
+    
+    return copy;
+}
+
+- (NSString*)description
+{
+    return [NSString stringWithFormat:@"(%d; %d)", self.score, self.moves];
+}
+
+@end
+
 @implementation SNGrid
 
 - (instancetype)initWithSize:(CGSize)size items:(NSMutableDictionary*)items
@@ -30,7 +82,12 @@
 
 - (id)copyWithZone:(NSZone *)zone
 {
-    return [[self.class alloc] initWithSize:self.size items:_items.mutableCopy];
+    NSMutableDictionary* newItems = _items.mutableCopy;
+    
+    for (id key in newItems.allKeys)
+        newItems[key] = [newItems[key] copy];
+    
+    return [[self.class alloc] initWithSize:self.size items:newItems];
 }
 
 - (id)objectAtPoint:(CGPoint)point
@@ -51,8 +108,8 @@
 
 - (void)pushDown
 {
-    for (NSUInteger x = 0; x < self.size.width; x++)
-    for (NSUInteger y = 0; y < self.size.height; y++)
+    for (NSInteger y = 0; y < self.size.height; y++)
+    for (NSInteger x = 0; x < self.size.width; x++)
     {
         CGPoint upPoint = (CGPoint){ x, y };
         CGPoint downPoint = (CGPoint){ x, y + 1 };
@@ -66,9 +123,9 @@
     }
 }
 
-- (BOOL)isEmptyRow:(NSUInteger)row
+- (BOOL)isEmptyRow:(NSInteger)row
 {
-    for (NSUInteger x = 0; x < self.size.width; x++)
+    for (NSInteger x = 0; x < self.size.width; x++)
     {
         CGPoint point = (CGPoint){ x, row };
         
@@ -79,9 +136,9 @@
     return YES;
 }
 
-- (BOOL)isEmptyColumn:(NSUInteger)column
+- (BOOL)isEmptyColumn:(NSInteger)column
 {
-    for (NSUInteger y = 0; y < self.size.height; y++)
+    for (NSInteger y = 0; y < self.size.height; y++)
     {
         CGPoint point = (CGPoint){ column, y };
         
@@ -92,17 +149,17 @@
     return YES;
 }
 
-- (NSUInteger)longerSideLength
+- (NSInteger)longerSideLength
 {
     return MAX(self.size.width, self.size.height);
 }
 
-- (NSUInteger)shorterSideLength
+- (NSInteger)shorterSideLength
 {
     return MIN(self.size.width, self.size.height);
 }
 
-- (NSUInteger)area
+- (NSInteger)area
 {
     return self.size.width * self.size.height;
 }
@@ -110,6 +167,27 @@
 - (BOOL)containsPoint:(CGPoint)point;
 {
     return point.x >= 0 && point.y >= 0 && point.x < self.size.width && point.y < self.size.height;
+}
+
+- (NSString*)description
+{
+    NSMutableString* description = [NSMutableString string];
+    
+    for (NSInteger y = 0; y < self.size.height; y++)
+    {
+        for (NSInteger x = 0; x < self.size.height; x++)
+        {
+            CGPoint point = (CGPoint){ x, y };
+            id object = [self objectAtPoint:point];
+            NSString* objectDescription = object ? [object description] : @" ";
+            
+            [description appendFormat:@"%@\t", objectDescription];
+        }
+        
+        [description appendString:@"\n"];
+    }
+    
+    return description;
 }
 
 @end
@@ -149,10 +227,10 @@
     }
 }
 
-- (SNGameResults*)runGrot:(SNGrotFieldModel*)grot withGameResults:(SNGameResults*)currentResults
+- (SNGameResults*)runReactionAtGrot:(SNGrotFieldModel*)grot gameResults:(SNGameResults*)currentResults
 {
     SNGameResults* gainedResults = SNGameResults.zeroResults;
-    NSUInteger chainLength = 0;
+    NSInteger chainLength = 0;
     
     for (SNGrotFieldModel* node = grot; node != nil; node = [self grotPointedByGrot:node])
     {
@@ -161,29 +239,24 @@
         [self setObject:nil atPoint:node.position]; // optionaly node.enabled = NO;
     }
     
-    for (NSUInteger row = 0; row < self.size.height; row++)
+    for (NSInteger row = 0; row < self.size.height; row++)
         if ([self isEmptyRow:row])
             gainedResults.score += self.size.width * 10;
     
-    for (NSUInteger column = 0; column < self.size.width; column++)
+    for (NSInteger column = 0; column < self.size.width; column++)
         if ([self isEmptyColumn:column])
             gainedResults.score += self.size.height * 10;
     
-    NSUInteger threshold = floor((gainedResults.score + currentResults.score) / (5 * self.area)) + self.longerSideLength - 1;
-    
-    if (threshold <= chainLength)
-        gainedResults.moves = chainLength - threshold;
-    
-    [self pushDown];
-    [self fillHoles];
+    NSInteger threshold = floor((gainedResults.score + currentResults.score) / (5 * self.area)) + self.longerSideLength - 1;
+    gainedResults.moves = MAX(0, chainLength - threshold);
     
     return gainedResults;
 }
 
-- (void)fillHoles
+- (void)fillWithRandoms
 {
-    for (NSUInteger x = 0; x < self.size.width; x++)
-    for (NSUInteger y = 0; y < self.size.height; y++)
+    for (NSInteger y = 0; y < self.size.height; y++)
+    for (NSInteger x = 0; x < self.size.width; x++)
     {
         CGPoint point = (CGPoint){ x, y };
         
@@ -195,40 +268,89 @@
     }
 }
 
+- (void)fillWithItems:(NSArray*)items
+{
+    NSInteger iterator = 0;
+    
+    for (NSInteger y = 0; y < self.size.height; y++)
+    for (NSInteger x = 0; x < self.size.width; x++)
+    {
+        CGPoint point = (CGPoint){ x, y };
+        
+        if (![self objectAtPoint:point])
+        {
+            id object = items[iterator++];
+            [self setObject:object atPoint:point];
+        }
+    }
+}
+
 @end
 
-@implementation SNGameResults
+@implementation SNGameState
 
-+ (SNGameResults*)zeroResults
+- (NSDictionary*)generatedStates
 {
-    SNGameResults* results = SNGameResults.new;
-    results.score = 0;
-    results.moves = 0;
+    __block NSMutableDictionary* results = NSMutableDictionary.dictionary;
+    
+    for (NSInteger y = 0; y < self.grid.size.height; y++)
+    for (NSInteger x = 0; x < self.grid.size.width; x++)
+    {
+        CGPoint point = (CGPoint){ x, y };
+        SNGrotFieldModel* baseModel = [self.grid objectAtPoint:point];
+        
+        if (baseModel)
+        {
+            SNGameState* state = SNGameState.new;
+            state.grid = self.grid.copy;
+            state.results = self.results.copy;
+            state.results.moves--;
+            
+            SNGrotFieldModel* copyModel = [state.grid objectAtPoint:point];
+            SNGameResults* gainedResults = [state.grid runReactionAtGrot:copyModel gameResults:state.results];
+            [state.results add:gainedResults];
+            
+            results[baseModel] = state;
+        }
+    }
     
     return results;
 }
 
-- (void)add:(SNGameResults*)results
+- (NSDictionary*)generatedStateOptimizedForStatePropertyAtKeyPath:(NSString*)keyPath
 {
-    self.score += results.score;
-    self.moves += results.moves;
+    NSDictionary* generatedStates = self.generatedStates;
+    
+    SNGrotFieldModel* bestModel = [generatedStates keyForMaxValueUsingValueComparator:^NSComparisonResult(SNGameState* state1, SNGameState* state2) {
+        NSInteger value1 = [[state1 valueForKeyPath:keyPath] integerValue];
+        NSInteger value2 = [[state2 valueForKeyPath:keyPath] integerValue];
+        
+        if (value1 < value2)
+            return NSOrderedAscending;
+        else if (value1 == value2)
+            return NSOrderedSame;
+        else
+            return NSOrderedDescending;
+    }];
+    
+    SNGameState* bestState = generatedStates[bestModel];
+    
+    return @{ bestModel : bestState };
 }
 
-@end
-
-@implementation SNGrotHints
-
-+ (void)test
+- (NSDictionary*)generatedStateOptimizedForMaxScore
 {
-    const NSUInteger squareSize = 4;
-    
-    SNGrotGrid* grid = [[SNGrotGrid alloc] initWithSize:CGSizeMake(squareSize, squareSize)];
-    [grid fillHoles];
-    
-    SNGameResults* results = SNGameResults.zeroResults;
-    CGPoint point = (CGPoint){ 0, 0 };
-    SNGrotFieldModel* grot = [grid objectAtPoint:point];
-    [grid runGrot:grot withGameResults:results];
+    return [self generatedStateOptimizedForStatePropertyAtKeyPath:@"results.score"];
+}
+
+- (NSDictionary*)generatedStateOptimizedForMaxMoves
+{
+    return [self generatedStateOptimizedForStatePropertyAtKeyPath:@"results.moves"];
+}
+
+- (NSString*)description
+{
+    return [NSString stringWithFormat:@"(%@; %@)", self.grid, self.results];
 }
 
 @end

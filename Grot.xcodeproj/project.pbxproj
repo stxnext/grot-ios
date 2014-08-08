@@ -32,6 +32,8 @@
 		0C4C5A651988F8A30057084E /* SKTTimingFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C4C5A5C1988F8A30057084E /* SKTTimingFunctions.m */; };
 		0C61A4831991F82B0065CD1C /* SKObservableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C61A4821991F82B0065CD1C /* SKObservableView.m */; };
 		0C61A4A61992440D0065CD1C /* SNGrotHints.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C61A4A51992440D0065CD1C /* SNGrotHints.m */; };
+		0CB4C57A19934FCF000E8688 /* SNGrotHints.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C61A4A51992440D0065CD1C /* SNGrotHints.m */; };
+		0CB4C57F19934FDA000E8688 /* SNGrotFieldModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 666F8F3A1978DDDE00B7B381 /* SNGrotFieldModel.m */; };
 		0CB9DFE8198F6F5D00DE89E9 /* UIImage+Blending.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CB9DFE7198F6F5D00DE89E9 /* UIImage+Blending.m */; };
 		0CB9DFF0198F89B400DE89E9 /* UIColor+Blending.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CB9DFEF198F89B400DE89E9 /* UIColor+Blending.m */; };
 		0CB9DFF7198F9B0900DE89E9 /* Lato-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0CB9DFF1198F99E800DE89E9 /* Lato-Thin.ttf */; };
@@ -515,7 +517,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CB4C57F19934FDA000E8688 /* SNGrotFieldModel.m in Sources */,
 				0C20F5491976745F00831879 /* GrotTests.m in Sources */,
+				0CB4C57A19934FCF000E8688 /* SNGrotHints.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -586,12 +590,13 @@
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_FAST_MATH = YES;
+				GCC_FAST_MATH = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
+				GCC_STRICT_ALIASING = NO;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -600,7 +605,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				LLVM_LTO = YES;
+				LLVM_LTO = NO;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "6A562C8B-E0A9-4F0F-910F-08FB33DCA48F";
 				SDKROOT = iphoneos;

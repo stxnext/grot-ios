@@ -9,10 +9,16 @@
 #import <Foundation/Foundation.h>
 #import "SNGrotFieldModel.h"
 
-@interface SNGameResults : NSObject
+@interface NSDictionary (Aggregation)
 
-@property (nonatomic) NSUInteger score;
-@property (nonatomic) NSUInteger moves;
+- (id)keyForMaxValueUsingValueComparator:(NSComparator)comparator;
+
+@end
+
+@interface SNGameResults : NSObject<NSCopying>
+
+@property (nonatomic) NSInteger score;
+@property (nonatomic) NSInteger moves;
 
 + (SNGameResults*)zeroResults;
 - (void)add:(SNGameResults*)results;
@@ -31,11 +37,11 @@
 - (id)objectAtPoint:(CGPoint)point;
 - (void)setObject:(id)object atPoint:(CGPoint)point;
 - (void)pushDown;
-- (BOOL)isEmptyRow:(NSUInteger)row;
-- (BOOL)isEmptyColumn:(NSUInteger)column;
-- (NSUInteger)longerSideLength;
-- (NSUInteger)shorterSideLength;
-- (NSUInteger)area;
+- (BOOL)isEmptyRow:(NSInteger)row;
+- (BOOL)isEmptyColumn:(NSInteger)column;
+- (NSInteger)longerSideLength;
+- (NSInteger)shorterSideLength;
+- (NSInteger)area;
 - (BOOL)containsPoint:(CGPoint)point;
 
 @end
@@ -43,13 +49,20 @@
 @interface SNGrotGrid : SNGrid
 
 - (SNGrotFieldModel*)grotPointedByGrot:(SNGrotFieldModel*)grot;
-- (SNGameResults*)runGrot:(SNGrotFieldModel*)grot withGameResults:(SNGameResults*)currentResults;
-- (void)fillHoles;
+- (SNGameResults*)runReactionAtGrot:(SNGrotFieldModel*)grot gameResults:(SNGameResults*)currentResults;
+- (void)fillWithRandoms;
+- (void)fillWithItems:(NSArray*)items;
 
 @end
 
-@interface SNGrotHints : NSObject
+@interface SNGameState : NSObject
 
-+ (void)test;
+@property (nonatomic, strong) SNGrotGrid* grid;
+@property (nonatomic, strong) SNGameResults* results;
+
+- (NSDictionary*)generatedStates;
+- (NSDictionary*)generatedStateOptimizedForStatePropertyAtKeyPath:(NSString*)keyPath;
+- (NSDictionary*)generatedStateOptimizedForMaxScore;
+- (NSDictionary*)generatedStateOptimizedForMaxMoves;
 
 @end

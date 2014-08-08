@@ -248,10 +248,10 @@
             self.score4x.layer.borderColor = [UIColor whiteColor].CGColor;
             self.score4x.layer.borderWidth = INTERFACE_IS_PHONE ? 1 : 2;
             
-            self.score1x.backgroundColor = [SNGrotFieldModel colors][kColorGray];
-            self.score2x.backgroundColor = [SNGrotFieldModel colors][kColorBlue];
-            self.score3x.backgroundColor = [SNGrotFieldModel colors][kColorGreen];
-            self.score4x.backgroundColor = [SNGrotFieldModel colors][kColorRed];
+            self.score1x.backgroundColor = [SNGrotFieldModel colors][kColor1];
+            self.score2x.backgroundColor = [SNGrotFieldModel colors][kColor2];
+            self.score3x.backgroundColor = [SNGrotFieldModel colors][kColor3];
+            self.score4x.backgroundColor = [SNGrotFieldModel colors][kColor4];
             
             helpVisible = YES;
             self.helpContainter.alpha = 0;
