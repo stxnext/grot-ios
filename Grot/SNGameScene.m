@@ -13,8 +13,11 @@
 #import "SNMenuView.h"
 #import "SKTEffects.h"
 #import "UIBezierPath+Image.h"
+#import "SNGrotHints.h"
 
 #define FAST_FACTOR 100
+
+#define CONDITION (FAST_FACTOR == 1)
 
 @interface SNGameScene ()
 {
@@ -127,7 +130,7 @@
                             
                             SKAction *moveAction = [SKAction actionWithEffect:moveEffect];
 
-                            if (FAST_FACTOR == 1)
+                            if (CONDITION)
                             {
                                 [grot0 runAction:moveAction];
                             }
@@ -157,7 +160,7 @@
                                 [grot0 randomize];
                                 [grot0 setScale:0.8];
                                 
-                                if (FAST_FACTOR != 1)
+                                if (CONDITION)
                                 {
                                     [grot0 runAction:[SKAction group:@[[SKAction fadeAlphaTo:1 duration:0.1 / FAST_FACTOR],
                                                                        [SKAction scaleTo:1 duration:0.1 /FAST_FACTOR]
@@ -246,7 +249,7 @@
                 
                 grot0.zPosition = 20;
 
-                if (FAST_FACTOR != 1)
+                if (CONDITION)
                 {
                     [grot0 runAction:[SKAction sequence:@[ [SKAction group:@[moveAction, fadeAction]], fadeOutAction ]] completion:^{
                         
@@ -728,7 +731,7 @@
         int newMoves = 0;
         [self countScore:&newScore moves:&newMoves];
         
-        BOOL checkBestScore = NO;
+        BOOL checkBestScore = YES;
         
         if (checkBestScore)
         {
@@ -758,6 +761,29 @@
             usedGrot.model.isAvailable = YES;
         }
     }
+    
+    // ------------
+    
+    NSArray* items = [self.grots valueForKey:@"model"];
+    
+    SNGameState* state = SNGameState.new;
+    state.grid = [[SNGrotGrid alloc] initWithSize:(CGSize){ self.boardSize, self.boardSize }];
+    state.results = SNGameResults.zeroResults;
+    state.results.score = self.delegate.score;
+    state.results.moves = self.delegate.moves;
+    [state.grid fillWithItems:items];
+    NSDictionary* bestChoice = state.generatedStateOptimizedForMaxScore;
+    SNGameState* bestState = bestChoice.allValues.firstObject;
+    
+    NSUInteger dawidDelta = bestState.results.score - self.delegate.score;
+    
+    if (dawidDelta != maxnewScore)
+    {
+        NSLog(@"error! d: %d vs a: %d", dawidDelta, maxnewScore);
+    }
+    
+    // ------------
+    
     
     CGPoint position = [self positionForIndex:maxi-1];
     
