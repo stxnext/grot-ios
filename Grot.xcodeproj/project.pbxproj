@@ -31,6 +31,9 @@
 		0C4C5A641988F8A30057084E /* SKTEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C4C5A5A1988F8A30057084E /* SKTEffects.m */; };
 		0C4C5A651988F8A30057084E /* SKTTimingFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C4C5A5C1988F8A30057084E /* SKTTimingFunctions.m */; };
 		0C61A4831991F82B0065CD1C /* SKObservableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C61A4821991F82B0065CD1C /* SKObservableView.m */; };
+		0C61A4A61992440D0065CD1C /* SNGrotHints.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C61A4A51992440D0065CD1C /* SNGrotHints.m */; };
+		0CB4C57A19934FCF000E8688 /* SNGrotHints.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C61A4A51992440D0065CD1C /* SNGrotHints.m */; };
+		0CB4C57F19934FDA000E8688 /* SNGrotFieldModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 666F8F3A1978DDDE00B7B381 /* SNGrotFieldModel.m */; };
 		0CB9DFE8198F6F5D00DE89E9 /* UIImage+Blending.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CB9DFE7198F6F5D00DE89E9 /* UIImage+Blending.m */; };
 		0CB9DFF0198F89B400DE89E9 /* UIColor+Blending.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CB9DFEF198F89B400DE89E9 /* UIColor+Blending.m */; };
 		0CB9DFF7198F9B0900DE89E9 /* Lato-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0CB9DFF1198F99E800DE89E9 /* Lato-Thin.ttf */; };
@@ -104,6 +107,8 @@
 		0C4C5A6619890B9F0057084E /* MacroHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacroHelpers.h; sourceTree = "<group>"; };
 		0C61A4811991F82B0065CD1C /* SKObservableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKObservableView.h; sourceTree = "<group>"; };
 		0C61A4821991F82B0065CD1C /* SKObservableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKObservableView.m; sourceTree = "<group>"; };
+		0C61A4A41992440D0065CD1C /* SNGrotHints.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNGrotHints.h; sourceTree = "<group>"; };
+		0C61A4A51992440D0065CD1C /* SNGrotHints.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNGrotHints.m; sourceTree = "<group>"; };
 		0CB9DFE6198F6F5D00DE89E9 /* UIImage+Blending.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Blending.h"; sourceTree = "<group>"; };
 		0CB9DFE7198F6F5D00DE89E9 /* UIImage+Blending.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Blending.m"; sourceTree = "<group>"; };
 		0CB9DFEE198F89B400DE89E9 /* UIColor+Blending.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Blending.h"; sourceTree = "<group>"; };
@@ -205,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				666EDA4E1993559F00F80AC1 /* GameKitFiles */,
+				0C61A4A3199243F60065CD1C /* Hints */,
 				0C61A4801991F7B90065CD1C /* Extensions */,
 				666F8FFB1978E72100B7B381 /* SNGameScene.h */,
 				0CFC31D7198A11FB00C7499A /* SNGameViewController.h */,
@@ -264,6 +270,15 @@
 				0C61A4821991F82B0065CD1C /* SKObservableView.m */,
 			);
 			name = Extensions;
+			sourceTree = "<group>";
+		};
+		0C61A4A3199243F60065CD1C /* Hints */ = {
+			isa = PBXGroup;
+			children = (
+				0C61A4A41992440D0065CD1C /* SNGrotHints.h */,
+				0C61A4A51992440D0065CD1C /* SNGrotHints.m */,
+			);
+			name = Hints;
 			sourceTree = "<group>";
 		};
 		0CC937941987E98600ACE8D8 /* SKTUtils */ = {
@@ -515,6 +530,7 @@
 				6644AC671987A73700799332 /* UIBezierPath+Image.m in Sources */,
 				0C20F52B1976745F00831879 /* SNAppDelegate.m in Sources */,
 				0CB9E001198FAEF500DE89E9 /* UIPassthroughView.m in Sources */,
+				0C61A4A61992440D0065CD1C /* SNGrotHints.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -522,7 +538,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CB4C57F19934FDA000E8688 /* SNGrotFieldModel.m in Sources */,
 				0C20F5491976745F00831879 /* GrotTests.m in Sources */,
+				0CB4C57A19934FCF000E8688 /* SNGrotHints.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -593,12 +611,13 @@
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_FAST_MATH = YES;
+				GCC_FAST_MATH = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
+				GCC_STRICT_ALIASING = NO;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -607,7 +626,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				LLVM_LTO = YES;
+				LLVM_LTO = NO;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "6A562C8B-E0A9-4F0F-910F-08FB33DCA48F";
 				SDKROOT = iphoneos;

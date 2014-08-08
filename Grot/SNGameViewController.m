@@ -245,22 +245,22 @@
             
             self.helpBackground.image = image;
             
-            self.score1x.backgroundColor = [SNGrotFieldModel colors][kColorGray];
+            self.score1x.backgroundColor = [SNGrotFieldModel colors][kColor1];
             self.score1x.layer.borderColor = [UIColor whiteColor].CGColor;
             self.score1x.layer.borderWidth = INTERFACE_IS_PHONE ? 1 : 2;
             self.score1x.layer.cornerRadius = self.score1x.frame.size.width/2;
             
-            self.score2x.backgroundColor = [SNGrotFieldModel colors][kColorBlue];
+            self.score2x.backgroundColor = [SNGrotFieldModel colors][kColor2];
             self.score2x.layer.borderColor = [UIColor whiteColor].CGColor;
             self.score2x.layer.borderWidth = INTERFACE_IS_PHONE ? 1 : 2;
             self.score2x.layer.cornerRadius = self.score2x.frame.size.width/2;
             
-            self.score3x.backgroundColor = [SNGrotFieldModel colors][kColorGreen];
+            self.score3x.backgroundColor = [SNGrotFieldModel colors][kColor3];
             self.score3x.layer.borderColor = [UIColor whiteColor].CGColor;
             self.score3x.layer.borderWidth = INTERFACE_IS_PHONE ? 1 : 2;
             self.score3x.layer.cornerRadius = self.score3x.frame.size.width/2;
             
-            self.score4x.backgroundColor = [SNGrotFieldModel colors][kColorRed];
+            self.score4x.backgroundColor = [SNGrotFieldModel colors][kColor4];
             self.score4x.layer.borderColor = [UIColor whiteColor].CGColor;
             self.score4x.layer.borderWidth = INTERFACE_IS_PHONE ? 1 : 2;
             self.score4x.layer.cornerRadius = self.score4x.frame.size.width/2;

@@ -13,30 +13,45 @@
 
 #pragma mark Constructor
 
-+ (instancetype)randomModel
++ (instancetype)modelWithColorType:(SNFieldColor)colorType direction:(SNFieldDirection)direction
 {
-    return [[self.class alloc] initWithRandomValues];
+    SNGrotFieldModel* model = self.class.new;
+    [model setColorType:colorType direction:direction];
+    model.isAvailable = YES;
+    
+    return model;
 }
 
-- (instancetype)initWithRandomValues
++ (instancetype)randomModel
 {
-    self = [super init];
+    SNGrotFieldModel* model = self.class.new;
+    [model randomizeValues];
+    model.isAvailable = YES;
     
-    if (self)
-    {
-        [self randomizeValues];
-        self.isAvailable = YES;
-    }
+    return model;
+}
+
+- (id)copyWithZone:(NSZone *)zone
+{
+    SNGrotFieldModel* copy = [SNGrotFieldModel modelWithColorType:self.colorType.copy direction:self.direction];
+    copy.position = self.position;
+    copy.isAvailable = self.isAvailable;
     
-    return self;
+    return copy;
+}
+
+- (void)setColorType:(SNFieldColor)colorType direction:(SNFieldDirection)direction
+{
+    _colorType = colorType;
+    _direction = direction;
 }
 
 - (void)randomizeValues
 {
-    NSArray *colorTypeDistribution = @[ kColorGray, kColorGray, kColorGray, kColorGray,
-                                        kColorBlue, kColorBlue, kColorBlue,
-                                        kColorGreen, kColorGreen,
-                                        kColorRed ];
+    NSArray *colorTypeDistribution = @[ kColor1, kColor1, kColor1, kColor1,
+                                        kColor2, kColor2, kColor2,
+                                        kColor3, kColor3,
+                                        kColor4 ];
     
     _colorType = randomElement(colorTypeDistribution);
     
@@ -47,7 +62,14 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"Color: %@    Direction: %i    Available: %@", self.colorType, self.direction, self.isAvailable ? @"YES" : @"NO"];
+    NSString* arrowString
+    = _direction == SNFieldDirectionUp    ? @"^"
+    : _direction == SNFieldDirectionRight ? @">"
+    : _direction == SNFieldDirectionDown  ? @"V"
+    : _direction == SNFieldDirectionLeft  ? @"<"
+    : @"?";
+    
+    return [NSString stringWithFormat:@"(%d, %d, %@)", (NSInteger)self.position.x, (NSInteger)self.position.y, arrowString];
 }
 
 #pragma mark - Methods
@@ -71,18 +93,34 @@
 
 + (NSDictionary *)colors
 {
-    return @{ kColorGray  : colorFromHex(0xffffff),
-              kColorBlue  : colorFromHex(0xffec00),
-              kColorGreen : colorFromHex(0xe50f0f),
-              kColorRed   : colorFromHex(0x00968f) }; //
+    return @{ kColor1  : colorFromHex(0xffffff),
+              kColor2  : colorFromHex(0xffec00),
+              kColor3  : colorFromHex(0xe50f0f),
+              kColor4  : colorFromHex(0x00968f) };
 }
 
 + (NSDictionary *)points
 {
-    return @{ kColorGray  : @(1),
-              kColorBlue  : @(2),
-              kColorGreen : @(3),
-              kColorRed   : @(4) };
+    return @{ kColor1  : @(1),
+              kColor2  : @(2),
+              kColor3  : @(3),
+              kColor4  : @(4) };
+}
+
+#pragma mark - Object equality
+
+- (BOOL)isEqual:(id)object
+{
+    if (![object isKindOfClass:self.class])
+        return [super isEqual:object];
+    
+    SNGrotFieldModel* other = object;
+    return self.hash == other.hash;
+}
+
+- (NSUInteger)hash
+{
+    return NSStringFromCGPoint(self.position).hash;
 }
 
 @end
