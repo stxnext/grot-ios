@@ -14,7 +14,7 @@
 #import "SKTEffects.h"
 #import "UIBezierPath+Image.h"
 
-#define FAST_FACTOR 1
+#define FAST_FACTOR 100
 
 @interface SNGameScene ()
 {
@@ -23,6 +23,9 @@
     int boardSideMargin;
     int bottomMargin;
     int grotSpace;
+    
+    int gameNumber;
+    int maxScore;
     
     SKSpriteNode *backgroundSprite;
 }
@@ -123,7 +126,12 @@
                             moveEffect.timingFunction = SKTTimingFunctionBounceEaseOut;
                             
                             SKAction *moveAction = [SKAction actionWithEffect:moveEffect];
-                            [grot0 runAction:moveAction];
+
+                            if (FAST_FACTOR == 1)
+                            {
+                                [grot0 runAction:moveAction];
+                            }
+
                             
                             [self.grots exchangeObjectAtIndex:i withObjectAtIndex:[self.grots indexOfObject:grot1]];
                             
@@ -148,10 +156,33 @@
                                 grot0.center = [self positionForX:x Y:y];
                                 [grot0 randomize];
                                 [grot0 setScale:0.8];
-                                [grot0 runAction:[SKAction group:@[[SKAction fadeAlphaTo:1 duration:0.1],
-                                                                   [SKAction scaleTo:1 duration:0.1]
-                                                                   ]] completion:^{
-                                    
+                                
+                                if (FAST_FACTOR != 1)
+                                {
+                                    [grot0 runAction:[SKAction group:@[[SKAction fadeAlphaTo:1 duration:0.1 / FAST_FACTOR],
+                                                                       [SKAction scaleTo:1 duration:0.1 /FAST_FACTOR]
+                                                                       ]] completion:^{
+                                        
+                                        if (--animationsCount == 0)
+                                        {
+                                            [self.delegate addMoves:newMoves];
+                                            [self.delegate addScore:newScore];
+                                            
+                                            isAnimatingTurn = NO;
+                                            
+                                            if (self.delegate.moves == 0)
+                                            {
+                                                [self endGame];
+                                            }
+                                            else
+                                            {
+                                                [self findBestMove];
+                                            }
+                                        }
+                                    }];
+                                }
+                                else
+                                {
                                     if (--animationsCount == 0)
                                     {
                                         [self.delegate addMoves:newMoves];
@@ -168,7 +199,7 @@
                                             [self findBestMove];
                                         }
                                     }
-                                }];
+                                }
                             }
                         }
                     }
@@ -214,9 +245,27 @@
                 fadeOutAction.timingMode = SKActionTimingEaseOut;
                 
                 grot0.zPosition = 20;
-                
-                [grot0 runAction:[SKAction sequence:@[ [SKAction group:@[moveAction, fadeAction]], fadeOutAction ]] completion:^{
-                    
+
+                if (FAST_FACTOR != 1)
+                {
+                    [grot0 runAction:[SKAction sequence:@[ [SKAction group:@[moveAction, fadeAction]], fadeOutAction ]] completion:^{
+                        
+                        if (isLastMovement)
+                        {
+                            [self performBlockInCurrentThread:^{
+                                animateFalling();
+                            } afterDelay:0.1];
+                        }
+                        else
+                        {
+                            grot0.alpha = 0.0;
+                            [animationsViews removeObjectAtIndex:0];
+                            animateMove();
+                        }
+                    }];
+                }
+                else
+                {
                     if (isLastMovement)
                     {
                         [self performBlockInCurrentThread:^{
@@ -229,7 +278,7 @@
                         [animationsViews removeObjectAtIndex:0];
                         animateMove();
                     }
-                }];
+                }
             };
             
             //start move
@@ -539,10 +588,20 @@
                                              [SKAction fadeAlphaTo:0.2 duration:0.4]]]];
     }
     
-    NSLog(@"%lu" , (unsigned long)self.delegate.score);
-    [self newGameWithSize:[self boardSize]];
+    if ((unsigned long)self.delegate.score > maxScore)
+    {
+        maxScore = (unsigned long)self.delegate.score;
+        NSLog(@"%i \t\t%i" ,gameNumber, maxScore);
+    }
+
     
-    return;
+    [self newGameWithSize:[self boardSize]];
+
+    if (FAST_FACTOR != 1)
+    {
+        return;
+    }
+
     
     [self performBlockInCurrentThread:^{
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Game over"
@@ -581,6 +640,7 @@
 
 - (void)newGameWithSize:(int)size
 {
+    gameNumber++;
     [self setBoardSize:size];
     
     grotSpace = (INTERFACE_IS_PAD ? 10.0 : 5.0) - (size - 2);
