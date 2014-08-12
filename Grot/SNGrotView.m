@@ -117,4 +117,9 @@
     self.position = center;
 }
 
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"%@ %g",NSStringFromCGPoint(self.model.position), self.model.angle];
+}
+
 @end

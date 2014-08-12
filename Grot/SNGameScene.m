@@ -15,10 +15,6 @@
 #import "UIBezierPath+Image.h"
 #import "SNGrotHints.h"
 
-#define FAST_FACTOR 100
-
-#define CONDITION (FAST_FACTOR == 1)
-
 @interface SNGameScene ()
 {
     NSInteger _boardSize;
@@ -29,6 +25,9 @@
     
     int gameNumber;
     int maxScore;
+    
+    int newScore;
+    int newMoves;
     
     SKSpriteNode *backgroundSprite;
 }
@@ -92,211 +91,162 @@
     {
         self.delegate.moves--;
         
-        __block int newScore = 0;
-        __block int newMoves = 0;
-        
         SNGrotView *field = (SNGrotView *)subview;
         
         if (field.model.isAvailable)
         {
             isAnimatingTurn = YES;
-            
-            CGFloat fallAnimationTime = 0.5 / FAST_FACTOR;
-            __block BOOL isFalling = NO;
-            
-            __block void(^animateFalling)(void) = ^(void) {
-                
-                for (int i = 0;  i < self.grots.count; i++)
-                {
-                    SNGrotView *grot0 = self.grots[i];
-                    
-                    if (grot0.model.isAvailable)
-                    {
-                        CGPoint currPoint = [self positionForGrot:grot0];
-                        CGPoint nextPoint = [self nextEmptyPositionForCurrentPosition:currPoint];
-                        
-                        if (!CGPointEqualToPoint(currPoint, nextPoint))
-                        {
-                            NSAssert(currPoint.x == nextPoint.x, @"BŁAD %@ ---------- %@" , NSStringFromCGPoint(currPoint) , NSStringFromCGPoint(nextPoint));
-                            
-                            SNGrotView *grot1 = [self grotForPosition:nextPoint];
-                            
-                            SKTMoveEffect *moveEffect = [SKTMoveEffect effectWithNode:grot0
-                                                                             duration:fallAnimationTime
-                                                                        startPosition:grot0.position
-                                                                          endPosition:[self positionForX:nextPoint.x Y:nextPoint.y]];
-                            
-                            moveEffect.timingFunction = SKTTimingFunctionBounceEaseOut;
-                            
-                            SKAction *moveAction = [SKAction actionWithEffect:moveEffect];
-
-                            if (CONDITION)
-                            {
-                                [grot0 runAction:moveAction];
-                            }
-
-                            
-                            [self.grots exchangeObjectAtIndex:i withObjectAtIndex:[self.grots indexOfObject:grot1]];
-                            
-                            isFalling = YES;
-                        }
-                    }
-                }
-                
-                [self performBlockOnMainThread:^{
-                    // add new grots
-                    __block int animationsCount = 0;
-                    
-                    for (NSInteger y = 0; y < [self boardSize]; y++)
-                    {
-                        for (NSInteger x = 0; x < [self boardSize]; x++)
-                        {
-                            SNGrotView *grot0 = [self grotForX:x Y:y];
-                            
-                            if (!grot0.model.isAvailable)
-                            {
-                                animationsCount++;
-                                grot0.center = [self positionForX:x Y:y];
-                                [grot0 randomize];
-                                [grot0 setScale:0.8];
-                                
-                                if (CONDITION)
-                                {
-                                    [grot0 runAction:[SKAction group:@[[SKAction fadeAlphaTo:1 duration:0.1 / FAST_FACTOR],
-                                                                       [SKAction scaleTo:1 duration:0.1 /FAST_FACTOR]
-                                                                       ]] completion:^{
-                                        
-                                        if (--animationsCount == 0)
-                                        {
-                                            [self.delegate addMoves:newMoves];
-                                            [self.delegate addScore:newScore];
-                                            
-                                            isAnimatingTurn = NO;
-                                            
-                                            if (self.delegate.moves == 0)
-                                            {
-                                                [self endGame];
-                                            }
-                                            else
-                                            {
-                                                [self findBestMove];
-                                            }
-                                        }
-                                    }];
-                                }
-                                else
-                                {
-                                    if (--animationsCount == 0)
-                                    {
-                                        [self.delegate addMoves:newMoves];
-                                        [self.delegate addScore:newScore];
-                                        
-                                        isAnimatingTurn = NO;
-                                        
-                                        if (self.delegate.moves == 0)
-                                        {
-                                            [self endGame];
-                                        }
-                                        else
-                                        {
-                                            [self findBestMove];
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                } afterDelay:isFalling ? fallAnimationTime : 0.0];
-            };
-            
-            __block void(^animateMove)(void) = ^(void) {
-                
-                const CGFloat animationDivider = 300.0;
-                const CGFloat movementTargetAlpha = 0.25;
-                
-                SNGrotView *grot0 = (SNGrotView *)animationsViews[0];
-                
-                CGPoint beginPoint = grot0.center;
-                CGPoint endPoint;
-                
-                CGPoint p1 = [self positionForX:0 Y:0];
-                CGPoint p2 = [self positionForX:0 Y:1];
-                CGFloat minAnimationTime = (fabs(p1.x - p2.x) + fabs(p1.y - p2.y)) / animationDivider;
-                
-                __block BOOL isLastMovement = animationsViews.count <= 1;
-                
-                if (isLastMovement)
-                {
-                    CGPoint endPosition = [self endpointPointedByGrot:grot0];
-                    endPoint = [self positionForX:endPosition.x Y:endPosition.y];
-                }
-                else
-                {
-                    SNGrotView *grot1 = (SNGrotView *)animationsViews[1];
-                    endPoint = grot1.center;
-                }
-                
-                CGFloat animationTime = MAX(minAnimationTime, (fabs(beginPoint.x - endPoint.x) + fabs(beginPoint.y - endPoint.y)) / animationDivider) / (INTERFACE_IS_PHONE ? 1 : 2.5);
-                animationTime /= FAST_FACTOR;
-                
-                SKAction* fadeAction = [SKAction fadeAlphaTo:movementTargetAlpha duration:animationTime];
-                SKAction* moveAction = [SKAction moveTo:endPoint duration:animationTime];
-                SKAction* fadeOutAction = [SKAction fadeOutWithDuration:animationTime / 3.0 / 2.0];
-                
-                fadeAction.timingMode = SKActionTimingEaseIn;
-                moveAction.timingMode = SKActionTimingEaseOut;
-                fadeOutAction.timingMode = SKActionTimingEaseOut;
-                
-                grot0.zPosition = 20;
-
-                if (CONDITION)
-                {
-                    [grot0 runAction:[SKAction sequence:@[ [SKAction group:@[moveAction, fadeAction]], fadeOutAction ]] completion:^{
-                        
-                        if (isLastMovement)
-                        {
-                            [self performBlockInCurrentThread:^{
-                                animateFalling();
-                            } afterDelay:0.1];
-                        }
-                        else
-                        {
-                            grot0.alpha = 0.0;
-                            [animationsViews removeObjectAtIndex:0];
-                            animateMove();
-                        }
-                    }];
-                }
-                else
-                {
-                    if (isLastMovement)
-                    {
-                        [self performBlockInCurrentThread:^{
-                            animateFalling();
-                        } afterDelay:0.1];
-                    }
-                    else
-                    {
-                        grot0.alpha = 0.0;
-                        [animationsViews removeObjectAtIndex:0];
-                        animateMove();
-                    }
-                }
-            };
-            
+            newMoves = 0;
+            newScore = 0;
             //start move
+            
             animationsViews = [NSMutableArray new];
             
             [self nextGrot:field level:1];
             
             // count points
             [self countScore:&newScore moves:&newMoves];
-            // make move
             
-            animateMove();
+            // make move
+            [self animateMove];
         }
     }
 }
+
+- (void)animateMove
+{
+    SNGrotView *grot0 = (SNGrotView *)animationsViews[0];
+    
+    CGPoint beginPoint = grot0.center;
+    CGPoint endPoint;
+    
+    CGPoint p1 = [self positionForX:0 Y:0];
+    CGPoint p2 = [self positionForX:0 Y:1];
+    
+    __block BOOL isLastMovement = animationsViews.count <= 1;
+    
+    if (isLastMovement)
+    {
+        CGPoint endPosition = [self endpointPointedByGrot:grot0];
+        endPoint = [self positionForX:endPosition.x Y:endPosition.y];
+    }
+    else
+    {
+        SNGrotView *grot1 = (SNGrotView *)animationsViews[1];
+        endPoint = grot1.center;
+    }
+    
+    const CGFloat animationDivider = 300.0;
+    const CGFloat movementTargetAlpha = 0.25;
+    
+    CGFloat minAnimationTime = (fabs(p1.x - p2.x) + fabs(p1.y - p2.y)) / animationDivider;
+    CGFloat animationTime = MAX(minAnimationTime, (fabs(beginPoint.x - endPoint.x) + fabs(beginPoint.y - endPoint.y)) / animationDivider) / (INTERFACE_IS_PHONE ? 1 : 2.5);
+    
+    SKAction* fadeAction = [SKAction fadeAlphaTo:movementTargetAlpha duration:animationTime];
+    SKAction* moveAction = [SKAction moveTo:endPoint duration:animationTime];
+    SKAction* fadeOutAction = [SKAction fadeOutWithDuration:animationTime / 3.0 / 2.0];
+    
+    fadeAction.timingMode = SKActionTimingEaseIn;
+    moveAction.timingMode = SKActionTimingEaseOut;
+    fadeOutAction.timingMode = SKActionTimingEaseOut;
+    
+    grot0.zPosition = 20;
+    [grot0 runAction:[SKAction sequence:@[ [SKAction group:@[moveAction, fadeAction]], fadeOutAction ]] completion:^{
+        
+        if (isLastMovement)
+        {
+            [self performBlockOnMainThread:^{
+                [self animateFalling];
+            } afterDelay:0.1];
+        }
+        else
+        {
+            grot0.alpha = 0.0;
+            [animationsViews removeObjectAtIndex:0];
+            [self animateMove];
+        }
+    }];
+}
+
+- (void)animateFalling
+{
+    CGFloat fallAnimationTime = 0.5 ;
+    BOOL isFalling = NO;
+    
+    for (int i = 0;  i < self.grots.count; i++)
+    {
+        SNGrotView *grot0 = self.grots[i];
+        
+        if (grot0.model.isAvailable)
+        {
+            CGPoint currPoint = [self positionForGrot:grot0];
+            CGPoint nextPoint = [self nextEmptyPositionForCurrentPosition:currPoint];
+            
+            if (!CGPointEqualToPoint(currPoint, nextPoint))
+            {
+                SNGrotView *grot1 = [self grotForPosition:nextPoint];
+                
+                SKTMoveEffect *moveEffect = [SKTMoveEffect effectWithNode:grot0
+                                                                 duration:fallAnimationTime
+                                                            startPosition:grot0.position
+                                                              endPosition:[self positionForX:nextPoint.x Y:nextPoint.y]];
+                
+                moveEffect.timingFunction = SKTTimingFunctionBounceEaseOut;
+                
+                SKAction *moveAction = [SKAction actionWithEffect:moveEffect];
+                
+                
+                [grot0 runAction:moveAction];
+                
+                
+                [self.grots exchangeObjectAtIndex:i withObjectAtIndex:[self.grots indexOfObject:grot1]];
+                
+                isFalling = YES;
+            }
+        }
+    }
+    
+    [self performBlockOnMainThread:^{
+        // add new grots
+        __block int animationsCount = 0;
+        
+        for (NSInteger y = 0; y < [self boardSize]; y++)
+        {
+            for (NSInteger x = 0; x < [self boardSize]; x++)
+            {
+                SNGrotView *grot0 = [self grotForX:x Y:y];
+                
+                if (!grot0.model.isAvailable)
+                {
+                    animationsCount++;
+                    grot0.center = [self positionForX:x Y:y];
+                    [grot0 randomize];
+                    
+                    [grot0 setScale:0.8];
+                    
+                    [grot0 runAction:[SKAction group:@[[SKAction fadeAlphaTo:1 duration:0.1],
+                                                       [SKAction scaleTo:1 duration:0.1]
+                                                       ]] completion:^{
+                        
+                        if (--animationsCount == 0)
+                        {
+                            [self.delegate addMoves:newMoves];
+                            [self.delegate addScore:newScore];
+                            
+                            isAnimatingTurn = NO;
+                            
+                            if (self.delegate.moves == 0)
+                            {
+                                [self endGame];
+                            }
+                        }
+                    }];
+                }
+            }
+        }
+    } afterDelay:isFalling ? fallAnimationTime : 0.1];
+}
+
 
 - (void)countScore:(int *)newScore moves:(int *)newMoves
 {
@@ -596,17 +546,8 @@
         maxScore = (unsigned long)self.delegate.score;
         NSLog(@"%i \t\t%i" ,gameNumber, maxScore);
     }
-
     
-    [self newGameWithSize:[self boardSize]];
-
-    if (FAST_FACTOR != 1)
-    {
-        return;
-    }
-
-    
-    [self performBlockInCurrentThread:^{
+    [self performBlockOnMainThread:^{
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Game over"
                                                             message:[NSString stringWithFormat:@"You've scored %lu points. Try again!", (unsigned long)self.delegate.score]
                                                            delegate:self
@@ -660,7 +601,7 @@
     
     isAnimatingTurn = NO;
     
-    [self performBlockInCurrentThread:^{
+    [self performBlockOnMainThread:^{
         self.grots = [NSMutableArray new];
         
         for (NSInteger y = 0; y < [self boardSize]; y++)
@@ -678,8 +619,6 @@
                 [grot runAction:[SKAction fadeAlphaTo:1 duration:0.2]];
             }
         }
-        
-        [self findBestMove];
     } afterDelay:0.2];
 }
 
@@ -687,6 +626,7 @@
 
 - (int)boardSize
 {
+    
     if (_boardSize == 0)
     {
         _boardSize = [[NSUserDefaults standardUserDefaults] integerForKey:@"boardSize"] ? : 4;
@@ -706,90 +646,6 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     [self newGameWithSize:[self boardSize]];
-}
-
-#pragma mark - AI
-
-- (void)findBestMove
-{
-    if (FAST_FACTOR == 1)
-    {
-        return;
-    }
-    
-    SNGrotView *bestGrot;
-    int i = 1;
-    int maxi = 1;
-    int maxnewMoves = 0;
-    int maxnewScore = 0;
-    
-    for (SNGrotView *grot in self.grots)
-    {
-        animationsViews = [NSMutableArray new];
-        [self nextGrot:grot level:1];
-        int newScore = 0;
-        int newMoves = 0;
-        [self countScore:&newScore moves:&newMoves];
-        
-        BOOL checkBestScore = YES;
-        
-        if (checkBestScore)
-        {
-            if (newScore > maxnewScore || (newScore == maxnewScore && newMoves > maxnewMoves))
-            {
-                maxnewScore = newScore;
-                maxnewMoves = newMoves;
-                bestGrot = grot;
-                
-                maxi = i;
-            }
-        }
-        else
-        {
-            if (newMoves > maxnewMoves || (newMoves == maxnewMoves && newScore > maxnewScore))
-            {
-                maxnewScore = newScore;
-                maxnewMoves = newMoves;
-                bestGrot = grot;
-                
-                maxi = i;
-            }
-        }
-        i++;
-        
-        for (SNGrotView *usedGrot in animationsViews) {
-            usedGrot.model.isAvailable = YES;
-        }
-    }
-    
-    // ------------
-    
-    NSArray* items = [self.grots valueForKey:@"model"];
-    
-    SNGameState* state = SNGameState.new;
-    state.grid = [[SNGrotGrid alloc] initWithSize:(CGSize){ self.boardSize, self.boardSize }];
-    state.results = SNGameResults.zeroResults;
-    state.results.score = self.delegate.score;
-    state.results.moves = self.delegate.moves;
-    [state.grid fillWithItems:items];
-    NSDictionary* bestChoice = state.generatedStateOptimizedForMaxScore;
-    SNGameState* bestState = bestChoice.allValues.firstObject;
-    
-    NSUInteger dawidDelta = bestState.results.score - self.delegate.score;
-    
-    if (dawidDelta != maxnewScore)
-    {
-        NSLog(@"error! d: %d vs a: %d", dawidDelta, maxnewScore);
-    }
-    
-    // ------------
-    
-    
-    CGPoint position = [self positionForIndex:maxi-1];
-    
-    [self performBlockInCurrentThread:^{
-        [self makeMoveAtRow:position.x column:position.y];
-    } afterDelay:1 / FAST_FACTOR] ;
 }
 
 @end

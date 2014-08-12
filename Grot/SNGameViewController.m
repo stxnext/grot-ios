@@ -36,15 +36,6 @@
 
 @implementation SNGameViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -56,7 +47,9 @@
     [_gameView presentScene:self.scene];
     
     for (UILabel* latoLabel in self.latoFontLabels)
+    {
         latoLabel.font = [UIFont fontWithName:@"Lato-Light" size:latoLabel.font.pointSize];
+    }
     
     [_gameView setNeedsLayout];
     [_gameView layoutIfNeeded];
@@ -141,6 +134,8 @@
 {
     _score = value;
     
+    [[GameKitHelper sharedGameKitHelper] submitAchievement:value];
+    
     self.scoreLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)value];
 }
 
@@ -154,6 +149,8 @@
 - (void)addScore:(NSUInteger)value
 {
     _score += value;
+    
+    [[GameKitHelper sharedGameKitHelper] submitAchievement:_score];
     
     self.scoreLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)_score];
     
@@ -223,8 +220,8 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    
-    switch (buttonIndex) {
+    switch (buttonIndex)
+    {
         case 0:
         {
             [self.scene newGameWithSize:4];

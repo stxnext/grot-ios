@@ -1,5 +1,4 @@
 #import "GameKitHelper.h"
-//#import "GameConstants.h"
 
 @interface GameKitHelper () <GKGameCenterControllerDelegate>
 {
@@ -18,8 +17,7 @@
     static dispatch_once_t onceToken;
 
     dispatch_once(&onceToken, ^{
-        sharedGameKitHelper =
-        [[GameKitHelper alloc] init];
+        sharedGameKitHelper = [[GameKitHelper alloc] init];
     });
     
     return sharedGameKitHelper;
@@ -35,15 +33,16 @@
         
         [self setLastError:error];
         
-//        if ([CCDirector sharedDirector].isPaused)
-//            [[CCDirector sharedDirector] resume];
-        
-        if (localPlayer.authenticated) {
+        if (localPlayer.authenticated)
+        {
             _gameCenterFeaturesEnabled = YES;
-        } else if(viewController) {
-//            [[CCDirector sharedDirector] pause];
+        }
+        else if (viewController)
+        {
             [self presentViewController:viewController];
-        } else {
+        }
+        else
+        {
             _gameCenterFeaturesEnabled = NO;
         }
     };
@@ -53,6 +52,7 @@
 {
     return _gameCenterFeaturesEnabled;
 }
+
 #pragma mark Property setters
 
 - (void)setLastError:(NSError*)error
@@ -105,45 +105,67 @@
         
         BOOL success = (error == nil);
         
-        if ([_delegate
-             respondsToSelector:@selector(onScoresSubmitted:)]) {
-            
+        if ([_delegate respondsToSelector:@selector(onScoresSubmitted:)])
+        {
             [_delegate onScoresSubmitted:success];
         }
     }];
-    
-    
-//    [gkScore reportScoreWithCompletionHandler:^(NSError* error) {
-//         
-//         [self setLastError:error];
-//         
-//         BOOL success = (error == nil);
-//         
-//         if ([_delegate
-//              respondsToSelector:@selector(onScoresSubmitted:)]) {
-//             
-//             [_delegate onScoresSubmitted:success];
-//         }
-//     }];
 }
 
--(void)showLeaderboardAndAchievements:(BOOL)shouldShowLeaderboard category:(NSString*)category{
+- (void)submitAchievement:(int64_t)score
+{
+    if (!_gameCenterFeaturesEnabled || score == 0)
+    {
+        NSLog(@"Player not authenticated");
+        
+        return;
+    }
+
+    NSString *achievementIdentifier = @"100_points";
+    GKAchievement *scoreAchievement = nil;
+
+    if (score >= 100) {
+        achievementIdentifier = @"100_points";
+    }
+    
+    if (score >= 200) {
+        achievementIdentifier = @"200_points";
+    }
+    
+    
+    scoreAchievement = [[GKAchievement alloc] initWithIdentifier:achievementIdentifier];
+    scoreAchievement.percentComplete = score;
+    scoreAchievement.showsCompletionBanner = YES;
+    
+    NSArray *achievements = @[scoreAchievement];
+    
+    [GKAchievement reportAchievements:achievements withCompletionHandler:^(NSError *error) {
+        if (error != nil) {
+            NSLog(@"%@", [error localizedDescription]);
+        }
+    }];
+}
+
+- (void)showLeaderboardAndAchievements:(BOOL)shouldShowLeaderboard category:(NSString *)category
+{
     GKGameCenterViewController *gcViewController = [[GKGameCenterViewController alloc] init];
     
     gcViewController.gameCenterDelegate = self;
     
-    if (shouldShowLeaderboard) {
+    if (shouldShowLeaderboard)
+    {
         gcViewController.viewState = GKGameCenterViewControllerStateLeaderboards;
         gcViewController.leaderboardIdentifier = category;
     }
-    else{
+    else
+    {
         gcViewController.viewState = GKGameCenterViewControllerStateAchievements;
     }
     
     [self presentViewController:gcViewController];
 }
 
--(void)gameCenterViewControllerDidFinish:(GKGameCenterViewController *)gameCenterViewController
+- (void)gameCenterViewControllerDidFinish:(GKGameCenterViewController *)gameCenterViewController
 {
     [gameCenterViewController dismissViewControllerAnimated:YES completion:nil];
 }

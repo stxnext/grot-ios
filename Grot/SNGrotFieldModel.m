@@ -62,6 +62,8 @@
 
 - (NSString *)description
 {
+    return [NSString stringWithFormat:@"%@ %g",NSStringFromCGPoint(self.position), self.angle];
+    
     NSString* arrowString
     = _direction == SNFieldDirectionUp    ? @"^"
     : _direction == SNFieldDirectionRight ? @">"
