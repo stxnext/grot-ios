@@ -532,8 +532,10 @@
 - (void)endGame
 {
     int64_t score = self.delegate.score;
+    int64_t summaryScore = self.delegate.summaryScore;
     
     [[GameKitHelper sharedGameKitHelper] submitScore:(int64_t)score category:kHighScoreLeaderboardCategory];
+//    [[GameKitHelper sharedGameKitHelper] submitScore:(int64_t)summaryScore category:kSummaryHighScoreLeaderboardCategory];
     
     for (SNGrotView *grot in self.grots)
     {

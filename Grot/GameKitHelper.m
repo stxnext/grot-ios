@@ -121,17 +121,33 @@
         return;
     }
 
-    NSString *achievementIdentifier = @"100_points";
+    NSString *achievementIdentifier = nil;
     GKAchievement *scoreAchievement = nil;
-
-    if (score >= 100) {
-        achievementIdentifier = @"100_points";
-    }
     
-    if (score >= 200) {
+    if (score >= 200)
+    {
         achievementIdentifier = @"200_points";
     }
     
+    if (score >= 400)
+    {
+        achievementIdentifier = @"400_points";
+    }
+    
+    if (score >= 600)
+    {
+        achievementIdentifier = @"600_points";
+    }
+    
+    if (score >= 800)
+    {
+        achievementIdentifier = @"800_points";
+    }
+    
+    if (score >= 1000)
+    {
+        achievementIdentifier = @"1000_points";
+    }
     
     scoreAchievement = [[GKAchievement alloc] initWithIdentifier:achievementIdentifier];
     scoreAchievement.percentComplete = score;

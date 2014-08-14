@@ -10,6 +10,7 @@
 #import <GameKit/GameKit.h>
 
 #define kHighScoreLeaderboardCategory @"com.stxnext.Grot.HighScores"
+#define kSummaryHighScoreLeaderboardCategory @"com.stxnext.Grot.SummaryHighScores"
 
 //   Protocol to notify external
 //   objects when Game Center events occur or

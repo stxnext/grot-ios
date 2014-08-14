@@ -90,6 +90,7 @@
     
     //alter the alpha
     int length = height * width * 4;
+    
     for (int i=0; i<length; i+=4)
     {
         m_PixelBuf[i+3] =  255*alpha;
@@ -130,6 +131,58 @@
 
 #pragma mark Gameplay delegate
 
+- (void)addCash:(NSUInteger)value
+{
+    [self setCash:value + [self cash]];
+}
+
+- (void)setCash:(NSUInteger)value
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setInteger:value forKey:@"cash"];
+    [userDefaults synchronize];
+    
+//    self.cashLabel.text = [NSString stringWithFormat:@"%d", value];
+}
+
+- (NSUInteger)cash
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    if ([userDefaults integerForKey:@"cash"])
+    {
+        return [userDefaults integerForKey:@"cash"];
+    }
+    
+    return 0;
+}
+
+- (void)addSummaryScore:(NSUInteger)value
+{
+    [self setSummaryScore:value + [self summaryScore]];
+}
+
+- (void)setSummaryScore:(NSUInteger)value
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setInteger:value forKey:@"summaryScore"];
+    [userDefaults synchronize];
+    
+//    self.summaryScoreLabel.text = [NSString stringWithFormat:@"%d", value];
+}
+
+- (NSUInteger)summaryScore
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+
+    if ([userDefaults integerForKey:@"summaryScore"])
+    {
+        return [userDefaults integerForKey:@"summaryScore"];
+    }
+
+    return 0;
+}
+
 - (void)setScore:(NSUInteger)value
 {
     _score = value;
@@ -148,6 +201,7 @@
 
 - (void)addScore:(NSUInteger)value
 {
+    [self addSummaryScore:value];
     _score += value;
     
     [[GameKitHelper sharedGameKitHelper] submitAchievement:_score];

@@ -13,6 +13,7 @@
 @protocol SNGameplayDelegate <NSObject>
 
 @property (nonatomic, assign) NSUInteger score;
+@property (nonatomic, assign) NSUInteger summaryScore;
 @property (nonatomic, assign) NSUInteger moves;
 
 - (void)addScore:(NSUInteger)value;
