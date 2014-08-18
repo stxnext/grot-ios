@@ -38,6 +38,16 @@
                ReferencedContainer = "container:Grot.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "0C66EA20199CDEE400208166"
+               BuildableName = "Pods installTests.xctest"
+               BlueprintName = "Pods installTests"
+               ReferencedContainer = "container:Grot.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

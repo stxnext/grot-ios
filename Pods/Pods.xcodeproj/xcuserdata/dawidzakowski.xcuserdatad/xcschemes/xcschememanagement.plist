@@ -4,12 +4,17 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-GPUImage.xcscheme</key>
+		<key>Pods-GPUImage.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods.xcscheme</key>
+		<key>Pods-GoogleAnalytics-iOS-SDK.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -17,12 +22,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2383081E4BD242049592B72C</key>
+		<key>1D5D1954383A4FC7AF806E94</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E181C5A0B9744236878FB103</key>
+		<key>5BC123D4E9E6489BB151DF78</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C88DC286C91F492C9CA5F7D4</key>
 		<dict>
 			<key>primary</key>
 			<true/>

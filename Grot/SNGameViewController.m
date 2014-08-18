@@ -36,6 +36,15 @@
 
 @implementation SNGameViewController
 
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    
+    self.screenName = @"basicGameplay";
+    
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];

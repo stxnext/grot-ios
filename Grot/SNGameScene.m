@@ -557,6 +557,8 @@
                                                   otherButtonTitles:@"New game", nil];
         
         [alertView show];
+        
+        [SNAnalyticsManager.sharedManager gameDidEndWithScore:self.delegate.score];
     } afterDelay:0.8];
 }
 

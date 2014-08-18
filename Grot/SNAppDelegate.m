@@ -7,17 +7,24 @@
 //
 
 #import "SNAppDelegate.h"
-
 #import "UIWindow+Splash.h"
 
 @implementation SNAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // Override point for customization after application launch.
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
     
-    // Override point for customization after application launch.
+    // Google analytics
+    [SNAnalyticsManager.sharedManager start];
+    [SNAnalyticsManager.sharedManager applicationDidRun];
+    
+    // App installation/update tracker
+    [self trackAppInstallation];
+    
+    // Splash screen extension
     UIWindow* baseWindow = self.window;
     SplashWindow* splashWindow = [UIWindow splashWindow];
     
@@ -39,8 +46,6 @@
             self.window = baseWindow;
         }];
     });
-    
-    
     
     return YES;
 }
@@ -65,11 +70,34 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    [SNAnalyticsManager.sharedManager resume];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+#pragma mark - Installation and updates tracker
+
+- (void)trackAppInstallation
+{
+    NSString* appVersion = NSBundle.mainBundle.infoDictionary[@"CFBundleShortVersionString"];
+    NSString* appBuild = NSBundle.mainBundle.infoDictionary[@"CFBundleVersion"];
+    NSString* appCombinedVersion = [NSString stringWithFormat:@"%@ %@", appVersion, appBuild];
+    
+    static NSString* appVersionKey = @"application.installedVersion";
+    NSString* savedVersion = [NSUserDefaults.standardUserDefaults stringForKey:appVersionKey];
+    BOOL isFirstInstallation = savedVersion == nil;
+    BOOL appVersionChanged = ![savedVersion isEqualToString:appCombinedVersion];
+    
+    if (isFirstInstallation)
+        [SNAnalyticsManager.sharedManager applicationDidInstall];
+    else if (appVersionChanged)
+        [SNAnalyticsManager.sharedManager applicationDidUpdate];
+    
+    [NSUserDefaults.standardUserDefaults setObject:appCombinedVersion forKey:appVersionKey];
+    [NSUserDefaults.standardUserDefaults synchronize];
 }
 
 @end

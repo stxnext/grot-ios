@@ -5,19 +5,19 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>4FBBA361-B379-40E5-885F-FBA83FADF6AB</string>
+	<string>01E0B016-C17A-4303-88DA-BC9C9BBF03AD</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Grot</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>7FB9B6D2-C937-41BD-BEBE-2E1FE9487ED5</key>
+		<key>948E29DA-77C8-4057-9DCF-2529B221997A</key>
 		<string>https://github.com/stxnext/grot-ios.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Grot.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>7FB9B6D2-C937-41BD-BEBE-2E1FE9487ED5</key>
+		<key>948E29DA-77C8-4057-9DCF-2529B221997A</key>
 		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -25,14 +25,14 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>7FB9B6D2-C937-41BD-BEBE-2E1FE9487ED5</string>
+	<string>948E29DA-77C8-4057-9DCF-2529B221997A</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>7FB9B6D2-C937-41BD-BEBE-2E1FE9487ED5</string>
+			<string>948E29DA-77C8-4057-9DCF-2529B221997A</string>
 			<key>IDESourceControlWCCName</key>
 			<string>grot-ios</string>
 		</dict>

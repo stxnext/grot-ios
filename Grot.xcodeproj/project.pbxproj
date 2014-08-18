@@ -21,6 +21,8 @@
 		0C20F53F1976745F00831879 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C20F51E1976745F00831879 /* UIKit.framework */; };
 		0C20F5471976745F00831879 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0C20F5451976745F00831879 /* InfoPlist.strings */; };
 		0C20F5491976745F00831879 /* GrotTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C20F5481976745F00831879 /* GrotTests.m */; };
+		0C2C8D6219A1CF82002233C9 /* SNAnalyticsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C2C8D6119A1CF82002233C9 /* SNAnalyticsManager.m */; };
+		0C2C8D6319A1CF82002233C9 /* SNAnalyticsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C2C8D6119A1CF82002233C9 /* SNAnalyticsManager.m */; };
 		0C4C5A4C1988E7730057084E /* UIWindow+Splash.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C4C5A4B1988E7730057084E /* UIWindow+Splash.m */; };
 		0C4C5A5E1988F8A30057084E /* SKAction+SKTExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C4C5A4E1988F8A30057084E /* SKAction+SKTExtras.m */; };
 		0C4C5A5F1988F8A30057084E /* SKAction+SKTSpecialEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C4C5A501988F8A30057084E /* SKAction+SKTSpecialEffects.m */; };
@@ -32,6 +34,7 @@
 		0C4C5A651988F8A30057084E /* SKTTimingFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C4C5A5C1988F8A30057084E /* SKTTimingFunctions.m */; };
 		0C61A4831991F82B0065CD1C /* SKObservableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C61A4821991F82B0065CD1C /* SKObservableView.m */; };
 		0C61A4A61992440D0065CD1C /* SNGrotHints.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C61A4A51992440D0065CD1C /* SNGrotHints.m */; };
+		0C66EA3D199CE56600208166 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0C66EA3C199CE56600208166 /* Settings.bundle */; };
 		0CB4C57A19934FCF000E8688 /* SNGrotHints.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C61A4A51992440D0065CD1C /* SNGrotHints.m */; };
 		0CB4C57F19934FDA000E8688 /* SNGrotFieldModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 666F8F3A1978DDDE00B7B381 /* SNGrotFieldModel.m */; };
 		0CB9DFE8198F6F5D00DE89E9 /* UIImage+Blending.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CB9DFE7198F6F5D00DE89E9 /* UIImage+Blending.m */; };
@@ -66,6 +69,18 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		0C66EA12199CDEE400208166 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0C20F5171976745F00831879 /* Grot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Grot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C20F51A1976745F00831879 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -85,6 +100,8 @@
 		0C20F5441976745F00831879 /* GrotTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GrotTests-Info.plist"; sourceTree = "<group>"; };
 		0C20F5461976745F00831879 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0C20F5481976745F00831879 /* GrotTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GrotTests.m; sourceTree = "<group>"; };
+		0C2C8D6019A1CF82002233C9 /* SNAnalyticsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNAnalyticsManager.h; sourceTree = "<group>"; };
+		0C2C8D6119A1CF82002233C9 /* SNAnalyticsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNAnalyticsManager.m; sourceTree = "<group>"; };
 		0C4C5A4A1988E7730057084E /* UIWindow+Splash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+Splash.h"; sourceTree = "<group>"; };
 		0C4C5A4B1988E7730057084E /* UIWindow+Splash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+Splash.m"; sourceTree = "<group>"; };
 		0C4C5A4D1988F8A30057084E /* SKAction+SKTExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SKAction+SKTExtras.h"; path = "SKTUtils/SKAction+SKTExtras.h"; sourceTree = "<group>"; };
@@ -109,6 +126,8 @@
 		0C61A4821991F82B0065CD1C /* SKObservableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKObservableView.m; sourceTree = "<group>"; };
 		0C61A4A41992440D0065CD1C /* SNGrotHints.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNGrotHints.h; sourceTree = "<group>"; };
 		0C61A4A51992440D0065CD1C /* SNGrotHints.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNGrotHints.m; sourceTree = "<group>"; };
+		0C66EA14199CDEE400208166 /* libPods rebuild.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods rebuild.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0C66EA3C199CE56600208166 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		0CB9DFE6198F6F5D00DE89E9 /* UIImage+Blending.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Blending.h"; sourceTree = "<group>"; };
 		0CB9DFE7198F6F5D00DE89E9 /* UIImage+Blending.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Blending.m"; sourceTree = "<group>"; };
 		0CB9DFEE198F89B400DE89E9 /* UIColor+Blending.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Blending.h"; sourceTree = "<group>"; };
@@ -168,6 +187,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0C66EA11199CDEE400208166 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -187,6 +213,7 @@
 			children = (
 				0C20F5171976745F00831879 /* Grot.app */,
 				0C20F53B1976745F00831879 /* GrotTests.xctest */,
+				0C66EA14199CDEE400208166 /* libPods rebuild.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -209,6 +236,9 @@
 		0C20F5201976745F00831879 /* Grot */ = {
 			isa = PBXGroup;
 			children = (
+				0C2C8D5F19A1CF67002233C9 /* Analytics */,
+				0C61A4A3199243F60065CD1C /* Hints */,
+				0C61A4801991F7B90065CD1C /* Extensions */,
 				666F8FFB1978E72100B7B381 /* SNGameScene.h */,
 				0CFC31D7198A11FB00C7499A /* SNGameViewController.h */,
 				666F8F391978DDDE00B7B381 /* SNGrotFieldModel.h */,
@@ -234,13 +264,12 @@
 		0C20F5211976745F00831879 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0C2C8D6C19A1DA58002233C9 /* Fonts */,
 				0C20F5261976745F00831879 /* main.m */,
 				0C20F5281976745F00831879 /* Grot-Prefix.pch */,
 				0C20F5221976745F00831879 /* Grot-Info.plist */,
-				0CB9DFF8198F9C2400DE89E9 /* Lato-Light.ttf */,
-				0CB9DFFA198FA25F00DE89E9 /* Lato-Regular.ttf */,
-				0CB9DFF1198F99E800DE89E9 /* Lato-Thin.ttf */,
 				0C20F5231976745F00831879 /* InfoPlist.strings */,
+				0C66EA3C199CE56600208166 /* Settings.bundle */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -261,6 +290,25 @@
 				0C20F5451976745F00831879 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0C2C8D5F19A1CF67002233C9 /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				0C2C8D6019A1CF82002233C9 /* SNAnalyticsManager.h */,
+				0C2C8D6119A1CF82002233C9 /* SNAnalyticsManager.m */,
+			);
+			name = Analytics;
+			sourceTree = "<group>";
+		};
+		0C2C8D6C19A1DA58002233C9 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				0CB9DFF8198F9C2400DE89E9 /* Lato-Light.ttf */,
+				0CB9DFFA198FA25F00DE89E9 /* Lato-Regular.ttf */,
+				0CB9DFF1198F99E800DE89E9 /* Lato-Thin.ttf */,
+			);
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 		0C61A4801991F7B90065CD1C /* Extensions */ = {
@@ -396,6 +444,24 @@
 			productReference = 0C20F53B1976745F00831879 /* GrotTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		0C66EA13199CDEE400208166 /* Pods rebuild */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0C66EA34199CDEE500208166 /* Build configuration list for PBXNativeTarget "Pods rebuild" */;
+			buildPhases = (
+				0C66EA36199CDF0100208166 /* ShellScript */,
+				0C66EA10199CDEE400208166 /* Sources */,
+				0C66EA11199CDEE400208166 /* Frameworks */,
+				0C66EA12199CDEE400208166 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods rebuild";
+			productName = "Pods install";
+			productReference = 0C66EA14199CDEE400208166 /* libPods rebuild.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -437,6 +503,7 @@
 			targets = (
 				0C20F5161976745F00831879 /* Grot */,
 				0C20F53A1976745F00831879 /* GrotTests */,
+				0C66EA13199CDEE400208166 /* Pods rebuild */,
 			);
 		};
 /* End PBXProject section */
@@ -453,6 +520,7 @@
 				0C20F52E1976745F00831879 /* Main_iPhone.storyboard in Resources */,
 				0CFC31DB198A551800C7499A /* Grot-Info.plist in Resources */,
 				0C20F5251976745F00831879 /* InfoPlist.strings in Resources */,
+				0C66EA3D199CE56600208166 /* Settings.bundle in Resources */,
 				0CB9DFF9198F9C2400DE89E9 /* Lato-Light.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -468,6 +536,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0C66EA36199CDF0100208166 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd ${SRCROOT}\npod install --verbose > pods_install.log";
+		};
 		B91DA02DE8824D88A299CB80 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -531,6 +612,7 @@
 				0C20F52B1976745F00831879 /* SNAppDelegate.m in Sources */,
 				0CB9E001198FAEF500DE89E9 /* UIPassthroughView.m in Sources */,
 				0C61A4A61992440D0065CD1C /* SNGrotHints.m in Sources */,
+				0C2C8D6219A1CF82002233C9 /* SNAnalyticsManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -541,6 +623,14 @@
 				0CB4C57F19934FDA000E8688 /* SNGrotFieldModel.m in Sources */,
 				0C20F5491976745F00831879 /* GrotTests.m in Sources */,
 				0CB4C57A19934FCF000E8688 /* SNGrotHints.m in Sources */,
+				0C2C8D6319A1CF82002233C9 /* SNAnalyticsManager.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0C66EA10199CDEE400208166 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -750,6 +840,34 @@
 			};
 			name = Release;
 		};
+		0C66EA30199CDEE500208166 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/Pods_install.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Pods install/Pods install-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		0C66EA31199CDEE500208166 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/Pods_install.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Pods install/Pods install-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -776,6 +894,15 @@
 			buildConfigurations = (
 				0C20F5501976745F00831879 /* Debug */,
 				0C20F5511976745F00831879 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0C66EA34199CDEE500208166 /* Build configuration list for PBXNativeTarget "Pods rebuild" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0C66EA30199CDEE500208166 /* Debug */,
+				0C66EA31199CDEE500208166 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
