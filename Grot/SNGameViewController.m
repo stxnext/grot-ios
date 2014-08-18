@@ -332,16 +332,19 @@
             [UIView animateWithDuration:0.4 animations:^{
                 self.helpContainter.alpha = 1;
             } completion:^(BOOL finished) {
-                
+                [SNAnalyticsManager.sharedManager helpDidShow];
             }];
         }
             break;
             
         case 2:
         {
-            [self performBlockInCurrentThread:^{
-                [[GameKitHelper sharedGameKitHelper] showLeaderboardAndAchievements:YES category:kHighScoreLeaderboardCategory];
-            } afterDelay:1];
+            if (actionSheet.numberOfButtons == 4) {
+                [self performBlockInCurrentThread:^{
+                    [[GameKitHelper sharedGameKitHelper] showLeaderboardAndAchievements:YES category:kHighScoreLeaderboardCategory];
+                    [SNAnalyticsManager.sharedManager gameCenterDidShow];
+                } afterDelay:1];
+            }
         }
             break;
     }

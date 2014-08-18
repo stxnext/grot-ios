@@ -23,7 +23,6 @@
     int bottomMargin;
     int grotSpace;
     
-    int gameNumber;
     int maxScore;
     
     int newScore;
@@ -546,7 +545,6 @@
     if ((unsigned long)self.delegate.score > maxScore)
     {
         maxScore = (unsigned long)self.delegate.score;
-        NSLog(@"%i \t\t%i" ,gameNumber, maxScore);
     }
     
     [self performBlockOnMainThread:^{
@@ -588,7 +586,6 @@
 
 - (void)newGameWithSize:(int)size
 {
-    gameNumber++;
     [self setBoardSize:size];
     
     grotSpace = (INTERFACE_IS_PAD ? 10.0 : 5.0) - (size - 2);

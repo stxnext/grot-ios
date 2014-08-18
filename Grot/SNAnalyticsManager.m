@@ -96,4 +96,47 @@ static NSString *const kAllowTracking = @"GAAllowTracking";
     [self sendEvent:event];
 }
 
+- (void)helpDidShow
+{
+    NSMutableDictionary *event = [[GAIDictionaryBuilder createEventWithCategory:@"userInterface"
+                                                                         action:@"helpDidShow"
+                                                                          label:nil
+                                                                          value:nil] build];
+    
+    [self sendEvent:event];
+}
+
+- (void)gameCenterDidShow
+{
+    NSMutableDictionary *event = [[GAIDictionaryBuilder createEventWithCategory:@"userInterface"
+                                                                         action:@"gameCenterDidShow"
+                                                                          label:nil
+                                                                          value:nil] build];
+    
+    [self sendEvent:event];
+}
+
+
+- (void)gameCenterDidLoginWithSuccess
+{
+    NSMutableDictionary *event = [[GAIDictionaryBuilder createEventWithCategory:@"gameCenter"
+                                                                         action:@"loginSuccess"
+                                                                          label:nil
+                                                                          value:nil] build];
+    
+    [self sendEvent:event];
+    
+}
+
+- (void)gameCenterDidLoginWithFail
+{
+    NSMutableDictionary *event = [[GAIDictionaryBuilder createEventWithCategory:@"gameCenter"
+                                                                         action:@"loginFail"
+                                                                          label:nil
+                                                                          value:nil] build];
+    
+    [self sendEvent:event];
+    
+}
+
 @end
