@@ -17,11 +17,15 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>1.1</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>20140806</string>
+	<string>20140819</string>
+	<key>FlurryTrackingKey</key>
+	<string>9QFPSS3W89F2SZV6T382</string>
+	<key>GATrackingId</key>
+	<string>UA-53811947-1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIAppFonts</key>
@@ -52,9 +56,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>GATrackingId</key>
-	<string>UA-53811947-1</string>
-	<key>FlurryTrackingKey</key>
-	<string>9QFPSS3W89F2SZV6T382</string>
 </dict>
 </plist>
