@@ -8,7 +8,7 @@
 			<key>DefaultValue</key>
 			<true/>
 			<key>Key</key>
-			<string>GAAllowTracking</string>
+			<string>ApplicationAllowTracking</string>
 			<key>Title</key>
 			<string>Share usage info</string>
 			<key>Type</key>

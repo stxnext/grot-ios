@@ -6,13 +6,13 @@ possible solutions.[0m
 Analyzing dependencies
 
 Updating spec repositories
-$ /Users/dawidzakowski/Desktop/Archiwum/Xcode.app/Contents/Developer/usr/bin/git rev-parse  >/dev/null 2>&1
-$ /Users/dawidzakowski/Desktop/Archiwum/Xcode.app/Contents/Developer/usr/bin/git ls-remote
-  54c37a7d8b03c1979ec265c9523916a36a3968de	HEAD
+$ /Users/dawidzakowski/Desktop/Archiwum/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/git rev-parse  >/dev/null 2>&1
+$ /Users/dawidzakowski/Desktop/Archiwum/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/git ls-remote
+  b670421c69f9f00b0150681dac0dd99c2523f636	HEAD
   0b9b0cf2b370a41d6fca5b35031ebe125a03b69e	refs/__temp__/0b9b0cf2b370a41d6fca5b35031ebe125a03b69e
   82137b10f4edda6e0547e55679542a4dff979449	refs/__temp__/82137b10f4edda6e0547e55679542a4dff979449
   c515713c93fcdabafffb8d600b19fbdd590e8258	refs/__temp__/c515713c93fcdabafffb8d600b19fbdd590e8258
-  54c37a7d8b03c1979ec265c9523916a36a3968de	refs/heads/master
+  b670421c69f9f00b0150681dac0dd99c2523f636	refs/heads/master
   fe7df26fe5545072c11abac241d73087a29e87d9	refs/pull/1/head
   1748dab37fe08120775777a084e0fb9da10c4a63	refs/pull/1/merge
   48a6d66e2c3129c3bcfec1972c15f6e24723b9f5	refs/pull/10/head
@@ -17831,13 +17831,18 @@ $ /Users/dawidzakowski/Desktop/Archiwum/Xcode.app/Contents/Developer/usr/bin/git
   5a7c7be28f0859865035c324e625c507cf858f4a	refs/pull/9998/head
   7a19ff8bfbaf00a485ca2274a229205d715dcbf7	refs/pull/9999/head
 Updating spec repo `master`
-$ /Users/dawidzakowski/Desktop/Archiwum/Xcode.app/Contents/Developer/usr/bin/git pull --no-rebase --no-commit
-  Already up-to-date.
+$ /Users/dawidzakowski/Desktop/Archiwum/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/git pull --no-rebase --no-commit
+  Updating 54c37a7..b670421
+  Fast-forward
+   Specs/LCVoiceHud/0.3/LCVoiceHud.podspec.json | 22 ++++++++++++++++++++++
+   1 file changed, 22 insertions(+)
+   create mode 100644 Specs/LCVoiceHud/0.3/LCVoiceHud.podspec.json
 
 CocoaPods 0.33.1 is available.
 To update use: [sudo] gem install cocoapods
 
 Finding Podfile changes
+A FlurrySDK
 - GPUImage
 - GoogleAnalytics-iOS-SDK
 
@@ -17845,146 +17850,40 @@ Resolving dependencies of `Podfile`
 Resolving dependencies for target `Pods' (iOS 7.0)
 - GPUImage (= 0.1.4)
 - GoogleAnalytics-iOS-SDK (= 3.0.9)
+- FlurrySDK
+- FlurrySDK/FlurrySDK
+- FlurrySDK/FlurryAds
+- FlurrySDK/FlurrySDK
 
 Comparing resolved specification to the sandbox manifest
-A GoogleAnalytics-iOS-SDK
+A FlurrySDK
 - GPUImage
+- GoogleAnalytics-iOS-SDK
 
 Downloading dependencies
 
+-> Installing FlurrySDK (5.2.0)
+ > GitHub download
+$ /Users/dawidzakowski/Desktop/Archiwum/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/git config core.bare
+   true
+$ /Users/dawidzakowski/Desktop/Archiwum/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/git config core.bare
+   true
+ > Updating cache git repo (/Users/dawidzakowski/Library/Caches/CocoaPods/GitHub/b82158b837a32db0dd6bbfe761ae26fe6fc92954)
+$ /Users/dawidzakowski/Desktop/Archiwum/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/git remote update
+     Fetching origin
+ > Cloning to Pods folder
+$ /Users/dawidzakowski/Desktop/Archiwum/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/git clone /Users/dawidzakowski/Library/Caches/CocoaPods/GitHub/b82158b837a32db0dd6bbfe761ae26fe6fc92954 /Users/dawidzakowski/Documents/grot-ios/Pods/FlurrySDK 
+$ /Users/dawidzakowski/Desktop/Archiwum/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/git fetch origin tags/5.2.0 2>&1
+   From /Users/dawidzakowski/Library/Caches/CocoaPods/GitHub/b82158b837a32db0dd6bbfe761ae26fe6fc92954
+    * tag               5.2.0      -> FETCH_HEAD
+$ /Users/dawidzakowski/Desktop/Archiwum/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/git reset --hard FETCH_HEAD
+   HEAD is now at e44eb6a Updating Flurry SDK to 5.2.0
+$ /Users/dawidzakowski/Desktop/Archiwum/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/git checkout -b activated-pod-commit 2>&1
+   Switched to a new branch 'activated-pod-commit'
+
 -> Using GPUImage (0.1.4)
 
--> Installing GoogleAnalytics-iOS-SDK (3.0.9)
- > Http download
-$ /usr/bin/curl -L -o /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/file.zip "https://dl.google.com/googleanalyticsservices/GoogleAnalyticsServicesiOS_3.09.zip" --create-dirs
-$ /usr/bin/unzip /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/file.zip -d /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK
-   Archive:  /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/file.zip
-      creating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/
-      creating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Changelog.txt  
-      creating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Examples/
-      creating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Examples/CuteAnimals/
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Examples/CuteAnimals/AppDelegate.h  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Examples/CuteAnimals/AppDelegate.m  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Examples/CuteAnimals/CategoryViewController.h  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Examples/CuteAnimals/CategoryViewController.m  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Examples/CuteAnimals/CategoryViewController_iPad.xib  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Examples/CuteAnimals/CategoryViewController_iPhone.xib  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Examples/CuteAnimals/CuteAnimals-Info.plist  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Examples/CuteAnimals/CuteAnimals-Prefix.pch  
-      creating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Examples/CuteAnimals/CuteAnimals.xcodeproj/
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Examples/CuteAnimals/CuteAnimals.xcodeproj/project.pbxproj  
-      creating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Examples/CuteAnimals/Images/
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Examples/CuteAnimals/Images/Bunny-1.jpg  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Examples/CuteAnimals/Images/Bunny-2.jpg  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Examples/CuteAnimals/Images/Bunny-3.jpg  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Examples/CuteAnimals/Images/Cat-1.jpg  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Examples/CuteAnimals/Images/Cat-2.jpg  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Examples/CuteAnimals/Images/Cat-3.jpg  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Examples/CuteAnimals/Images/Cat-4.jpg  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Examples/CuteAnimals/Images/Lion-1.jpg  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Examples/CuteAnimals/Images/Lion-2.jpg  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Examples/CuteAnimals/Images/Lion-3.jpg  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Examples/CuteAnimals/Images/Lion-4.jpg  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Examples/CuteAnimals/Images/Monkey-1.jpg  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Examples/CuteAnimals/Images/Monkey-2.jpg  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Examples/CuteAnimals/Images/Monkey-3.jpg  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Examples/CuteAnimals/Images/Monkey-4.jpg  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Examples/CuteAnimals/Images/Monkey-5.jpg  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Examples/CuteAnimals/Images/Tiger-1.jpg  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Examples/CuteAnimals/Images/Tiger-2.jpg  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Examples/CuteAnimals/ImageViewController.h  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Examples/CuteAnimals/ImageViewController.m  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Examples/CuteAnimals/main.m  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Examples/CuteAnimals/NavController.h  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Examples/CuteAnimals/NavController.m  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Examples/CuteAnimals/Readme.txt  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Examples/CuteAnimals/RootViewController.h  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Examples/CuteAnimals/RootViewController.m  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Examples/CuteAnimals/RootViewController.xib  
-      creating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Examples/CuteAnimals/Settings.bundle/
-      creating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Examples/CuteAnimals/Settings.bundle/en.lproj/
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Examples/CuteAnimals/Settings.bundle/en.lproj/Root.strings  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Examples/CuteAnimals/Settings.bundle/Root.plist  
-      creating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Library/
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Library/GAI.h  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Library/GAIDictionaryBuilder.h  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Library/GAIEcommerceFields.h  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Library/GAIEcommerceProduct.h  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Library/GAIEcommerceProductAction.h  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Library/GAIEcommercePromotion.h  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Library/GAIFields.h  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Library/GAILogger.h  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Library/GAITrackedViewController.h  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Library/GAITracker.h  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleAnalytics/Readme.txt  
-      creating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Changelog.txt  
-      creating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Examples/
-      creating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Examples/CuteAnimals/
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Examples/CuteAnimals/AppDelegate.h  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Examples/CuteAnimals/AppDelegate.m  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Examples/CuteAnimals/CategoryViewController.h  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Examples/CuteAnimals/CategoryViewController.m  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Examples/CuteAnimals/CategoryViewController_iPad.xib  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Examples/CuteAnimals/CategoryViewController_iPhone.xib  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Examples/CuteAnimals/CustomMacroHandler.h  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Examples/CuteAnimals/CustomMacroHandler.m  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Examples/CuteAnimals/CustomTagHandler.h  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Examples/CuteAnimals/CustomTagHandler.m  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Examples/CuteAnimals/CuteAnimals-Info.plist  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Examples/CuteAnimals/CuteAnimals-Prefix.pch  
-      creating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Examples/CuteAnimals/CuteAnimals.xcodeproj/
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Examples/CuteAnimals/CuteAnimals.xcodeproj/project.pbxproj  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Examples/CuteAnimals/GTM-XXXX  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Examples/CuteAnimals/GTM-XXXX.plist  
-      creating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Examples/CuteAnimals/Images/
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Examples/CuteAnimals/Images/Bunny-1.jpg  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Examples/CuteAnimals/Images/Bunny-2.jpg  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Examples/CuteAnimals/Images/Bunny-3.jpg  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Examples/CuteAnimals/Images/Cat-1.jpg  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Examples/CuteAnimals/Images/Cat-2.jpg  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Examples/CuteAnimals/Images/Cat-3.jpg  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Examples/CuteAnimals/Images/Cat-4.jpg  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Examples/CuteAnimals/Images/Container.png  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Examples/CuteAnimals/Images/CustomTag.png  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Examples/CuteAnimals/Images/Lion-1.jpg  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Examples/CuteAnimals/Images/Lion-2.jpg  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Examples/CuteAnimals/Images/Lion-3.jpg  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Examples/CuteAnimals/Images/Lion-4.jpg  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Examples/CuteAnimals/Images/Monkey-1.jpg  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Examples/CuteAnimals/Images/Monkey-2.jpg  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Examples/CuteAnimals/Images/Monkey-3.jpg  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Examples/CuteAnimals/Images/Monkey-4.jpg  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Examples/CuteAnimals/Images/Monkey-5.jpg  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Examples/CuteAnimals/Images/NumRefreshesMod5.png  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Examples/CuteAnimals/Images/RefreshEvent.png  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Examples/CuteAnimals/Images/RefreshEventTag.png  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Examples/CuteAnimals/Images/ScreenClosedTag.png  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Examples/CuteAnimals/Images/ScreenOpenTag.png  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Examples/CuteAnimals/Images/Tiger-1.jpg  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Examples/CuteAnimals/Images/Tiger-2.jpg  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Examples/CuteAnimals/ImageViewController.h  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Examples/CuteAnimals/ImageViewController.m  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Examples/CuteAnimals/main.m  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Examples/CuteAnimals/NavController.h  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Examples/CuteAnimals/NavController.m  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Examples/CuteAnimals/README  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Examples/CuteAnimals/RootViewController.h  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Examples/CuteAnimals/RootViewController.m  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Examples/CuteAnimals/RootViewController.xib  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Examples/CuteAnimals/Utils.h  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Examples/CuteAnimals/Utils.m  
-      creating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Library/
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Library/TAGContainer.h  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Library/TAGContainerOpener.h  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Library/TAGDataLayer.h  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Library/TAGLogger.h  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Library/TAGManager.h  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/GoogleTagManager/Readme.txt  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/libAdIdAccess.a  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/libGoogleAnalyticsServices.a  
-     inflating: /Users/dawidzakowski/Documents/grot-ios/Pods/GoogleAnalytics-iOS-SDK/GoogleAnalyticsServicesiOS_3.09/Readme.txt  
+-> Using GoogleAnalytics-iOS-SDK (3.0.9)
 - Running pre install hooks
 
 Generating Pods project
@@ -17995,6 +17894,13 @@ Generating Pods project
 - Adding resources to Pods project
 - Linking headers
 - Installing libraries
+- Installing target `Pods-FlurrySDK` iOS 7.0
+- Adding Build files
+- Adding resource bundles to Pods project
+- Generating public xcconfig file at `Pods/Pods-FlurrySDK.xcconfig`
+- Generating private xcconfig file at `Pods/Pods-FlurrySDK-Private.xcconfig`
+- Generating prefix header at `Pods/Pods-FlurrySDK-prefix.pch`
+- Generating dummy source file at `Pods/Pods-FlurrySDK-dummy.m`
 - Installing target `Pods-GPUImage` iOS 7.0
 - Adding Build files
 - Adding resource bundles to Pods project

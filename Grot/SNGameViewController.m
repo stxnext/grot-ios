@@ -36,15 +36,6 @@
 
 @implementation SNGameViewController
 
-- (id)initWithCoder:(NSCoder *)aDecoder
-{
-    self = [super initWithCoder:aDecoder];
-    
-    self.screenName = @"basicGameplay";
-    
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -62,7 +53,6 @@
     
     [_gameView setNeedsLayout];
     [_gameView layoutIfNeeded];
-    
 }
 
 - (void)viewDidAppear:(BOOL)animated

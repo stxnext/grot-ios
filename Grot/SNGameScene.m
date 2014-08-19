@@ -558,6 +558,8 @@
         
         [alertView show];
         
+        // Statistics
+        [SNAnalyticsManager.sharedManager gameDidToggle:NO];
         [SNAnalyticsManager.sharedManager gameDidEndWithScore:self.delegate.score];
     } afterDelay:0.8];
 }
@@ -624,6 +626,9 @@
             }
         }
     } afterDelay:0.2];
+    
+    // Statistics
+    [SNAnalyticsManager.sharedManager gameDidToggle:YES];
 }
 
 #pragma mark - BoardSize

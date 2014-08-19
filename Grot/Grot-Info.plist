@@ -50,9 +50,11 @@
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
-	<key>GATrackingId</key>
-	<string>UA-53811947-1</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>GATrackingId</key>
+	<string>UA-53811947-1</string>
+	<key>FlurryTrackingKey</key>
+	<string>9QFPSS3W89F2SZV6T382</string>
 </dict>
 </plist>
