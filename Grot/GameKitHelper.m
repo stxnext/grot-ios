@@ -79,9 +79,14 @@
 {
     UIViewController *rootVC = [self getRootViewController];
     
-    [rootVC presentViewController:vc
-                         animated:YES
-                       completion:nil];
+    dispatch_block_t presentBlock = ^{
+        [rootVC presentViewController:vc animated:YES completion:nil];
+    };
+    
+    if (rootVC.presentedViewController)
+        [rootVC.presentedViewController dismissViewControllerAnimated:YES completion:presentBlock];
+    else
+        presentBlock();
 }
 
 - (void)submitScore:(int64_t)score category:(NSString*)category
