@@ -26,5 +26,10 @@
 - (void)applicationDidRun;
 - (void)applicationDidInstall;
 - (void)applicationDidUpdate;
+- (void)helpDidShow;
+- (void)gameCenterDidShow;
+
+- (void)gameCenterDidLoginWithSuccess;
+- (void)gameCenterDidLoginWithFail;
 
 @end

@@ -36,6 +36,7 @@
         if (localPlayer.authenticated)
         {
             _gameCenterFeaturesEnabled = YES;
+            [SNAnalyticsManager.sharedManager gameCenterDidLoginWithSuccess];
         }
         else if (viewController)
         {
@@ -44,6 +45,8 @@
         else
         {
             _gameCenterFeaturesEnabled = NO;
+            [SNAnalyticsManager.sharedManager gameCenterDidLoginWithFail];
+            
         }
     };
 }

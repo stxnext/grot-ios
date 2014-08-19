@@ -236,9 +236,6 @@
 		0C20F5201976745F00831879 /* Grot */ = {
 			isa = PBXGroup;
 			children = (
-				0C2C8D5F19A1CF67002233C9 /* Analytics */,
-				0C61A4A3199243F60065CD1C /* Hints */,
-				0C61A4801991F7B90065CD1C /* Extensions */,
 				666F8FFB1978E72100B7B381 /* SNGameScene.h */,
 				0CFC31D7198A11FB00C7499A /* SNGameViewController.h */,
 				666F8F391978DDDE00B7B381 /* SNGrotFieldModel.h */,
@@ -248,10 +245,12 @@
 				666F8F3A1978DDDE00B7B381 /* SNGrotFieldModel.m */,
 				666F8F3D1978DE4A00B7B381 /* SNGrotView.m */,
 				0C20F5351976745F00831879 /* Images.xcassets */,
+				0C2C8D5F19A1CF67002233C9 /* Analytics */,
 				666F8F3F1978E17000B7B381 /* AppDelegate */,
-				0C61A4801991F7B90065CD1C /* Extensions */,
+				6657386519A2023700581CD1 /* Extensions */,
 				666EDA4E1993559F00F80AC1 /* GameKitFiles */,
 				66FD01661977C9AA0084746F /* Helpers */,
+				0C61A4A3199243F60065CD1C /* Hints */,
 				0C61A4A3199243F60065CD1C /* Hints */,
 				0C20F52F1976745F00831879 /* Main_iPad.storyboard */,
 				0C20F52C1976745F00831879 /* Main_iPhone.storyboard */,
@@ -311,15 +310,6 @@
 			name = Fonts;
 			sourceTree = "<group>";
 		};
-		0C61A4801991F7B90065CD1C /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				0C61A4811991F82B0065CD1C /* SKObservableView.h */,
-				0C61A4821991F82B0065CD1C /* SKObservableView.m */,
-			);
-			name = Extensions;
-			sourceTree = "<group>";
-		};
 		0C61A4A3199243F60065CD1C /* Hints */ = {
 			isa = PBXGroup;
 			children = (
@@ -351,6 +341,15 @@
 				0C4C5A5D1988F8A30057084E /* SKTUtils.h */,
 			);
 			name = SKTUtils;
+			sourceTree = "<group>";
+		};
+		6657386519A2023700581CD1 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0C61A4811991F82B0065CD1C /* SKObservableView.h */,
+				0C61A4821991F82B0065CD1C /* SKObservableView.m */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		666EDA4E1993559F00F80AC1 /* GameKitFiles */ = {
