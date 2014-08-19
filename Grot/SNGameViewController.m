@@ -332,7 +332,7 @@
             if (actionSheet.numberOfButtons == 4) {
                 [self performBlockInCurrentThread:^{
                     [[GameKitHelper sharedGameKitHelper] showLeaderboardAndAchievements:YES category:kHighScoreLeaderboardCategory];
-                    [SNAnalyticsManager.sharedManager gameCenterDidShow];
+                    [SNAnalyticsManager.sharedManager leaderboardDidShow];
                 } afterDelay:1];
             }
         }

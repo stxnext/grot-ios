@@ -90,7 +90,7 @@
     //   features are enabled
     if (!_gameCenterFeaturesEnabled)
     {
-        NSLog(@"Player not authenticated");
+        //NSLog(@"Player not authenticated");
         
         return;
     }
@@ -119,7 +119,7 @@
 {
     if (!_gameCenterFeaturesEnabled || score == 0)
     {
-        NSLog(@"Player not authenticated");
+        //NSLog(@"Player not authenticated");
         
         return;
     }

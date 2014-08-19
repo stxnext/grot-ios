@@ -22,13 +22,13 @@
 - (void)resume;
 
 - (void)gameDidToggle:(BOOL)start;
+- (void)gameDidStartWithIndex:(NSInteger)index;
 - (void)gameDidEndWithScore:(NSInteger)score;
 - (void)applicationDidRun;
 - (void)applicationDidInstall;
 - (void)applicationDidUpdate;
 - (void)helpDidShow;
-- (void)gameCenterDidShow;
-
+- (void)leaderboardDidShow;
 - (void)gameCenterDidLoginWithSuccess;
 - (void)gameCenterDidLoginWithFail;
 

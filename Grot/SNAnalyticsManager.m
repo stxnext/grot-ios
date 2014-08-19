@@ -93,16 +93,25 @@ typedef NSString* SNEventAction;
 @implementation SNAnalyticsEvent
 
 #pragma mark - Event categories & actions
-static SNEventClass const kEventClassApplication   = @"application";
-static SNEventAction const kEventActionDidInstall  =      @"didInstall";
-static SNEventAction const kEventActionDidUpdate   =      @"didUpdate";
-static SNEventAction const kEventActionDidRun      =      @"didRun";
+static SNEventClass const kEventClassApplication          = @"application";
+static SNEventAction const kEventActionDidInstall         =      @"didInstall";
+static SNEventAction const kEventActionDidUpdate          =      @"didUpdate";
+static SNEventAction const kEventActionDidRun             =      @"didRun";
 
-static SNEventClass const kEventClassGameplay      = @"gameplay";
-static SNEventAction const kEventActionDidToggle   =      @"didToggle";
-static SNEventAction const kEventActionDidEnd      =      @"didEnd";
+static SNEventClass const kEventClassGameplay             = @"gameplay";
+static SNEventAction const kEventActionDidToggle          =      @"didToggle";
+static SNEventAction const kEventActionDidStart           =      @"didStart";
+static SNEventAction const kEventActionDidEnd             =      @"didEnd";
 
-static SNEventClass const kEventClassScreen        = @"screen";
+static SNEventClass const kEventClassUserInterface        = @"userInterface";
+static SNEventAction const kEventActionHelpDidShow        =      @"helpDidShow";
+static SNEventAction const kEventActionLeaderboardDidShow =      @"leaderBoardDidShow";
+
+static SNEventClass const kEventClassGameCenter           = @"userInterface";
+static SNEventAction const kEventActionLoginSucceeded     =      @"loginSucceeded";
+static SNEventAction const kEventActionLoginFailed        =      @"loginFailed";
+
+static SNEventClass const kEventClassScreen               = @"screen";
 
 #pragma mark - Object description
 
@@ -225,7 +234,7 @@ static NSString *const kAllowTracking = @"ApplicationAllowTracking";
     
     _pendingEvents[event.name] = NSDate.date;
     
-    [Flurry logEvent:event.name withParameters:event.parameters timed:YES];
+    [Flurry logEvent:event.name withParameters:nil timed:YES];
 }
 
 - (void)endEvent:(SNAnalyticsEvent*)event
@@ -239,7 +248,7 @@ static NSString *const kAllowTracking = @"ApplicationAllowTracking";
     NSTimeInterval duration = [NSDate.date timeIntervalSinceDate:startDate];
     
     // Google analytics
-    NSDictionary* gaEvent = [[GAIDictionaryBuilder createTimingWithCategory:event.class interval:@(duration) name:event.name label:nil] build];
+    NSDictionary* gaEvent = [[GAIDictionaryBuilder createTimingWithCategory:event.class interval:@(duration * 1000) name:event.name label:nil] build];
     [_tracker send:gaEvent];
     
     // Flurry
@@ -274,6 +283,17 @@ static NSString *const kAllowTracking = @"ApplicationAllowTracking";
         [self startEvent:event];
     else
         [self endEvent:event];
+}
+
+- (void)gameDidStartWithIndex:(NSInteger)index
+{
+    SNAnalyticsEvent* event = SNAnalyticsEvent.new;
+    event.class = kEventClassGameplay;
+    event.action = kEventActionDidStart;
+    event.key = @"index";
+    event.value = @(index);
+    
+    [self triggerEvent:event];
 }
 
 - (void)gameDidEndWithScore:(NSInteger)score
@@ -316,45 +336,40 @@ static NSString *const kAllowTracking = @"ApplicationAllowTracking";
 
 - (void)helpDidShow
 {
-    NSMutableDictionary *event = [[GAIDictionaryBuilder createEventWithCategory:@"userInterface"
-                                                                         action:@"helpDidShow"
-                                                                          label:nil
-                                                                          value:nil] build];
+    SNAnalyticsEvent* event = SNAnalyticsEvent.new;
+    event.class = kEventClassUserInterface;
+    event.action = kEventActionHelpDidShow;
     
-    [self sendEvent:event];
+    [self triggerEvent:event];
 }
 
-- (void)gameCenterDidShow
+- (void)leaderboardDidShow
 {
-    NSMutableDictionary *event = [[GAIDictionaryBuilder createEventWithCategory:@"userInterface"
-                                                                         action:@"gameCenterDidShow"
-                                                                          label:nil
-                                                                          value:nil] build];
+    SNAnalyticsEvent* event = SNAnalyticsEvent.new;
+    event.class = kEventClassUserInterface;
+    event.action = kEventActionLeaderboardDidShow;
     
-    [self sendEvent:event];
+    [self triggerEvent:event];
 }
 
 
 - (void)gameCenterDidLoginWithSuccess
 {
-    NSMutableDictionary *event = [[GAIDictionaryBuilder createEventWithCategory:@"gameCenter"
-                                                                         action:@"loginSuccess"
-                                                                          label:nil
-                                                                          value:nil] build];
+    SNAnalyticsEvent* event = SNAnalyticsEvent.new;
+    event.class = kEventClassGameCenter;
+    event.action = kEventActionLoginSucceeded;
     
-    [self sendEvent:event];
+    [self triggerEvent:event];
     
 }
 
 - (void)gameCenterDidLoginWithFail
 {
-    NSMutableDictionary *event = [[GAIDictionaryBuilder createEventWithCategory:@"gameCenter"
-                                                                         action:@"loginFail"
-                                                                          label:nil
-                                                                          value:nil] build];
+    SNAnalyticsEvent* event = SNAnalyticsEvent.new;
+    event.class = kEventClassGameCenter;
+    event.action = kEventActionLoginFailed;
     
-    [self sendEvent:event];
-    
+    [self triggerEvent:event];
 }
 
 @end

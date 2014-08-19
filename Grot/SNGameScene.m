@@ -625,7 +625,13 @@
     } afterDelay:0.2];
     
     // Statistics
+    NSString* gameIndexKey = @"GameLaunchIndex";
+    NSInteger gameIndex = [NSUserDefaults.standardUserDefaults integerForKey:gameIndexKey];
+    NSInteger newGameIndex = gameIndex + 1;
+    [NSUserDefaults.standardUserDefaults setInteger:newGameIndex forKey:gameIndexKey];
+    
     [SNAnalyticsManager.sharedManager gameDidToggle:YES];
+    [SNAnalyticsManager.sharedManager gameDidStartWithIndex:gameIndex];
 }
 
 #pragma mark - BoardSize
