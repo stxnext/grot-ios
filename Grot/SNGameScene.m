@@ -39,6 +39,16 @@
 {
     if (self = [super initWithSize:size])
     {
+        //fix crash with Flurry
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(applicationWillResignActive)
+                                                     name:UIApplicationWillResignActiveNotification
+                                                   object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(applicationDidBecomeActive)
+                                                     name:UIApplicationDidBecomeActiveNotification
+                                                   object:nil];
+        
         self.delegate = delegate;
         
         boardSideMargin = INTERFACE_IS_PHONE_SMALL_SCREEN ? 20.0 : INTERFACE_IS_PAD ? 20.0 : 5.0;
@@ -78,6 +88,16 @@
         CGPoint point = [self positionForGrot:grot];
         grot.position = [self positionForX:point.x Y:point.y];
     }
+}
+
+- (void)applicationWillResignActive
+{
+    [[self view] setPaused:YES];
+}
+
+- (void)applicationDidBecomeActive
+{
+    [[self view] setPaused:NO];
 }
 
 #pragma mark - Touches
