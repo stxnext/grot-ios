@@ -6,17 +6,17 @@
 // project.
 
 
+// Appirater
+#define COCOAPODS_POD_AVAILABLE_Appirater
+#define COCOAPODS_VERSION_MAJOR_Appirater 2
+#define COCOAPODS_VERSION_MINOR_Appirater 0
+#define COCOAPODS_VERSION_PATCH_Appirater 3
+
 // FlurrySDK
 #define COCOAPODS_POD_AVAILABLE_FlurrySDK
 #define COCOAPODS_VERSION_MAJOR_FlurrySDK 5
 #define COCOAPODS_VERSION_MINOR_FlurrySDK 2
 #define COCOAPODS_VERSION_PATCH_FlurrySDK 0
-
-// FlurrySDK/FlurryAds
-#define COCOAPODS_POD_AVAILABLE_FlurrySDK_FlurryAds
-#define COCOAPODS_VERSION_MAJOR_FlurrySDK_FlurryAds 5
-#define COCOAPODS_VERSION_MINOR_FlurrySDK_FlurryAds 2
-#define COCOAPODS_VERSION_PATCH_FlurrySDK_FlurryAds 0
 
 // FlurrySDK/FlurrySDK
 #define COCOAPODS_POD_AVAILABLE_FlurrySDK_FlurrySDK
@@ -28,7 +28,7 @@
 #define COCOAPODS_POD_AVAILABLE_GPUImage
 #define COCOAPODS_VERSION_MAJOR_GPUImage 0
 #define COCOAPODS_VERSION_MINOR_GPUImage 1
-#define COCOAPODS_VERSION_PATCH_GPUImage 4
+#define COCOAPODS_VERSION_PATCH_GPUImage 5
 
 // GoogleAnalytics-iOS-SDK
 #define COCOAPODS_POD_AVAILABLE_GoogleAnalytics_iOS_SDK

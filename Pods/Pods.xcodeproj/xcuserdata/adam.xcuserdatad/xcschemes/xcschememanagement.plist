@@ -2,29 +2,67 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>Appirater.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-Appirater.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-FlurrySDK.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-GPUImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-GoogleAnalytics-iOS-SDK.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1D5D1954383A4FC7AF806E94</key>
+		<key>41867D4B39D748AE93ED04A0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2383081E4BD242049592B72C</key>
+		<key>5328CDF8558746EBA3BBAA58</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5BC123D4E9E6489BB151DF78</key>
+		<key>8097C805039A48809C426B2E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C88DC286C91F492C9CA5F7D4</key>
+		<key>B1CCAE0E11FC4FCCAE7C5DD4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E181C5A0B9744236878FB103</key>
+		<key>B6B706744C744722B22B5435</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FDF12A002A6C464BBFECBC3F</key>
 		<dict>
 			<key>primary</key>
 			<true/>

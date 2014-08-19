@@ -15,7 +15,7 @@
  */
 @property (readwrite, nonatomic) CGFloat blurRadiusInPixels;
 
-/**  ranges from 0.0 (fully desaturated) to 2.0 (max saturation), with 0.8 as the normal level
+/** Saturation ranges from 0.0 (fully desaturated) to 2.0 (max saturation), with 0.8 as the normal level
  */
 @property (readwrite, nonatomic) CGFloat saturation;
 

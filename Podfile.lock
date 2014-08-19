@@ -1,21 +1,21 @@
 PODS:
+  - Appirater (2.0.3)
   - FlurrySDK (5.2.0):
-    - FlurrySDK/FlurryAds
-    - FlurrySDK/FlurrySDK
-  - FlurrySDK/FlurryAds (5.2.0):
     - FlurrySDK/FlurrySDK
   - FlurrySDK/FlurrySDK (5.2.0)
   - GoogleAnalytics-iOS-SDK (3.0.9)
-  - GPUImage (0.1.4)
+  - GPUImage (0.1.5)
 
 DEPENDENCIES:
+  - Appirater
   - FlurrySDK
   - GoogleAnalytics-iOS-SDK
   - GPUImage
 
 SPEC CHECKSUMS:
+  Appirater: 793f3723354b1b155f7ddc87fc6017bea889ce50
   FlurrySDK: 5322b9eb0d0b538f1a1983a6717f3a2e2ba03047
   GoogleAnalytics-iOS-SDK: d9e198b1f955259a72886769be7377cdfcdb2250
-  GPUImage: ac2bde5f4dbea02a81ced6313964cec1f2043ca9
+  GPUImage: 5114a47f5fc33eb312f3731550a3cea379416d04
 
-COCOAPODS: 0.32.1
+COCOAPODS: 0.33.1
