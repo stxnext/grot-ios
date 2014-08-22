@@ -794,7 +794,7 @@
 				INFOPLIST_FILE = "Grot/Grot-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "bea953c3-84f5-4c14-86b8-1fe82976dc4c";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
