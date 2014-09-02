@@ -14,11 +14,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-FlurrySDK.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-GPUImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,32 +32,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1C7276847E9F418EBA2457F7</key>
+		<key>5E00CA93E9DF4CF8908274DB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>251A9927434E41FA98FD0D23</key>
+		<key>696D7264DF394DF986D8558D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7882F3F7D89447C9AB768FAB</key>
+		<key>CD7AFB75866E47B0B1FC28C7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E0520698723E4AD38D8E5200</key>
+		<key>F2E998B6CB904FF9AC7BF932</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EAE8FB4399AD4AD08DADB5BF</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>FC796168FA194AF789FEF3F3</key>
+		<key>FBD28BE94D1E4008ABF550C7</key>
 		<dict>
 			<key>primary</key>
 			<true/>

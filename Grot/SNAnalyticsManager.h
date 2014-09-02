@@ -9,7 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "GAI.h"
 #import "GAIDictionaryBuilder.h"
+
+//#define USE_FLURRY
+
+#ifdef USE_FLURRY
 #import "Flurry.h"
+#endif
 
 @interface SNAnalyticsManager : NSObject
 {

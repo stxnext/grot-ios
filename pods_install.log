@@ -8,11 +8,11 @@ Analyzing dependencies
 Updating spec repositories
 $ /Users/dawidzakowski/Desktop/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/git rev-parse  >/dev/null 2>&1
 $ /Users/dawidzakowski/Desktop/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/git ls-remote
-  d1236d98c2808f7d60765d5be8bd0bb9a53e36b8	HEAD
+  5f3fb2f3049856828c8e44cb718cdaf60cd79778	HEAD
   0b9b0cf2b370a41d6fca5b35031ebe125a03b69e	refs/__temp__/0b9b0cf2b370a41d6fca5b35031ebe125a03b69e
   82137b10f4edda6e0547e55679542a4dff979449	refs/__temp__/82137b10f4edda6e0547e55679542a4dff979449
   c515713c93fcdabafffb8d600b19fbdd590e8258	refs/__temp__/c515713c93fcdabafffb8d600b19fbdd590e8258
-  d1236d98c2808f7d60765d5be8bd0bb9a53e36b8	refs/heads/master
+  5f3fb2f3049856828c8e44cb718cdaf60cd79778	refs/heads/master
   fe7df26fe5545072c11abac241d73087a29e87d9	refs/pull/1/head
   1748dab37fe08120775777a084e0fb9da10c4a63	refs/pull/1/merge
   48a6d66e2c3129c3bcfec1972c15f6e24723b9f5	refs/pull/10/head
@@ -2952,7 +2952,7 @@ $ /Users/dawidzakowski/Desktop/Xcode.app/Contents/Developer/Platforms/iPhoneSimu
   780769d21134a1c7003ff672bdd3843b96854df4	refs/pull/12198/head
   d747ac13b0b20d459711a8d47e4873b580772061	refs/pull/12198/merge
   3ef6af99a8d7be7812de11ac49267e04715f83ea	refs/pull/12199/head
-  9d1a510a8ecc563d0d639d3b6419e6def3fb6259	refs/pull/12199/merge
+  2a3e7b0e91139404e1ef19a3d7a6b40de09da4a2	refs/pull/12199/merge
   5115d1ff13725eaa607269157dbf5233ca5627af	refs/pull/122/head
   e87e395053a310f12630e7bcdd460d6c90abba68	refs/pull/122/merge
   e0f70edb4e0aaa6d2aad0af7eefbf8de2c8bdf25	refs/pull/1220/head
@@ -3764,8 +3764,19 @@ $ /Users/dawidzakowski/Desktop/Xcode.app/Contents/Developer/Platforms/iPhoneSimu
   c245c5cbc1d6336c4981a8d9a12736419d6054c0	refs/pull/12615/merge
   3c8b62b6d60331bb50f7ffab2982cdd1606248d6	refs/pull/12616/head
   75ed992af2c9c90470e8ad7c773db4b6ba6cec79	refs/pull/12616/merge
+  29e36a7b954753b065d52ff25de79c8bb4862fd2	refs/pull/12617/head
+  3a323b55f96a5c26e4251c4e93740d66a64c9fd2	refs/pull/12617/merge
+  8a3c6c86aaba49f2d7a3cee90e0f6707cf4532cf	refs/pull/12618/head
+  594f58379f2a616b603af9c67c10a410dcd481f3	refs/pull/12618/merge
+  d101996e6245f2e602ff9774177effa2aaab6ca5	refs/pull/12619/head
   d284072cb1d597766b1a7642f3372c504d7792cb	refs/pull/1262/head
   5f1cf72768746b08d9801dca7020bc1da0e12d39	refs/pull/1262/merge
+  76bfd50dc54714e9d3986d1ba1a372b42b4347c5	refs/pull/12620/head
+  750b9c36c8848ed88b18cc284eed94f98f1f7e3a	refs/pull/12620/merge
+  025adf3340a2c77b5611936a4cfc6822cc0b9f7f	refs/pull/12621/head
+  5dcff85c6bc4658715200baaaa33acd3890a897a	refs/pull/12621/merge
+  113b709af677db556b6cfe05a024bf891397e444	refs/pull/12622/head
+  7adc9e974c25ecaa8036e55f32b48095a96eb541	refs/pull/12622/merge
   4c5135390a228664dba69222cef799663fd40afa	refs/pull/1263/head
   2dabdf0a96f4a07b683e9ed84c31d760c93c61b3	refs/pull/1263/merge
   ecf1429398be9964612cb17a515e8ff60a4a3baf	refs/pull/1264/head
@@ -17889,7 +17900,6 @@ To update use: [sudo] gem install cocoapods
 
 Finding Podfile changes
 - Appirater
-- FlurrySDK
 - GPUImage
 - GoogleAnalytics-iOS-SDK
 
@@ -17897,14 +17907,9 @@ Resolving dependencies of `Podfile`
 Resolving dependencies for target `Pods' (iOS 7.0)
 - GPUImage (= 0.1.5)
 - GoogleAnalytics-iOS-SDK (= 3.0.9)
-- FlurrySDK (= 5.2.0)
-- FlurrySDK/FlurrySDK
-- FlurrySDK/FlurryAds
-- FlurrySDK/FlurrySDK
 - Appirater (= 2.0.3)
 
 Comparing resolved specification to the sandbox manifest
-M FlurrySDK
 - Appirater
 - GPUImage
 - GoogleAnalytics-iOS-SDK
@@ -17912,25 +17917,6 @@ M FlurrySDK
 Downloading dependencies
 
 -> Using Appirater (2.0.3)
-
--> Installing FlurrySDK 5.2.0 (was 5.2.0)
- > GitHub download
-$ /Users/dawidzakowski/Desktop/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/git config core.bare
-   true
-$ /Users/dawidzakowski/Desktop/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/git config core.bare
-   true
- > Updating cache git repo (/Users/dawidzakowski/Library/Caches/CocoaPods/GitHub/b82158b837a32db0dd6bbfe761ae26fe6fc92954)
-$ /Users/dawidzakowski/Desktop/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/git remote update
-     Fetching origin
- > Cloning to Pods folder
-$ /Users/dawidzakowski/Desktop/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/git clone /Users/dawidzakowski/Library/Caches/CocoaPods/GitHub/b82158b837a32db0dd6bbfe761ae26fe6fc92954 /Users/dawidzakowski/Documents/grot-ios/Pods/FlurrySDK 
-$ /Users/dawidzakowski/Desktop/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/git fetch origin tags/5.2.0 2>&1
-   From /Users/dawidzakowski/Library/Caches/CocoaPods/GitHub/b82158b837a32db0dd6bbfe761ae26fe6fc92954
-    * tag               5.2.0      -> FETCH_HEAD
-$ /Users/dawidzakowski/Desktop/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/git reset --hard FETCH_HEAD
-   HEAD is now at e44eb6a Updating Flurry SDK to 5.2.0
-$ /Users/dawidzakowski/Desktop/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/git checkout -b activated-pod-commit 2>&1
-   Switched to a new branch 'activated-pod-commit'
 
 -> Using GPUImage (0.1.5)
 
@@ -17952,13 +17938,6 @@ Generating Pods project
 - Generating private xcconfig file at `Pods/Pods-Appirater-Private.xcconfig`
 - Generating prefix header at `Pods/Pods-Appirater-prefix.pch`
 - Generating dummy source file at `Pods/Pods-Appirater-dummy.m`
-- Installing target `Pods-FlurrySDK` iOS 7.0
-- Adding Build files
-- Adding resource bundles to Pods project
-- Generating public xcconfig file at `Pods/Pods-FlurrySDK.xcconfig`
-- Generating private xcconfig file at `Pods/Pods-FlurrySDK-Private.xcconfig`
-- Generating prefix header at `Pods/Pods-FlurrySDK-prefix.pch`
-- Generating dummy source file at `Pods/Pods-FlurrySDK-dummy.m`
 - Installing target `Pods-GPUImage` iOS 7.0
 - Adding Build files
 - Adding resource bundles to Pods project

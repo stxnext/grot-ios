@@ -175,11 +175,13 @@ static NSString *const kAllowTracking = @"ApplicationAllowTracking";
     GAI.sharedInstance.trackUncaughtExceptions = NO;
     _tracker = [GAI.sharedInstance trackerWithName:@"Grot" trackingId:gaTrackingId];
     
+    #ifdef USE_FLURRY
     // Flurry
     NSString* flurryTrackingId = NSBundle.mainBundle.infoDictionary[kFlurryAPIKey];
     [Flurry setCrashReportingEnabled:YES];
     [Flurry setSecureTransportEnabled:YES];
     [Flurry startSession:flurryTrackingId];
+    #endif
     
     // View controller lifecycle notifications
     [NSNotificationCenter.defaultCenter addObserverForName:kNotificationViewControllerDidAppear object:nil queue:nil usingBlock:^(NSNotification *note) {
@@ -200,9 +202,11 @@ static NSString *const kAllowTracking = @"ApplicationAllowTracking";
     // Google analytics
     GAI.sharedInstance.optOut = !allowTracking;
     
+    #ifdef USE_FLURRY
     // Flurry
     [Flurry setSessionReportsOnPauseEnabled:allowTracking];
     [Flurry setSessionReportsOnCloseEnabled:allowTracking];
+    #endif
 }
 
 - (BOOL)allowTracking
@@ -224,8 +228,10 @@ static NSString *const kAllowTracking = @"ApplicationAllowTracking";
     NSDictionary* gaEvent = [[GAIDictionaryBuilder createEventWithCategory:event.class action:event.action label:event.key value:event.value] build];
     [_tracker send:gaEvent];
     
+    #ifdef USE_FLURRY
     // Flurry
     [Flurry logEvent:event.name withParameters:event.parameters];
+    #endif
 }
 
 - (void)startEvent:(SNAnalyticsEvent*)event
@@ -234,7 +240,9 @@ static NSString *const kAllowTracking = @"ApplicationAllowTracking";
     
     _pendingEvents[event.name] = NSDate.date;
     
+    #ifdef USE_FLURRY
     [Flurry logEvent:event.name withParameters:nil timed:YES];
+    #endif
 }
 
 - (void)endEvent:(SNAnalyticsEvent*)event
@@ -251,12 +259,15 @@ static NSString *const kAllowTracking = @"ApplicationAllowTracking";
     NSDictionary* gaEvent = [[GAIDictionaryBuilder createTimingWithCategory:event.class interval:@(duration * 1000) name:event.name label:nil] build];
     [_tracker send:gaEvent];
     
+    #ifdef USE_FLURRY
     // Flurry
     [Flurry endTimedEvent:event.name withParameters:nil];
+    #endif
 }
 
 - (void)viewController:(UIViewController*)vc changedVisibility:(BOOL)visible
 {
+    #ifdef USE_FLURRY
     if ([vc isKindOfClass:GAITrackedViewController.class])
     {
         GAITrackedViewController* gaVc = (GAITrackedViewController*)vc;
@@ -269,6 +280,7 @@ static NSString *const kAllowTracking = @"ApplicationAllowTracking";
         else
             [Flurry endTimedEvent:event.name withParameters:nil];
     }
+    #endif
 }
 
 #pragma mark - Event trackers
