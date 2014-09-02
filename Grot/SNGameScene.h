@@ -12,12 +12,12 @@
 
 @protocol SNGameplayDelegate <NSObject>
 
-@property (nonatomic, assign) NSUInteger score;
-@property (nonatomic, assign) NSUInteger summaryScore;
-@property (nonatomic, assign) NSUInteger moves;
+@property (nonatomic, assign) NSInteger score;
+@property (nonatomic, assign) NSInteger summaryScore;
+@property (nonatomic, assign) NSInteger moves;
 
-- (void)addScore:(NSUInteger)value;
-- (void)addMoves:(NSUInteger)value;
+- (void)addScore:(NSInteger)value;
+- (void)addMoves:(NSInteger)value;
 - (void)gameEndedWithScore:(NSInteger)score;
 
 @end

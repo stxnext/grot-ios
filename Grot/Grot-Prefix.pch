@@ -18,5 +18,6 @@
 #import "GameKitHelper.h"
 #import "Appirater.h"
 #import "SNAnalyticsManager.h"
+#import "SNHighScoreManager.h"
 #import "NSObject+DelayedBlocks.h"
 #import "MacroHelpers.h"

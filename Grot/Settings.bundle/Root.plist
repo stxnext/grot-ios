@@ -5,6 +5,16 @@
 	<key>PreferenceSpecifiers</key>
 	<array>
 		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Reset highscore</string>
+			<key>Key</key>
+			<string>ApplicationResetHighscoreOnce</string>
+			<key>DefaultValue</key>
+			<false/>
+		</dict>
+		<dict>
 			<key>DefaultValue</key>
 			<true/>
 			<key>Key</key>

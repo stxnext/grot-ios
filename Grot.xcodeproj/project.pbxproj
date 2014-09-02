@@ -27,6 +27,7 @@
 		0C21009319AC85F500485907 /* RSTimingFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C21009219AC85F500485907 /* RSTimingFunction.m */; };
 		0C2C8D6219A1CF82002233C9 /* SNAnalyticsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C2C8D6119A1CF82002233C9 /* SNAnalyticsManager.m */; };
 		0C2C8D6319A1CF82002233C9 /* SNAnalyticsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C2C8D6119A1CF82002233C9 /* SNAnalyticsManager.m */; };
+		0C3FCF5919B5954100CCBE64 /* SNHighScoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3FCF5819B5954000CCBE64 /* SNHighScoreManager.m */; };
 		0C4C5A4C1988E7730057084E /* UIWindow+Splash.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C4C5A4B1988E7730057084E /* UIWindow+Splash.m */; };
 		0C4C5A5E1988F8A30057084E /* SKAction+SKTExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C4C5A4E1988F8A30057084E /* SKAction+SKTExtras.m */; };
 		0C4C5A5F1988F8A30057084E /* SKAction+SKTSpecialEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C4C5A501988F8A30057084E /* SKAction+SKTSpecialEffects.m */; };
@@ -112,6 +113,8 @@
 		0C21009219AC85F500485907 /* RSTimingFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSTimingFunction.m; sourceTree = "<group>"; };
 		0C2C8D6019A1CF82002233C9 /* SNAnalyticsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNAnalyticsManager.h; sourceTree = "<group>"; };
 		0C2C8D6119A1CF82002233C9 /* SNAnalyticsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNAnalyticsManager.m; sourceTree = "<group>"; };
+		0C3FCF5719B5954000CCBE64 /* SNHighScoreManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNHighScoreManager.h; sourceTree = "<group>"; };
+		0C3FCF5819B5954000CCBE64 /* SNHighScoreManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNHighScoreManager.m; sourceTree = "<group>"; };
 		0C4C5A4A1988E7730057084E /* UIWindow+Splash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+Splash.h"; sourceTree = "<group>"; };
 		0C4C5A4B1988E7730057084E /* UIWindow+Splash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+Splash.m"; sourceTree = "<group>"; };
 		0C4C5A4D1988F8A30057084E /* SKAction+SKTExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SKAction+SKTExtras.h"; path = "SKTUtils/SKAction+SKTExtras.h"; sourceTree = "<group>"; };
@@ -276,6 +279,7 @@
 				666F8F3A1978DDDE00B7B381 /* SNGrotFieldModel.m */,
 				666F8F3D1978DE4A00B7B381 /* SNGrotView.m */,
 				0C20F5351976745F00831879 /* Images.xcassets */,
+				0C3FCF5619B5952600CCBE64 /* Highscore manager */,
 				0C2C8D5F19A1CF67002233C9 /* Analytics */,
 				666F8F3F1978E17000B7B381 /* AppDelegate */,
 				6657386519A2023700581CD1 /* Extensions */,
@@ -345,6 +349,16 @@
 				0CB9DFF1198F99E800DE89E9 /* Lato-Thin.ttf */,
 			);
 			name = Fonts;
+			sourceTree = "<group>";
+		};
+		0C3FCF5619B5952600CCBE64 /* Highscore manager */ = {
+			isa = PBXGroup;
+			children = (
+				0C3FCF5719B5954000CCBE64 /* SNHighScoreManager.h */,
+				0C3FCF5819B5954000CCBE64 /* SNHighScoreManager.m */,
+			);
+			name = "Highscore manager";
+			path = ..;
 			sourceTree = "<group>";
 		};
 		0CC937941987E98600ACE8D8 /* SKTUtils */ = {
@@ -630,6 +644,7 @@
 				0CB9E001198FAEF500DE89E9 /* UIPassthroughView.m in Sources */,
 				0C0B806819AB1550005CD485 /* SNCounterLabel.m in Sources */,
 				0C2C8D6219A1CF82002233C9 /* SNAnalyticsManager.m in Sources */,
+				0C3FCF5919B5954100CCBE64 /* SNHighScoreManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

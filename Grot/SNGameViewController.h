@@ -15,7 +15,7 @@
 
 @property (weak, nonatomic) IBOutlet SKView *helpContainter;
 
-@property (nonatomic, assign) NSUInteger score;
-@property (nonatomic, assign) NSUInteger moves;
+@property (nonatomic, assign) NSInteger score;
+@property (nonatomic, assign) NSInteger moves;
 
 @end

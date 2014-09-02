@@ -18,6 +18,7 @@
 
 @implementation SNCounterLabel
 
+const static CGFloat shiftAnimationDuration = 0.3;
 const static CGSize wheelCellSize = (CGSize){ 100.0, 100.0 };
 const static NSInteger wheelAnimationEasingMagnitude = 3;
 
@@ -160,6 +161,37 @@ const static NSInteger wheelAnimationEasingMagnitude = 3;
 
 #pragma mark - Received actions
 
+- (void)shiftContentToAlignCenterAnimated:(BOOL)animated
+{
+    NSInteger drawnWheelsCount = ((NSInteger)log10(MAX(1, self.maxDrawableValue))) + 1;
+    NSInteger visibleWheelsCount = ((NSInteger)log10(MAX(1, self.state.animationEndValue))) + 1;
+    NSInteger missingWheelsCount = MAX(0, drawnWheelsCount - visibleWheelsCount);
+    CGPoint newShift = CGPointMake(self.layout.wheelCellSpacing.width * ((CGFloat)missingWheelsCount) * -0.5, 0.0);
+    
+    if (CGPointEqualToPoint(self.layout.wheelShift, newShift))
+        return;
+    
+    CGPoint pointDelta = CGPointMake(newShift.x - self.layout.wheelShift.x, newShift.y - self.layout.wheelShift.y);
+    self.layout.wheelShift = newShift;
+    
+    CGRect frame = self.frame;
+    frame.origin.x += pointDelta.x;
+    frame.origin.y += pointDelta.y;
+    
+    if (!animated)
+    {
+        self.frame = frame;
+        return;
+    }
+    
+    [UIView animateWithDuration:1.0
+                          delay:0.3
+                        options:UIViewAnimationOptionCurveEaseOut | UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionLayoutSubviews
+                     animations:^{
+                         self.frame = frame;
+                     } completion:nil];
+}
+
 - (void)setValue:(NSInteger)value animationSpeed:(CGFloat)speed completionHandler:(dispatch_block_t)completionBlock
 {
     CGFloat oldValue = self.state.animationEndValue;
@@ -183,6 +215,17 @@ const static NSInteger wheelAnimationEasingMagnitude = 3;
         self.state.displayLink = nil;
         [self setNeedsDisplay];
     }
+    
+    if (self.alignCenter)
+        [self shiftContentToAlignCenterAnimated:YES];
+}
+
+- (void)setAlignCenter:(BOOL)alignCenter
+{
+    _alignCenter = alignCenter;
+    
+    if (self.alignCenter)
+        [self shiftContentToAlignCenterAnimated:NO];
 }
 
 #pragma mark - View methods
@@ -302,11 +345,14 @@ const static NSInteger wheelAnimationEasingMagnitude = 3;
     CGPoint arrowLeftArm = CGPointMake(arrowHead.x + sin(-arrowAngle - M_PI_2 + arrowArmAngle) * arrowArmLength,
                                        arrowHead.y + cos(-arrowAngle - M_PI_2 + arrowArmAngle) * arrowArmLength);
     
-    [[UIColor colorWithWhite:1.0 alpha:0.1] setStroke];
-    CGContextSetLineWidth(context, arrowWidth);
-    CGContextBeginPath(context);
-    CGContextAddArc(context, arrowCenter.x, arrowCenter.y, arrowRadius, 0, M_PI * 2.0, NO);
-    CGContextStrokePath(context);
+    if (self.layout.arrowDrawnParts != SNCounterLabelArrowPartNone)
+    {
+        [[UIColor colorWithWhite:1.0 alpha:0.1] setStroke];
+        CGContextSetLineWidth(context, arrowWidth);
+        CGContextBeginPath(context);
+        CGContextAddArc(context, arrowCenter.x, arrowCenter.y, arrowRadius, 0, M_PI * 2.0, NO);
+        CGContextStrokePath(context);
+    }
     
     if (0 != (self.layout.arrowDrawnParts & SNCounterLabelArrowPartBody))
     {

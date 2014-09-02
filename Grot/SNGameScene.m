@@ -105,7 +105,7 @@
     
     if ([subview isKindOfClass:[SNGrotView class]])
     {
-        self.delegate.moves--;
+        [self.delegate addMoves:-1];
         
         SNGrotView *field = (SNGrotView *)subview;
         

@@ -58,6 +58,11 @@
     }];
 }
 
+- (void)animateDim
+{
+    self.dimView.alpha = 1.0;
+}
+
 + (NSString*)nibName
 {
     return INTERFACE_IS_PHONE ? @"SNFloatingResults_iPhone" : @"SNFloatingResults_iPad";

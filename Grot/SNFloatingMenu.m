@@ -47,10 +47,15 @@
     
     [UIView animateWithDuration:0.4
                      animations:^{
-                         self.dimView.alpha = self.menuLabel.alpha = 1.0;
+                         [self animateDim];
                      } completion:nil];
     
     [self animate];
+}
+
+- (void)animateDim
+{
+    self.dimView.alpha = self.menuLabel.alpha = 1.0;
 }
 
 + (CATransform3D)transformWithRotation:(CGFloat)rotation scale:(CGFloat)scale

@@ -25,8 +25,8 @@
 @property (weak, nonatomic) IBOutlet UIView *score4x;
 @property (weak, nonatomic) IBOutlet UIImageView *helpBackground;
 
-@property (nonatomic, strong) IBOutlet UILabel* scoreLabel;
-@property (nonatomic, strong) IBOutlet UILabel* movesLabel;
+@property (nonatomic, strong) IBOutlet SNCounterLabel* scoreLabel;
+@property (nonatomic, strong) IBOutlet SNCounterLabel* movesLabel;
 @property (nonatomic, strong) IBOutlet UILabel* scoreDeltaLabel;
 @property (nonatomic, strong) IBOutlet UILabel* movesDeltaLabel;
 
@@ -53,6 +53,9 @@
         latoLabel.font = [UIFont fontWithName:@"Lato-Light" size:latoLabel.font.pointSize];
     }
     
+    self.scoreLabel.maxDrawableValue = 9999;
+    self.movesLabel.maxDrawableValue = 99;
+    
     [_gameView setNeedsLayout];
     [_gameView layoutIfNeeded];
 }
@@ -62,6 +65,9 @@
     [super viewDidAppear:animated];
     
     [[GameKitHelper sharedGameKitHelper] authenticateLocalPlayer];
+    
+    self.scoreLabel.alignCenter = YES;
+    self.movesLabel.alignCenter = YES;
 }
 
 - (void)viewDidLayoutSubviews:(UIView*)view
@@ -158,12 +164,12 @@
     return 0;
 }
 
-- (void)addSummaryScore:(NSUInteger)value
+- (void)addSummaryScore:(NSInteger)value
 {
     [self setSummaryScore:value + [self summaryScore]];
 }
 
-- (void)setSummaryScore:(NSUInteger)value
+- (void)setSummaryScore:(NSInteger)value
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setInteger:value forKey:@"summaryScore"];
@@ -172,7 +178,7 @@
 //    self.summaryScoreLabel.text = [NSString stringWithFormat:@"%d", value];
 }
 
-- (NSUInteger)summaryScore
+- (NSInteger)summaryScore
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
 
@@ -184,34 +190,34 @@
     return 0;
 }
 
-- (void)setScore:(NSUInteger)value
+- (void)setScore:(NSInteger)value
 {
     _score = value;
     
     [[GameKitHelper sharedGameKitHelper] submitAchievement:value];
     
-    self.scoreLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)value];
+    [self.scoreLabel setValue:value animationSpeed:1.5 completionHandler:nil];
 }
 
-- (void)setMoves:(NSUInteger)value
+- (void)setMoves:(NSInteger)value
 {
     _moves = value;
     
-    self.movesLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)value];
+    [self.movesLabel setValue:value animationSpeed:1.5 completionHandler:nil];
 }
 
-- (void)addScore:(NSUInteger)value
+- (void)addScore:(NSInteger)value
 {
     [self addSummaryScore:value];
     _score += value;
     
     [[GameKitHelper sharedGameKitHelper] submitAchievement:_score];
     
-    self.scoreLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)_score];
-    
-    if (value > 0)
+    if (value != 0)
     {
-        self.scoreDeltaLabel.text = [NSString stringWithFormat:@"+%lu", (unsigned long)value];
+        [self.scoreLabel setValue:_score animationSpeed:1.5 completionHandler:nil];
+        
+        self.scoreDeltaLabel.text = [NSString stringWithFormat:@"%@%d", value >= 0 ? @"+" : @"", value];
         
         self.scoreDeltaLabel.alpha = 1.0;
         [UIView animateWithDuration:0.666
@@ -223,15 +229,15 @@
     }
 }
 
-- (void)addMoves:(NSUInteger)value
+- (void)addMoves:(NSInteger)value
 {
     _moves += value;
     
-    self.movesLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)_moves];
-    
-    if (value > 0)
+    if (value != 0)
     {
-        self.movesDeltaLabel.text = [NSString stringWithFormat:@"+%lu", (unsigned long)value];
+        [self.movesLabel setValue:_moves animationSpeed:1.5 completionHandler:nil];
+        
+        self.movesDeltaLabel.text = [NSString stringWithFormat:@"%@%d", value >= 0 ? @"+" : @"", value];
         
         self.movesDeltaLabel.alpha = 1.0;
         [UIView animateWithDuration:0.666
@@ -362,53 +368,16 @@
     }
 }
 
-static NSString* kCustomUserHighScore = @"kCustomUserHighScore";
-
-+ (NSInteger)highScore
-{
-    GKScore* gkScore = [GameKitHelper.sharedGameKitHelper currentPlayerScore];
-    
-    if (gkScore && [GameKitHelper.sharedGameKitHelper isAuthenticated])
-        return (NSInteger)gkScore.value;
-    
-    return [NSUserDefaults.standardUserDefaults integerForKey:kCustomUserHighScore]; // default 0
-}
-
-- (void)onScore:(NSInteger)score submitted:(bool)success
-{
-    if (success)
-    {
-        [GameKitHelper.sharedGameKitHelper loadCurrentPlayerScoreWithCompletionHandler:nil];
-    }
-    else
-    {
-        NSInteger highScore = [NSUserDefaults.standardUserDefaults integerForKey:kCustomUserHighScore];
-        
-        if (highScore < score)
-        {
-            [NSUserDefaults.standardUserDefaults setInteger:score forKey:kCustomUserHighScore];
-            [NSUserDefaults.standardUserDefaults synchronize];
-        }
-    }
-}
-
-- (void)submitHighScore:(NSInteger)score
-{
-    [GameKitHelper.sharedGameKitHelper setDelegate:self];
-    BOOL submissionStatus = [[GameKitHelper sharedGameKitHelper] submitScore:score category:kHighScoreLeaderboardCategory];
-    
-    if (!submissionStatus)
-        [self onScore:(NSInteger)score submitted:NO];
-}
+#pragma mark - Highscore
 
 - (void)gameEndedWithScore:(NSInteger)score
 {
     [SNFloatingResultsController showMenuWithDecorator:^(SNFloatingMenuController *menu) {
         SNFloatingResultsController* results = (SNFloatingResultsController*)menu;
         results.score = self.score;
-        results.highScore = self.class.highScore;
+        results.highScore = SNHighScoreManager.sharedManager.highScore;
         
-        [self submitHighScore:score];
+        [SNHighScoreManager.sharedManager submitHighScore:score];
         
         NSString* scoreDescription;
         

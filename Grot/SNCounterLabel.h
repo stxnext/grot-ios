@@ -24,6 +24,7 @@ static const SNCounterLabelArrowPart SNCounterLabelArrowPartAll = SNCounterLabel
 @property (nonatomic) CGFloat wheelGradientOffset;
 @property (nonatomic) CGFloat wheelGradientSize;
 @property (nonatomic) CGPoint ringOffset;
+@property (nonatomic) CGPoint wheelShift;
 
 @end
 
@@ -49,6 +50,7 @@ static const SNCounterLabelArrowPart SNCounterLabelArrowPartAll = SNCounterLabel
 @property (nonatomic, strong) IBOutletCollection(SNCounterLabel) NSArray* children;
 @property (nonatomic) NSInteger maxValue;
 @property (nonatomic) NSInteger maxDrawableValue;
+@property (nonatomic) BOOL alignCenter;
 
 - (void)setValue:(NSInteger)value animationSpeed:(CGFloat)speed completionHandler:(dispatch_block_t)completionBlock;
 
