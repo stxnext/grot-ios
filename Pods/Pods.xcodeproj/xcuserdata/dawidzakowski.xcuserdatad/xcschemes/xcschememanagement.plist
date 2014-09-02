@@ -4,17 +4,32 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-GPUImage.xcscheme_^#shared#^_</key>
+		<key>Appirater.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-GoogleAnalytics-iOS-SDK.xcscheme_^#shared#^_</key>
+		<key>Pods-Appirater.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods.xcscheme_^#shared#^_</key>
+		<key>Pods-FlurrySDK.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-GPUImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-GoogleAnalytics-iOS-SDK.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -22,17 +37,32 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1D5D1954383A4FC7AF806E94</key>
+		<key>1C7276847E9F418EBA2457F7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5BC123D4E9E6489BB151DF78</key>
+		<key>251A9927434E41FA98FD0D23</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C88DC286C91F492C9CA5F7D4</key>
+		<key>7882F3F7D89447C9AB768FAB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E0520698723E4AD38D8E5200</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EAE8FB4399AD4AD08DADB5BF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FC796168FA194AF789FEF3F3</key>
 		<dict>
 			<key>primary</key>
 			<true/>

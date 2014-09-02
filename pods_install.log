@@ -6,14 +6,13 @@ possible solutions.[0m
 Analyzing dependencies
 
 Updating spec repositories
-$ /Users/dawidzakowski/Desktop/Archiwum/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/git rev-parse  >/dev/null 2>&1
-$ /Users/dawidzakowski/Desktop/Archiwum/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/git ls-remote
-  aca4d696d1c75aa13b9235752b1ae4e47d3dbece	HEAD
+$ /Users/dawidzakowski/Desktop/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/git rev-parse  >/dev/null 2>&1
+$ /Users/dawidzakowski/Desktop/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/git ls-remote
+  d1236d98c2808f7d60765d5be8bd0bb9a53e36b8	HEAD
   0b9b0cf2b370a41d6fca5b35031ebe125a03b69e	refs/__temp__/0b9b0cf2b370a41d6fca5b35031ebe125a03b69e
   82137b10f4edda6e0547e55679542a4dff979449	refs/__temp__/82137b10f4edda6e0547e55679542a4dff979449
-  aca4d696d1c75aa13b9235752b1ae4e47d3dbece	refs/__temp__/aca4d696d1c75aa13b9235752b1ae4e47d3dbece
   c515713c93fcdabafffb8d600b19fbdd590e8258	refs/__temp__/c515713c93fcdabafffb8d600b19fbdd590e8258
-  aca4d696d1c75aa13b9235752b1ae4e47d3dbece	refs/heads/master
+  d1236d98c2808f7d60765d5be8bd0bb9a53e36b8	refs/heads/master
   fe7df26fe5545072c11abac241d73087a29e87d9	refs/pull/1/head
   1748dab37fe08120775777a084e0fb9da10c4a63	refs/pull/1/merge
   48a6d66e2c3129c3bcfec1972c15f6e24723b9f5	refs/pull/10/head
@@ -2953,7 +2952,7 @@ $ /Users/dawidzakowski/Desktop/Archiwum/Xcode.app/Contents/Developer/Platforms/i
   780769d21134a1c7003ff672bdd3843b96854df4	refs/pull/12198/head
   d747ac13b0b20d459711a8d47e4873b580772061	refs/pull/12198/merge
   3ef6af99a8d7be7812de11ac49267e04715f83ea	refs/pull/12199/head
-  98447c6b92c76b7f1d0e948f4fa43c10f68c6c16	refs/pull/12199/merge
+  9d1a510a8ecc563d0d639d3b6419e6def3fb6259	refs/pull/12199/merge
   5115d1ff13725eaa607269157dbf5233ca5627af	refs/pull/122/head
   e87e395053a310f12630e7bcdd460d6c90abba68	refs/pull/122/merge
   e0f70edb4e0aaa6d2aad0af7eefbf8de2c8bdf25	refs/pull/1220/head
@@ -3717,12 +3716,54 @@ $ /Users/dawidzakowski/Desktop/Archiwum/Xcode.app/Contents/Developer/Platforms/i
   95b5a00c533f61ea24ffe8d1c0ed5dcc499a0542	refs/pull/12589/merge
   08184fd87b644effef17965aa21ed8a03dfe319c	refs/pull/1259/head
   9f858b035af71341f7de2b7aff179c82d71040e1	refs/pull/1259/merge
+  2b3c72ecf27fdf9cdc9c7a2b27a964f9c73d5b0b	refs/pull/12590/head
+  ccf1a31fe260b5e2c9c1d94b0d554a70c52974e5	refs/pull/12590/merge
+  d8062342c023b49f3babe8697248be433ccebf49	refs/pull/12591/head
+  3273c1e5ce37814afbb4a2fd39acb463dc09ee4f	refs/pull/12592/head
+  e31d359b0e9e21838d5c2667810cf2f1753f74f0	refs/pull/12592/merge
+  6c94029a52cfde42ba0cae41db33bd4d075a5dc8	refs/pull/12593/head
+  2855b4e9ecdc01cb191aea32b77c0c7f9dba16d6	refs/pull/12593/merge
+  d6926d7ca7ff40c10ea29c64a1b50f1d2cf7e552	refs/pull/12594/head
+  cecef12f9251fa94e1b609f709a8501304187d64	refs/pull/12594/merge
+  65000b4fda2ea278fd393e92d45fdbdc78e70429	refs/pull/12595/head
+  49da0cc6e5aaff1e509b328546b9b7ce61f3ed40	refs/pull/12595/merge
+  ee0962c6d2d356e90e95d897c9c63d7a649b3287	refs/pull/12596/head
+  c225373a42ca0d96a5a3fe7a59a6f87c359b9a72	refs/pull/12597/head
+  ea6a3297eb30bf2d3ebfd7b158fcb8c51cca8ca9	refs/pull/12597/merge
+  786cee165f2c175f93ae9ae3dcd93f5d3ed26566	refs/pull/12599/head
   9aa50fb3b7e00437e3714b5c6bac01d3fd42de0e	refs/pull/126/head
   e041d4a63c8afaf460290c31685ed5d6d0cfcbe6	refs/pull/126/merge
   3592cc071dd3073b88840e5fd920870f5f395d97	refs/pull/1260/head
   f6c4143a6ad7e5fd66fb4195dd2db39677dffa27	refs/pull/1260/merge
+  6d3e60ae906a6a117eb9b2bac5a4097f8e7317d2	refs/pull/12600/head
+  0c4369281d395f6251b813ea19830b197b52bd62	refs/pull/12602/head
+  2478b357ae39cb782586ae0091567177ecac1cfd	refs/pull/12602/merge
+  c2b3be91acbd42fbd041e82ba732c269dbc1c200	refs/pull/12603/head
+  49d028e247a08eefe571c917a17892e04c84feb8	refs/pull/12603/merge
+  8790e931f7a928942c2f5a8b6a3afa138fc17379	refs/pull/12604/head
+  68015df4000a5045e35e6f9e96ac34888266f0f9	refs/pull/12604/merge
+  823dd0477cce4db0c33152ddc0144ef3c652caa3	refs/pull/12605/head
+  1b06428879325f5cd96df0e374d736e8b41d477c	refs/pull/12605/merge
+  2c5ee702ef9548401b134eeb239b0ea1d357cf6f	refs/pull/12606/head
+  8d95b2957db384961d09f357d2ed6ca2120a4bce	refs/pull/12606/merge
+  827295c67443b9042b6c7cfe7b20352ac9bf0a55	refs/pull/12607/head
+  36fcc74e2cc788e4f40b576cad90652ed74d8588	refs/pull/12607/merge
+  24c2953dee004d7f5778bcc60065bb3939e2dae6	refs/pull/12608/head
+  631ae74d4298afbe204db95ce83903e7a576a52b	refs/pull/12608/merge
+  8f1881b006f12d93ad054b45802ed0177c1f9721	refs/pull/12609/head
+  12adb51e0a7018ace8e977f5a3b951c3e50887ec	refs/pull/12609/merge
   417b5fc428bb4617ed4c6dd6567cfddebc7de3df	refs/pull/1261/head
   854a09d8e326459721e25b17e208474a7b8a1daf	refs/pull/1261/merge
+  11da0947b7de0b88a015d4c83b73f3211794dda4	refs/pull/12610/head
+  ef34dfcf1670b7820c8276167919ca6400325123	refs/pull/12610/merge
+  948f74c17fe4a40af91083d394381d46e2188b11	refs/pull/12613/head
+  13e2cb9433669c036f4176fc21a308a79026b55e	refs/pull/12613/merge
+  c6bf43a150a224317a84d7592081a84f48fbc65c	refs/pull/12614/head
+  bbe92c9ca9195b3b14a91e18435587361dca9f5b	refs/pull/12614/merge
+  0f00ec52c5bcb711136f4f3c7888869ed59921ae	refs/pull/12615/head
+  c245c5cbc1d6336c4981a8d9a12736419d6054c0	refs/pull/12615/merge
+  3c8b62b6d60331bb50f7ffab2982cdd1606248d6	refs/pull/12616/head
+  75ed992af2c9c90470e8ad7c773db4b6ba6cec79	refs/pull/12616/merge
   d284072cb1d597766b1a7642f3372c504d7792cb	refs/pull/1262/head
   5f1cf72768746b08d9801dca7020bc1da0e12d39	refs/pull/1262/merge
   4c5135390a228664dba69222cef799663fd40afa	refs/pull/1263/head
@@ -17840,166 +17881,58 @@ $ /Users/dawidzakowski/Desktop/Archiwum/Xcode.app/Contents/Developer/Platforms/i
   5a7c7be28f0859865035c324e625c507cf858f4a	refs/pull/9998/head
   7a19ff8bfbaf00a485ca2274a229205d715dcbf7	refs/pull/9999/head
 Updating spec repo `master`
-$ /Users/dawidzakowski/Desktop/Archiwum/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/git pull --no-rebase --no-commit
-  Updating b670421..aca4d69
-  Fast-forward
-   .../1.2/ABTestingVessel.podspec.json               | 28 ++++++++
-   .../3.0/BEMSimpleLineGraph.podspec.json            | 29 ++++++++
-   Specs/BVSDK/2.2.0/BVSDK.podspec.json               | 23 ++++++
-   .../0.12.0/CBRRESTConnection.podspec.json          | 34 +++++++++
-   Specs/CDTDatastore/0.7.0/CDTDatastore.podspec.json | 56 +++++++++++++++
-   Specs/CloudBridge/0.8.0/CloudBridge.podspec.json   | 34 +++++++++
-   Specs/CloudBridge/0.8.1/CloudBridge.podspec.json   | 34 +++++++++
-   .../1.0.1/DRDynamicSlideShow.podspec.json          | 20 ++++++
-   ...EGOTableViewPullRefreshAndLoadMore.podspec.json | 26 +++++++
-   Specs/EasyNSDate/0.0.1/EasyNSDate.podspec.json     | 19 +++++
-   Specs/Ensembles/1.2.1/Ensembles.podspec.json       | 81 ++++++++++++++++++++++
-   Specs/FDTake/0.2.2/FDTake.podspec.json             | 24 +++++++
-   Specs/FLSKAutoGAI/0.1.1/FLSKAutoGAI.podspec.json   | 25 +++++++
-   .../0.0.1/GVAnimatedPagging.podspec.json           | 23 ++++++
-   .../0.0.3/GVAnimatedPagging.podspec.json           | 23 ++++++
-   .../3.03c/GoogleTagManager.podspec.json            | 33 +++++++++
-   .../3.09/GoogleTagManager.podspec.json             | 33 +++++++++
-   .../HTKScrollingNavigationController.podspec.json  | 24 +++++++
-   .../5.2.4/JSQMessagesViewController.podspec.json   | 37 ++++++++++
-   Specs/JTHelper/0.1.2/JTHelper.podspec.json         | 21 ++++++
-   .../0.2.0/KIChameleonView.podspec.json             | 30 ++++++++
-   Specs/LCVoiceHud/0.4/LCVoiceHud.podspec.json       | 22 ++++++
-   .../3.1.7/LTHPasscodeViewController.podspec.json   | 31 +++++++++
-   Specs/Logger/0.1.1/Logger.podspec.json             | 25 +++++++
-   Specs/MGBoxKit/7.0.0/MGBoxKit.podspec.json         | 31 +++++++++
-   Specs/MGMushParser/1.0.0/MGMushParser.podspec.json | 23 ++++++
-   Specs/MarqueeLabel/2.0.2/MarqueeLabel.podspec.json | 23 ++++++
-   Specs/Mensa/0.9.0/Mensa.podspec.json               | 22 ++++++
-   Specs/Mensa/0.9.1/Mensa.podspec.json               | 22 ++++++
-   Specs/Mensa/0.9.2/Mensa.podspec.json               | 22 ++++++
-   .../0.2.7/MessageDisplayKit.podspec.json           | 32 +++++++++
-   .../0.2.3/NJKScrollFullScreen.podspec.json         | 22 ++++++
-   Specs/OLCOrm/0.0.3/OLCOrm.podspec.json             | 25 +++++++
-   .../1.1.2/PIXNET-iOS-SDK.podspec.json              | 28 ++++++++
-   .../PLPageControl/0.1.1/PLPageControl.podspec.json | 23 ++++++
-   .../1.0.0/PXLMenuController.podspec.json           | 26 +++++++
-   .../1.0.1/PXLMenuController.podspec.json           | 26 +++++++
-   Specs/QKForms/0.0.8/QKForms.podspec.json           | 27 ++++++++
-   .../0.1.3/RBHamburgerMenu.podspec.json             | 25 +++++++
-   .../0.1.0/Reachability-RACExtensions.podspec.json  | 27 ++++++++
-   .../0.1/SCResourcesManager.podspec.json            | 21 ++++++
-   Specs/SaltEdge-iOS/1.0.0/SaltEdge-iOS.podspec.json | 26 +++++++
-   Specs/SaltEdge-iOS/1.0.1/SaltEdge-iOS.podspec.json | 26 +++++++
-   Specs/SaltEdge-iOS/1.1.0/SaltEdge-iOS.podspec.json | 26 +++++++
-   Specs/SheepData/0.2.0/SheepData.podspec.json       | 20 ++++++
-   Specs/ShowKit/1.0.28/ShowKit.podspec.json          | 43 ++++++++++++
-   Specs/StopWatch/0.0.7/StopWatch.podspec.json       | 27 ++++++++
-   .../1.5.2/StoryboardXibController.podspec.json     | 24 +++++++
-   Specs/Switchboard/0.0.4/Switchboard.podspec.json   | 20 ++++++
-   .../TJCollectionViewColumnFlowLayout.podspec.json  | 23 ++++++
-   Specs/TYStatusHUD/0.2/TYStatusHUD.podspec.json     | 21 ++++++
-   Specs/TacoShell/0.0.1/TacoShell.podspec.json       | 19 +++++
-   Specs/TacoShell/0.0.2/TacoShell.podspec.json       | 19 +++++
-   .../1.0.14/UIFloatLabelTextField.podspec.json      | 21 ++++++
-   Specs/UMengSocial/4.1/UMengSocial.podspec.json     | 65 +++++++++++++++++
-   Specs/UbuduSDK/1.8/UbuduSDK.podspec.json           | 37 ++++++++++
-   .../4.0.2/UrbanAirship-iOS-SDK.podspec.json        | 43 ++++++++++++
-   .../0.9.0/UzysAssetsPickerController.podspec.json  | 36 ++++++++++
-   .../0.0.2/VBFPopFlatButton.podspec.json            | 27 ++++++++
-   Specs/VK-ios-sdk/1.0.8.3/VK-ios-sdk.podspec.json   | 25 +++++++
-   Specs/VideoCore/0.1.10.0/VideoCore.podspec.json    | 69 ++++++++++++++++++
-   .../0.0.3/WordPressCom-Analytics-iOS.podspec.json  | 26 +++++++
-   .../0.0.3.5/YYSlideGallery.podspec.json            | 19 +++++
-   Specs/cineio-ios/0.4.2/cineio-ios.podspec.json     | 47 +++++++++++++
-   64 files changed, 1869 insertions(+)
-   create mode 100644 Specs/ABTestingVessel/1.2/ABTestingVessel.podspec.json
-   create mode 100644 Specs/BEMSimpleLineGraph/3.0/BEMSimpleLineGraph.podspec.json
-   create mode 100644 Specs/BVSDK/2.2.0/BVSDK.podspec.json
-   create mode 100644 Specs/CBRRESTConnection/0.12.0/CBRRESTConnection.podspec.json
-   create mode 100644 Specs/CDTDatastore/0.7.0/CDTDatastore.podspec.json
-   create mode 100644 Specs/CloudBridge/0.8.0/CloudBridge.podspec.json
-   create mode 100644 Specs/CloudBridge/0.8.1/CloudBridge.podspec.json
-   create mode 100644 Specs/DRDynamicSlideShow/1.0.1/DRDynamicSlideShow.podspec.json
-   create mode 100644 Specs/EGOTableViewPullRefreshAndLoadMore/1.0.1/EGOTableViewPullRefreshAndLoadMore.podspec.json
-   create mode 100644 Specs/EasyNSDate/0.0.1/EasyNSDate.podspec.json
-   create mode 100644 Specs/Ensembles/1.2.1/Ensembles.podspec.json
-   create mode 100644 Specs/FDTake/0.2.2/FDTake.podspec.json
-   create mode 100644 Specs/FLSKAutoGAI/0.1.1/FLSKAutoGAI.podspec.json
-   create mode 100644 Specs/GVAnimatedPagging/0.0.1/GVAnimatedPagging.podspec.json
-   create mode 100644 Specs/GVAnimatedPagging/0.0.3/GVAnimatedPagging.podspec.json
-   create mode 100644 Specs/GoogleTagManager/3.03c/GoogleTagManager.podspec.json
-   create mode 100644 Specs/GoogleTagManager/3.09/GoogleTagManager.podspec.json
-   create mode 100644 Specs/HTKScrollingNavigationController/0.0.1/HTKScrollingNavigationController.podspec.json
-   create mode 100644 Specs/JSQMessagesViewController/5.2.4/JSQMessagesViewController.podspec.json
-   create mode 100644 Specs/JTHelper/0.1.2/JTHelper.podspec.json
-   create mode 100644 Specs/KIChameleonView/0.2.0/KIChameleonView.podspec.json
-   create mode 100644 Specs/LCVoiceHud/0.4/LCVoiceHud.podspec.json
-   create mode 100644 Specs/LTHPasscodeViewController/3.1.7/LTHPasscodeViewController.podspec.json
-   create mode 100644 Specs/Logger/0.1.1/Logger.podspec.json
-   create mode 100644 Specs/MGBoxKit/7.0.0/MGBoxKit.podspec.json
-   create mode 100644 Specs/MGMushParser/1.0.0/MGMushParser.podspec.json
-   create mode 100644 Specs/MarqueeLabel/2.0.2/MarqueeLabel.podspec.json
-   create mode 100644 Specs/Mensa/0.9.0/Mensa.podspec.json
-   create mode 100644 Specs/Mensa/0.9.1/Mensa.podspec.json
-   create mode 100644 Specs/Mensa/0.9.2/Mensa.podspec.json
-   create mode 100644 Specs/MessageDisplayKit/0.2.7/MessageDisplayKit.podspec.json
-   create mode 100644 Specs/NJKScrollFullScreen/0.2.3/NJKScrollFullScreen.podspec.json
-   create mode 100644 Specs/OLCOrm/0.0.3/OLCOrm.podspec.json
-   create mode 100644 Specs/PIXNET-iOS-SDK/1.1.2/PIXNET-iOS-SDK.podspec.json
-   create mode 100644 Specs/PLPageControl/0.1.1/PLPageControl.podspec.json
-   create mode 100644 Specs/PXLMenuController/1.0.0/PXLMenuController.podspec.json
-   create mode 100644 Specs/PXLMenuController/1.0.1/PXLMenuController.podspec.json
-   create mode 100644 Specs/QKForms/0.0.8/QKForms.podspec.json
-   create mode 100644 Specs/RBHamburgerMenu/0.1.3/RBHamburgerMenu.podspec.json
-   create mode 100644 Specs/Reachability-RACExtensions/0.1.0/Reachability-RACExtensions.podspec.json
-   create mode 100644 Specs/SCResourcesManager/0.1/SCResourcesManager.podspec.json
-   create mode 100644 Specs/SaltEdge-iOS/1.0.0/SaltEdge-iOS.podspec.json
-   create mode 100644 Specs/SaltEdge-iOS/1.0.1/SaltEdge-iOS.podspec.json
-   create mode 100644 Specs/SaltEdge-iOS/1.1.0/SaltEdge-iOS.podspec.json
-   create mode 100644 Specs/SheepData/0.2.0/SheepData.podspec.json
-   create mode 100644 Specs/ShowKit/1.0.28/ShowKit.podspec.json
-   create mode 100644 Specs/StopWatch/0.0.7/StopWatch.podspec.json
-   create mode 100644 Specs/StoryboardXibController/1.5.2/StoryboardXibController.podspec.json
-   create mode 100644 Specs/Switchboard/0.0.4/Switchboard.podspec.json
-   create mode 100644 Specs/TJCollectionViewColumnFlowLayout/0.1/TJCollectionViewColumnFlowLayout.podspec.json
-   create mode 100644 Specs/TYStatusHUD/0.2/TYStatusHUD.podspec.json
-   create mode 100644 Specs/TacoShell/0.0.1/TacoShell.podspec.json
-   create mode 100644 Specs/TacoShell/0.0.2/TacoShell.podspec.json
-   create mode 100644 Specs/UIFloatLabelTextField/1.0.14/UIFloatLabelTextField.podspec.json
-   create mode 100644 Specs/UMengSocial/4.1/UMengSocial.podspec.json
-   create mode 100644 Specs/UbuduSDK/1.8/UbuduSDK.podspec.json
-   create mode 100644 Specs/UrbanAirship-iOS-SDK/4.0.2/UrbanAirship-iOS-SDK.podspec.json
-   create mode 100644 Specs/UzysAssetsPickerController/0.9.0/UzysAssetsPickerController.podspec.json
-   create mode 100644 Specs/VBFPopFlatButton/0.0.2/VBFPopFlatButton.podspec.json
-   create mode 100644 Specs/VK-ios-sdk/1.0.8.3/VK-ios-sdk.podspec.json
-   create mode 100644 Specs/VideoCore/0.1.10.0/VideoCore.podspec.json
-   create mode 100644 Specs/WordPressCom-Analytics-iOS/0.0.3/WordPressCom-Analytics-iOS.podspec.json
-   create mode 100644 Specs/YYSlideGallery/0.0.3.5/YYSlideGallery.podspec.json
-   create mode 100644 Specs/cineio-ios/0.4.2/cineio-ios.podspec.json
+$ /Users/dawidzakowski/Desktop/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/git pull --no-rebase --no-commit
+  Already up-to-date.
 
 CocoaPods 0.33.1 is available.
 To update use: [sudo] gem install cocoapods
 
 Finding Podfile changes
+- Appirater
 - FlurrySDK
 - GPUImage
 - GoogleAnalytics-iOS-SDK
 
 Resolving dependencies of `Podfile`
 Resolving dependencies for target `Pods' (iOS 7.0)
-- GPUImage (= 0.1.4)
+- GPUImage (= 0.1.5)
 - GoogleAnalytics-iOS-SDK (= 3.0.9)
 - FlurrySDK (= 5.2.0)
 - FlurrySDK/FlurrySDK
 - FlurrySDK/FlurryAds
 - FlurrySDK/FlurrySDK
+- Appirater (= 2.0.3)
 
 Comparing resolved specification to the sandbox manifest
-- FlurrySDK
+M FlurrySDK
+- Appirater
 - GPUImage
 - GoogleAnalytics-iOS-SDK
 
 Downloading dependencies
 
--> Using FlurrySDK (5.2.0)
+-> Using Appirater (2.0.3)
 
--> Using GPUImage (0.1.4)
+-> Installing FlurrySDK 5.2.0 (was 5.2.0)
+ > GitHub download
+$ /Users/dawidzakowski/Desktop/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/git config core.bare
+   true
+$ /Users/dawidzakowski/Desktop/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/git config core.bare
+   true
+ > Updating cache git repo (/Users/dawidzakowski/Library/Caches/CocoaPods/GitHub/b82158b837a32db0dd6bbfe761ae26fe6fc92954)
+$ /Users/dawidzakowski/Desktop/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/git remote update
+     Fetching origin
+ > Cloning to Pods folder
+$ /Users/dawidzakowski/Desktop/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/git clone /Users/dawidzakowski/Library/Caches/CocoaPods/GitHub/b82158b837a32db0dd6bbfe761ae26fe6fc92954 /Users/dawidzakowski/Documents/grot-ios/Pods/FlurrySDK 
+$ /Users/dawidzakowski/Desktop/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/git fetch origin tags/5.2.0 2>&1
+   From /Users/dawidzakowski/Library/Caches/CocoaPods/GitHub/b82158b837a32db0dd6bbfe761ae26fe6fc92954
+    * tag               5.2.0      -> FETCH_HEAD
+$ /Users/dawidzakowski/Desktop/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/git reset --hard FETCH_HEAD
+   HEAD is now at e44eb6a Updating Flurry SDK to 5.2.0
+$ /Users/dawidzakowski/Desktop/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/git checkout -b activated-pod-commit 2>&1
+   Switched to a new branch 'activated-pod-commit'
+
+-> Using GPUImage (0.1.5)
 
 -> Using GoogleAnalytics-iOS-SDK (3.0.9)
 - Running pre install hooks
@@ -18012,6 +17945,13 @@ Generating Pods project
 - Adding resources to Pods project
 - Linking headers
 - Installing libraries
+- Installing target `Pods-Appirater` iOS 7.0
+- Adding Build files
+- Adding resource bundles to Pods project
+- Generating public xcconfig file at `Pods/Pods-Appirater.xcconfig`
+- Generating private xcconfig file at `Pods/Pods-Appirater-Private.xcconfig`
+- Generating prefix header at `Pods/Pods-Appirater-prefix.pch`
+- Generating dummy source file at `Pods/Pods-Appirater-dummy.m`
 - Installing target `Pods-FlurrySDK` iOS 7.0
 - Adding Build files
 - Adding resource bundles to Pods project

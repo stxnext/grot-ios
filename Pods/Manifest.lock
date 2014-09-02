@@ -1,6 +1,9 @@
 PODS:
   - Appirater (2.0.3)
   - FlurrySDK (5.2.0):
+    - FlurrySDK/FlurryAds
+    - FlurrySDK/FlurrySDK
+  - FlurrySDK/FlurryAds (5.2.0):
     - FlurrySDK/FlurrySDK
   - FlurrySDK/FlurrySDK (5.2.0)
   - GoogleAnalytics-iOS-SDK (3.0.9)
@@ -18,4 +21,4 @@ SPEC CHECKSUMS:
   GoogleAnalytics-iOS-SDK: d9e198b1f955259a72886769be7377cdfcdb2250
   GPUImage: 5114a47f5fc33eb312f3731550a3cea379416d04
 
-COCOAPODS: 0.33.1
+COCOAPODS: 0.32.1

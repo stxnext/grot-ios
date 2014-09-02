@@ -16,7 +16,7 @@
 //   objects when Game Center events occur or
 //   when Game Center async tasks are completed
 @protocol GameKitHelperProtocol<NSObject>
-- (void)onScoresSubmitted:(bool)success;
+- (void)onScore:(NSInteger)scire submitted:(bool)success;
 @end
 
 
@@ -27,14 +27,16 @@ id<GameKitHelperProtocol> delegate;
 
 // This property holds the last known error
 // that occured while using the Game Center API's
+@property (nonatomic, strong, readonly) GKScore* currentPlayerScore;
 @property (nonatomic, readonly) NSError *lastError;
 
 + (id)sharedGameKitHelper;
 
 - (BOOL)isAuthenticated;
 - (void)authenticateLocalPlayer;
+- (void)loadCurrentPlayerScoreWithCompletionHandler:(void (^)(BOOL success))completionBlock;
 - (void)showLeaderboardAndAchievements:(BOOL)shouldShowLeaderboard category:(NSString*)category;
-- (void)submitScore:(int64_t)score category:(NSString *)category;
+- (BOOL)submitScore:(int64_t)score category:(NSString *)category;
 - (void)submitAchievement:(int64_t)score;
 
 @end

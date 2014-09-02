@@ -27,9 +27,10 @@
 
 - (void)authenticateLocalPlayer
 {
-    GKLocalPlayer *localPlayer = [GKLocalPlayer localPlayer];
+    __weak GKLocalPlayer *localPlayer = [GKLocalPlayer localPlayer];
     
     localPlayer.authenticateHandler = ^(UIViewController *viewController, NSError *error) {
+        [self loadCurrentPlayerScoreWithCompletionHandler:nil];
         
         [self setLastError:error];
         
@@ -49,6 +50,35 @@
             
         }
     };
+}
+
+- (void)loadCurrentPlayerScoreWithCompletionHandler:(void (^)(BOOL success))completionBlock
+{
+    NSString* playerId = GKLocalPlayer.localPlayer.playerID;
+    
+    if (!playerId)
+    {
+        if (completionBlock)
+            completionBlock(NO);
+        
+        return;
+    }
+    
+    GKLeaderboard* leaderboardRequest = [GKLeaderboard.alloc initWithPlayerIDs:@[ playerId ]];
+    leaderboardRequest.timeScope = GKLeaderboardTimeScopeAllTime;
+    leaderboardRequest.identifier = kHighScoreLeaderboardCategory;
+    leaderboardRequest.range = NSMakeRange(0, 1);
+    [leaderboardRequest loadScoresWithCompletionHandler:^(NSArray *scores, NSError *error) {
+        BOOL success = !error && leaderboardRequest.localPlayerScore;
+        
+        if (success)
+        {
+            _currentPlayerScore = leaderboardRequest.localPlayerScore;
+        }
+        
+        if (completionBlock)
+            completionBlock(success);
+    }];
 }
 
 - (BOOL)isAuthenticated
@@ -89,7 +119,7 @@
         presentBlock();
 }
 
-- (void)submitScore:(int64_t)score category:(NSString*)category
+- (BOOL)submitScore:(int64_t)score category:(NSString*)category
 {
     //1: Check if Game Center
     //   features are enabled
@@ -97,7 +127,7 @@
     {
         //NSLog(@"Player not authenticated");
         
-        return;
+        return NO;
     }
  
     //2: Create a GKScore object
@@ -113,11 +143,13 @@
         
         BOOL success = (error == nil);
         
-        if ([_delegate respondsToSelector:@selector(onScoresSubmitted:)])
+        if ([_delegate respondsToSelector:@selector(onScore:submitted:)])
         {
-            [_delegate onScoresSubmitted:success];
+            [_delegate onScore:(NSInteger)score submitted:success];
         }
     }];
+    
+    return YES;
 }
 
 - (void)submitAchievement:(int64_t)score

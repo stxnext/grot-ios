@@ -9,11 +9,8 @@
 #import "SNGameScene.h"
 #import "SNGrotView.h"
 #import "SNGrotFieldModel.h"
-#import "SNMenuButton.h"
-#import "SNMenuView.h"
 #import "SKTEffects.h"
 #import "UIBezierPath+Image.h"
-#import "SNGrotHints.h"
 
 @interface SNGameScene ()
 {
@@ -328,37 +325,9 @@
         NSInteger column, row;
         CGPoint location = [touch locationInNode:self];
         
-        if ([self convertPoint:location toColumn:&column row:&row] && self.delegate.moves > 0 && !isMenuVisible)
+        if ([self convertPoint:location toColumn:&column row:&row] && self.delegate.moves > 0)
         {
             [self makeMoveAtRow:row column:column];
-        }
-        else
-        {
-            CGPoint touchLocation = [touch locationInNode:self];
-            SKNode *touchedNode = [self nodeAtPoint:touchLocation];
-            
-            if ([touchedNode.name isEqualToString:@"menuButton"])
-            {
-                [self toggleMenu];
-            }
-            else
-            {
-                if ([touchedNode.name isEqualToString:@"level1Button"])
-                {
-                    [self toggleMenu];
-                    [self newGameWithSize:3];
-                }
-                else if ([touchedNode.name isEqualToString:@"level2Button"])
-                {
-                    [self toggleMenu];
-                    [self newGameWithSize:4];
-                }
-                else if ([touchedNode.name isEqualToString:@"level3Button"])
-                {
-                    [self toggleMenu];
-                    [self newGameWithSize:5];
-                }
-            }
         }
     }
 }
@@ -553,7 +522,6 @@
     int64_t score = self.delegate.score;
     int64_t summaryScore = self.delegate.summaryScore;
     
-    [[GameKitHelper sharedGameKitHelper] submitScore:(int64_t)score category:kHighScoreLeaderboardCategory];
 //    [[GameKitHelper sharedGameKitHelper] submitScore:(int64_t)summaryScore category:kSummaryHighScoreLeaderboardCategory];
     
     for (SNGrotView *grot in self.grots)
@@ -567,14 +535,9 @@
         maxScore = (unsigned long)self.delegate.score;
     }
     
+    [self.delegate gameEndedWithScore:self.delegate.score];
+    
     [self performBlockOnMainThread:^{
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Game over"
-                                                            message:[NSString stringWithFormat:@"You've scored %lu points. Try again!", (unsigned long)self.delegate.score]
-                                                           delegate:self
-                                                  cancelButtonTitle:nil
-                                                  otherButtonTitles:@"New game", nil];
-        
-        [alertView show];
         
         // Statistics
         [SNAnalyticsManager.sharedManager gameDidToggle:NO];
@@ -582,32 +545,10 @@
     } afterDelay:0.8];
 }
 
-- (void)toggleMenu
-{
-    isMenuVisible = !isMenuVisible;
-    
-    for (SNGrotView *grot in self.grots)
-    {
-        CGFloat alpha = 1;
-        
-        if (self.delegate.moves == 0)
-        {
-            alpha = grot.alpha;
-        }
-        else if (isMenuVisible)
-        {
-            alpha = 0.1;
-        }
-        
-        [grot runAction:[SKAction sequence:@[[SKAction waitForDuration:isMenuVisible ? 0.3 : 0],
-                                             [SKAction group:@[[SKAction scaleTo:isMenuVisible ? 0.8 : 1 duration:0.2],
-                                                               [SKAction fadeAlphaTo:alpha duration:0.2]]]
-                                             ]]];
-    }
-}
-
 - (void)newGameWithSize:(int)size
 {
+    [GameKitHelper.sharedGameKitHelper loadCurrentPlayerScoreWithCompletionHandler:nil];
+    
     [self setBoardSize:size];
     
     grotSpace = (INTERFACE_IS_PAD ? 10.0 : 5.0) - (size - 2);
@@ -673,11 +614,6 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     _boardSize = 0;
-}
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    [self newGameWithSize:[self boardSize]];
 }
 
 @end

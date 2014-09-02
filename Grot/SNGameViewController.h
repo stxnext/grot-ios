@@ -11,7 +11,7 @@
 #import "SNGameScene.h"
 #import "SKObservableView.h"
 
-@interface SNGameViewController : GAITrackedViewController<UIActionSheetDelegate, SNGameplayDelegate, SKObservableViewDelegate>
+@interface SNGameViewController : GAITrackedViewController<SNGameplayDelegate, SKObservableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet SKView *helpContainter;
 

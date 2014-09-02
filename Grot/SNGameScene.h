@@ -18,13 +18,13 @@
 
 - (void)addScore:(NSUInteger)value;
 - (void)addMoves:(NSUInteger)value;
+- (void)gameEndedWithScore:(NSInteger)score;
 
 @end
 
 @interface SNGameScene : SKScene <UIAlertViewDelegate>
 {
     BOOL isAnimatingTurn;
-    BOOL isMenuVisible;
     NSMutableArray *animationsViews;
     CGFloat cellSize;
  }

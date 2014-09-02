@@ -11,6 +11,8 @@
 #import "SNGameScene.h"
 #import "SNGrotFieldModel.h"
 #import "GPUImage.h"
+#import "SNFloatingMenu.h"
+#import "SNFloatingResults.h"
 
 @interface SNGameViewController ()
 {
@@ -241,11 +243,55 @@
     }
 }
 
-#pragma mark - Menu Actions
+#pragma mark - Outcoming segues
 
-- (IBAction)menuTapped:(id)sender
+- (void)toggleHelp:(BOOL)show
 {
-    if (helpVisible)
+    if (show && !helpVisible)
+    {
+        UIGraphicsBeginImageContext(self.gameView.bounds.size);
+        [self.gameView drawViewHierarchyInRect:self.gameView.bounds afterScreenUpdates:NO];
+        UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        GPUImageiOSBlurFilter *blurFilter = [[GPUImageiOSBlurFilter alloc] init];
+        blurFilter.blurRadiusInPixels = 6;
+        blurFilter.saturation = 0.5;
+        
+        image = [blurFilter imageByFilteringImage:image];
+        
+        self.helpBackground.image = image;
+        
+        self.score1x.backgroundColor = [SNGrotFieldModel colors][kColor1];
+        self.score1x.layer.borderColor = [UIColor whiteColor].CGColor;
+        self.score1x.layer.borderWidth = INTERFACE_IS_PHONE ? 1 : 2;
+        self.score1x.layer.cornerRadius = self.score1x.frame.size.width/2;
+        
+        self.score2x.backgroundColor = [SNGrotFieldModel colors][kColor2];
+        self.score2x.layer.borderColor = [UIColor whiteColor].CGColor;
+        self.score2x.layer.borderWidth = INTERFACE_IS_PHONE ? 1 : 2;
+        self.score2x.layer.cornerRadius = self.score2x.frame.size.width/2;
+        
+        self.score3x.backgroundColor = [SNGrotFieldModel colors][kColor3];
+        self.score3x.layer.borderColor = [UIColor whiteColor].CGColor;
+        self.score3x.layer.borderWidth = INTERFACE_IS_PHONE ? 1 : 2;
+        self.score3x.layer.cornerRadius = self.score3x.frame.size.width/2;
+        
+        self.score4x.backgroundColor = [SNGrotFieldModel colors][kColor4];
+        self.score4x.layer.borderColor = [UIColor whiteColor].CGColor;
+        self.score4x.layer.borderWidth = INTERFACE_IS_PHONE ? 1 : 2;
+        self.score4x.layer.cornerRadius = self.score4x.frame.size.width/2;
+        
+        helpVisible = YES;
+        self.helpContainter.alpha = 0;
+        self.helpContainter.hidden = NO;
+        
+        [UIView animateWithDuration:0.4 animations:^{
+            self.helpContainter.alpha = 1;
+        } completion:^(BOOL finished) {
+            [SNAnalyticsManager.sharedManager helpDidShow];
+        }];
+    }
+    else if (!show && helpVisible)
     {
         [UIView animateWithDuration:0.4 animations:^{
             self.helpContainter.alpha = 0;
@@ -254,90 +300,155 @@
             helpVisible = NO;
         }];
     }
+}
+
+- (void)showGameCenter
+{
+    [[GameKitHelper sharedGameKitHelper] showLeaderboardAndAchievements:YES category:kHighScoreLeaderboardCategory];
+    [SNAnalyticsManager.sharedManager leaderboardDidShow];
+}
+
+#pragma mark - Menu Actions
+
+- (IBAction)menuTapped:(id)sender
+{
+    if (helpVisible)
+    {
+        [self toggleHelp:NO];
+    }
     else
     {
-        UIActionSheet *actionSheet;
-        
-        if ([[GameKitHelper sharedGameKitHelper] isAuthenticated])
-        {
-            actionSheet = [[UIActionSheet alloc] initWithTitle:@"Main menu" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"New game", @"Help", @"Game Center", nil];
-        }
-        else
-        {
-            actionSheet = [[UIActionSheet alloc] initWithTitle:@"Main menu" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"New game", @"Help", nil];
-        }
-        
-        [actionSheet showInView:self.view];
+        [SNFloatingMenuController showMenuWithDecorator:^(SNFloatingMenuController *menu) {
+            __weak SNFloatingMenuController* weakMenu = menu;
+            
+            menu.menuSelectionBlock = ^(SNFloatingMenuOption option) {
+                switch (option)
+                {
+                    case SNFloatingMenuOptionResume:
+                    {
+                        [weakMenu dismissWithCompletionHandler:^{
+                            
+                        }];
+                        
+                        break;
+                    }
+                        
+                    case SNFloatingMenuOptionRestart:
+                    {
+                        [weakMenu dismissWithCompletionHandler:^{
+                            [self.scene newGameWithSize:4];
+                        }];
+                        
+                        break;
+                    }
+                    
+                    case SNFloatingMenuOptionGameCenter:
+                    {
+                        [self showGameCenter];
+                        break;
+                    }
+                    
+                    case SNFloatingMenuOptionInstructions:
+                    {
+                        [weakMenu dismissWithCompletionHandler:^{
+                            [self toggleHelp:YES];
+                        }];
+                        
+                        break;
+                    }
+                }
+            };
+        }];
     }
 }
 
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+static NSString* kCustomUserHighScore = @"kCustomUserHighScore";
+
++ (NSInteger)highScore
 {
-    switch (buttonIndex)
+    GKScore* gkScore = [GameKitHelper.sharedGameKitHelper currentPlayerScore];
+    
+    if (gkScore && [GameKitHelper.sharedGameKitHelper isAuthenticated])
+        return (NSInteger)gkScore.value;
+    
+    return [NSUserDefaults.standardUserDefaults integerForKey:kCustomUserHighScore]; // default 0
+}
+
+- (void)onScore:(NSInteger)score submitted:(bool)success
+{
+    if (success)
     {
-        case 0:
-        {
-            [self.scene newGameWithSize:4];
-        }
-            break;
-            
-        case 1:
-        {
-            UIGraphicsBeginImageContext(self.gameView.bounds.size);
-            [self.gameView drawViewHierarchyInRect:self.gameView.bounds afterScreenUpdates:NO];
-            UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-            UIGraphicsEndImageContext();
-            GPUImageiOSBlurFilter *blurFilter = [[GPUImageiOSBlurFilter alloc] init];
-            blurFilter.blurRadiusInPixels = 6;
-            blurFilter.saturation = 0.5;
-            
-            image = [blurFilter imageByFilteringImage:image];
-            
-            self.helpBackground.image = image;
-            
-            self.score1x.backgroundColor = [SNGrotFieldModel colors][kColor1];
-            self.score1x.layer.borderColor = [UIColor whiteColor].CGColor;
-            self.score1x.layer.borderWidth = INTERFACE_IS_PHONE ? 1 : 2;
-            self.score1x.layer.cornerRadius = self.score1x.frame.size.width/2;
-            
-            self.score2x.backgroundColor = [SNGrotFieldModel colors][kColor2];
-            self.score2x.layer.borderColor = [UIColor whiteColor].CGColor;
-            self.score2x.layer.borderWidth = INTERFACE_IS_PHONE ? 1 : 2;
-            self.score2x.layer.cornerRadius = self.score2x.frame.size.width/2;
-            
-            self.score3x.backgroundColor = [SNGrotFieldModel colors][kColor3];
-            self.score3x.layer.borderColor = [UIColor whiteColor].CGColor;
-            self.score3x.layer.borderWidth = INTERFACE_IS_PHONE ? 1 : 2;
-            self.score3x.layer.cornerRadius = self.score3x.frame.size.width/2;
-            
-            self.score4x.backgroundColor = [SNGrotFieldModel colors][kColor4];
-            self.score4x.layer.borderColor = [UIColor whiteColor].CGColor;
-            self.score4x.layer.borderWidth = INTERFACE_IS_PHONE ? 1 : 2;
-            self.score4x.layer.cornerRadius = self.score4x.frame.size.width/2;
-            
-            helpVisible = YES;
-            self.helpContainter.alpha = 0;
-            self.helpContainter.hidden = NO;
-            
-            [UIView animateWithDuration:0.4 animations:^{
-                self.helpContainter.alpha = 1;
-            } completion:^(BOOL finished) {
-                [SNAnalyticsManager.sharedManager helpDidShow];
-            }];
-        }
-            break;
-            
-        case 2:
-        {
-            if (actionSheet.numberOfButtons == 4) {
-                [self performBlockInCurrentThread:^{
-                    [[GameKitHelper sharedGameKitHelper] showLeaderboardAndAchievements:YES category:kHighScoreLeaderboardCategory];
-                    [SNAnalyticsManager.sharedManager leaderboardDidShow];
-                } afterDelay:1];
-            }
-        }
-            break;
+        [GameKitHelper.sharedGameKitHelper loadCurrentPlayerScoreWithCompletionHandler:nil];
     }
+    else
+    {
+        NSInteger highScore = [NSUserDefaults.standardUserDefaults integerForKey:kCustomUserHighScore];
+        
+        if (highScore < score)
+        {
+            [NSUserDefaults.standardUserDefaults setInteger:score forKey:kCustomUserHighScore];
+            [NSUserDefaults.standardUserDefaults synchronize];
+        }
+    }
+}
+
+- (void)submitHighScore:(NSInteger)score
+{
+    [GameKitHelper.sharedGameKitHelper setDelegate:self];
+    BOOL submissionStatus = [[GameKitHelper sharedGameKitHelper] submitScore:score category:kHighScoreLeaderboardCategory];
+    
+    if (!submissionStatus)
+        [self onScore:(NSInteger)score submitted:NO];
+}
+
+- (void)gameEndedWithScore:(NSInteger)score
+{
+    [SNFloatingResultsController showMenuWithDecorator:^(SNFloatingMenuController *menu) {
+        SNFloatingResultsController* results = (SNFloatingResultsController*)menu;
+        results.score = self.score;
+        results.highScore = self.class.highScore;
+        
+        [self submitHighScore:score];
+        
+        NSString* scoreDescription;
+        
+        if (score < 200)
+            scoreDescription = @"Poor";
+        else if (score < 400)
+            scoreDescription = @"Fair";
+        else if (score < 600)
+            scoreDescription = @"Good";
+        else if (score < 800)
+            scoreDescription = @"Great";
+        else if (score < 1000)
+            scoreDescription = @"Excellent";
+        else
+            scoreDescription = @"Perfect!";
+        
+        results.menuLabel.text = scoreDescription;
+        
+        __weak SNFloatingResultsController* weakResults = results;
+        
+        results.menuSelectionBlock = ^(SNFloatingMenuOption option) {
+            switch (option)
+            {
+                case SNFloatingMenuOptionRestart:
+                {
+                    [weakResults dismissWithCompletionHandler:^{
+                        [self.scene newGameWithSize:4];
+                    }];
+                    
+                    break;
+                }
+                
+                case SNFloatingMenuOptionGameCenter:
+                {
+                    [self showGameCenter];
+                    break;
+                }
+            }
+        };
+    }];
 }
 
 @end
