@@ -41,6 +41,7 @@
                                                  selector:@selector(applicationWillResignActive)
                                                      name:UIApplicationWillResignActiveNotification
                                                    object:nil];
+        
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(applicationDidBecomeActive)
                                                      name:UIApplicationDidBecomeActiveNotification
@@ -324,6 +325,8 @@
     {
         NSInteger column, row;
         CGPoint location = [touch locationInNode:self];
+        NSLog(@"%f", [touch locationInNode:self].y);
+        NSLog(@"%f", self.view.frame.size.height - [touch locationInView:self.view].y);
         
         if ([self convertPoint:location toColumn:&column row:&row] && self.delegate.moves > 0)
         {
@@ -358,7 +361,7 @@
         point.y >= bottomMargin &&
         point.y < bottomMargin + boardSideMargin + [self boardSize]*cellSize)
     {
-        *column = (point.x - boardSideMargin)/ cellSize;
+        *column = (point.x - boardSideMargin) / cellSize;
         *row = (point.y - bottomMargin - boardSideMargin) / cellSize;
         
         return YES;
@@ -465,7 +468,8 @@
 
 - (CGPoint)positionForX:(NSInteger)x Y:(NSInteger)y
 {
-    return CGPointMake(boardSideMargin + cellSize/2 + x*cellSize, bottomMargin + cellSize/2 + y*cellSize);
+    return CGPointMake(boardSideMargin + cellSize/2 + x*cellSize,
+                       bottomMargin + cellSize/2 + y*cellSize);
 }
 
 - (CGPoint)positionForIndex:(int)index
@@ -521,8 +525,6 @@
 {
     int64_t score = self.delegate.score;
     int64_t summaryScore = self.delegate.summaryScore;
-    
-//    [[GameKitHelper sharedGameKitHelper] submitScore:(int64_t)summaryScore category:kSummaryHighScoreLeaderboardCategory];
     
     for (SNGrotView *grot in self.grots)
     {

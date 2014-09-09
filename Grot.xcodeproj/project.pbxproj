@@ -218,12 +218,12 @@
 			isa = PBXGroup;
 			children = (
 				0C184C2B19A4D32E0017C38F /* SNFloatingMenu.h */,
-				0C184C2C19A4D32E0017C38F /* SNFloatingMenu.m */,
-				0C184C2919A4C7B20017C38F /* SNFloatingMenu.xib */,
 				0C0B806919AB257C005CD485 /* SNFloatingResults.h */,
+				0C184C2C19A4D32E0017C38F /* SNFloatingMenu.m */,
 				0C0B806A19AB257C005CD485 /* SNFloatingResults.m */,
-				0CC1D47719AB0ACA004B3C18 /* SNFloatingResults_iPhone.xib */,
+				0C184C2919A4C7B20017C38F /* SNFloatingMenu.xib */,
 				0CB839E019B4797000D7608D /* SNFloatingResults_iPad.xib */,
+				0CC1D47719AB0ACA004B3C18 /* SNFloatingResults_iPhone.xib */,
 			);
 			name = SNFloatingMenu;
 			sourceTree = "<group>";

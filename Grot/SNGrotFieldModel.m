@@ -95,18 +95,18 @@
 
 + (NSDictionary *)colors
 {
-    return @{ kColor1  : colorFromHex(0xffffff),
-              kColor2  : colorFromHex(0xffec00),
-              kColor3  : colorFromHex(0xe50f0f),
-              kColor4  : colorFromHex(0x00968f) };
+    return @{ kColor1 : colorFromHex(0xffffff),
+              kColor2 : colorFromHex(0xffec00),
+              kColor3 : colorFromHex(0xe50f0f),
+              kColor4 : colorFromHex(0x00968f) };
 }
 
 + (NSDictionary *)points
 {
-    return @{ kColor1  : @(1),
-              kColor2  : @(2),
-              kColor3  : @(3),
-              kColor4  : @(4) };
+    return @{ kColor1 : @(1),
+              kColor2 : @(2),
+              kColor3 : @(3),
+              kColor4 : @(4) };
 }
 
 #pragma mark - Object equality
@@ -116,7 +116,8 @@
     if (![object isKindOfClass:self.class])
         return [super isEqual:object];
     
-    SNGrotFieldModel* other = object;
+    SNGrotFieldModel *other = object;
+    
     return self.hash == other.hash;
 }
 

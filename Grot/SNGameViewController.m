@@ -42,7 +42,8 @@
 {
     [super viewDidLoad];
     
-    self.scene = [[SNGameScene alloc] initWithSize:_gameView.bounds.size withDelegate:self];
+    self.scene = [[SNGameScene alloc] initWithSize:_gameView.bounds.size
+                                      withDelegate:self];
     self.scene.scaleMode = SKSceneScaleModeAspectFit;
     
     _gameView.delegate = self;
@@ -50,7 +51,8 @@
     
     for (UILabel* latoLabel in self.latoFontLabels)
     {
-        latoLabel.font = [UIFont fontWithName:@"Lato-Light" size:latoLabel.font.pointSize];
+        latoLabel.font = [UIFont fontWithName:@"Lato-Light"
+                                         size:latoLabel.font.pointSize];
     }
     
     self.scoreLabel.maxDrawableValue = 9999;
@@ -310,6 +312,9 @@
 
 - (void)showGameCenter
 {
+//    [[GameKitHelper sharedGameKitHelper] authenticateLocalPlayer];
+//    return;
+    
     [[GameKitHelper sharedGameKitHelper] showLeaderboardAndAchievements:YES category:kHighScoreLeaderboardCategory];
     [SNAnalyticsManager.sharedManager leaderboardDidShow];
 }
