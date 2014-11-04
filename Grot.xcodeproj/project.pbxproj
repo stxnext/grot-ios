@@ -7,13 +7,38 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C1C3B0719E3DEF8001DD3AB /* SNGameState+Hints.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1C3B0619E3DEF8001DD3AB /* SNGameState+Hints.m */; };
+		0C1C3B0A19E3E082001DD3AB /* NSDictionary+Aggregation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1C3B0919E3E082001DD3AB /* NSDictionary+Aggregation.m */; };
+		0C69111E19EFAC310011C6A6 /* UIPlaygroundGridView+Animations.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C69111D19EFAC310011C6A6 /* UIPlaygroundGridView+Animations.m */; };
+		0C6FFD9519ED229000485ACB /* SpringMath.c in Sources */ = {isa = PBXBuildFile; fileRef = 0C6FFD9319ED229000485ACB /* SpringMath.c */; };
+		0C6FFD9819ED23B500485ACB /* SKAction+Spring.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6FFD9719ED23B500485ACB /* SKAction+Spring.m */; };
+		0C6FFDD119EE568700485ACB /* SNFieldReaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6FFDD019EE568700485ACB /* SNFieldReaction.m */; };
+		0C6FFDD719EE693800485ACB /* SNFieldTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6FFDD619EE693800485ACB /* SNFieldTransition.m */; };
+		0C7D6D871A021329005F0380 /* SKAction+SKTExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7D6D771A021329005F0380 /* SKAction+SKTExtras.m */; };
+		0C7D6D881A021329005F0380 /* SKAction+SKTSpecialEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7D6D791A021329005F0380 /* SKAction+SKTSpecialEffects.m */; };
+		0C7D6D891A021329005F0380 /* SKEmitterNode+SKTExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7D6D7B1A021329005F0380 /* SKEmitterNode+SKTExtras.m */; };
+		0C7D6D8A1A021329005F0380 /* SKNode+SKTDebugDraw.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7D6D7D1A021329005F0380 /* SKNode+SKTDebugDraw.m */; };
+		0C7D6D8B1A021329005F0380 /* SKNode+SKTExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7D6D7F1A021329005F0380 /* SKNode+SKTExtras.m */; };
+		0C7D6D8C1A021329005F0380 /* SKTAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7D6D811A021329005F0380 /* SKTAudio.m */; };
+		0C7D6D8D1A021329005F0380 /* SKTEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7D6D831A021329005F0380 /* SKTEffects.m */; };
+		0C7D6D8E1A021329005F0380 /* SKTTimingFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7D6D851A021329005F0380 /* SKTTimingFunctions.m */; };
+		0CA10E9519E52ED40013382A /* UIPlaygroundGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA10E9419E52ED40013382A /* UIPlaygroundGridView.m */; };
+		0CA10E9819E53E470013382A /* UIArrowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA10E9719E53E470013382A /* UIArrowView.m */; };
+		0CA10EA619E552AE0013382A /* UIBezierPath+Image.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA10EA519E552AE0013382A /* UIBezierPath+Image.m */; };
+		0CA10EA919E5536B0013382A /* UIImage+Blending.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA10EA819E5536B0013382A /* UIImage+Blending.m */; };
 		0CA86E4B19DEAE4500512B28 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA86E4A19DEAE4500512B28 /* main.m */; };
 		0CA86E4E19DEAE4500512B28 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA86E4D19DEAE4500512B28 /* AppDelegate.m */; };
-		0CA86E5119DEAE4500512B28 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA86E5019DEAE4500512B28 /* ViewController.m */; };
-		0CA86E5419DEAE4500512B28 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CA86E5219DEAE4500512B28 /* Main.storyboard */; };
+		0CA86E5119DEAE4500512B28 /* UIPlaygroundGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA86E5019DEAE4500512B28 /* UIPlaygroundGridViewController.m */; };
 		0CA86E5619DEAE4500512B28 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CA86E5519DEAE4500512B28 /* Images.xcassets */; };
 		0CA86E5919DEAE4500512B28 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CA86E5719DEAE4500512B28 /* LaunchScreen.xib */; };
 		0CA86E6519DEAE4500512B28 /* GrotTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA86E6419DEAE4500512B28 /* GrotTests.m */; };
+		0CA86E7B19DEB41F00512B28 /* SNGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA86E7A19DEB41F00512B28 /* SNGrid.m */; };
+		0CA86E8119DEB58400512B28 /* SNGameGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA86E8019DEB58400512B28 /* SNGameGrid.m */; };
+		0CA86E8419DEB5B500512B28 /* SNGameResults.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA86E8319DEB5B500512B28 /* SNGameResults.m */; };
+		0CA86E8719DEB5C600512B28 /* SNGameState.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA86E8619DEB5C600512B28 /* SNGameState.m */; };
+		0CA86E8E19DEB82F00512B28 /* SNArrowField.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA86E8D19DEB82F00512B28 /* SNArrowField.m */; };
+		0CF8A7CB19E69BC20039A26E /* UIGameStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CF8A7CA19E69BC20039A26E /* UIGameStoryboard.storyboard */; };
+		0CF8A7CE19E6A0400039A26E /* UIGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CF8A7CD19E6A0400039A26E /* UIGameViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,19 +52,76 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C0C1BE01A07987D00AF3356 /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
+		0C1C3B0519E3DEF8001DD3AB /* SNGameState+Hints.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SNGameState+Hints.h"; sourceTree = "<group>"; };
+		0C1C3B0619E3DEF8001DD3AB /* SNGameState+Hints.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SNGameState+Hints.m"; sourceTree = "<group>"; };
+		0C1C3B0819E3E082001DD3AB /* NSDictionary+Aggregation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Aggregation.h"; sourceTree = "<group>"; };
+		0C1C3B0919E3E082001DD3AB /* NSDictionary+Aggregation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Aggregation.m"; sourceTree = "<group>"; };
+		0C31EF441A08B047002A52B2 /* UIGameStoryboard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIGameStoryboard.h; sourceTree = "<group>"; };
+		0C69111C19EFAC310011C6A6 /* UIPlaygroundGridView+Animations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIPlaygroundGridView+Animations.h"; sourceTree = "<group>"; };
+		0C69111D19EFAC310011C6A6 /* UIPlaygroundGridView+Animations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIPlaygroundGridView+Animations.m"; sourceTree = "<group>"; };
+		0C6FFD9319ED229000485ACB /* SpringMath.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SpringMath.c; sourceTree = "<group>"; };
+		0C6FFD9419ED229000485ACB /* SpringMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringMath.h; sourceTree = "<group>"; };
+		0C6FFD9619ED23B500485ACB /* SKAction+Spring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKAction+Spring.h"; sourceTree = "<group>"; };
+		0C6FFD9719ED23B500485ACB /* SKAction+Spring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKAction+Spring.m"; sourceTree = "<group>"; };
+		0C6FFDCC19ED4D2100485ACB /* CGPoint+Distance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CGPoint+Distance.h"; sourceTree = "<group>"; };
+		0C6FFDCF19EE568700485ACB /* SNFieldReaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFieldReaction.h; sourceTree = "<group>"; };
+		0C6FFDD019EE568700485ACB /* SNFieldReaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFieldReaction.m; sourceTree = "<group>"; };
+		0C6FFDD519EE693800485ACB /* SNFieldTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFieldTransition.h; sourceTree = "<group>"; };
+		0C6FFDD619EE693800485ACB /* SNFieldTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFieldTransition.m; sourceTree = "<group>"; };
+		0C7D6D761A021329005F0380 /* SKAction+SKTExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKAction+SKTExtras.h"; sourceTree = "<group>"; };
+		0C7D6D771A021329005F0380 /* SKAction+SKTExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKAction+SKTExtras.m"; sourceTree = "<group>"; };
+		0C7D6D781A021329005F0380 /* SKAction+SKTSpecialEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKAction+SKTSpecialEffects.h"; sourceTree = "<group>"; };
+		0C7D6D791A021329005F0380 /* SKAction+SKTSpecialEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKAction+SKTSpecialEffects.m"; sourceTree = "<group>"; };
+		0C7D6D7A1A021329005F0380 /* SKEmitterNode+SKTExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKEmitterNode+SKTExtras.h"; sourceTree = "<group>"; };
+		0C7D6D7B1A021329005F0380 /* SKEmitterNode+SKTExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKEmitterNode+SKTExtras.m"; sourceTree = "<group>"; };
+		0C7D6D7C1A021329005F0380 /* SKNode+SKTDebugDraw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKNode+SKTDebugDraw.h"; sourceTree = "<group>"; };
+		0C7D6D7D1A021329005F0380 /* SKNode+SKTDebugDraw.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKNode+SKTDebugDraw.m"; sourceTree = "<group>"; };
+		0C7D6D7E1A021329005F0380 /* SKNode+SKTExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKNode+SKTExtras.h"; sourceTree = "<group>"; };
+		0C7D6D7F1A021329005F0380 /* SKNode+SKTExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKNode+SKTExtras.m"; sourceTree = "<group>"; };
+		0C7D6D801A021329005F0380 /* SKTAudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTAudio.h; sourceTree = "<group>"; };
+		0C7D6D811A021329005F0380 /* SKTAudio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTAudio.m; sourceTree = "<group>"; };
+		0C7D6D821A021329005F0380 /* SKTEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTEffects.h; sourceTree = "<group>"; };
+		0C7D6D831A021329005F0380 /* SKTEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTEffects.m; sourceTree = "<group>"; };
+		0C7D6D841A021329005F0380 /* SKTTimingFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTTimingFunctions.h; sourceTree = "<group>"; };
+		0C7D6D851A021329005F0380 /* SKTTimingFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTTimingFunctions.m; sourceTree = "<group>"; };
+		0C7D6D861A021329005F0380 /* SKTUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTUtils.h; sourceTree = "<group>"; };
+		0CA10E9319E52ED40013382A /* UIPlaygroundGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPlaygroundGridView.h; sourceTree = "<group>"; };
+		0CA10E9419E52ED40013382A /* UIPlaygroundGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPlaygroundGridView.m; sourceTree = "<group>"; };
+		0CA10E9619E53E470013382A /* UIArrowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIArrowView.h; sourceTree = "<group>"; };
+		0CA10E9719E53E470013382A /* UIArrowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIArrowView.m; sourceTree = "<group>"; };
+		0CA10EA219E551D40013382A /* UIColor+Parser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+Parser.h"; sourceTree = "<group>"; };
+		0CA10EA319E5520C0013382A /* NSNumber+Math.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+Math.h"; sourceTree = "<group>"; };
+		0CA10EA419E552AE0013382A /* UIBezierPath+Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+Image.h"; sourceTree = "<group>"; };
+		0CA10EA519E552AE0013382A /* UIBezierPath+Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath+Image.m"; sourceTree = "<group>"; };
+		0CA10EA719E5536B0013382A /* UIImage+Blending.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Blending.h"; sourceTree = "<group>"; };
+		0CA10EA819E5536B0013382A /* UIImage+Blending.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Blending.m"; sourceTree = "<group>"; };
 		0CA86E4519DEAE4500512B28 /* Grot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Grot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CA86E4919DEAE4500512B28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0CA86E4A19DEAE4500512B28 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0CA86E4C19DEAE4500512B28 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0CA86E4D19DEAE4500512B28 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		0CA86E4F19DEAE4500512B28 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		0CA86E5019DEAE4500512B28 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		0CA86E5319DEAE4500512B28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0CA86E4F19DEAE4500512B28 /* UIPlaygroundGridViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIPlaygroundGridViewController.h; sourceTree = "<group>"; };
+		0CA86E5019DEAE4500512B28 /* UIPlaygroundGridViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIPlaygroundGridViewController.m; sourceTree = "<group>"; };
 		0CA86E5519DEAE4500512B28 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0CA86E5819DEAE4500512B28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		0CA86E5E19DEAE4500512B28 /* GrotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GrotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CA86E6319DEAE4500512B28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0CA86E6419DEAE4500512B28 /* GrotTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GrotTests.m; sourceTree = "<group>"; };
+		0CA86E7919DEB41F00512B28 /* SNGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNGrid.h; sourceTree = "<group>"; };
+		0CA86E7A19DEB41F00512B28 /* SNGrid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNGrid.m; sourceTree = "<group>"; };
+		0CA86E7F19DEB58400512B28 /* SNGameGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNGameGrid.h; sourceTree = "<group>"; };
+		0CA86E8019DEB58400512B28 /* SNGameGrid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNGameGrid.m; sourceTree = "<group>"; };
+		0CA86E8219DEB5B500512B28 /* SNGameResults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNGameResults.h; sourceTree = "<group>"; };
+		0CA86E8319DEB5B500512B28 /* SNGameResults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNGameResults.m; sourceTree = "<group>"; };
+		0CA86E8519DEB5C600512B28 /* SNGameState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNGameState.h; sourceTree = "<group>"; };
+		0CA86E8619DEB5C600512B28 /* SNGameState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNGameState.m; sourceTree = "<group>"; };
+		0CA86E8B19DEB75600512B28 /* SNPair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNPair.h; sourceTree = "<group>"; };
+		0CA86E8C19DEB82F00512B28 /* SNArrowField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNArrowField.h; sourceTree = "<group>"; };
+		0CA86E8D19DEB82F00512B28 /* SNArrowField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNArrowField.m; sourceTree = "<group>"; };
+		0CF8A7CA19E69BC20039A26E /* UIGameStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UIGameStoryboard.storyboard; sourceTree = "<group>"; };
+		0CF8A7CC19E6A0400039A26E /* UIGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIGameViewController.h; sourceTree = "<group>"; };
+		0CF8A7CD19E6A0400039A26E /* UIGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIGameViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,11 +142,144 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C0C1BD11A0790C600AF3356 /* Playground */ = {
+			isa = PBXGroup;
+			children = (
+				0CA86E8B19DEB75600512B28 /* SNPair.h */,
+				0CA86E7919DEB41F00512B28 /* SNGrid.h */,
+				0CA86E7A19DEB41F00512B28 /* SNGrid.m */,
+				0CA86E8C19DEB82F00512B28 /* SNArrowField.h */,
+				0CA86E8D19DEB82F00512B28 /* SNArrowField.m */,
+				0CA86E7F19DEB58400512B28 /* SNGameGrid.h */,
+				0CA86E8019DEB58400512B28 /* SNGameGrid.m */,
+				0CA86E8219DEB5B500512B28 /* SNGameResults.h */,
+				0CA86E8319DEB5B500512B28 /* SNGameResults.m */,
+				0CA86E8519DEB5C600512B28 /* SNGameState.h */,
+				0CA86E8619DEB5C600512B28 /* SNGameState.m */,
+				0C1C3B0519E3DEF8001DD3AB /* SNGameState+Hints.h */,
+				0C1C3B0619E3DEF8001DD3AB /* SNGameState+Hints.m */,
+				0C6FFDCF19EE568700485ACB /* SNFieldReaction.h */,
+				0C6FFDD019EE568700485ACB /* SNFieldReaction.m */,
+				0C6FFDD519EE693800485ACB /* SNFieldTransition.h */,
+				0C6FFDD619EE693800485ACB /* SNFieldTransition.m */,
+			);
+			name = Playground;
+			sourceTree = "<group>";
+		};
+		0C1C3B0B19E3E086001DD3AB /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				0C1C3B0819E3E082001DD3AB /* NSDictionary+Aggregation.h */,
+				0C1C3B0919E3E082001DD3AB /* NSDictionary+Aggregation.m */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		0C52D79D1A076E9E00FE64CC /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				0C31EF441A08B047002A52B2 /* UIGameStoryboard.h */,
+				0CF8A7CA19E69BC20039A26E /* UIGameStoryboard.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		0C52D79E1A07712400FE64CC /* Playground */ = {
+			isa = PBXGroup;
+			children = (
+				0CA10E9619E53E470013382A /* UIArrowView.h */,
+				0CA10E9719E53E470013382A /* UIArrowView.m */,
+				0CA10E9319E52ED40013382A /* UIPlaygroundGridView.h */,
+				0CA10E9419E52ED40013382A /* UIPlaygroundGridView.m */,
+				0C69111C19EFAC310011C6A6 /* UIPlaygroundGridView+Animations.h */,
+				0C69111D19EFAC310011C6A6 /* UIPlaygroundGridView+Animations.m */,
+			);
+			name = Playground;
+			sourceTree = "<group>";
+		};
+		0C52D79F1A07713B00FE64CC /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				0CA86E4C19DEAE4500512B28 /* AppDelegate.h */,
+				0CA86E4D19DEAE4500512B28 /* AppDelegate.m */,
+			);
+			name = Application;
+			sourceTree = "<group>";
+		};
+		0C52D7A01A07716100FE64CC /* Playground */ = {
+			isa = PBXGroup;
+			children = (
+				0CA86E4F19DEAE4500512B28 /* UIPlaygroundGridViewController.h */,
+				0CA86E5019DEAE4500512B28 /* UIPlaygroundGridViewController.m */,
+			);
+			name = Playground;
+			sourceTree = "<group>";
+		};
+		0C52D7A11A07726500FE64CC /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				0CF8A7CC19E6A0400039A26E /* UIGameViewController.h */,
+				0CF8A7CD19E6A0400039A26E /* UIGameViewController.m */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
+		0C6FFD6119ECFF4C00485ACB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0C7D6D751A02131C005F0380 /* SKTUtils */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0C7D6D751A02131C005F0380 /* SKTUtils */ = {
+			isa = PBXGroup;
+			children = (
+				0C7D6D761A021329005F0380 /* SKAction+SKTExtras.h */,
+				0C7D6D771A021329005F0380 /* SKAction+SKTExtras.m */,
+				0C7D6D781A021329005F0380 /* SKAction+SKTSpecialEffects.h */,
+				0C7D6D791A021329005F0380 /* SKAction+SKTSpecialEffects.m */,
+				0C7D6D7A1A021329005F0380 /* SKEmitterNode+SKTExtras.h */,
+				0C7D6D7B1A021329005F0380 /* SKEmitterNode+SKTExtras.m */,
+				0C7D6D7C1A021329005F0380 /* SKNode+SKTDebugDraw.h */,
+				0C7D6D7D1A021329005F0380 /* SKNode+SKTDebugDraw.m */,
+				0C7D6D7E1A021329005F0380 /* SKNode+SKTExtras.h */,
+				0C7D6D7F1A021329005F0380 /* SKNode+SKTExtras.m */,
+				0C7D6D801A021329005F0380 /* SKTAudio.h */,
+				0C7D6D811A021329005F0380 /* SKTAudio.m */,
+				0C7D6D821A021329005F0380 /* SKTEffects.h */,
+				0C7D6D831A021329005F0380 /* SKTEffects.m */,
+				0C7D6D841A021329005F0380 /* SKTTimingFunctions.h */,
+				0C7D6D851A021329005F0380 /* SKTTimingFunctions.m */,
+				0C7D6D861A021329005F0380 /* SKTUtils.h */,
+			);
+			name = SKTUtils;
+			sourceTree = "<group>";
+		};
+		0CA10E9919E549160013382A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				0CA10EA219E551D40013382A /* UIColor+Parser.h */,
+				0CA10EA319E5520C0013382A /* NSNumber+Math.h */,
+				0CA10EA419E552AE0013382A /* UIBezierPath+Image.h */,
+				0CA10EA519E552AE0013382A /* UIBezierPath+Image.m */,
+				0CA10EA719E5536B0013382A /* UIImage+Blending.h */,
+				0CA10EA819E5536B0013382A /* UIImage+Blending.m */,
+				0C6FFD9419ED229000485ACB /* SpringMath.h */,
+				0C6FFD9319ED229000485ACB /* SpringMath.c */,
+				0C6FFD9619ED23B500485ACB /* SKAction+Spring.h */,
+				0C6FFD9719ED23B500485ACB /* SKAction+Spring.m */,
+				0C6FFDCC19ED4D2100485ACB /* CGPoint+Distance.h */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 		0CA86E3C19DEAE4500512B28 = {
 			isa = PBXGroup;
 			children = (
 				0CA86E4719DEAE4500512B28 /* Grot */,
 				0CA86E6119DEAE4500512B28 /* GrotTests */,
+				0C6FFD6119ECFF4C00485ACB /* Frameworks */,
 				0CA86E4619DEAE4500512B28 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -81,13 +296,11 @@
 		0CA86E4719DEAE4500512B28 /* Grot */ = {
 			isa = PBXGroup;
 			children = (
-				0CA86E4C19DEAE4500512B28 /* AppDelegate.h */,
-				0CA86E4D19DEAE4500512B28 /* AppDelegate.m */,
-				0CA86E4F19DEAE4500512B28 /* ViewController.h */,
-				0CA86E5019DEAE4500512B28 /* ViewController.m */,
-				0CA86E5219DEAE4500512B28 /* Main.storyboard */,
-				0CA86E5519DEAE4500512B28 /* Images.xcassets */,
-				0CA86E5719DEAE4500512B28 /* LaunchScreen.xib */,
+				0C52D79F1A07713B00FE64CC /* Application */,
+				0C52D79D1A076E9E00FE64CC /* Storyboards */,
+				0CF8A7C719E695B70039A26E /* View controllers */,
+				0CA86E7119DEB00700512B28 /* Views */,
+				0CA86E7219DEB00D00512B28 /* Models */,
 				0CA86E4819DEAE4500512B28 /* Supporting Files */,
 			);
 			path = Grot;
@@ -96,8 +309,11 @@
 		0CA86E4819DEAE4500512B28 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0CA86E5719DEAE4500512B28 /* LaunchScreen.xib */,
+				0CA86E5519DEAE4500512B28 /* Images.xcassets */,
 				0CA86E4919DEAE4500512B28 /* Info.plist */,
 				0CA86E4A19DEAE4500512B28 /* main.m */,
+				0C0C1BE01A07987D00AF3356 /* Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -117,6 +333,33 @@
 				0CA86E6319DEAE4500512B28 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0CA86E7119DEB00700512B28 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0CA10E9919E549160013382A /* Helpers */,
+				0C52D79E1A07712400FE64CC /* Playground */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		0CA86E7219DEB00D00512B28 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0C1C3B0B19E3E086001DD3AB /* Helpers */,
+				0C0C1BD11A0790C600AF3356 /* Playground */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		0CF8A7C719E695B70039A26E /* View controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0C52D7A01A07716100FE64CC /* Playground */,
+				0C52D7A11A07726500FE64CC /* Main */,
+			);
+			name = "View controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,9 +442,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0CA86E5419DEAE4500512B28 /* Main.storyboard in Resources */,
 				0CA86E5919DEAE4500512B28 /* LaunchScreen.xib in Resources */,
 				0CA86E5619DEAE4500512B28 /* Images.xcassets in Resources */,
+				0CF8A7CB19E69BC20039A26E /* UIGameStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,9 +462,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0CA86E5119DEAE4500512B28 /* ViewController.m in Sources */,
+				0C7D6D891A021329005F0380 /* SKEmitterNode+SKTExtras.m in Sources */,
+				0CA86E8119DEB58400512B28 /* SNGameGrid.m in Sources */,
+				0C7D6D8E1A021329005F0380 /* SKTTimingFunctions.m in Sources */,
+				0C6FFDD719EE693800485ACB /* SNFieldTransition.m in Sources */,
+				0C69111E19EFAC310011C6A6 /* UIPlaygroundGridView+Animations.m in Sources */,
+				0C7D6D871A021329005F0380 /* SKAction+SKTExtras.m in Sources */,
+				0CA86E5119DEAE4500512B28 /* UIPlaygroundGridViewController.m in Sources */,
+				0C7D6D8A1A021329005F0380 /* SKNode+SKTDebugDraw.m in Sources */,
+				0C7D6D881A021329005F0380 /* SKAction+SKTSpecialEffects.m in Sources */,
+				0CA86E8719DEB5C600512B28 /* SNGameState.m in Sources */,
+				0C7D6D8B1A021329005F0380 /* SKNode+SKTExtras.m in Sources */,
+				0C6FFD9519ED229000485ACB /* SpringMath.c in Sources */,
+				0CA10E9519E52ED40013382A /* UIPlaygroundGridView.m in Sources */,
+				0CA10E9819E53E470013382A /* UIArrowView.m in Sources */,
+				0C1C3B0A19E3E082001DD3AB /* NSDictionary+Aggregation.m in Sources */,
+				0CA86E7B19DEB41F00512B28 /* SNGrid.m in Sources */,
+				0CF8A7CE19E6A0400039A26E /* UIGameViewController.m in Sources */,
 				0CA86E4E19DEAE4500512B28 /* AppDelegate.m in Sources */,
+				0C6FFD9819ED23B500485ACB /* SKAction+Spring.m in Sources */,
+				0CA10EA619E552AE0013382A /* UIBezierPath+Image.m in Sources */,
 				0CA86E4B19DEAE4500512B28 /* main.m in Sources */,
+				0CA10EA919E5536B0013382A /* UIImage+Blending.m in Sources */,
+				0C7D6D8C1A021329005F0380 /* SKTAudio.m in Sources */,
+				0CA86E8E19DEB82F00512B28 /* SNArrowField.m in Sources */,
+				0C7D6D8D1A021329005F0380 /* SKTEffects.m in Sources */,
+				0C6FFDD119EE568700485ACB /* SNFieldReaction.m in Sources */,
+				0C1C3B0719E3DEF8001DD3AB /* SNGameState+Hints.m in Sources */,
+				0CA86E8419DEB5B500512B28 /* SNGameResults.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,14 +512,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		0CA86E5219DEAE4500512B28 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0CA86E5319DEAE4500512B28 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		0CA86E5719DEAE4500512B28 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -346,6 +606,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Grot/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -356,6 +617,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Grot/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -414,6 +676,7 @@
 				0CA86E6A19DEAE4500512B28 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0CA86E6B19DEAE4500512B28 /* Build configuration list for PBXNativeTarget "GrotTests" */ = {
 			isa = XCConfigurationList;
@@ -422,6 +685,7 @@
 				0CA86E6D19DEAE4500512B28 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

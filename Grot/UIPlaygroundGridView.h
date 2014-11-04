@@ -1,0 +1,49 @@
+//
+//  UIPlaygroundGridView.h
+//  Grot
+//
+//  Created by Dawid Żakowski on 08/10/2014.
+//  Copyright (c) 2014 STX Next. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import "SNGameState.h"
+#import "UIArrowView.h"
+
+@import SpriteKit;
+
+@class UIPlaygroundGridView;
+
+@protocol UIPlaygroundGridViewDataSource <NSObject>
+
+@required
+- (SNGameGrid*)gameGridForPlaygroundGridView;
+
+@end
+
+@protocol UIPlaygroundGridViewDelegate <NSObject>
+
+@optional
+- (void)playgroundGridView:(UIPlaygroundGridView*)playgroundGridView didSelectArrowView:(UIArrowView*)arrowView;
+
+@end
+
+IB_DESIGNABLE
+@interface UIPlaygroundGridView : SKView<UIArrowViewDelegate>
+
+@property (nonatomic, strong, readonly) SKScene* scene;
+@property (nonatomic) IBInspectable CGSize itemSize;
+@property (nonatomic) IBInspectable CGSize itemSpacing;
+@property (nonatomic, weak) IBOutlet id<UIPlaygroundGridViewDataSource> dataSource;
+@property (nonatomic, weak) IBOutlet id<UIPlaygroundGridViewDelegate> delegate;
+
+- (void)reloadGridAnimated:(BOOL)animated;
+- (void)reloadMissingFieldsAnimated:(BOOL)animated;
+- (void)prepareArrowViewsForReaction:(SNFieldReaction*)reaction;
+- (NSArray*)arrowFieldsWithoutArrowView;
+- (CGPoint)locationForArrowField:(SNArrowField*)arrowField;
+- (CGPoint)locationForNodePosition:(CGPoint)nodePosition inGridOfSize:(CGSize)gridSize;
+- (UIArrowView*)arrowViewForArrowField:(SNArrowField*)arrowField;
+- (NSArray*)arrowViewsForArrowFields:(NSArray*)arrowFields;
+
+@end
