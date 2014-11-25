@@ -9,4 +9,5 @@
 #import "UIGameViewController.h"
 #import "UIPlaygroundGridViewController.h"
 
-#define kPlaygroundSegueIdentifier @"UIPlaygroundGridViewController"
+#define kMenuHelpSegueIdentifier @"UIMenuHelpSegue"
+#define kMenuResultsSegueIdentifier @"UIMenuResultsSegue"

@@ -13,11 +13,15 @@
 
 typedef CF_ENUM(NSUInteger, UIArrowTransitionAnimation) {
     UIArrowTransitionAnimationReaction,
-    UIArrowTransitionAnimationPushDown
+    UIArrowTransitionAnimationPushDown,
+    UIArrowTransitionAnimationStraight
 };
 
-const CGFloat UIArrowReactionMovementSpeed = 3.0;
+const CGFloat UIArrowReactionMovementSpeed = 4.0;
 const CGFloat UIArrowPushDownMovementSpeed = 1.5;
+const CGFloat UIArrowStraightMovementSpeed = 3.0;
+const CGFloat UIArrowHighlightOnSpeed = 8.0;
+const CGFloat UIArrowHighlightOffSpeed = 3.0;
 
 @implementation UIPlaygroundGridView (Animations)
 
@@ -45,6 +49,30 @@ const CGFloat UIArrowPushDownMovementSpeed = 1.5;
     }
 }
 
+- (void)animateFadeOutForArrowViews:(NSArray*)arrowViews completionHandler:(void (^)())completionBlock
+{
+    for (NSUInteger i = 0; i < arrowViews.count; i++)
+    {
+        UIArrowView* arrowView = arrowViews[i];
+        
+        const NSTimeInterval scaleDuration = 0.5;
+        NSTimeInterval scaleUpDuration = scaleDuration * 1.0 / 3.0;
+        NSTimeInterval scaleDownDuration = scaleDuration * 2.0 / 3.0;
+        
+        SKAction* scaleUpAction = [SKAction scaleTo:1.2 duration:scaleUpDuration];
+        scaleUpAction.timingMode = SKActionTimingEaseOut;
+        SKAction* scaleDownAction = [SKAction scaleTo:0.01 duration:scaleDownDuration];
+        scaleDownAction.timingMode = SKActionTimingEaseIn;
+        SKAction* alphaAction = [SKAction fadeOutWithDuration:scaleDownDuration];
+        alphaAction.timingMode = SKActionTimingEaseOut;
+        SKAction* actionSequence = [SKAction sequence:@[ scaleUpAction, [SKAction group:@[ alphaAction, scaleDownAction ]] ]];
+        
+        BOOL isLastIteration = i == arrowViews.count - 1;
+        dispatch_block_t block = isLastIteration ? completionBlock : nil;
+        [arrowView runAction:actionSequence completion:block];
+    }
+}
+
 #pragma mark - Chain reaction
 
 - (void)animateReaction:(SNFieldReaction*)reaction withCompletionHandler:(void (^)())completionBlock
@@ -54,7 +82,7 @@ const CGFloat UIArrowPushDownMovementSpeed = 1.5;
     if (!transition)
     {
         if (completionBlock)
-            completionBlock();
+            dispatch_async(dispatch_get_main_queue(), completionBlock);
         
         return;
     }
@@ -93,13 +121,13 @@ const CGFloat UIArrowPushDownMovementSpeed = 1.5;
                 SKAction* alphaAction = [SKAction fadeAlphaTo:0.0 duration:fadeDuration];
                 SKAction* moveAction = [SKAction moveTo:location duration:fadeDuration];
                 SKAction* fadedMoveAction = [SKAction group:@[ alphaAction, moveAction ]];
+                fadedMoveAction.timingMode = SKActionTimingEaseOut;
                 
                 NSTimeInterval viaDuration = actionDuration * viaDistanceFactor;
                 CGPoint viaLocation = CGPointMake(arrowView.position.x + (location.x - arrowView.position.x) * viaDistanceFactor,
                                                   arrowView.position.y + (location.y - arrowView.position.y) * viaDistanceFactor);
                 
                 SKAction* flatMoveAction = [SKAction moveTo:viaLocation duration:viaDuration];
-                flatMoveAction.timingMode = SKActionTimingEaseIn;
                 
                 SKAction* transitionAction = [SKAction sequence:@[ flatMoveAction, fadedMoveAction ]];
                 
@@ -110,7 +138,7 @@ const CGFloat UIArrowPushDownMovementSpeed = 1.5;
                 SKAction* alphaAction = [SKAction fadeAlphaTo:0.0 duration:actionDuration];
                 SKAction* moveAction = [SKAction moveTo:location duration:actionDuration];
                 SKAction* fadedMoveAction = [SKAction group:@[ alphaAction, moveAction ]];
-                fadedMoveAction.timingMode = SKActionTimingEaseIn;
+                fadedMoveAction.timingMode = SKActionTimingEaseOut;
                 
                 return fadedMoveAction;
             }
@@ -124,7 +152,16 @@ const CGFloat UIArrowPushDownMovementSpeed = 1.5;
             
             return action;
         }
-        
+            
+        case UIArrowTransitionAnimationStraight:
+        {
+            NSTimeInterval moveDuration = 1.0 / UIArrowStraightMovementSpeed;
+            
+            SKAction* action = [SKAction moveTo:location duration:moveDuration];
+            
+            return action;
+        }
+            
         default:
         {
             @throw [NSException new];
@@ -143,7 +180,7 @@ const CGFloat UIArrowPushDownMovementSpeed = 1.5;
     if (transitions.count == 0)
     {
         if (completionBlock)
-            completionBlock();
+            dispatch_async(dispatch_get_main_queue(), completionBlock);
         
         return;
     }
@@ -157,7 +194,6 @@ const CGFloat UIArrowPushDownMovementSpeed = 1.5;
         
         UIArrowView* arrowView = [self arrowViewForArrowField:transition.arrowField];
         SKAction* action = [self actionForTransition:transition withAnimation:UIArrowTransitionAnimationPushDown];
-        [arrowView runAction:action];
         
         [arrowView runAction:action completion:^{
             @synchronized (activeAnimations)
@@ -167,7 +203,7 @@ const CGFloat UIArrowPushDownMovementSpeed = 1.5;
                 if (activeAnimations.integerValue == 0)
                 {
                     if (completionBlock)
-                        completionBlock();
+                        dispatch_async(dispatch_get_main_queue(), completionBlock);
                 }
             }
         }];
@@ -195,6 +231,30 @@ const CGFloat UIArrowPushDownMovementSpeed = 1.5;
     }
     
     return transitions;
+}
+
+#pragma mark - Highlight
+
+- (void)animateHighlightOfArrowView:(UIArrowView*)arrowView toState:(BOOL)highlighted
+{
+    if (highlighted)
+    {
+        CGFloat alpha = 0.4;
+        NSTimeInterval duration = 1.0 / UIArrowHighlightOnSpeed;
+        
+        SKAction* action = [SKAction fadeAlphaTo:alpha duration:duration];
+        action.timingMode = SKActionTimingEaseIn;
+        [arrowView runAction:action];
+    }
+    else
+    {
+        CGFloat alpha = 1.0;
+        NSTimeInterval duration = 1.0 / UIArrowHighlightOffSpeed;
+        
+        SKAction* action = [SKAction fadeAlphaTo:alpha duration:duration];
+        action.timingMode = SKActionTimingEaseIn;
+        [arrowView runAction:action];
+    }
 }
 
 @end

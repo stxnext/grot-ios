@@ -25,10 +25,35 @@
 
 #pragma mark - Game logic
 
+- (SNGameState*)fallenState
+{
+    SNGameState* state = self.copy;
+    [state.grid pushDown];
+    
+    return state;
+}
+
+- (SNGameState*)filledState
+{
+    SNGameState* state = [self fallenState];
+    [state.grid fillWithUnknownItems];
+    
+    return state;
+}
+
+- (SNGameState*)resolvedState
+{
+    SNGameState* state = [self filledState];
+    [state.grid resolveUnknownItems];
+    
+    return state;
+}
+
 - (SNFieldReaction*)scheduleReactionAtField:(SNArrowField*)field
 {
     SNFieldReaction* reaction = SNFieldReaction.new;
     reaction.targetState = self.copy;
+    reaction.targetState.scheduledReaction = nil;
     
     NSMutableArray* transitions = NSMutableArray.array;
     
@@ -62,15 +87,13 @@
         [reaction.targetState.results add:gainedResults];
     }
     
-    self.scheduledReaction = reaction;
-    
-    return reaction;
+    return self.scheduledReaction = reaction;
 }
 
 - (SNGameResults*)resultsForReaction:(SNFieldReaction*)reaction
 {
     SNGameResults* gainedResults = SNGameResults.zeroResults;
-    NSUInteger chainLength = reaction.fieldTransitions.count;
+    NSInteger chainLength = reaction.fieldTransitions.count;
     SNGameResults* currentResults = self.results;
     
     for (SNFieldTransition* transition in reaction.fieldTransitions)
@@ -91,7 +114,7 @@
     }
     
     NSInteger threshold = floor((gainedResults.score + currentResults.score) / (5 * reaction.targetState.grid.area)) + reaction.targetState.grid.longerSideLength - 1;
-    gainedResults.moves = MAX(0, chainLength - threshold);
+    gainedResults.moves = MAX(0, chainLength - threshold) - 1;
     
     return gainedResults;
 }

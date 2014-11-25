@@ -43,8 +43,8 @@
 
 + (UIImage*)generateSpriteWithSize:(CGSize)size type:(SNArrowFieldType)type angle:(CGFloat)angle
 {
-    UIColor* backgroundColor = self.class.backgroundColors[@(type)];
-    UIColor* arrowColor = self.class.arrowColor;
+    UIColor* backgroundColor = SNArrowField.backgroundColors[@(type)];
+    UIColor* arrowColor = SNArrowField.arrowColor;
     UIBezierPath* arrowPath = [self.class arrowPathWithSize:size.width];
     UIBezierPath* circlePath = [self.class circlePathWithSize:size.width];
     UIImage* circleImage = [circlePath fillImageWithColor:backgroundColor];
@@ -113,30 +113,29 @@
     return bezierPath;
 }
 
-#pragma mark - Sprite colors
-
-+ (UIColor*)arrowColor
-{
-    return ColorFromHex(0xFFFFFF);;
-}
-
-+ (NSDictionary*)backgroundColors
-{
-    return @{ @(SNArrowFieldTypeLowest)  : ColorFromHex(0xACAAAB),
-              @(SNArrowFieldTypeLow)     : ColorFromHex(0x686265),
-              @(SNArrowFieldTypeeHigh)   : ColorFromHex(0xF2E910),
-              @(SNArrowFieldTypeHighest) : ColorFromHex(0x288F86) };
-}
-
 #pragma mark - Tap handling
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [super touchesBegan:touches withEvent:event];
+    
+    if ([self.delegate respondsToSelector:@selector(arrowViewTouchedDown:)])
+    {
+        [self.delegate arrowViewTouchedDown:self];
+    }
+}
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [super touchesEnded:touches withEvent:event];
     
-    if ([self.delegate respondsToSelector:@selector(arrowViewTapped:)])
+    UITouch* touch = touches.anyObject;
+    CGPoint point = [touch locationInNode:self.parent];
+    BOOL isTouchUpInside = [self containsPoint:point];
+    
+    if ([self.delegate respondsToSelector:@selector(arrowViewTouchedUp:inside:)])
     {
-        [self.delegate arrowViewTapped:self];
+        [self.delegate arrowViewTouchedUp:self inside:isTouchUpInside];
     }
 }
 

@@ -93,6 +93,11 @@
     return [self.class.angles[@(_direction)] doubleValue];
 }
 
+- (UIColor*)color
+{
+    return self.class.backgroundColors[@(_type)];
+}
+
 #pragma mark - Type distribution
 
 + (SNArrowFieldType)randomType
@@ -138,6 +143,18 @@
               @(SNFieldDirectionLeft)  : @(M_PI),
               @(SNFieldDirectionDown)  : @(M_PI * 1.5),
               @(SNFieldDirectionRight) : @(0.0) };
+}
+
++ (NSDictionary*)backgroundColors
+{    return @{ @(SNArrowFieldTypeLowest)  : ColorFromHex(0x868788),
+               @(SNArrowFieldTypeLow)     : ColorFromHex(0xFFEC00),
+               @(SNArrowFieldTypeeHigh)   : ColorFromHex(0x8D198F),
+               @(SNArrowFieldTypeHighest) : ColorFromHex(0X00968F) };
+}
+
++ (UIColor*)arrowColor
+{
+    return ColorFromHex(0xFFFFFF);
 }
 
 #pragma mark - Object overrides

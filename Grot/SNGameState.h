@@ -18,6 +18,9 @@
 @property (nonatomic, strong) SNGameResults* results;
 @property (nonatomic, strong) SNFieldReaction* scheduledReaction;
 
+- (SNGameState*)fallenState;
+- (SNGameState*)filledState;
+- (SNGameState*)resolvedState;
 - (SNFieldReaction*)scheduleReactionAtField:(SNArrowField*)field;
 
 @end

@@ -15,7 +15,8 @@
 @protocol UIArrowViewDelegate <NSObject>
 
 @optional
-- (void)arrowViewTapped:(UIArrowView*)arrowView;
+- (void)arrowViewTouchedDown:(UIArrowView*)arrowView;
+- (void)arrowViewTouchedUp:(UIArrowView*)arrowView inside:(BOOL)inside;
 
 @end
 

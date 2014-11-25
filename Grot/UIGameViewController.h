@@ -8,13 +8,22 @@
 
 #import <UIKit/UIKit.h>
 #import "UIPlaygroundGridViewController.h"
+#import "UICounterLabel.h"
 
-@interface UIGameViewController : UIViewController
+@interface UIGameViewController : UIViewController<UIPlaygroundGridViewControllerDelegate>
 {
     UIPlaygroundGridViewController* _playgroundChildController;
 }
 
-@property (nonatomic, strong) IBOutlet UILabel* scoreCounter;
-@property (nonatomic, strong) IBOutlet UILabel* movesCounter;
+@property (strong, nonatomic) IBOutlet UIView *scoreContainer;
+@property (strong, nonatomic) IBOutlet UIView *movesContainer;
+@property (strong, nonatomic) IBOutlet UIView *playgroundContainer;
+@property (strong, nonatomic) IBOutlet UIImageView *heroIcon;
+
+@property (nonatomic, strong) IBOutlet UICounterLabel* scoreCounter;
+@property (nonatomic, strong) IBOutlet UICounterLabel* movesCounter;
+
+@property (nonatomic, strong) IBOutlet UIView* pauseButton;
+@property (nonatomic, strong) IBOutlet UIView* helpButton;
 
 @end

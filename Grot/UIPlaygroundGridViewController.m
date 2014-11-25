@@ -13,51 +13,29 @@
 
 @implementation UIPlaygroundGridViewController
 
+- (instancetype)init
+{
+    self = [super init];
+    
+    if (self)
+    {
+        _cancellationGuard = [NSObject new];
+        _isAnimatingReaction = NO;
+        _previousOrientation = UIDeviceOrientationUnknown;
+    }
+    
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    const CGSize gridSize = (CGSize){ 4, 4 };
-    const NSUInteger initialMoves = 5;
-    
-    [self resetStateWithGridSize:gridSize initialMoves:initialMoves];
-    [self updateGridPropertiesAnimated:YES];
-}
-
-- (void)resetStateWithGridSize:(CGSize)size initialMoves:(NSUInteger)moves
-{
-    // Reset models
-    SNGameState* state = SNGameState.new;
-    state.grid = [SNGameGrid.alloc initWithSize:size];
-    state.results = SNGameResults.zeroResults;
-    state.results.moves = moves;
-    [state.grid fillWithRandomItems];
-
-    self.gameState = state;
-}
-
-- (SNGameGrid*)gameGridForPlaygroundGridView
-{
-    return self.gameState.grid;
-}
-
-- (void)updateGridPropertiesAnimated:(BOOL)animated
-{
-    CGFloat screenWidth = self.gridView.frame.size.width;
-    CGFloat screenHeight = self.gridView.frame.size.height;
-    CGFloat screenShorterEdge = MIN(screenWidth, screenHeight);
-    CGFloat margin = 0.060 * screenShorterEdge;
-    CGFloat spacing = 0.020 * screenShorterEdge;
-    CGFloat itemSizeH = (screenWidth - (margin * 2.0) - (spacing * (self.gameState.grid.size.width - 1))) / self.gameState.grid.size.width;
-    CGFloat itemSizeV = (screenHeight - (margin * 2.0) - (spacing * (self.gameState.grid.size.height - 1))) / self.gameState.grid.size.height;
-    CGFloat itemSize = MIN(itemSizeH, itemSizeV);
-    
-    self.gridView.itemSize = (CGSize){ itemSize, itemSize };
-    self.gridView.itemSpacing = (CGSize){ spacing, spacing };
-    
-    [self.gridView reloadGridAnimated:animated];
-    
-    self.gridView.backgroundColor = self.view.backgroundColor;
+    // Rotations observer
+    if (INTERFACE_IS_PHONE && iOS8_PLUS)
+    {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(interfaceOrientationChanged:) name:UIDeviceOrientationDidChangeNotification object:nil];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -82,35 +60,192 @@
     }
 }
 
+- (void)restartGameWithGridSize:(CGSize)size initialMoves:(NSUInteger)moves
+{
+    [self.gridView dismissGridWithCompletionHandler:^{
+        [self resetStateWithGridSize:size initialMoves:moves];
+        [self updateGridPropertiesAnimated:YES];
+    }];
+}
+
+- (void)resetStateWithGridSize:(CGSize)size initialMoves:(NSUInteger)moves
+{
+    SNGameResults* oldResults = nil;
+    SNGameResults* newResults = nil;
+    
+    @synchronized (_cancellationGuard)
+    {
+        oldResults = self.gameState.results.copy;
+        
+        // Reset models
+        SNGameState* state = SNGameState.new;
+        state.grid = [SNGameGrid.alloc initWithSize:size];
+        state.results = SNGameResults.zeroResults;
+        state.results.moves = moves;
+        [state.grid fillWithRandomItems];
+        
+        self.gameState = state;
+        _isCancelled = _isAnimatingReaction;
+        _isAnimatingReaction = NO;
+        
+        newResults = state.results.copy;
+    }
+    
+    if ([self.delegate respondsToSelector:@selector(playgroundController:didChangeFromResults:toResults:)])
+    {
+        [self.delegate playgroundController:self didChangeFromResults:oldResults toResults:newResults];
+    }
+}
+
+- (SNGameGrid*)gameGridForPlaygroundGridView
+{
+    return self.gameState.grid;
+}
+
+- (void)updateGridPropertiesAnimated:(BOOL)animated
+{
+    CGFloat screenWidth = self.gridView.frame.size.width;
+    CGFloat screenHeight = self.gridView.frame.size.height;
+    CGFloat screenShorterEdge = MIN(screenWidth, screenHeight);
+    CGFloat margin = 0.060 * screenShorterEdge;
+    CGFloat spacing = 0.020 * screenShorterEdge;
+    CGFloat itemSizeH = (screenWidth - (margin * 2.0) - (spacing * (self.gameState.grid.size.width - 1))) / self.gameState.grid.size.width;
+    CGFloat itemSizeV = (screenHeight - (margin * 2.0) - (spacing * (self.gameState.grid.size.height - 1))) / self.gameState.grid.size.height;
+    CGFloat itemSize = MIN(itemSizeH, itemSizeV);
+    
+    self.gridView.itemSize = (CGSize){ itemSize, itemSize };
+    self.gridView.itemSpacing = (CGSize){ spacing, spacing };
+    
+    [self.gridView reloadGridAnimated:animated];
+}
+
+- (void)finalizeScheduledReaction
+{
+    if (!self.gameState.scheduledReaction)
+        return;
+    
+    SNGameResults* oldResults = self.gameState.results.copy;
+    self.gameState = self.gameState.scheduledReaction.targetState.resolvedState;
+    SNGameResults* newResults = self.gameState.results.copy;
+    
+    if ([self.delegate respondsToSelector:@selector(playgroundController:didChangeFromResults:toResults:)])
+    {
+        [self.delegate playgroundController:self didChangeFromResults:oldResults toResults:newResults];
+    }
+}
+
+#pragma mark - Rotations
+
+- (BOOL)shouldAutorotate
+{
+    return INTERFACE_IS_PAD;
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+    if (INTERFACE_IS_PAD)
+        return UIInterfaceOrientationMaskAll;
+    else
+        return UIInterfaceOrientationMaskPortrait;
+}
+
+- (void)interfaceOrientationChanged:(NSNotification*)notification
+{
+    UIDevice* device = [UIDevice currentDevice];
+    UIDeviceOrientation orientation = device.orientation;
+    
+    if (orientation == UIDeviceOrientationFaceDown || orientation == UIDeviceOrientationFaceUp)
+        return;
+    
+    CGFloat angle = 0.0;
+    
+    switch (orientation)
+    {
+        case UIDeviceOrientationPortrait: angle = 0.0; break;
+        case UIDeviceOrientationPortraitUpsideDown: return;
+        case UIDeviceOrientationLandscapeRight: angle = -M_PI_2; break;
+        case UIDeviceOrientationLandscapeLeft: angle = M_PI_2; break;
+    }
+    
+    NSTimeInterval duration = [UIApplication sharedApplication].statusBarOrientationAnimationDuration;
+    
+    [UIView animateWithDuration:duration
+                     animations:^{
+                         self.view.transform = CGAffineTransformMakeRotation(angle);
+                     }];
+}
+
 #pragma mark - UIPlaygroundGridViewDelegate
+
+- (void)playgroundGridView:(UIPlaygroundGridView*)playgroundGridView willReloadGridAnimated:(BOOL)animated;
+{
+    [self finalizeScheduledReaction];
+    
+    _isAnimatingReaction = NO;
+}
+
+- (void)playgroundGridView:(UIPlaygroundGridView*)playgroundGridView didChangeFocus:(BOOL)focus ofArrowView:(UIArrowView*)arrowView
+{
+    if (!focus)
+        [self.gridView animateHighlightOfArrowView:arrowView toState:focus];
+    
+    if (_isAnimatingReaction)
+        return;
+    
+    if (focus)
+        [self.gridView animateHighlightOfArrowView:arrowView toState:focus];
+}
 
 - (void)playgroundGridView:(UIPlaygroundGridView*)playgroundGridView didSelectArrowView:(UIArrowView*)arrowView
 {
-    SNGameResults* resultsDelta = SNGameResults.new;
-    resultsDelta.moves = -1;
-    [self.gameState.results add:resultsDelta];
-    
-    // TODO animate hud updates
-    
-    [self.gameState scheduleReactionAtField:arrowView.model];
-    self.gridView.userInteractionEnabled = NO;
-    [self.gridView prepareArrowViewsForReaction:self.gameState.scheduledReaction];
-    
-    [self.gridView animateReaction:self.gameState.scheduledReaction withCompletionHandler:^{
-        self.gameState = self.gameState.scheduledReaction.targetState;
+    @synchronized (_cancellationGuard)
+    {
+        if (_isCancelled)
+        {
+            _isCancelled = NO;
+            return;
+        }
         
-        SNGameGrid* fallenGrid = self.gameState.grid.copy;
-        [fallenGrid pushDown];
+        @synchronized (self)
+        {
+            if (_isAnimatingReaction)
+                return;
+            
+            _isAnimatingReaction = YES;
+        }
         
-        [self.gridView animatePushDownIntoGrid:fallenGrid withCompletionHandler:^{
-            SNGameGrid* filledGrid = fallenGrid.copy;
-            [filledGrid fillWithRandomItems];
-            self.gameState.grid = filledGrid;
-
-            [self.gridView reloadMissingFieldsAnimated:YES];
-            self.gridView.userInteractionEnabled = YES;
+        [self.gameState scheduleReactionAtField:arrowView.model];
+        [self.gridView prepareArrowViewsForReaction:self.gameState.scheduledReaction];
+        
+        [self.gridView animateReaction:self.gameState.scheduledReaction
+                 withCompletionHandler:^{
+            @synchronized (_cancellationGuard)
+            {
+                if (_isCancelled)
+                {
+                    _isCancelled = NO;
+                    return;
+                }
+                
+                [self.gridView animatePushDownIntoGrid:self.gameState.scheduledReaction.targetState.fallenState.grid
+                                 withCompletionHandler:^{
+                    @synchronized (_cancellationGuard)
+                    {
+                        if (_isCancelled)
+                        {
+                            _isCancelled = NO;
+                            return;
+                        }
+                        
+                        [self finalizeScheduledReaction];
+                        [self.gridView reloadMissingFieldsAnimated:YES];
+                        
+                        _isAnimatingReaction = NO;
+                    }
+                }];
+            }
         }];
-    }];
+    }
 }
 
 @end

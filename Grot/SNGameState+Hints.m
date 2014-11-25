@@ -26,22 +26,12 @@
             if (field && !field.isUnknown)
             {
                 SNGameState* state = self.copy;
-                state.results.moves--;
-                
                 SNArrowField* copyModel = [state.grid objectAtPoint:point];
                 SNFieldReaction* reaction = [state scheduleReactionAtField:copyModel];
-                SNGameResults* gainedResults = reaction.targetState.results;
+                SNGameResults* newResults = reaction.targetState.results;
                 
-                state = reaction.targetState;
-                
-                if ([gainedResults isEqual:SNGameResults.unknownResults])
-                    continue;
-                
-                [state.results add:gainedResults];
-                [state.grid pushDown];
-                [state.grid fillWithUnknownItems];
-                
-                results[field] = state;
+                if (![newResults isEqual:SNGameResults.unknownResults])
+                    results[field] = reaction.targetState.filledState;
             }
         }
     }

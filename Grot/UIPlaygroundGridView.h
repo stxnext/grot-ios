@@ -25,6 +25,8 @@
 
 @optional
 - (void)playgroundGridView:(UIPlaygroundGridView*)playgroundGridView didSelectArrowView:(UIArrowView*)arrowView;
+- (void)playgroundGridView:(UIPlaygroundGridView*)playgroundGridView didChangeFocus:(BOOL)focus ofArrowView:(UIArrowView*)arrowView;
+- (void)playgroundGridView:(UIPlaygroundGridView*)playgroundGridView willReloadGridAnimated:(BOOL)animated;
 
 @end
 
@@ -37,6 +39,7 @@ IB_DESIGNABLE
 @property (nonatomic, weak) IBOutlet id<UIPlaygroundGridViewDataSource> dataSource;
 @property (nonatomic, weak) IBOutlet id<UIPlaygroundGridViewDelegate> delegate;
 
+- (void)dismissGridWithCompletionHandler:(void (^)())completionBlock;
 - (void)reloadGridAnimated:(BOOL)animated;
 - (void)reloadMissingFieldsAnimated:(BOOL)animated;
 - (void)prepareArrowViewsForReaction:(SNFieldReaction*)reaction;

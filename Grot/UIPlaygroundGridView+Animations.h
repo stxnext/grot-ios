@@ -11,7 +11,9 @@
 @interface UIPlaygroundGridView (Animations)
 
 - (void)animateFadeInForArrowViews:(NSArray*)arrowViews completionHandler:(void (^)())completionBlock;
+- (void)animateFadeOutForArrowViews:(NSArray*)arrowViews completionHandler:(void (^)())completionBlock;
 - (void)animateReaction:(SNFieldReaction*)reaction withCompletionHandler:(void (^)())completionBlock;
 - (void)animatePushDownIntoGrid:(SNGameGrid*)targetGrid withCompletionHandler:(void (^)())completionBlock;
+- (void)animateHighlightOfArrowView:(UIArrowView*)arrowView toState:(BOOL)highlighted;
 
 @end

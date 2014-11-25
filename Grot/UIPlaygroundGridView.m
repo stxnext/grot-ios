@@ -35,6 +35,11 @@
     [self addObserver:self forKeyPath:@"layer.bounds" options:0 context:nil];
     [self addObserver:self forKeyPath:@"backgroundColor" options:0 context:nil];
     
+    if (iOS8_PLUS)
+    {
+        self.allowsTransparency = YES; // removes background color visible as line borders
+    }
+    
     [self presentScene:_scene];
 }
 
@@ -42,11 +47,13 @@
 {
     if (self == object && [@"layer.bounds" isEqualToString:keyPath])
     {
-        [self updateSceneProperties];
+        _scene.size = self.bounds.size;
+        [self layoutArrowSubviews];
     }
     else if (self == object && [@"backgroundColor" isEqualToString:keyPath])
     {
-        [self updateSceneProperties];
+        _scene.backgroundColor = self.backgroundColor;
+        [self layoutArrowSubviews];
     }
 }
 
@@ -130,8 +137,35 @@
     }
 }
 
+- (void)dismissGridWithCompletionHandler:(void (^)())completionBlock
+{
+    NSArray* views = [self arrowViewSubviews];
+    
+    if (views.count > 0)
+    {
+        [self animateFadeOutForArrowViews:views completionHandler:^{
+            [self removeArrowSubviews];
+            
+            if (completionBlock)
+                completionBlock();
+        }];
+        
+        return;
+    }
+    else
+    {
+        if (completionBlock)
+            completionBlock();
+    }
+}
+
 - (void)reloadGridAnimated:(BOOL)animated
 {
+    if ([self.delegate respondsToSelector:@selector(playgroundGridView:willReloadGridAnimated:)])
+    {
+        [self.delegate playgroundGridView:self willReloadGridAnimated:animated];
+    }
+    
     // May also want to update bg color here
     [self removeArrowSubviews];
     
@@ -288,9 +322,22 @@
 
 #pragma mark - UIArrowViewDelegate
 
-- (void)arrowViewTapped:(UIArrowView*)arrowView
+- (void)arrowViewTouchedDown:(UIArrowView *)arrowView
 {
-    if ([self.delegate respondsToSelector:@selector(playgroundGridView:didSelectArrowView:)])
+    if ([self.delegate respondsToSelector:@selector(playgroundGridView:didChangeFocus:ofArrowView:)])
+    {
+        [self.delegate playgroundGridView:self didChangeFocus:YES ofArrowView:arrowView];
+    }
+}
+
+- (void)arrowViewTouchedUp:(UIArrowView *)arrowView inside:(BOOL)inside
+{
+    if ([self.delegate respondsToSelector:@selector(playgroundGridView:didChangeFocus:ofArrowView:)])
+    {
+        [self.delegate playgroundGridView:self didChangeFocus:NO ofArrowView:arrowView];
+    }
+    
+    if (inside && [self.delegate respondsToSelector:@selector(playgroundGridView:didSelectArrowView:)])
     {
         [self.delegate playgroundGridView:self didSelectArrowView:arrowView];
     }

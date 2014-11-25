@@ -30,9 +30,13 @@ typedef NS_ENUM(NSInteger, SNArrowFieldType) {
 @property (nonatomic, readonly, getter = isUnknown) BOOL unknown;
 @property (nonatomic, readonly) SNArrowFieldType type;
 @property (nonatomic, readonly) SNArrowFieldDirection direction;
-@property (nonatomic, readonly) NSInteger value;
-@property (nonatomic, readonly) UIColor* color;
-@property (nonatomic, readonly) double angle;
+
++ (UIColor*)arrowColor;
++ (NSDictionary*)backgroundColors;
+
+- (NSInteger)value;
+- (double)angle;
+- (UIColor*)color;
 
 + (instancetype)modelWithType:(SNArrowFieldType)type direction:(SNArrowFieldDirection)direction;
 + (instancetype)unknownModel;

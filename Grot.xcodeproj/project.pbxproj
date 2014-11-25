@@ -9,11 +9,26 @@
 /* Begin PBXBuildFile section */
 		0C1C3B0719E3DEF8001DD3AB /* SNGameState+Hints.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1C3B0619E3DEF8001DD3AB /* SNGameState+Hints.m */; };
 		0C1C3B0A19E3E082001DD3AB /* NSDictionary+Aggregation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1C3B0919E3E082001DD3AB /* NSDictionary+Aggregation.m */; };
+		0C2414341A0CBC3F00947A1E /* UIMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C2414331A0CBC3F00947A1E /* UIMenuButton.m */; };
+		0C2414401A0CFE6500947A1E /* UIFont+AutoSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C24143F1A0CFE6500947A1E /* UIFont+AutoSize.m */; };
+		0C31EF491A08B1DC002A52B2 /* SNCounterLabelLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C31EF481A08B1DC002A52B2 /* SNCounterLabelLayout.m */; };
+		0C31EF4C1A08B1FD002A52B2 /* SNCounterLabelState.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C31EF4B1A08B1FD002A52B2 /* SNCounterLabelState.m */; };
+		0C31EF4F1A08B239002A52B2 /* UICounterLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C31EF4E1A08B239002A52B2 /* UICounterLabel.m */; };
+		0C31EF531A08B2E5002A52B2 /* RSTimingFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C31EF521A08B2E5002A52B2 /* RSTimingFunction.m */; };
+		0C31EF5A1A08B613002A52B2 /* UIFloatingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C31EF561A08B613002A52B2 /* UIFloatingController.m */; };
+		0C31EF5C1A08B613002A52B2 /* SNFloatingResults.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C31EF591A08B613002A52B2 /* SNFloatingResults.m */; };
+		0C31EF6D1A08D8D5002A52B2 /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0C31EF681A08D8D5002A52B2 /* Lato-Black.ttf */; };
+		0C31EF6E1A08D8D5002A52B2 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0C31EF691A08D8D5002A52B2 /* Lato-Bold.ttf */; };
+		0C31EF6F1A08D8D5002A52B2 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0C31EF6A1A08D8D5002A52B2 /* Lato-Light.ttf */; };
+		0C31EF701A08D8D5002A52B2 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0C31EF6B1A08D8D5002A52B2 /* Lato-Regular.ttf */; };
+		0C31EF711A08D8D5002A52B2 /* Lato-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0C31EF6C1A08D8D5002A52B2 /* Lato-Thin.ttf */; };
+		0C4C39C41A132F7200831031 /* UILabelExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C4C39C31A132F7200831031 /* UILabelExt.m */; };
 		0C69111E19EFAC310011C6A6 /* UIPlaygroundGridView+Animations.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C69111D19EFAC310011C6A6 /* UIPlaygroundGridView+Animations.m */; };
 		0C6FFD9519ED229000485ACB /* SpringMath.c in Sources */ = {isa = PBXBuildFile; fileRef = 0C6FFD9319ED229000485ACB /* SpringMath.c */; };
 		0C6FFD9819ED23B500485ACB /* SKAction+Spring.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6FFD9719ED23B500485ACB /* SKAction+Spring.m */; };
 		0C6FFDD119EE568700485ACB /* SNFieldReaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6FFDD019EE568700485ACB /* SNFieldReaction.m */; };
 		0C6FFDD719EE693800485ACB /* SNFieldTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6FFDD619EE693800485ACB /* SNFieldTransition.m */; };
+		0C7A482B1A1F494D003B186C /* UIFloatingResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7A482A1A1F494D003B186C /* UIFloatingResultController.m */; };
 		0C7D6D871A021329005F0380 /* SKAction+SKTExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7D6D771A021329005F0380 /* SKAction+SKTExtras.m */; };
 		0C7D6D881A021329005F0380 /* SKAction+SKTSpecialEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7D6D791A021329005F0380 /* SKAction+SKTSpecialEffects.m */; };
 		0C7D6D891A021329005F0380 /* SKEmitterNode+SKTExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7D6D7B1A021329005F0380 /* SKEmitterNode+SKTExtras.m */; };
@@ -22,6 +37,7 @@
 		0C7D6D8C1A021329005F0380 /* SKTAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7D6D811A021329005F0380 /* SKTAudio.m */; };
 		0C7D6D8D1A021329005F0380 /* SKTEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7D6D831A021329005F0380 /* SKTEffects.m */; };
 		0C7D6D8E1A021329005F0380 /* SKTTimingFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7D6D851A021329005F0380 /* SKTTimingFunctions.m */; };
+		0C9B83881A1DC33E0093778A /* UIGameStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C9B83871A1DC33E0093778A /* UIGameStoryboard.storyboard */; };
 		0CA10E9519E52ED40013382A /* UIPlaygroundGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA10E9419E52ED40013382A /* UIPlaygroundGridView.m */; };
 		0CA10E9819E53E470013382A /* UIArrowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA10E9719E53E470013382A /* UIArrowView.m */; };
 		0CA10EA619E552AE0013382A /* UIBezierPath+Image.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA10EA519E552AE0013382A /* UIBezierPath+Image.m */; };
@@ -37,7 +53,10 @@
 		0CA86E8419DEB5B500512B28 /* SNGameResults.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA86E8319DEB5B500512B28 /* SNGameResults.m */; };
 		0CA86E8719DEB5C600512B28 /* SNGameState.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA86E8619DEB5C600512B28 /* SNGameState.m */; };
 		0CA86E8E19DEB82F00512B28 /* SNArrowField.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA86E8D19DEB82F00512B28 /* SNArrowField.m */; };
-		0CF8A7CB19E69BC20039A26E /* UIGameStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CF8A7CA19E69BC20039A26E /* UIGameStoryboard.storyboard */; };
+		0CDB57331A1B5DEC005741D1 /* UIFloatingMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB57321A1B5DEC005741D1 /* UIFloatingMenuController.m */; };
+		0CDB57361A1B8447005741D1 /* UIFloatingHelpController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB57351A1B8447005741D1 /* UIFloatingHelpController.m */; };
+		0CDB573C1A1B8820005741D1 /* UIView+RoundedEdges.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB573B1A1B8820005741D1 /* UIView+RoundedEdges.m */; };
+		0CDB573F1A1B8D7D005741D1 /* UIFieldBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB573E1A1B8D7D005741D1 /* UIFieldBadge.m */; };
 		0CF8A7CE19E6A0400039A26E /* UIGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CF8A7CD19E6A0400039A26E /* UIGameViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -57,7 +76,30 @@
 		0C1C3B0619E3DEF8001DD3AB /* SNGameState+Hints.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SNGameState+Hints.m"; sourceTree = "<group>"; };
 		0C1C3B0819E3E082001DD3AB /* NSDictionary+Aggregation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Aggregation.h"; sourceTree = "<group>"; };
 		0C1C3B0919E3E082001DD3AB /* NSDictionary+Aggregation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Aggregation.m"; sourceTree = "<group>"; };
+		0C2414321A0CBC3F00947A1E /* UIMenuButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIMenuButton.h; sourceTree = "<group>"; };
+		0C2414331A0CBC3F00947A1E /* UIMenuButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIMenuButton.m; sourceTree = "<group>"; };
+		0C24143E1A0CFE6500947A1E /* UIFont+AutoSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+AutoSize.h"; sourceTree = "<group>"; };
+		0C24143F1A0CFE6500947A1E /* UIFont+AutoSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+AutoSize.m"; sourceTree = "<group>"; };
 		0C31EF441A08B047002A52B2 /* UIGameStoryboard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIGameStoryboard.h; sourceTree = "<group>"; };
+		0C31EF471A08B1DC002A52B2 /* SNCounterLabelLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNCounterLabelLayout.h; sourceTree = "<group>"; };
+		0C31EF481A08B1DC002A52B2 /* SNCounterLabelLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNCounterLabelLayout.m; sourceTree = "<group>"; };
+		0C31EF4A1A08B1FD002A52B2 /* SNCounterLabelState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNCounterLabelState.h; sourceTree = "<group>"; };
+		0C31EF4B1A08B1FD002A52B2 /* SNCounterLabelState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNCounterLabelState.m; sourceTree = "<group>"; };
+		0C31EF4D1A08B239002A52B2 /* UICounterLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICounterLabel.h; sourceTree = "<group>"; };
+		0C31EF4E1A08B239002A52B2 /* UICounterLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICounterLabel.m; sourceTree = "<group>"; };
+		0C31EF511A08B2E5002A52B2 /* RSTimingFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSTimingFunction.h; sourceTree = "<group>"; };
+		0C31EF521A08B2E5002A52B2 /* RSTimingFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSTimingFunction.m; sourceTree = "<group>"; };
+		0C31EF551A08B613002A52B2 /* UIFloatingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIFloatingController.h; sourceTree = "<group>"; };
+		0C31EF561A08B613002A52B2 /* UIFloatingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIFloatingController.m; sourceTree = "<group>"; };
+		0C31EF581A08B613002A52B2 /* SNFloatingResults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFloatingResults.h; sourceTree = "<group>"; };
+		0C31EF591A08B613002A52B2 /* SNFloatingResults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFloatingResults.m; sourceTree = "<group>"; };
+		0C31EF681A08D8D5002A52B2 /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Black.ttf"; sourceTree = "<group>"; };
+		0C31EF691A08D8D5002A52B2 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
+		0C31EF6A1A08D8D5002A52B2 /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
+		0C31EF6B1A08D8D5002A52B2 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
+		0C31EF6C1A08D8D5002A52B2 /* Lato-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Thin.ttf"; sourceTree = "<group>"; };
+		0C4C39C21A132F7200831031 /* UILabelExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UILabelExt.h; sourceTree = "<group>"; };
+		0C4C39C31A132F7200831031 /* UILabelExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UILabelExt.m; sourceTree = "<group>"; };
 		0C69111C19EFAC310011C6A6 /* UIPlaygroundGridView+Animations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIPlaygroundGridView+Animations.h"; sourceTree = "<group>"; };
 		0C69111D19EFAC310011C6A6 /* UIPlaygroundGridView+Animations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIPlaygroundGridView+Animations.m"; sourceTree = "<group>"; };
 		0C6FFD9319ED229000485ACB /* SpringMath.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SpringMath.c; sourceTree = "<group>"; };
@@ -69,6 +111,8 @@
 		0C6FFDD019EE568700485ACB /* SNFieldReaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFieldReaction.m; sourceTree = "<group>"; };
 		0C6FFDD519EE693800485ACB /* SNFieldTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFieldTransition.h; sourceTree = "<group>"; };
 		0C6FFDD619EE693800485ACB /* SNFieldTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFieldTransition.m; sourceTree = "<group>"; };
+		0C7A48291A1F494D003B186C /* UIFloatingResultController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIFloatingResultController.h; sourceTree = "<group>"; };
+		0C7A482A1A1F494D003B186C /* UIFloatingResultController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIFloatingResultController.m; sourceTree = "<group>"; };
 		0C7D6D761A021329005F0380 /* SKAction+SKTExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKAction+SKTExtras.h"; sourceTree = "<group>"; };
 		0C7D6D771A021329005F0380 /* SKAction+SKTExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKAction+SKTExtras.m"; sourceTree = "<group>"; };
 		0C7D6D781A021329005F0380 /* SKAction+SKTSpecialEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKAction+SKTSpecialEffects.h"; sourceTree = "<group>"; };
@@ -86,6 +130,7 @@
 		0C7D6D841A021329005F0380 /* SKTTimingFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTTimingFunctions.h; sourceTree = "<group>"; };
 		0C7D6D851A021329005F0380 /* SKTTimingFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTTimingFunctions.m; sourceTree = "<group>"; };
 		0C7D6D861A021329005F0380 /* SKTUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTUtils.h; sourceTree = "<group>"; };
+		0C9B83871A1DC33E0093778A /* UIGameStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UIGameStoryboard.storyboard; sourceTree = "<group>"; };
 		0CA10E9319E52ED40013382A /* UIPlaygroundGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPlaygroundGridView.h; sourceTree = "<group>"; };
 		0CA10E9419E52ED40013382A /* UIPlaygroundGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPlaygroundGridView.m; sourceTree = "<group>"; };
 		0CA10E9619E53E470013382A /* UIArrowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIArrowView.h; sourceTree = "<group>"; };
@@ -119,7 +164,15 @@
 		0CA86E8B19DEB75600512B28 /* SNPair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNPair.h; sourceTree = "<group>"; };
 		0CA86E8C19DEB82F00512B28 /* SNArrowField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNArrowField.h; sourceTree = "<group>"; };
 		0CA86E8D19DEB82F00512B28 /* SNArrowField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNArrowField.m; sourceTree = "<group>"; };
-		0CF8A7CA19E69BC20039A26E /* UIGameStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UIGameStoryboard.storyboard; sourceTree = "<group>"; };
+		0CDB57311A1B5DEC005741D1 /* UIFloatingMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIFloatingMenuController.h; sourceTree = "<group>"; };
+		0CDB57321A1B5DEC005741D1 /* UIFloatingMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIFloatingMenuController.m; sourceTree = "<group>"; };
+		0CDB57341A1B8447005741D1 /* UIFloatingHelpController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIFloatingHelpController.h; sourceTree = "<group>"; };
+		0CDB57351A1B8447005741D1 /* UIFloatingHelpController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIFloatingHelpController.m; sourceTree = "<group>"; };
+		0CDB573A1A1B8820005741D1 /* UIView+RoundedEdges.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+RoundedEdges.h"; sourceTree = "<group>"; };
+		0CDB573B1A1B8820005741D1 /* UIView+RoundedEdges.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+RoundedEdges.m"; sourceTree = "<group>"; };
+		0CDB573D1A1B8D7D005741D1 /* UIFieldBadge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIFieldBadge.h; sourceTree = "<group>"; };
+		0CDB573E1A1B8D7D005741D1 /* UIFieldBadge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIFieldBadge.m; sourceTree = "<group>"; };
+		0CE0DED71A1391CC0005741D /* PrefixMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixMacros.h; sourceTree = "<group>"; };
 		0CF8A7CC19E6A0400039A26E /* UIGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIGameViewController.h; sourceTree = "<group>"; };
 		0CF8A7CD19E6A0400039A26E /* UIGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIGameViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -175,11 +228,82 @@
 			name = Helpers;
 			sourceTree = "<group>";
 		};
+		0C24142E1A0CBBD900947A1E /* Floating menu */ = {
+			isa = PBXGroup;
+			children = (
+				0C2414321A0CBC3F00947A1E /* UIMenuButton.h */,
+				0C2414331A0CBC3F00947A1E /* UIMenuButton.m */,
+				0C4C39C21A132F7200831031 /* UILabelExt.h */,
+				0C4C39C31A132F7200831031 /* UILabelExt.m */,
+				0CDB573D1A1B8D7D005741D1 /* UIFieldBadge.h */,
+				0CDB573E1A1B8D7D005741D1 /* UIFieldBadge.m */,
+			);
+			name = "Floating menu";
+			sourceTree = "<group>";
+		};
+		0C31EF451A08B1A5002A52B2 /* Counter */ = {
+			isa = PBXGroup;
+			children = (
+				0C31EF4D1A08B239002A52B2 /* UICounterLabel.h */,
+				0C31EF4E1A08B239002A52B2 /* UICounterLabel.m */,
+			);
+			name = Counter;
+			sourceTree = "<group>";
+		};
+		0C31EF461A08B1AF002A52B2 /* Counter */ = {
+			isa = PBXGroup;
+			children = (
+				0C31EF471A08B1DC002A52B2 /* SNCounterLabelLayout.h */,
+				0C31EF481A08B1DC002A52B2 /* SNCounterLabelLayout.m */,
+				0C31EF4A1A08B1FD002A52B2 /* SNCounterLabelState.h */,
+				0C31EF4B1A08B1FD002A52B2 /* SNCounterLabelState.m */,
+			);
+			name = Counter;
+			sourceTree = "<group>";
+		};
+		0C31EF501A08B2D0002A52B2 /* RSTimingFunction */ = {
+			isa = PBXGroup;
+			children = (
+				0C31EF511A08B2E5002A52B2 /* RSTimingFunction.h */,
+				0C31EF521A08B2E5002A52B2 /* RSTimingFunction.m */,
+			);
+			name = RSTimingFunction;
+			sourceTree = "<group>";
+		};
+		0C31EF541A08B5F4002A52B2 /* Floating menu */ = {
+			isa = PBXGroup;
+			children = (
+				0C31EF551A08B613002A52B2 /* UIFloatingController.h */,
+				0C31EF561A08B613002A52B2 /* UIFloatingController.m */,
+				0CDB57311A1B5DEC005741D1 /* UIFloatingMenuController.h */,
+				0CDB57321A1B5DEC005741D1 /* UIFloatingMenuController.m */,
+				0CDB57341A1B8447005741D1 /* UIFloatingHelpController.h */,
+				0CDB57351A1B8447005741D1 /* UIFloatingHelpController.m */,
+				0C7A48291A1F494D003B186C /* UIFloatingResultController.h */,
+				0C7A482A1A1F494D003B186C /* UIFloatingResultController.m */,
+				0C31EF581A08B613002A52B2 /* SNFloatingResults.h */,
+				0C31EF591A08B613002A52B2 /* SNFloatingResults.m */,
+			);
+			name = "Floating menu";
+			sourceTree = "<group>";
+		};
+		0C31EF5D1A08D78D002A52B2 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				0C31EF681A08D8D5002A52B2 /* Lato-Black.ttf */,
+				0C31EF691A08D8D5002A52B2 /* Lato-Bold.ttf */,
+				0C31EF6A1A08D8D5002A52B2 /* Lato-Light.ttf */,
+				0C31EF6B1A08D8D5002A52B2 /* Lato-Regular.ttf */,
+				0C31EF6C1A08D8D5002A52B2 /* Lato-Thin.ttf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
 		0C52D79D1A076E9E00FE64CC /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
 				0C31EF441A08B047002A52B2 /* UIGameStoryboard.h */,
-				0CF8A7CA19E69BC20039A26E /* UIGameStoryboard.storyboard */,
+				0C9B83871A1DC33E0093778A /* UIGameStoryboard.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -227,6 +351,7 @@
 		0C6FFD6119ECFF4C00485ACB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0C31EF501A08B2D0002A52B2 /* RSTimingFunction */,
 				0C7D6D751A02131C005F0380 /* SKTUtils */,
 			);
 			name = Frameworks;
@@ -270,6 +395,10 @@
 				0C6FFD9619ED23B500485ACB /* SKAction+Spring.h */,
 				0C6FFD9719ED23B500485ACB /* SKAction+Spring.m */,
 				0C6FFDCC19ED4D2100485ACB /* CGPoint+Distance.h */,
+				0C24143E1A0CFE6500947A1E /* UIFont+AutoSize.h */,
+				0C24143F1A0CFE6500947A1E /* UIFont+AutoSize.m */,
+				0CDB573A1A1B8820005741D1 /* UIView+RoundedEdges.h */,
+				0CDB573B1A1B8820005741D1 /* UIView+RoundedEdges.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -309,11 +438,13 @@
 		0CA86E4819DEAE4500512B28 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0C31EF5D1A08D78D002A52B2 /* Fonts */,
 				0CA86E5719DEAE4500512B28 /* LaunchScreen.xib */,
 				0CA86E5519DEAE4500512B28 /* Images.xcassets */,
 				0CA86E4919DEAE4500512B28 /* Info.plist */,
 				0CA86E4A19DEAE4500512B28 /* main.m */,
 				0C0C1BE01A07987D00AF3356 /* Prefix.pch */,
+				0CE0DED71A1391CC0005741D /* PrefixMacros.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -340,6 +471,8 @@
 			children = (
 				0CA10E9919E549160013382A /* Helpers */,
 				0C52D79E1A07712400FE64CC /* Playground */,
+				0C31EF451A08B1A5002A52B2 /* Counter */,
+				0C24142E1A0CBBD900947A1E /* Floating menu */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -349,15 +482,25 @@
 			children = (
 				0C1C3B0B19E3E086001DD3AB /* Helpers */,
 				0C0C1BD11A0790C600AF3356 /* Playground */,
+				0C31EF461A08B1AF002A52B2 /* Counter */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		0CB0CEEE1A1E2CAD00A59448 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 		0CF8A7C719E695B70039A26E /* View controllers */ = {
 			isa = PBXGroup;
 			children = (
-				0C52D7A01A07716100FE64CC /* Playground */,
+				0CB0CEEE1A1E2CAD00A59448 /* Helpers */,
 				0C52D7A11A07726500FE64CC /* Main */,
+				0C52D7A01A07716100FE64CC /* Playground */,
+				0C31EF541A08B5F4002A52B2 /* Floating menu */,
 			);
 			name = "View controllers";
 			sourceTree = "<group>";
@@ -411,6 +554,7 @@
 				TargetAttributes = {
 					0CA86E4419DEAE4500512B28 = {
 						CreatedOnToolsVersion = 6.0.1;
+						DevelopmentTeam = B7EKJ66X5Q;
 					};
 					0CA86E5D19DEAE4500512B28 = {
 						CreatedOnToolsVersion = 6.0.1;
@@ -443,8 +587,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CA86E5919DEAE4500512B28 /* LaunchScreen.xib in Resources */,
+				0C31EF711A08D8D5002A52B2 /* Lato-Thin.ttf in Resources */,
+				0C31EF6E1A08D8D5002A52B2 /* Lato-Bold.ttf in Resources */,
+				0C9B83881A1DC33E0093778A /* UIGameStoryboard.storyboard in Resources */,
+				0C31EF701A08D8D5002A52B2 /* Lato-Regular.ttf in Resources */,
 				0CA86E5619DEAE4500512B28 /* Images.xcassets in Resources */,
-				0CF8A7CB19E69BC20039A26E /* UIGameStoryboard.storyboard in Resources */,
+				0C31EF6D1A08D8D5002A52B2 /* Lato-Black.ttf in Resources */,
+				0C31EF6F1A08D8D5002A52B2 /* Lato-Light.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,32 +611,46 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C31EF531A08B2E5002A52B2 /* RSTimingFunction.m in Sources */,
+				0C31EF4C1A08B1FD002A52B2 /* SNCounterLabelState.m in Sources */,
+				0C4C39C41A132F7200831031 /* UILabelExt.m in Sources */,
 				0C7D6D891A021329005F0380 /* SKEmitterNode+SKTExtras.m in Sources */,
 				0CA86E8119DEB58400512B28 /* SNGameGrid.m in Sources */,
 				0C7D6D8E1A021329005F0380 /* SKTTimingFunctions.m in Sources */,
 				0C6FFDD719EE693800485ACB /* SNFieldTransition.m in Sources */,
 				0C69111E19EFAC310011C6A6 /* UIPlaygroundGridView+Animations.m in Sources */,
 				0C7D6D871A021329005F0380 /* SKAction+SKTExtras.m in Sources */,
+				0C2414341A0CBC3F00947A1E /* UIMenuButton.m in Sources */,
 				0CA86E5119DEAE4500512B28 /* UIPlaygroundGridViewController.m in Sources */,
+				0C31EF4F1A08B239002A52B2 /* UICounterLabel.m in Sources */,
+				0CDB57361A1B8447005741D1 /* UIFloatingHelpController.m in Sources */,
 				0C7D6D8A1A021329005F0380 /* SKNode+SKTDebugDraw.m in Sources */,
 				0C7D6D881A021329005F0380 /* SKAction+SKTSpecialEffects.m in Sources */,
+				0CDB57331A1B5DEC005741D1 /* UIFloatingMenuController.m in Sources */,
+				0C7A482B1A1F494D003B186C /* UIFloatingResultController.m in Sources */,
 				0CA86E8719DEB5C600512B28 /* SNGameState.m in Sources */,
+				0C31EF491A08B1DC002A52B2 /* SNCounterLabelLayout.m in Sources */,
 				0C7D6D8B1A021329005F0380 /* SKNode+SKTExtras.m in Sources */,
 				0C6FFD9519ED229000485ACB /* SpringMath.c in Sources */,
 				0CA10E9519E52ED40013382A /* UIPlaygroundGridView.m in Sources */,
 				0CA10E9819E53E470013382A /* UIArrowView.m in Sources */,
 				0C1C3B0A19E3E082001DD3AB /* NSDictionary+Aggregation.m in Sources */,
+				0C31EF5C1A08B613002A52B2 /* SNFloatingResults.m in Sources */,
 				0CA86E7B19DEB41F00512B28 /* SNGrid.m in Sources */,
 				0CF8A7CE19E6A0400039A26E /* UIGameViewController.m in Sources */,
 				0CA86E4E19DEAE4500512B28 /* AppDelegate.m in Sources */,
+				0CDB573F1A1B8D7D005741D1 /* UIFieldBadge.m in Sources */,
 				0C6FFD9819ED23B500485ACB /* SKAction+Spring.m in Sources */,
+				0C31EF5A1A08B613002A52B2 /* UIFloatingController.m in Sources */,
 				0CA10EA619E552AE0013382A /* UIBezierPath+Image.m in Sources */,
 				0CA86E4B19DEAE4500512B28 /* main.m in Sources */,
 				0CA10EA919E5536B0013382A /* UIImage+Blending.m in Sources */,
 				0C7D6D8C1A021329005F0380 /* SKTAudio.m in Sources */,
 				0CA86E8E19DEB82F00512B28 /* SNArrowField.m in Sources */,
 				0C7D6D8D1A021329005F0380 /* SKTEffects.m in Sources */,
+				0C2414401A0CFE6500947A1E /* UIFont+AutoSize.m in Sources */,
 				0C6FFDD119EE568700485ACB /* SNFieldReaction.m in Sources */,
+				0CDB573C1A1B8820005741D1 /* UIView+RoundedEdges.m in Sources */,
 				0C1C3B0719E3DEF8001DD3AB /* SNGameState+Hints.m in Sources */,
 				0CA86E8419DEB5B500512B28 /* SNGameResults.m in Sources */,
 			);
@@ -605,10 +768,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Maciej Dziergwa (24CP896HJZ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Maciej Dziergwa (24CP896HJZ)";
+				GCC_PREFIX_HEADER = Grot/Prefix.pch;
 				INFOPLIST_FILE = Grot/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "4a2e184c-60d1-4ab1-b760-2422dfd7e62d";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -616,10 +785,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Maciej Dziergwa (24CP896HJZ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Maciej Dziergwa (24CP896HJZ)";
+				GCC_PREFIX_HEADER = Grot/Prefix.pch;
 				INFOPLIST_FILE = Grot/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "4a2e184c-60d1-4ab1-b760-2422dfd7e62d";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

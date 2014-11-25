@@ -40,9 +40,6 @@ CGPoint const SNGridInvalidPoint = (CGPoint){ -1.0, -1.0 };
 {
     NSMutableDictionary* newItems = _items.mutableCopy;
     
-    for (id key in newItems.allKeys)
-        newItems[key] = newItems[key];
-    
     return [[self.class alloc] initWithSize:self.size items:newItems];
 }
 
@@ -80,12 +77,13 @@ CGPoint const SNGridInvalidPoint = (CGPoint){ -1.0, -1.0 };
         [_items removeObjectForKey:key];
 }
 
-- (void)swapObject:(id)object withObjectAtPoint:(CGPoint)point
+- (void)swapObjectAtPoint:(CGPoint)sourcePoint withObjectAtPoint:(CGPoint)targetPoint
 {
-    id tempObject = [self objectAtPoint:point];
-    CGPoint oldPoint = [self pointForObject:object];
-    [self setObject:object atPoint:point];
-    [self setObject:tempObject atPoint:oldPoint];
+    id sourceObject = [self objectAtPoint:sourcePoint];
+    id targetObject = [self objectAtPoint:targetPoint];
+    
+    [self setObject:sourceObject atPoint:targetPoint];
+    [self setObject:targetObject atPoint:sourcePoint];
 }
 
 - (void)fillWithItems:(NSArray*)items
@@ -122,9 +120,8 @@ CGPoint const SNGridInvalidPoint = (CGPoint){ -1.0, -1.0 };
             }
             else if (gaps > 0)
             {
-                id object = [self objectAtPoint:point];
                 CGPoint swapPoint = (CGPoint){ x, y + gaps };
-                [self swapObject:object withObjectAtPoint:swapPoint];
+                [self swapObjectAtPoint:point withObjectAtPoint:swapPoint];
             }
         }
     }
