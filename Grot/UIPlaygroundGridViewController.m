@@ -83,7 +83,6 @@
         state.results = SNGameResults.zeroResults;
         state.results.moves = moves;
         [state.grid fillWithRandomItems];
-        
         self.gameState = state;
         _isCancelled = _isAnimatingReaction;
         _isAnimatingReaction = NO;

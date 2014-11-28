@@ -14,6 +14,7 @@
 {
     UIImage* _wheelImage;
     CGImageRef _gradientMask;
+    UIFont* _scaledFont;
     dispatch_block_t _animationCompletionBlock;
 }
 
@@ -23,6 +24,7 @@
 @property (nonatomic) NSInteger maxValue;
 @property (nonatomic) NSInteger maxDrawableValue;
 @property (nonatomic) BOOL alignCenter;
+@property (nonatomic) CGPoint initialAlignShift;
 
 - (void)setValue:(NSInteger)value animationSpeed:(CGFloat)speed completionHandler:(dispatch_block_t)completionBlock;
 

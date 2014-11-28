@@ -35,22 +35,15 @@
         button.tag = button.superview.tag;
         button.nameLabel.layoutDelegate = self;
         button.delegate = self;
+        [button hide];
         
         [self setupMenuButton:button];
     }
 
-    // Initial animations
-    [UIView animateWithDuration:0.4 * self.shouldAnimate
-                     animations:^{
-                         for (UIView* fadedView in self.fadedViews)
-                             fadedView.alpha = 1.0;
-                     } completion:nil];
-    
-    // Buttons setup
-    for (UIMenuButton* button in self.menuButtons)
+    if ([self shouldShowControlsAutomatically])
     {
-        NSUInteger index = [self indexForMenuButton:button];
-        [button showAnimated:self.shouldAnimate withDelay:(0.075 * index) withCompletionHandler:nil];
+        [self showGraphicInterface];
+        [self showButtons];
     }
 }
 
@@ -68,6 +61,31 @@
         NSArray* buttons = self.menuButtons ?: [NSArray array];
         buttons = [buttons arrayByAddingObject:button];
         self.menuButtons = buttons;
+    }
+}
+
+#pragma mark - Controls appearance
+
+- (BOOL)shouldShowControlsAutomatically
+{
+    return YES;
+}
+
+- (void)showGraphicInterface
+{
+    [UIView animateWithDuration:0.4 * self.shouldAnimate
+                     animations:^{
+                         for (UIView* fadedView in self.fadedViews)
+                             fadedView.alpha = 1.0;
+                     } completion:nil];
+}
+
+- (void)showButtons
+{
+    for (UIMenuButton* button in self.menuButtons)
+    {
+        NSUInteger index = [self indexForMenuButton:button];
+        [button showAnimated:self.shouldAnimate withDelay:(0.075 * index) withCompletionHandler:nil];
     }
 }
 

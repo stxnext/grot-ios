@@ -14,7 +14,6 @@
 @property (nonatomic) NSInteger animationEndValue;
 @property (nonatomic) NSTimeInterval animationDuration;
 @property (nonatomic) NSTimeInterval animationStartTime;
-@property (nonatomic) CGPoint animationInitialAlignShift;
 @property (nonatomic, strong) CADisplayLink* displayLink;
 
 @end

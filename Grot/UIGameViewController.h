@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "UIPlaygroundGridViewController.h"
+#import "UIFloatingResultController.h"
 #import "UICounterLabel.h"
 
-@interface UIGameViewController : UIViewController<UIPlaygroundGridViewControllerDelegate>
+@interface UIGameViewController : UIViewController<UIPlaygroundGridViewControllerDelegate, UIFloatingResultControllerDataSource>
 {
     UIPlaygroundGridViewController* _playgroundChildController;
 }

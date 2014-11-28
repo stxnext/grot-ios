@@ -11,6 +11,7 @@
 @interface UIFont (AutoSize)
 
 - (NSInteger)maxFontSizeFittingWidth:(CGFloat)width forText:(NSString*)text;
+- (NSInteger)maxFontSizeFittingHeight:(CGFloat)height forText:(NSString*)text;
 - (NSInteger)maxFontSizeFittingBounds:(CGSize)bounds forText:(NSString*)text;
 
 @end

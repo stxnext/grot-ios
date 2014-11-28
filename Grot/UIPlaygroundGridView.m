@@ -219,7 +219,7 @@
         SNFieldTransition* transition = transitions[i];
         SNArrowField* field = transition.arrowField;
         UIArrowView* view = [self arrowViewForArrowField:field];
-        view.zPosition = transitions.count - i;
+        view.zPosition = i;
     }
 }
 

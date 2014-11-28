@@ -92,4 +92,10 @@
     return [self maxFontSizeFittingBounds:bounds forText:text withMin:1 max:100];
 }
 
+- (NSInteger)maxFontSizeFittingHeight:(CGFloat)height forText:(NSString*)text
+{
+    CGSize bounds = CGSizeMake(CGFLOAT_MAX, height);
+    return [self maxFontSizeFittingBounds:bounds forText:text];
+}
+
 @end

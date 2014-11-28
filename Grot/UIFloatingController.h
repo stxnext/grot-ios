@@ -12,10 +12,13 @@
 @interface UIFloatingController : UIViewController<UILabelExtLayoutDelegate, UIMenuButtonDelegate, UIMenuButtonDataSource>
 
 @property (nonatomic) BOOL shouldAnimate;
+@property (nonatomic, strong) IBOutlet UILabel* headerLabel;
 @property (nonatomic, strong) IBOutletCollection(UIView) NSArray* fadedViews;
 @property (nonatomic, strong) NSArray* menuButtons;
 @property (nonatomic, strong) void (^menuButtonSelectionBlock)(UIFloatingButtonTag);
 
+- (void)showGraphicInterface;
+- (void)showButtons;
 - (void)dismissWithCompletionHandler:(dispatch_block_t)completionBlock;
 
 @end

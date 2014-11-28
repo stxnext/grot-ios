@@ -13,7 +13,7 @@
 #import "UIView+RoundedEdges.h"
 
 const CGSize kDefaultGridSize = (CGSize){ 4, 4 };
-const NSUInteger kDefaultInitialMoves = 5;
+const NSUInteger kDefaultInitialMoves = 1;
 
 @implementation UIGameViewController
 
@@ -79,8 +79,15 @@ const NSUInteger kDefaultInitialMoves = 5;
     [_playgroundChildController restartGameWithGridSize:kDefaultGridSize initialMoves:kDefaultInitialMoves];
 }
 
+- (void)gameDidEnd
+{
+    [self performSegueWithIdentifier:kMenuResultsSegueIdentifier sender:self];
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    [super prepareForSegue:segue sender:sender];
+    
     if ([segue.destinationViewController isKindOfClass:[UIPlaygroundGridViewController class]])
     {
         _playgroundChildController = segue.destinationViewController;
@@ -112,7 +119,7 @@ const NSUInteger kDefaultInitialMoves = 5;
                     
                 case UIFloatingMenuButtonGameCenterTag:
                 {
-                    //                    [self showGameCenter];
+                    // TODO:
                     break;
                 }
                     
@@ -141,6 +148,32 @@ const NSUInteger kDefaultInitialMoves = 5;
             }
         };
     }
+    else if ([segue.destinationViewController isKindOfClass:[UIFloatingResultController class]])
+    {
+        __weak UIFloatingResultController* weakMenu = (UIFloatingResultController*)segue.destinationViewController;
+        
+        weakMenu.dataSource = self;
+        
+        weakMenu.menuButtonSelectionBlock = ^(UIFloatingResultButtonTag option) {
+            switch (option)
+            {
+                case UIFloatingResultButtonRestartTag:
+                {
+                    [weakMenu dismissWithCompletionHandler:^{
+                        [self restartGame];
+                    }];
+                    
+                    break;
+                }
+                
+                case UIFloatingResultButtonGameCenterTag:
+                {
+                    // TODO:
+                    break;
+                }
+            }
+        };
+    }
 }
 
 - (void)playgroundController:(UIPlaygroundGridViewController*)controller didChangeFromResults:(SNGameResults*)fromResults toResults:(SNGameResults*)toResults
@@ -155,6 +188,23 @@ const NSUInteger kDefaultInitialMoves = 5;
     
     [self.scoreCounter setValue:toResults.score animationSpeed:scoreCounterSpeed completionHandler:nil];
     [self.movesCounter setValue:visibleMoves animationSpeed:movesCounterSpeed completionHandler:nil];
+    
+    if (visibleMoves <= 0)
+    {
+        [self gameDidEnd];
+    }
+}
+
+#pragma mark - UIFloatingResultControllerDataSource
+
+- (NSInteger)resultControllerCurrentScore
+{
+    return _playgroundChildController.gameState.results.score;
+}
+
+- (NSInteger)resultControllerHighScore
+{
+    return 0;
 }
 
 @end

@@ -9,17 +9,19 @@
 #import "UICounterLabel.h"
 #import "objc/runtime.h"
 #import "RSTimingFunction.h"
+#import "UIFont+AutoSize.h"
 
 #define CGContextFillRing(context, point, radius) CGContextFillEllipseInRect(context, CGRectMake(point.x - radius / 2.0, point.y - radius / 2.0, radius, radius))
 #define CGContextAddLine(context, startPoint, endPoint) CGContextAddLines(context, (CGPoint[]){ startPoint, endPoint }, 2)
 #define INTERFACE_IS_PHONE                 (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
 
+#define kMaxFontSize (INTERFACE_IS_PHONE ? 50.0 : 60.0)
+
 @implementation UICounterLabel
 
-const static UIGradient gradientFactor = (UIGradient){ 0.35, 0.50 };
-const static CGSize glyphSizePaddingFactor = (CGSize){ 1.05, 0.85 };
+const static UIGradient gradientFactor = (UIGradient){ 0.7, 1.2 };
+const static CGSize glyphSizePaddingFactor = (CGSize){ 1.05, 0.8 };
 const static CGSize maxLabelSize = (CGSize){ 999.9, 999.9 };
-const static CGFloat shiftAnimationDuration = 0.3;
 const static CGSize wheelCellSize = (CGSize){ 100.0, 100.0 };
 const static NSInteger wheelAnimationEasingMagnitude = 3;
 
@@ -43,7 +45,7 @@ const static NSInteger wheelAnimationEasingMagnitude = 3;
 {
     UILabel* label = UILabel.new;
     label.textColor = self.textColor;
-    label.font = self.font;
+    label.font = [self scaledFont];
     
     return label;
 }
@@ -51,16 +53,15 @@ const static NSInteger wheelAnimationEasingMagnitude = 3;
 - (void)setFont:(UIFont *)font
 {
     [super setFont:font];
-    _wheelImage = nil;
+    
     [self updateCounterLayout];
-    [self setNeedsDisplay];
 }
 
 - (void)setTextColor:(UIColor *)textColor
 {
     [super setTextColor:textColor];
-    _wheelImage = nil;
-    [self setNeedsDisplay];
+    
+    [self updateCounterLayout];
 }
 
 + (CGSize)glyphSizeForFont:(UIFont*)font
@@ -91,7 +92,40 @@ const static NSInteger wheelAnimationEasingMagnitude = 3;
 {
     if (!_gradientMask)
     {
-        // TODO: gradient mask based on frame and glyph size
+        CGRect bounds = self.bounds;
+        
+        UIImage* maskImage = [self.class imageWithSize:bounds.size drawingBlock:^(CGSize size){
+            CGFloat glyphHeight = self.layout.wheelCellSpacing.height / 2.0;
+            CGFloat frameHeight = size.height / 2.0;
+            
+            CGFloat gradientRealLength = gradientFactor.lengthFactor * glyphHeight;
+            CGFloat gradientRealOffset = gradientFactor.offsetFactor * glyphHeight;
+            
+            CGFloat gradientRealComplementaryLength = frameHeight - gradientRealLength;
+            CGFloat gradientRealComplementaryOffset = frameHeight - gradientRealOffset;
+            
+            CGFloat gradientParam1 = MIN(0.5, MAX(0.0, gradientRealComplementaryLength / size.height));
+            CGFloat gradientParam2 = MIN(0.5, MAX(gradientParam1, gradientRealComplementaryOffset / size.height));
+            
+            CGFloat* locations = (CGFloat[]){ gradientParam1, gradientParam2, (1.0 - gradientParam2), (1.0 - gradientParam1) };
+            CFArrayRef colors = (__bridge CFArrayRef)@[ (id)UIColor.whiteColor.CGColor, (id)UIColor.blackColor.CGColor, (id)UIColor.blackColor.CGColor, (id)UIColor.whiteColor.CGColor ];
+            CGColorSpaceRef space = CGColorSpaceCreateDeviceRGB();
+            CGGradientRef gradient = CGGradientCreateWithColors(space, colors, locations);
+            CGPoint endPoint = CGPointMake(0.0, size.height);
+            CGContextDrawLinearGradient(UIGraphicsGetCurrentContext(), gradient, CGPointZero, endPoint, kCGGradientDrawsBeforeStartLocation | kCGGradientDrawsAfterEndLocation);
+            CGGradientRelease(gradient);
+            CGColorSpaceRelease(space);
+        }];
+        
+        CGImageRef maskCGImage = maskImage.CGImage;
+        _gradientMask = CGImageMaskCreate(CGImageGetWidth(maskCGImage),
+                                          CGImageGetHeight(maskCGImage),
+                                          CGImageGetBitsPerComponent(maskCGImage),
+                                          CGImageGetBitsPerPixel(maskCGImage),
+                                          CGImageGetBytesPerRow(maskCGImage),
+                                          CGImageGetDataProvider(maskCGImage),
+                                          CGImageGetDecode(maskCGImage),
+                                          CGImageGetShouldInterpolate(maskCGImage));
     }
     
     return _gradientMask;
@@ -124,6 +158,17 @@ const static NSInteger wheelAnimationEasingMagnitude = 3;
     }
     
     return _wheelImage;
+}
+
+- (UIFont*)scaledFont
+{
+    if (!_scaledFont)
+    {
+        CGFloat size = MIN(kMaxFontSize, [self.font maxFontSizeFittingHeight:self.frame.size.height forText:@"0"]);
+        _scaledFont = [self.font fontWithSize:size];
+    }
+    
+    return _scaledFont;
 }
 
 + (NSArray*)drawingPointsForCanvasOfSize:(CGSize)canvasSize
@@ -205,14 +250,14 @@ const static NSInteger wheelAnimationEasingMagnitude = 3;
         self.state.animationStartValue = oldValue;
         self.state.animationStartTime = 0;
         self.state.animationDuration = (ABS((CGFloat)(self.state.animationEndValue - self.state.animationStartValue)) * 0.002 + 2.0) / speed;
-        self.state.animationInitialAlignShift = oldShift;
+        self.initialAlignShift = oldShift;
         self.state.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(setNeedsDisplay)];
         [self.state.displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
     }
     else
     {
         self.state.animationStartValue = self.state.animationEndValue;
-        self.state.animationInitialAlignShift = self.layout.alignShift;
+        self.initialAlignShift = self.layout.alignShift;
         [self setNeedsDisplay];
     }
     
@@ -229,10 +274,14 @@ const static NSInteger wheelAnimationEasingMagnitude = 3;
 
 - (void)updateCounterLayout
 {
-    self.layout.wheelCellSpacing = [self.class glyphSizeForFont:self.font];
-    
     _gradientMask = nil;
     _wheelImage = nil;
+    _scaledFont = nil;
+    
+    self.layout.wheelCellSpacing = [self.class glyphSizeForFont:[self scaledFont]];
+    [self updateCenterAlignment];
+    
+    [self setNeedsDisplay];
 }
 
 #pragma mark - View methods
@@ -247,16 +296,21 @@ const static NSInteger wheelAnimationEasingMagnitude = 3;
         self.layout.arrowDrawnParts = SNCounterLabelArrowPartNone;
         self.state = SNCounterLabelState.new;
         self.alignCenter = YES;
+        
+        [self addObserver:self forKeyPath:@"layer.bounds" options:0 context:nil];
     }
     
     return self;
 }
 
+- (void)dealloc
+{
+    [self removeObserver:self forKeyPath:@"layer.bounds"];
+}
+
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    
-    [self addObserver:self forKeyPath:@"layer.bounds" options:0 context:nil];
     
     [self updateCounterLayout];
     [self setValue:self.text.integerValue animationSpeed:NSIntegerMax completionHandler:nil];
@@ -270,10 +324,18 @@ const static NSInteger wheelAnimationEasingMagnitude = 3;
     }
 }
 
+- (void)setState:(SNCounterLabelState *)state
+{
+    _state = state;
+    
+    [self updateCenterAlignment];
+}
+
 - (void)drawRect:(CGRect)rect
 {
     CGFloat linkProgress = 1.0;
     CGFloat progress = 1.0;
+    BOOL isAnimationEnded = YES;
     
     // Calculate progress depending on display link animation step
     if (self.state.displayLink)
@@ -284,7 +346,7 @@ const static NSInteger wheelAnimationEasingMagnitude = 3;
         CFTimeInterval elaspedTime = self.state.displayLink.timestamp - self.state.animationStartTime;
         linkProgress = progress = MIN(1.0, elaspedTime / self.state.animationDuration);
         
-        RSTimingFunction* easeFunction = [RSTimingFunction timingFunctionWithControlPoint1:CGPointMake(0.75, 0.0) controlPoint2:CGPointMake(0.4, 1.0)];
+        RSTimingFunction* easeFunction = [RSTimingFunction timingFunctionWithControlPoint1:CGPointMake(0.55, 0.0) controlPoint2:CGPointMake(0.2, 1.0)];
         easeFunction.duration = 0.000001;
         
         for (int i = 0; i < wheelAnimationEasingMagnitude; i++)
@@ -295,11 +357,21 @@ const static NSInteger wheelAnimationEasingMagnitude = 3;
             [self.state.displayLink invalidate];
             self.state.displayLink = nil;
         }
+        else
+        {
+            isAnimationEnded = NO;
+        }
     }
     
     CGFloat progressValue = self.state.animationStartValue + (self.state.animationEndValue - self.state.animationStartValue) * progress;
-    CGPoint progressAlignShift = CGPointMake(self.state.animationInitialAlignShift.x + (self.layout.alignShift.x - self.state.animationInitialAlignShift.x) * linkProgress,
-                                             self.state.animationInitialAlignShift.y + (self.layout.alignShift.y - self.state.animationInitialAlignShift.y) * linkProgress);
+    linkProgress = MIN(1.0, linkProgress * M_PI * 2.0);
+    
+    RSTimingFunction* easeFunction = [RSTimingFunction timingFunctionWithControlPoint1:CGPointMake(0.0, 1.0) controlPoint2:CGPointMake(0.2, 1.0)];
+    easeFunction.duration = 0.000001;
+    CGFloat shiftProgress = [easeFunction valueForX:linkProgress];
+    
+    CGPoint progressAlignShift = CGPointMake(self.initialAlignShift.x + (self.layout.alignShift.x - self.initialAlignShift.x) * shiftProgress,
+                                             self.initialAlignShift.y + (self.layout.alignShift.y - self.initialAlignShift.y) * shiftProgress);
     
     for (UICounterLabel* child in self.children)
     {
@@ -345,7 +417,7 @@ const static NSInteger wheelAnimationEasingMagnitude = 3;
     CGFloat arrowValue = MIN(0.98, progress * (CGFloat)self.state.animationEndValue / MAX(1, self.maxValue));
     CGFloat arrowAngle = arrowValue * 2.0 * M_PI;
     CGPoint arrowCenter = CGPointMake(self.bounds.size.width / 2.0 + self.layout.ringOffset.x, self.bounds.size.height / 2.0 + self.layout.ringOffset.y);
-    CGFloat arrowRadius = INTERFACE_IS_PHONE ? 55.0 : 100.0;
+    CGFloat arrowRadius = self.frame.size.width / 2.0 - 25.0;
     CGFloat arrowWidth = INTERFACE_IS_PHONE ? 2.0 : 4.0;
     CGFloat arrowArmLength = INTERFACE_IS_PHONE ? 6.0 : 12.0;
     CGFloat arrowLegLength = INTERFACE_IS_PHONE ? 4.0 : 8.0;
@@ -429,7 +501,7 @@ const static NSInteger wheelAnimationEasingMagnitude = 3;
         }
     }
     
-    if (progress >= 1.0 && _animationCompletionBlock)
+    if (isAnimationEnded && _animationCompletionBlock)
     {
         dispatch_block_t block = _animationCompletionBlock;
         _animationCompletionBlock = nil;

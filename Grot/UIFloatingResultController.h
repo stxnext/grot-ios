@@ -7,7 +7,29 @@
 //
 
 #import "UIFloatingController.h"
+#import "UICounterLabel.h"
+#import "UIResultDisk.h"
+
+typedef NS_ENUM(UIFloatingButtonTag, UIFloatingResultButtonTag) {
+    UIFloatingResultButtonRestartTag,
+    UIFloatingResultButtonGameCenterTag,
+};
+
+@protocol UIFloatingResultControllerDataSource;
 
 @interface UIFloatingResultController : UIFloatingController
+{
+    UIResultDisk* _resultDisk;
+}
+
+@property (nonatomic, weak) id<UIFloatingResultControllerDataSource> dataSource;
+
+@end
+
+@protocol UIFloatingResultControllerDataSource <NSObject>
+
+@required
+- (NSInteger)resultControllerCurrentScore;
+- (NSInteger)resultControllerHighScore;
 
 @end

@@ -25,6 +25,7 @@ typedef NSUInteger UIFloatingButtonTag;
 
 @property (nonatomic, weak) id<UIMenuButtonDelegate> delegate;
 
+- (void)hide;
 - (void)showAnimated:(BOOL)animated withDelay:(NSTimeInterval)delay withCompletionHandler:(dispatch_block_t)completionBlock;
 - (void)dismissAnimated:(BOOL)animated withCompletionHandler:(dispatch_block_t)completionBlock;
 

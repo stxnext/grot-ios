@@ -66,8 +66,15 @@
 
 #pragma mark - Animations
 
+- (void)hide
+{
+    self.alpha = 0.0;
+}
+
 - (void)showAnimated:(BOOL)animated withDelay:(NSTimeInterval)delay withCompletionHandler:(dispatch_block_t)completionBlock;
 {
+    self.alpha = 1.0;
+    
     self.nameLabel.alpha = 0.0;
     self.imageView.alpha = 0.85;
     self.imageView.layer.transform = [self.class transformWithRotation:-1.0 scale:0.01];
