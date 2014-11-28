@@ -9,13 +9,6 @@
 #import <Foundation/Foundation.h>
 @import GameKit;
 
-typedef NS_OPTIONS(NSUInteger, NSGameCenterSubmissionStatus) {
-    NSGameCenterSubmissionSuccess = 0,
-    NSGameCenterSubmissionLeaderboardFailure = 1 << 0,
-    NSGameCenterSubmissionAchievementsFailure = 1 << 1,
-    NSGameCenterSubmissionCompleteFailure = 3
-};
-
 @interface NSGameCenterManager : NSObject
 
 #pragma mark - Singleton
@@ -32,10 +25,8 @@ typedef NS_OPTIONS(NSUInteger, NSGameCenterSubmissionStatus) {
 - (void)showMainLeaderboard;
 
 #pragma mark - Main achievements
++ (NSArray*)mainAchievementPoints;
 - (void)submitMainAchievementWithScore:(NSInteger)score completionHandler:(void (^)(NSError* error))completionBlock;
 - (void)showMainAchievements;
-
-#pragma mark - Combined score submission
-- (void)submitMainScore:(NSInteger)score completionHandler:(void (^)(NSGameCenterSubmissionStatus status, NSDictionary* errors))completionBlock;
 
 @end

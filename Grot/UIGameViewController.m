@@ -87,7 +87,7 @@ const NSUInteger kDefaultInitialMoves = 5;
 
 - (void)gameDidEndWithScore:(NSInteger)score
 {
-    [self submitGameCenterScore:score withCompletionHandler:nil];
+    [self submitGameCenterLeaderboardScore:score withCompletionHandler:nil];
     
     [self performSegueWithIdentifier:kMenuResultsSegueIdentifier sender:self];
 }
@@ -201,6 +201,8 @@ const NSUInteger kDefaultInitialMoves = 5;
     {
         [self gameDidEndWithScore:toResults.score];
     }
+    
+    [self submitGameCenterAchievementFromScore:fromResults.score toScore:toResults.score withCompletionHandler:nil];
 }
 
 #pragma mark - UIFloatingResultControllerDataSource
@@ -217,7 +219,7 @@ const NSUInteger kDefaultInitialMoves = 5;
 
 #pragma mark - Game Center
 
-- (void)submitGameCenterScore:(NSInteger)score withCompletionHandler:(void (^)())completionBlock
+- (void)submitGameCenterLeaderboardScore:(NSInteger)score withCompletionHandler:(void (^)())completionBlock
 {
     [[NSGameCenterManager sharedManager] authenticatePlayerWithCompletionHandler:^(NSError *error) {
         if (error)
@@ -225,86 +227,82 @@ const NSUInteger kDefaultInitialMoves = 5;
             return;
         }
         
-        __block NSGameCenterSubmissionStatus submissionStatus = NSGameCenterSubmissionCompleteFailure;
-        
         [self.class performBlock:^(dispatch_block_t safeBlock) {
-            __block void (^messageBlock)() = ^(){
-                [UIAlertView bk_showAlertViewWithTitle:@"Problem" message:@"Could not submit your score." cancelButtonTitle:@"Cancel" otherButtonTitles:@[ @"Retry" ] handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
-                    if (buttonIndex == 1)
+            [[NSGameCenterManager sharedManager] submitMainLeaderboardWithScore:score completionHandler:^(NSError *error) {
+                if (error)
+                {
+                    [UIAlertView bk_showAlertViewWithTitle:@"Problem" message:@"Could not submit your score." cancelButtonTitle:@"Cancel" otherButtonTitles:@[ @"Retry" ] handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                        if (buttonIndex == 1)
+                        {
+                            safeBlock();
+                            return;
+                        }
+                        
+                        if (completionBlock)
+                            completionBlock();
+                    }];
+                    
+                    return;
+                }
+                
+                if (completionBlock)
+                    completionBlock();
+            }];
+        }];
+    }];
+}
+
+- (void)submitGameCenterAchievementFromScore:(NSInteger)fromScore toScore:(NSInteger)toScore withCompletionHandler:(void (^)())completionBlock
+{
+    NSArray* achievementPointsDistribution = [NSGameCenterManager mainAchievementPoints];
+    BOOL shouldSubmit = NO;
+    
+    for (NSNumber* point in achievementPointsDistribution)
+    {
+        if (fromScore < point.integerValue && point.integerValue <= toScore)
+        {
+            shouldSubmit = YES;
+            break;
+        }
+    }
+    
+    if (shouldSubmit)
+    {
+        [[NSGameCenterManager sharedManager] authenticatePlayerWithCompletionHandler:^(NSError *error) {
+            if (error)
+            {
+                return;
+            }
+            
+            [self.class performBlock:^(dispatch_block_t safeBlock) {
+                [[NSGameCenterManager sharedManager] submitMainAchievementWithScore:toScore completionHandler:^(NSError *error) {
+                    if (error)
                     {
-                        safeBlock();
+                        [UIAlertView bk_showAlertViewWithTitle:@"Problem" message:@"Could not submit your achievement." cancelButtonTitle:@"Cancel" otherButtonTitles:@[ @"Retry" ] handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                            if (buttonIndex == 1)
+                            {
+                                safeBlock();
+                                return;
+                            }
+                            
+                            if (completionBlock)
+                                completionBlock();
+                        }];
+                        
                         return;
                     }
                     
                     if (completionBlock)
                         completionBlock();
                 }];
-            };
-            
-            NSGameCenterManager* manager = [NSGameCenterManager sharedManager];
-            
-            switch (submissionStatus)
-            {
-                case NSGameCenterSubmissionLeaderboardFailure:
-                {
-                    [manager submitMainLeaderboardWithScore:score completionHandler:^(NSError *error) {
-                        if (error)
-                        {
-                            messageBlock();
-                            return;
-                        }
-                        
-                        if (completionBlock)
-                            completionBlock();
-                    }];
-                    
-                    break;
-                }
-                    
-                case NSGameCenterSubmissionAchievementsFailure:
-                {
-                    [manager submitMainAchievementWithScore:score completionHandler:^(NSError *error) {
-                        if (error)
-                        {
-                            messageBlock();
-                            return;
-                        }
-                        
-                        if (completionBlock)
-                            completionBlock();
-                    }];
-                    
-                    break;
-                }
-                    
-                case NSGameCenterSubmissionCompleteFailure:
-                {
-                    [manager submitMainScore:score completionHandler:^(NSGameCenterSubmissionStatus status, NSDictionary *errors) {
-                        submissionStatus = status;
-                        
-                        if (submissionStatus != NSGameCenterSubmissionSuccess)
-                        {
-                            messageBlock();
-                            return;
-                        }
-                        
-                        if (completionBlock)
-                            completionBlock();
-                    }];
-                    
-                    break;
-                }
-                    
-                default:
-                {
-                    if (completionBlock)
-                        completionBlock();
-                    
-                    return;
-                }
-            }
+            }];
         }];
-    }];
+    }
+    else
+    {
+        if (completionBlock)
+            completionBlock();
+    }
 }
 
 @end

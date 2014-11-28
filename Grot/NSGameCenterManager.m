@@ -259,39 +259,4 @@ static NSString* kGameCenterMainAchievementIdentifiers = @"mainAchievementIdenti
     [self showAchievements];
 }
 
-#pragma mark - Combined score submission
-
-- (void)submitMainScore:(NSInteger)score completionHandler:(void (^)(NSGameCenterSubmissionStatus status, NSDictionary* errors))completionBlock
-{
-    __block NSInteger operations = 2;
-    __block NSObject* lock = [NSObject new];
-    __block NSMutableDictionary* errors = [NSMutableDictionary dictionary];
-    __block NSGameCenterSubmissionStatus status = NSGameCenterSubmissionSuccess;
-    
-    __block void (^handler)(NSGameCenterSubmissionStatus errorType, NSError* error) = ^(NSGameCenterSubmissionStatus errorType, NSError* error){
-        @synchronized (lock)
-        {
-            if (error)
-            {
-                errors[@(errorType)] = error;
-                status |= errorType;
-            }
-            
-            if (--operations == 0)
-            {
-                if (completionBlock)
-                    completionBlock(status, errors);
-            }
-        }
-    };
-    
-    [self submitMainLeaderboardWithScore:score completionHandler:^(NSError *error) {
-        handler(NSGameCenterSubmissionLeaderboardFailure, error);
-    }];
-    
-    [self submitMainAchievementWithScore:score completionHandler:^(NSError *error) {
-        handler(NSGameCenterSubmissionAchievementsFailure, error);
-    }];
-}
-
 @end
