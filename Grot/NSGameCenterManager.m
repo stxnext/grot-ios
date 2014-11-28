@@ -242,7 +242,7 @@ static NSString* kGameCenterMainAchievementIdentifiers = @"mainAchievementIdenti
         if (score < points.integerValue)
             break;
         
-        achievementIdentifier = achievementIdentifiers[points];
+        achievementIdentifier = achievementIdentifiers[points.stringValue];
     }
     
     return achievementIdentifier;
@@ -250,8 +250,8 @@ static NSString* kGameCenterMainAchievementIdentifiers = @"mainAchievementIdenti
 
 - (void)submitMainAchievementWithScore:(NSInteger)score completionHandler:(void (^)(NSError* error))completionBlock
 {
-    NSString* identifiers = [self.class mainAchievementsIdentifierForScore:score];
-    [self submitAchievementWithIdentifier:identifiers score:score completionHandler:completionBlock];
+    NSString* identifier = [self.class mainAchievementsIdentifierForScore:score];
+    [self submitAchievementWithIdentifier:identifier score:score completionHandler:completionBlock];
 }
 
 - (void)showMainAchievements
