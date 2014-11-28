@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "NSGameCenterManager.h"
+#import "NSHighScoreManager.h"
 
 @interface AppDelegate ()
 
@@ -16,6 +18,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [[NSGameCenterManager sharedManager] authenticatePlayerWithCompletionHandler:^(NSError *error) {
+        [[NSHighScoreManager sharedManager] refreshGameCenterHighScore];
+    }];
+    
     return YES;
 }
 

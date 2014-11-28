@@ -115,7 +115,15 @@
     self.gridView.itemSize = (CGSize){ itemSize, itemSize };
     self.gridView.itemSpacing = (CGSize){ spacing, spacing };
     
-    [self.gridView reloadGridAnimated:animated];
+    [self reloadGridViewAnimated:animated];
+}
+
+- (void)reloadGridViewAnimated:(BOOL)animated
+{
+    if (self.gameState)
+    {
+        [self.gridView reloadGridAnimated:animated];
+    }
 }
 
 - (void)finalizeScheduledReaction

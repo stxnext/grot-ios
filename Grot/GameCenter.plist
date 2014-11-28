@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>mainAchievementIdentifiers</key>
+	<dict>
+		<key>200</key>
+		<string>200_points</string>
+		<key>400</key>
+		<string>400_points</string>
+		<key>600</key>
+		<string>600_points</string>
+		<key>800</key>
+		<string>800_points</string>
+		<key>1000</key>
+		<string>1000_points</string>
+	</dict>
+	<key>mainLeaderboardIdentifier</key>
+	<string>com.stxnext.Grot.HighScores</string>
+</dict>
+</plist>

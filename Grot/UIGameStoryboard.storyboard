@@ -202,7 +202,8 @@
                             <constraint firstItem="I9Z-fK-ZYK" firstAttribute="top" secondItem="P9o-fJ-WEL" secondAttribute="bottom" constant="15" id="PlY-YS-bwU"/>
                             <constraint firstItem="gsr-hv-rzJ" firstAttribute="bottom" secondItem="qfZ-vM-ZRR" secondAttribute="centerY" multiplier="0.4" id="WDQ-Xg-7YZ"/>
                             <constraint firstItem="I9Z-fK-ZYK" firstAttribute="top" secondItem="2JT-qD-gbY" secondAttribute="bottom" constant="15" id="WM1-Mi-C6b"/>
-                            <constraint firstAttribute="bottom" secondItem="rSR-Q8-dKm" secondAttribute="bottom" multiplier="1.12" constant="20" id="dDA-aR-zRW"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="rSR-Q8-dKm" secondAttribute="bottom" multiplier="1.12" constant="20" id="dDA-aR-zRW"/>
+                            <constraint firstAttribute="bottom" secondItem="rSR-Q8-dKm" secondAttribute="bottom" priority="750" constant="82" id="jDW-H8-oZT"/>
                             <constraint firstItem="2JT-qD-gbY" firstAttribute="leading" secondItem="qfZ-vM-ZRR" secondAttribute="leading" constant="15" id="l9b-NQ-FxD"/>
                             <constraint firstAttribute="trailing" secondItem="P9o-fJ-WEL" secondAttribute="trailing" constant="15" id="n50-ti-Vh7"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="rSR-Q8-dKm" secondAttribute="bottom" constant="82" id="zlc-1K-oRl"/>
@@ -489,9 +490,9 @@
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sgK-vt-ik5">
                                 <rect key="frame" x="0.0" y="95" width="126" height="31"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="clip" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="fpH-Fp-mxE" customClass="UILabelExt">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="clip" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fpH-Fp-mxE" customClass="UILabelExt">
                                         <rect key="frame" x="0.0" y="0.0" width="126" height="31"/>
-                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="50"/>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="25"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -598,7 +599,6 @@ Collect as many points as possible!</string>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="TSv-Ml-0Ld" secondAttribute="trailing" multiplier="4" id="1Rn-oq-3d5"/>
                                             <constraint firstAttribute="bottom" secondItem="DYn-9m-Ns9" secondAttribute="bottom" id="6rp-Fk-ZWr"/>
                                             <constraint firstItem="TSv-Ml-0Ld" firstAttribute="top" secondItem="316-s7-RKK" secondAttribute="top" id="BvS-rU-2eD"/>
                                             <constraint firstItem="DYn-9m-Ns9" firstAttribute="top" secondItem="316-s7-RKK" secondAttribute="top" id="YER-1F-fj2"/>
@@ -986,7 +986,6 @@ Collect as many points as possible!</string>
                             <constraint firstItem="zm6-TS-veC" firstAttribute="top" secondItem="yD0-q1-P91" secondAttribute="bottom" multiplier="0.65" id="51q-pq-Sdl"/>
                             <constraint firstAttribute="centerX" secondItem="yD0-q1-P91" secondAttribute="centerX" id="6yj-Q7-VLK"/>
                             <constraint firstAttribute="trailing" secondItem="S1N-aT-BFG" secondAttribute="trailing" id="8E9-Yz-KHT"/>
-                            <constraint firstAttribute="centerX" secondItem="S1N-aT-BFG" secondAttribute="centerX" constant="0.5" id="AGe-3O-Oam"/>
                             <constraint firstAttribute="bottom" secondItem="yD0-q1-P91" secondAttribute="bottom" constant="10" id="RIn-wS-TRK"/>
                             <constraint firstAttribute="trailing" secondItem="zm6-TS-veC" secondAttribute="trailing" id="WES-rD-4Jb"/>
                             <constraint firstAttribute="trailing" secondItem="3NG-2M-oYt" secondAttribute="trailing" id="YqS-Qi-R6g"/>
@@ -1015,8 +1014,8 @@ Collect as many points as possible!</string>
         <image name="IconPause" width="77" height="95"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="9um-fT-m7R"/>
-        <segue reference="MO7-RD-b17"/>
         <segue reference="nQV-vY-jJi"/>
+        <segue reference="bqZ-a2-0se"/>
+        <segue reference="SY8-0n-tpG"/>
     </inferredMetricsTieBreakers>
 </document>

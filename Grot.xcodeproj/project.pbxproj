@@ -9,8 +9,12 @@
 /* Begin PBXBuildFile section */
 		0C1C3B0719E3DEF8001DD3AB /* SNGameState+Hints.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1C3B0619E3DEF8001DD3AB /* SNGameState+Hints.m */; };
 		0C1C3B0A19E3E082001DD3AB /* NSDictionary+Aggregation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1C3B0919E3E082001DD3AB /* NSDictionary+Aggregation.m */; };
+		0C2176921A289AFB0077B3BE /* NSGameCenterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C2176911A289AFB0077B3BE /* NSGameCenterManager.m */; };
+		0C2176941A28A2D40077B3BE /* GameCenter.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0C2176931A28A2D40077B3BE /* GameCenter.plist */; };
+		0C21769D1A28B8E10077B3BE /* NSObject+SafeBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C21769C1A28B8E10077B3BE /* NSObject+SafeBlocks.m */; };
 		0C2414341A0CBC3F00947A1E /* UIMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C2414331A0CBC3F00947A1E /* UIMenuButton.m */; };
 		0C2414401A0CFE6500947A1E /* UIFont+AutoSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C24143F1A0CFE6500947A1E /* UIFont+AutoSize.m */; };
+		0C2A71981A28C2460059F9E5 /* NSHighScoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C2A71971A28C2460059F9E5 /* NSHighScoreManager.m */; };
 		0C31EF491A08B1DC002A52B2 /* SNCounterLabelLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C31EF481A08B1DC002A52B2 /* SNCounterLabelLayout.m */; };
 		0C31EF4C1A08B1FD002A52B2 /* SNCounterLabelState.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C31EF4B1A08B1FD002A52B2 /* SNCounterLabelState.m */; };
 		0C31EF4F1A08B239002A52B2 /* UICounterLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C31EF4E1A08B239002A52B2 /* UICounterLabel.m */; };
@@ -58,6 +62,7 @@
 		0CDB573C1A1B8820005741D1 /* UIView+RoundedEdges.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB573B1A1B8820005741D1 /* UIView+RoundedEdges.m */; };
 		0CDB573F1A1B8D7D005741D1 /* UIFieldBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB573E1A1B8D7D005741D1 /* UIFieldBadge.m */; };
 		0CF8A7CE19E6A0400039A26E /* UIGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CF8A7CD19E6A0400039A26E /* UIGameViewController.m */; };
+		43A964091C6A5A92B6FFF80E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9387D76AF02D852E8F9D75 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,10 +81,17 @@
 		0C1C3B0619E3DEF8001DD3AB /* SNGameState+Hints.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SNGameState+Hints.m"; sourceTree = "<group>"; };
 		0C1C3B0819E3E082001DD3AB /* NSDictionary+Aggregation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Aggregation.h"; sourceTree = "<group>"; };
 		0C1C3B0919E3E082001DD3AB /* NSDictionary+Aggregation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Aggregation.m"; sourceTree = "<group>"; };
+		0C2176901A289AFB0077B3BE /* NSGameCenterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSGameCenterManager.h; sourceTree = "<group>"; };
+		0C2176911A289AFB0077B3BE /* NSGameCenterManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSGameCenterManager.m; sourceTree = "<group>"; };
+		0C2176931A28A2D40077B3BE /* GameCenter.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = GameCenter.plist; sourceTree = "<group>"; };
+		0C21769B1A28B8E10077B3BE /* NSObject+SafeBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SafeBlocks.h"; sourceTree = "<group>"; };
+		0C21769C1A28B8E10077B3BE /* NSObject+SafeBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SafeBlocks.m"; sourceTree = "<group>"; };
 		0C2414321A0CBC3F00947A1E /* UIMenuButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIMenuButton.h; sourceTree = "<group>"; };
 		0C2414331A0CBC3F00947A1E /* UIMenuButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIMenuButton.m; sourceTree = "<group>"; };
 		0C24143E1A0CFE6500947A1E /* UIFont+AutoSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+AutoSize.h"; sourceTree = "<group>"; };
 		0C24143F1A0CFE6500947A1E /* UIFont+AutoSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+AutoSize.m"; sourceTree = "<group>"; };
+		0C2A71961A28C2460059F9E5 /* NSHighScoreManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSHighScoreManager.h; sourceTree = "<group>"; };
+		0C2A71971A28C2460059F9E5 /* NSHighScoreManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSHighScoreManager.m; sourceTree = "<group>"; };
 		0C31EF441A08B047002A52B2 /* UIGameStoryboard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIGameStoryboard.h; sourceTree = "<group>"; };
 		0C31EF471A08B1DC002A52B2 /* SNCounterLabelLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNCounterLabelLayout.h; sourceTree = "<group>"; };
 		0C31EF481A08B1DC002A52B2 /* SNCounterLabelLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNCounterLabelLayout.m; sourceTree = "<group>"; };
@@ -175,6 +187,9 @@
 		0CE0DED71A1391CC0005741D /* PrefixMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixMacros.h; sourceTree = "<group>"; };
 		0CF8A7CC19E6A0400039A26E /* UIGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIGameViewController.h; sourceTree = "<group>"; };
 		0CF8A7CD19E6A0400039A26E /* UIGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIGameViewController.m; sourceTree = "<group>"; };
+		26431CB8635F3D07074843FD /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		BB9387D76AF02D852E8F9D75 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E79DF10930B00D3E021F1BF9 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +197,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43A964091C6A5A92B6FFF80E /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,6 +240,28 @@
 			children = (
 				0C1C3B0819E3E082001DD3AB /* NSDictionary+Aggregation.h */,
 				0C1C3B0919E3E082001DD3AB /* NSDictionary+Aggregation.m */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		0C21768F1A289AD80077B3BE /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				0C21769A1A28B8C80077B3BE /* Helpers */,
+				0C2176901A289AFB0077B3BE /* NSGameCenterManager.h */,
+				0C2176911A289AFB0077B3BE /* NSGameCenterManager.m */,
+				0C2176931A28A2D40077B3BE /* GameCenter.plist */,
+				0C2A71961A28C2460059F9E5 /* NSHighScoreManager.h */,
+				0C2A71971A28C2460059F9E5 /* NSHighScoreManager.m */,
+			);
+			name = Managers;
+			sourceTree = "<group>";
+		};
+		0C21769A1A28B8C80077B3BE /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				0C21769B1A28B8E10077B3BE /* NSObject+SafeBlocks.h */,
+				0C21769C1A28B8E10077B3BE /* NSObject+SafeBlocks.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -353,6 +391,7 @@
 			children = (
 				0C31EF501A08B2D0002A52B2 /* RSTimingFunction */,
 				0C7D6D751A02131C005F0380 /* SKTUtils */,
+				BB9387D76AF02D852E8F9D75 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -410,6 +449,7 @@
 				0CA86E6119DEAE4500512B28 /* GrotTests */,
 				0C6FFD6119ECFF4C00485ACB /* Frameworks */,
 				0CA86E4619DEAE4500512B28 /* Products */,
+				308A6B16E043204174A80CF4 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -425,6 +465,7 @@
 		0CA86E4719DEAE4500512B28 /* Grot */ = {
 			isa = PBXGroup;
 			children = (
+				0C21768F1A289AD80077B3BE /* Managers */,
 				0C52D79F1A07713B00FE64CC /* Application */,
 				0C52D79D1A076E9E00FE64CC /* Storyboards */,
 				0CF8A7C719E695B70039A26E /* View controllers */,
@@ -487,22 +528,23 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
-		0CB0CEEE1A1E2CAD00A59448 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Helpers;
-			sourceTree = "<group>";
-		};
 		0CF8A7C719E695B70039A26E /* View controllers */ = {
 			isa = PBXGroup;
 			children = (
-				0CB0CEEE1A1E2CAD00A59448 /* Helpers */,
 				0C52D7A11A07726500FE64CC /* Main */,
 				0C52D7A01A07716100FE64CC /* Playground */,
 				0C31EF541A08B5F4002A52B2 /* Floating menu */,
 			);
 			name = "View controllers";
+			sourceTree = "<group>";
+		};
+		308A6B16E043204174A80CF4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				26431CB8635F3D07074843FD /* Pods.debug.xcconfig */,
+				E79DF10930B00D3E021F1BF9 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -512,9 +554,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0CA86E6819DEAE4500512B28 /* Build configuration list for PBXNativeTarget "Grot" */;
 			buildPhases = (
+				F841FAAF46DC15C091EC0AC4 /* Check Pods Manifest.lock */,
 				0CA86E4119DEAE4500512B28 /* Sources */,
 				0CA86E4219DEAE4500512B28 /* Frameworks */,
 				0CA86E4319DEAE4500512B28 /* Resources */,
+				08EAA7C245E95AD9371BD44F /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -587,6 +631,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CA86E5919DEAE4500512B28 /* LaunchScreen.xib in Resources */,
+				0C2176941A28A2D40077B3BE /* GameCenter.plist in Resources */,
 				0C31EF711A08D8D5002A52B2 /* Lato-Thin.ttf in Resources */,
 				0C31EF6E1A08D8D5002A52B2 /* Lato-Bold.ttf in Resources */,
 				0C9B83881A1DC33E0093778A /* UIGameStoryboard.storyboard in Resources */,
@@ -606,12 +651,46 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		08EAA7C245E95AD9371BD44F /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F841FAAF46DC15C091EC0AC4 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		0CA86E4119DEAE4500512B28 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				0C31EF531A08B2E5002A52B2 /* RSTimingFunction.m in Sources */,
+				0C2176921A289AFB0077B3BE /* NSGameCenterManager.m in Sources */,
 				0C31EF4C1A08B1FD002A52B2 /* SNCounterLabelState.m in Sources */,
 				0C4C39C41A132F7200831031 /* UILabelExt.m in Sources */,
 				0C7D6D891A021329005F0380 /* SKEmitterNode+SKTExtras.m in Sources */,
@@ -623,6 +702,7 @@
 				0C2414341A0CBC3F00947A1E /* UIMenuButton.m in Sources */,
 				0CA86E5119DEAE4500512B28 /* UIPlaygroundGridViewController.m in Sources */,
 				0C31EF4F1A08B239002A52B2 /* UICounterLabel.m in Sources */,
+				0C2A71981A28C2460059F9E5 /* NSHighScoreManager.m in Sources */,
 				0CDB57361A1B8447005741D1 /* UIFloatingHelpController.m in Sources */,
 				0C7D6D8A1A021329005F0380 /* SKNode+SKTDebugDraw.m in Sources */,
 				0C7D6D881A021329005F0380 /* SKAction+SKTSpecialEffects.m in Sources */,
@@ -634,6 +714,7 @@
 				0C6FFD9519ED229000485ACB /* SpringMath.c in Sources */,
 				0CA10E9519E52ED40013382A /* UIPlaygroundGridView.m in Sources */,
 				0CA10E9819E53E470013382A /* UIArrowView.m in Sources */,
+				0C21769D1A28B8E10077B3BE /* NSObject+SafeBlocks.m in Sources */,
 				0C87AF9F1A25FA730040BDB0 /* UIResultDisk.m in Sources */,
 				0C1C3B0A19E3E082001DD3AB /* NSDictionary+Aggregation.m in Sources */,
 				0CA86E7B19DEB41F00512B28 /* SNGrid.m in Sources */,
@@ -766,6 +847,7 @@
 		};
 		0CA86E6919DEAE4500512B28 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 26431CB8635F3D07074843FD /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -783,6 +865,7 @@
 		};
 		0CA86E6A19DEAE4500512B28 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E79DF10930B00D3E021F1BF9 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;

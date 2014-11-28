@@ -19,6 +19,5 @@
 @protocol UILabelExtLayoutDelegate <NSObject>
 
 - (void)labelDidUpdateLayout:(UILabelExt*)label;
-- (void)labelDidUpdateConstraints:(UILabelExt*)label;
 
 @end

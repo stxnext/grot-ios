@@ -11,9 +11,13 @@
 #import "UIFloatingMenuController.h"
 #import "UIFloatingHelpController.h"
 #import "UIView+RoundedEdges.h"
+#import "NSGameCenterManager.h"
+#import "NSObject+SafeBlocks.h"
+#import "UIAlertView+BlocksKit.h"
+#import "NSHighScoreManager.h"
 
 const CGSize kDefaultGridSize = (CGSize){ 4, 4 };
-const NSUInteger kDefaultInitialMoves = 1;
+const NSUInteger kDefaultInitialMoves = 5;
 
 @implementation UIGameViewController
 
@@ -21,7 +25,7 @@ const NSUInteger kDefaultInitialMoves = 1;
 {
     [super viewDidLoad];
     
-    self.scoreCounter.maxDrawableValue = self.movesCounter.maxDrawableValue = 99999;
+    self.scoreCounter.maxDrawableValue = self.movesCounter.maxDrawableValue = 9999;
     
     _playgroundChildController.view.backgroundColor = self.view.backgroundColor;
     _playgroundChildController.delegate = self;
@@ -38,7 +42,9 @@ const NSUInteger kDefaultInitialMoves = 1;
     [super viewDidAppear:animated];
     
     if (!_playgroundChildController.gameState)
+    {
         [self restartGame];
+    }
 }
 
 - (void)viewWillLayoutSubviews
@@ -79,8 +85,10 @@ const NSUInteger kDefaultInitialMoves = 1;
     [_playgroundChildController restartGameWithGridSize:kDefaultGridSize initialMoves:kDefaultInitialMoves];
 }
 
-- (void)gameDidEnd
+- (void)gameDidEndWithScore:(NSInteger)score
 {
+    [self submitGameCenterScore:score withCompletionHandler:nil];
+    
     [self performSegueWithIdentifier:kMenuResultsSegueIdentifier sender:self];
 }
 
@@ -119,7 +127,7 @@ const NSUInteger kDefaultInitialMoves = 1;
                     
                 case UIFloatingMenuButtonGameCenterTag:
                 {
-                    // TODO:
+                    [[NSGameCenterManager sharedManager] showMainLeaderboard];
                     break;
                 }
                     
@@ -168,7 +176,7 @@ const NSUInteger kDefaultInitialMoves = 1;
                 
                 case UIFloatingResultButtonGameCenterTag:
                 {
-                    // TODO:
+                    [[NSGameCenterManager sharedManager] showMainLeaderboard];
                     break;
                 }
             }
@@ -191,7 +199,7 @@ const NSUInteger kDefaultInitialMoves = 1;
     
     if (visibleMoves <= 0)
     {
-        [self gameDidEnd];
+        [self gameDidEndWithScore:toResults.score];
     }
 }
 
@@ -204,7 +212,99 @@ const NSUInteger kDefaultInitialMoves = 1;
 
 - (NSInteger)resultControllerHighScore
 {
-    return 0;
+    return [[NSHighScoreManager sharedManager] highScore];
+}
+
+#pragma mark - Game Center
+
+- (void)submitGameCenterScore:(NSInteger)score withCompletionHandler:(void (^)())completionBlock
+{
+    [[NSGameCenterManager sharedManager] authenticatePlayerWithCompletionHandler:^(NSError *error) {
+        if (error)
+        {
+            return;
+        }
+        
+        __block NSGameCenterSubmissionStatus submissionStatus = NSGameCenterSubmissionCompleteFailure;
+        
+        [self.class performBlock:^(dispatch_block_t safeBlock) {
+            __block void (^messageBlock)() = ^(){
+                [UIAlertView bk_showAlertViewWithTitle:@"Problem" message:@"Could not submit your score." cancelButtonTitle:@"Cancel" otherButtonTitles:@[ @"Retry" ] handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                    if (buttonIndex == 1)
+                    {
+                        safeBlock();
+                        return;
+                    }
+                    
+                    if (completionBlock)
+                        completionBlock();
+                }];
+            };
+            
+            NSGameCenterManager* manager = [NSGameCenterManager sharedManager];
+            
+            switch (submissionStatus)
+            {
+                case NSGameCenterSubmissionLeaderboardFailure:
+                {
+                    [manager submitMainLeaderboardWithScore:score completionHandler:^(NSError *error) {
+                        if (error)
+                        {
+                            messageBlock();
+                            return;
+                        }
+                        
+                        if (completionBlock)
+                            completionBlock();
+                    }];
+                    
+                    break;
+                }
+                    
+                case NSGameCenterSubmissionAchievementsFailure:
+                {
+                    [manager submitMainAchievementWithScore:score completionHandler:^(NSError *error) {
+                        if (error)
+                        {
+                            messageBlock();
+                            return;
+                        }
+                        
+                        if (completionBlock)
+                            completionBlock();
+                    }];
+                    
+                    break;
+                }
+                    
+                case NSGameCenterSubmissionCompleteFailure:
+                {
+                    [manager submitMainScore:score completionHandler:^(NSGameCenterSubmissionStatus status, NSDictionary *errors) {
+                        submissionStatus = status;
+                        
+                        if (submissionStatus != NSGameCenterSubmissionSuccess)
+                        {
+                            messageBlock();
+                            return;
+                        }
+                        
+                        if (completionBlock)
+                            completionBlock();
+                    }];
+                    
+                    break;
+                }
+                    
+                default:
+                {
+                    if (completionBlock)
+                        completionBlock();
+                    
+                    return;
+                }
+            }
+        }];
+    }];
 }
 
 @end

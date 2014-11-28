@@ -7,6 +7,7 @@
 //
 
 #import "UIFloatingResultController.h"
+#import "NSHighScoreManager.h"
 
 @implementation UIFloatingResultController
 
@@ -39,6 +40,14 @@
     }];
     
     _resultDisk.currentScoreCounter.layout.arrowDrawnParts = SNCounterLabelArrowPartAll;
+    
+    [self updatePlayersHighScore];
+}
+
+- (void)updatePlayersHighScore
+{
+    NSInteger score = self.dataSource.resultControllerCurrentScore;
+    [[NSHighScoreManager sharedManager] setHighScore:score];
 }
 
 - (BOOL)shouldShowControlsAutomatically

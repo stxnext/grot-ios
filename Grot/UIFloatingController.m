@@ -64,6 +64,23 @@
     }
 }
 
+- (void)apdejt
+{
+    CGFloat minPointSize = CGFLOAT_MAX;
+    
+    for (UIMenuButton* button in self.menuButtons)
+    {
+        CGSize size = button.nameLabel.frame.size;
+        CGFloat fontSize = [button.font maxFontSizeFittingBounds:size forText:button.text];
+        minPointSize = MIN(minPointSize, fontSize);
+    }
+    
+    for (UIMenuButton* button in self.menuButtons)
+    {
+        button.nameLabel.font = [button.nameLabel.font fontWithSize:minPointSize];
+    }
+}
+
 #pragma mark - Controls appearance
 
 - (BOOL)shouldShowControlsAutomatically
@@ -112,33 +129,9 @@
 
 #pragma mark - Buttons support
 
-- (void)labelDidUpdateConstraints:(UILabelExt*)label
-{
-    [self updateFontForLabel:label];
-}
-
 - (void)labelDidUpdateLayout:(UILabelExt*)label
 {
-    [self updateFontForLabel:label];
-}
-
-- (void)updateFontForLabel:(UILabelExt*)label
-{
-    CGFloat pointSize = [self fontSizeForButtonSize:label.frame.size];
-    label.font = [label.font fontWithSize:pointSize];
-}
-
-- (CGFloat)fontSizeForButtonSize:(CGSize)size
-{
-    CGFloat minPointSize = CGFLOAT_MAX;
-    
-    for (UIMenuButton* button in self.menuButtons)
-    {
-        CGFloat fontSize = [button.font maxFontSizeFittingBounds:size forText:button.text];
-        minPointSize = MIN(minPointSize, fontSize);
-    }
-    
-    return minPointSize;
+    [self apdejt];
 }
 
 - (void)didTapMenuButton:(UIMenuButton*)button
