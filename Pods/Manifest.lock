@@ -1,16 +1,32 @@
 PODS:
-  - Appirater (2.0.3)
-  - GoogleAnalytics-iOS-SDK (3.0.9)
-  - GPUImage (0.1.5)
+  - Appirater (2.0.4)
+  - BlocksKit (2.2.5):
+    - BlocksKit/All
+  - BlocksKit/All (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+    - BlocksKit/MessageUI
+    - BlocksKit/UIKit
+  - BlocksKit/Core (2.2.5)
+  - BlocksKit/DynamicDelegate (2.2.5)
+  - BlocksKit/MessageUI (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+  - BlocksKit/UIKit (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+  - GoogleAnalytics-iOS-SDK (3.10):
+    - GoogleAnalytics-iOS-SDK/Core
+  - GoogleAnalytics-iOS-SDK/Core (3.10)
 
 DEPENDENCIES:
   - Appirater
+  - BlocksKit
   - GoogleAnalytics-iOS-SDK
-  - GPUImage
 
 SPEC CHECKSUMS:
-  Appirater: 793f3723354b1b155f7ddc87fc6017bea889ce50
-  GoogleAnalytics-iOS-SDK: d9e198b1f955259a72886769be7377cdfcdb2250
-  GPUImage: 5114a47f5fc33eb312f3731550a3cea379416d04
+  Appirater: cbdb7f305562cfde585300bfff86da01ae559deb
+  BlocksKit: 4439e7f30a9f90743462ca63545a15c1f4304cef
+  GoogleAnalytics-iOS-SDK: f422062075d9ccb1ea8d783fc5ba3829461e9502
 
-COCOAPODS: 0.32.1
+COCOAPODS: 0.34.4

@@ -5,34 +5,46 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>6C66260A-FCA9-49E2-ADBB-141FE472BC3A</string>
+	<string>8B0FD841-1B39-41A2-81C6-59F0812D37E3</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Grot</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>948E29DA-77C8-4057-9DCF-2529B221997A</key>
+		<key>5E429EE4F43383CFD8E2E842E18411B090A4CD69</key>
 		<string>https://github.com/stxnext/grot-ios.git</string>
+		<key>99F196DA3DCDAD4DF9C5159B12CC9C238CAFEE69</key>
+		<string>https://github.com/stxnext/grot-ios</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Grot.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>948E29DA-77C8-4057-9DCF-2529B221997A</key>
+		<key>5E429EE4F43383CFD8E2E842E18411B090A4CD69</key>
 		<string>..</string>
+		<key>99F196DA3DCDAD4DF9C5159B12CC9C238CAFEE69</key>
+		<string>../../Grot</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/stxnext/grot-ios.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>948E29DA-77C8-4057-9DCF-2529B221997A</string>
+	<string>5E429EE4F43383CFD8E2E842E18411B090A4CD69</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>948E29DA-77C8-4057-9DCF-2529B221997A</string>
+			<string>99F196DA3DCDAD4DF9C5159B12CC9C238CAFEE69</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Grot</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>5E429EE4F43383CFD8E2E842E18411B090A4CD69</string>
 			<key>IDESourceControlWCCName</key>
 			<string>grot-ios</string>
 		</dict>

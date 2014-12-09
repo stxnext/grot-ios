@@ -2,7 +2,7 @@
 //  UIImage+Blending.h
 //  Grot
 //
-//  Created by Dawid Żakowski on 04/08/2014.
+//  Created by Dawid Żakowski on 08/10/2014.
 //  Copyright (c) 2014 STX Next. All rights reserved.
 //
 

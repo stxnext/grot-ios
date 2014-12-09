@@ -14,7 +14,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-GPUImage.xcscheme</key>
+		<key>Pods-BlocksKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -32,27 +32,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>5E00CA93E9DF4CF8908274DB</key>
+		<key>4B710D8952F5304EFAF9B8A9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>696D7264DF394DF986D8558D</key>
+		<key>668E3B566D9D57EF84CB756E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CD7AFB75866E47B0B1FC28C7</key>
+		<key>CFFCFAC6EAB22E6359ADC9B5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F2E998B6CB904FF9AC7BF932</key>
+		<key>D6A59554DED4E1172B1554D3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FBD28BE94D1E4008ABF550C7</key>
+		<key>ED877EEFFBB6BE85E293CAE5</key>
 		<dict>
 			<key>primary</key>
 			<true/>

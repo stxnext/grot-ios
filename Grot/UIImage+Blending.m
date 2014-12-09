@@ -2,12 +2,11 @@
 //  UIImage+Blending.m
 //  Grot
 //
-//  Created by Dawid Żakowski on 04/08/2014.
+//  Created by Dawid Żakowski on 08/10/2014.
 //  Copyright (c) 2014 STX Next. All rights reserved.
 //
 
 #import "UIImage+Blending.h"
-#import <GPUImage/GPUImage.h>
 
 @implementation UIImage (Blending)
 
@@ -34,9 +33,9 @@
     CGContextRotateCTM(context, rotation);
     [self drawInRect:CGRectMake(-self.size.width / 2.0f, -self.size.height / 2.0f, self.size.width, self.size.height)];
     
-	UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-	UIGraphicsEndImageContext();
-	return newImage;
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
 }
 
 @end

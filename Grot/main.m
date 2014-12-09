@@ -2,17 +2,15 @@
 //  main.m
 //  Grot
 //
-//  Created by Dawid Żakowski on 16/07/2014.
+//  Created by Dawid Żakowski on 03/10/2014.
 //  Copyright (c) 2014 STX Next. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
 
-#import "SNAppDelegate.h"
-
-int main(int argc, char * argv[])
-{
+int main(int argc, char * argv[]) {
     @autoreleasepool {
-        return UIApplicationMain(argc, argv, nil, NSStringFromClass([SNAppDelegate class]));
+        return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
     }
 }
